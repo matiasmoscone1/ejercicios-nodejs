@@ -1,4 +1,4 @@
-Hola Mundo: Crea un servidor básico en NodeJS que responda "Hola Mundo" en la raíz (/).
+Hola Mundo: Crea un servidor básico en NodeJS que responda "Hola Mundo" en la raíz (/). *Se le agrego el manejo de rutas
 
 Calculadora Simple: Desarrolla una API que reciba dos números y una operación (suma, resta, multiplicación, división) y devuelva el resultado.
 
