@@ -1,0 +1,19 @@
+Hola Mundo: Crea un servidor básico en NodeJS que responda "Hola Mundo" en la raíz (/).
+
+Calculadora Simple: Desarrolla una API que reciba dos números y una operación (suma, resta, multiplicación, división) y devuelva el resultado.
+
+Contador de Visitas: Crea un servidor que cuente el número de veces que se ha accedido a la página y muestre ese número.
+
+Gestor de Tareas: Implementa un API RESTful para gestionar una lista de tareas con operaciones CRUD (Crear, Leer, Actualizar, Borrar).
+
+Servidor de Archivos Estáticos: Configura un servidor que sirva archivos estáticos (HTML, CSS, JS) desde una carpeta específica.
+
+Conversor de Monedas: Crea un API que convierta cantidades entre diferentes monedas utilizando una API externa de tasas de cambio.
+
+Autenticación Básica: Desarrolla un sistema de autenticación simple utilizando tokens JWT para proteger rutas en tu servidor.
+
+Chat en Tiempo Real: Implementa una aplicación de chat básica usando Socket.IO para la comunicación en tiempo real entre el cliente y el servidor.
+
+Formulario de Contacto: Crea un formulario de contacto en un sitio web y haz que envíe los datos a tu servidor, el cual los guardará en un archivo.
+
+Consumo de API Externa: Desarrolla una aplicación que haga una solicitud a una API externa (por ejemplo, datos del clima) y muestre la información obtenida.
