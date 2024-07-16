@@ -21,6 +21,7 @@ const rl = readline.createInterface({
 });
 
 
+
 rl.question("Escriba el primer numero: ", (answer) => {
     rl.question("Escriba el segundo numero: ", (answer2) => {
     rl.question(`\nsuma\nresta\nmultiplicacion\ndivision\nEscriba la operacion: `, (operacion) => {
