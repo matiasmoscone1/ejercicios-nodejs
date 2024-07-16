@@ -2,7 +2,7 @@ const readline = require("node:readline")
 
 
 const suma = (a, b) => {
-    return a + b;
+    return Number(a) + Number(b);
 }
 const resta = (a, b) => {
     return a - b;
@@ -23,14 +23,23 @@ const rl = readline.createInterface({
 
 rl.question("Escriba el primer numero: ", (answer) => {
     rl.question("Escriba el segundo numero: ", (answer2) => {
-    rl.question(`Escriba la operacion: \n Suma: suma()\n Resta: 
-    resta()\n Multiplicacion: multiplicacion()\n Division: division()`, (operacion) => {
+    rl.question(`\nsuma\nresta\nmultiplicacion\ndivision\nEscriba la operacion: `, (operacion) => {
         if(operacion === "suma"){
-            console.log("Resultado: ", answer + answer2);
+            console.log("Resultado: ", suma(answer, answer2));
+        }else if(operacion === "resta"){
+            console.log("Resultado: ", resta(answer, answer2));
         }
-    })
-})
+        else if(operacion === "multiplicacion"){
+            console.log("Resultado: ", multiplicacion(answer, answer2));
+        }else if(operacion === "division"){
+            console.log("\nResultado: ", division(answer, answer2));
+        }
+        rl.close();
+    });
+    });
 });
+
+
 
 /*
 const segundoNum = rl.question("Escriba el segundo numero: ", (answer) => {
