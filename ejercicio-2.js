@@ -1,4 +1,4 @@
-const rl = require("node:readline")
+const readline = require("node:readline")
 
 
 const suma = (a, b) => {
@@ -14,7 +14,14 @@ const division = (a, b) => {
     return a / b;
 }
 
-rl.question("Que le parece esta calculadora de nodeJS?", (answer) => {
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+
+rl.question("Que le parece esta calculadora de nodeJS? ", (answer) => {
     console.log("Aqui va la respuesta: ", answer);
 
     rl.close();
