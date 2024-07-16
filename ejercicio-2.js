@@ -21,11 +21,24 @@ const rl = readline.createInterface({
 });
 
 
-rl.question("Que le parece esta calculadora de nodeJS? ", (answer) => {
-    console.log("Aqui va la respuesta: ", answer);
-
-    rl.close();
+rl.question("Escriba el primer numero: ", (answer) => {
+    rl.question("Escriba el segundo numero: ", (answer2) => {
+    rl.question(`Escriba la operacion: \n Suma: suma()\n Resta: 
+    resta()\n Multiplicacion: multiplicacion()\n Division: division()`, (operacion) => {
+        if(operacion === "suma"){
+            console.log("Resultado: ", answer + answer2);
+        }
+    })
+})
 });
+
+/*
+const segundoNum = rl.question("Escriba el segundo numero: ", (answer) => {
+    console.log("Aqui va la respuesta: ", answer);
+});*/
+
+//console.log(primerNum, segundoNum);
+
 
 
 
