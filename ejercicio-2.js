@@ -1,3 +1,6 @@
+/* Calculadora Simple: Desarrolla una API que reciba dos números y una operación (suma, 
+resta, multiplicación, división) y devuelva el resultado. */
+
 const readline = require("node:readline")
 
 
@@ -19,7 +22,6 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
 
 
 rl.question("Escriba el primer numero: ", (answer) => {

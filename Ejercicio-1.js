@@ -1,3 +1,6 @@
+/* Hola Mundo: Crea un servidor básico en NodeJS que responda "Hola Mundo" en la raíz (/). 
+*Se le agrego el manejo de rutas */
+
 const http = require("node:http");
 
 
