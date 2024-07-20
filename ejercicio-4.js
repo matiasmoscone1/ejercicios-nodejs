@@ -10,25 +10,25 @@ const interface = rl.createInterface({
     output: process.stdout
 });
 
-interface.question("Sobreescribir archivo (s) - Añadir informacion (a)", () => {
-    if("s"){
+interface.question("Sobreescribir archivo (s) - Añadir informacion (a)", (answer) => {
+    if(answer === "s"){
         fs.writeFile("mensaje.txt", "Hola muy buenos dias!!!!", (err) => {
             if(err){
                 console.log("no se encontro el archivo...");
             }
         })
     }
-    else if("a"){
-        const string = "";
-        interface.question("Escriba lo que quiere añadir: ", () => {
-            string = 
-        })
-        fs.appendFile("mensaje.txt", "\nEstoy añadiendo informacion al arhivo :)", (err) => {
-            if(err){
-                console.log("no se encuentra el archivo...");
-            }
+    else if(answer === "a"){
+        interface.question("Escriba lo que quiere añadir: ", (ans) => {
+            fs.appendFile("mensaje.txt", `\n${ans}`, (err) => {
+                if(err){
+                    console.log("no se encuentra el archivo...");
+                }
+                interface.close();
+            });        
         });
     }
+
 })
 
 
