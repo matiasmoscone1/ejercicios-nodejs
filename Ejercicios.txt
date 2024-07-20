@@ -17,3 +17,21 @@ Chat en Tiempo Real: Implementa una aplicación de chat básica usando Socket.IO
 Formulario de Contacto: Crea un formulario de contacto en un sitio web y haz que envíe los datos a tu servidor, el cual los guardará en un archivo.
 
 Consumo de API Externa: Desarrolla una aplicación que haga una solicitud a una API externa (por ejemplo, datos del clima) y muestre la información obtenida.
+
+--------------------------------------- FILESYSTEM ------------------------------------------------
+
+Crear y Escribir en un Archivo:
+
+Crea un programa que escriba un mensaje en un archivo llamado mensaje.txt.
+Leer un Archivo:
+
+Crea un programa que lea el contenido de mensaje.txt y lo muestre en la consola.
+Renombrar un Archivo:
+
+Crea un programa que renombre mensaje.txt a nuevoMensaje.txt.
+Eliminar un Archivo:
+
+Crea un programa que elimine nuevoMensaje.txt.
+Listar Archivos en un Directorio:
+
+Crea un programa que liste todos los archivos en un directorio específico.
