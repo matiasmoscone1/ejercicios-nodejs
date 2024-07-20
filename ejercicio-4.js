@@ -10,7 +10,7 @@ const interface = rl.createInterface({
     output: process.stdout
 });
 
-interface.question("Sobreescribir archivo (s) - Añadir informacion (a)", (answer) => {
+interface.question("Sobreescribir archivo (s) - Añadir informacion (a) - Leer archivo (l)", (answer) => {
     if(answer === "s"){
         fs.writeFile("mensaje.txt", "Hola muy buenos dias!!!!", (err) => {
             if(err){
@@ -27,6 +27,14 @@ interface.question("Sobreescribir archivo (s) - Añadir informacion (a)", (answe
                 interface.close();
             });        
         });
+    }else if(answer === "l"){
+        fs.readFile("mensaje.txt", {encoding: "utf8"},(err, info) => {
+            if(err){
+                console.log("No se pudo leer el archivo...");
+            }
+            console.log(info);
+        })
+        
     }
 
 })
