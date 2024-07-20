@@ -10,4 +10,8 @@ fs.writeFile("mensaje.txt", "Hola muy buenos dias!!!!", (err) => {
     }
 })
 
-
+fs.appendFile("mensaje.txt", "\nEstoy añadiendo informacion al arhivo :)", (err) => {
+    if(err){
+        console.log("no se encuentra el archivo...");
+    }
+});
