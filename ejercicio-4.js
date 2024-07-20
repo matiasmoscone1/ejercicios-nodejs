@@ -17,6 +17,7 @@ interface.question("Sobreescribir archivo (s) - Añadir informacion (a) - Leer a
                 console.log("no se encontro el archivo...");
             }
         })
+        interface.close();
     }
     else if(answer === "a"){
         interface.question("Escriba lo que quiere añadir: ", (ans) => {
@@ -28,11 +29,12 @@ interface.question("Sobreescribir archivo (s) - Añadir informacion (a) - Leer a
             });        
         });
     }else if(answer === "l"){
-        fs.readFile("mensaje.txt", {encoding: "utf8"},(err, info) => {
+        fs.readFile("mensaje.txt", {encoding: "utf8"} ,(err, info) => {
             if(err){
                 console.log("No se pudo leer el archivo...");
             }
             console.log(info);
+            interface.close();
         })
         
     }
