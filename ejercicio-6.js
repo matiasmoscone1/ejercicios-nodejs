@@ -11,17 +11,15 @@ const interface = rl.createInterface({
 
 interface.question("Nombre del archivo que desea eliminar: ", (answer) => {
 
-    fs.unlink(answer, (err, res) => {
-        if(err)
-    })
-    fs.unlink(answer, (err, res) => {
+    fs.unlink(answer, (err) => {
         if(err){
+            console.log(err.message);
             throw new Error;
         }else{
-            console.log(res, "Archivo deleteado con exito");
+            console.log("Archivo deleteado con exito");
         }
     })
-
+    interface.close();
 });
 
 
