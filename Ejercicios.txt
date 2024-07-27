@@ -21,17 +21,16 @@ Consumo de API Externa: Desarrolla una aplicación que haga una solicitud a una 
 --------------------------------------- FILESYSTEM ------------------------------------------------
 
 Crear y Escribir en un Archivo:
-
 Crea un programa que escriba un mensaje en un archivo llamado mensaje.txt.
+
 Leer un Archivo:
-
 Crea un programa que lea el contenido de mensaje.txt y lo muestre en la consola.
+
 Renombrar un Archivo:
-
 Crea un programa que renombre mensaje.txt a nuevoMensaje.txt.
+
 Eliminar un Archivo:
-
 Crea un programa que elimine nuevoMensaje.txt.
-Listar Archivos en un Directorio:
 
+Listar Archivos en un Directorio:
 Crea un programa que liste todos los archivos en un directorio específico.
