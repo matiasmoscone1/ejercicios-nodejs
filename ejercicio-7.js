@@ -8,7 +8,10 @@ fs.readdir(__dirname, (err, info) => {
     if(err){
         throw new Error;
     }else{
-        console.log(info);
+        info.map((file) => {
+            console.log(file);
+        });
+        //console.log(info);
     }   
 
 });
