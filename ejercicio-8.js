@@ -21,7 +21,7 @@ const port = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
     if(req.url === "/system-info"){
-        res.end({
+        const info = {
             name: os.release(),
             version: os.version(),
             arch: os.arch(),
@@ -29,10 +29,12 @@ const server = http.createServer((req, res) => {
             free_memory: os.freemem(),
             cpus_free: os.cpus(),
             hostname: os.hostname() 
-        });
+        };
+        res.end(JSON.stringify(info));
+        
     }
 
-    //res.end(info.json());
+    
     
     res.end("Hola Mundo");
 });
