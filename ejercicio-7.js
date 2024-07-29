@@ -25,8 +25,15 @@ fs.readdir(__dirname, (err, info) => {
 const listFiles = async () => {
     try{
         const files = await fs.readdir(__dirname);
-        files.forEach((file) => {
-            console.log(file);
+
+        files.forEach((file,i) => {
+            i++;
+            if(i < 10){
+                console.log(`File: ${i} - ${String("").padStart(2)} ${file}`);
+            }else{
+                console.log(`File: ${i} - ${String("").padStart(1)} ${file}`);
+            }
+            
         })
     }catch(err){
         console.log(err);
