@@ -25,8 +25,12 @@ const server = http.createServer((req, res) => {
             name: os.release(),
             version: os.version(),
             arch: os.arch(),
-            total_memory: os.totalmem(),
-            free_memory: os.freemem(),
+            total_memory: {
+                            value: Math.floor(os.totalmem() / 1024 / 1024 / 1000),
+                            unit: "GB"},
+            free_memory: {
+                            value: Math.floor(os.freemem() / 1024 / 1024 / 1000),
+                            unit: "GB"},
             cpus_free: os.cpus(),
             hostname: os.hostname() 
         };
@@ -34,17 +38,14 @@ const server = http.createServer((req, res) => {
         
     }
 
-    
-    
-    res.end("Hola Mundo");
 });
 
 server.listen(port, (err, info) => {
     if(err){
         throw new Error;
     }else{
-        console.log("El servidor se esta escuchando en el puerto: ", port)
-        console.log(info);
+        console.log("El servidor se esta escuchando en el puerto: ", port);
+
     }
 })
 
