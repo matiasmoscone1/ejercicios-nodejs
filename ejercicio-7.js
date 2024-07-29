@@ -4,11 +4,15 @@ const fs = require("node:fs");
 
 //console.log(__dirname);
 
-
-fs.readFile("ejercicio-7.js", {encoding: "utf-8"}, (err, info) => {
+fs.readdir(__dirname, (err, info) => {
     if(err){
         throw new Error;
-    }
-    console.log(info);
+    }else{
+        console.log(info);
+    }   
+
 });
+
+
+
 
