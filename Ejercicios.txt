@@ -34,3 +34,35 @@ Crea un programa que elimine nuevoMensaje.txt.
 
 Listar Archivos en un Directorio:
 Crea un programa que liste todos los archivos en un directorio específico.
+
+----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
+
+Manejo de Fechas y Tiempos con date-fns
+Enunciado: Crea una función que reciba una fecha en formato string y devuelva la diferencia en días con la fecha actual utilizando el módulo date-fns.
+
+Creación de Servidores HTTPS con https
+Enunciado: Configura un servidor HTTPS básico utilizando el módulo https y sirve una página HTML simple.
+
+Trabajando con Buffers
+Enunciado: Escribe una función que convierta un string a un buffer y luego lo vuelva a convertir a un string, demostrando el uso de buffers en NodeJS.
+
+Realizar Peticiones HTTP con axios
+Enunciado: Utiliza el módulo axios para hacer una petición GET a una API pública (por ejemplo, la API de Pokémon) y muestra la respuesta en la consola.
+
+Creación de Servidor WebSocket con ws
+Enunciado: Implementa un servidor WebSocket básico utilizando el módulo ws que permita a los clientes conectarse y enviar mensajes.
+
+Manejo de Procesos Hijos con child_process
+Enunciado: Crea un script que ejecute un comando del sistema operativo (por ejemplo, ls en Unix o dir en Windows) y muestra el resultado en la consola utilizando el módulo child_process.
+
+Compresión y Descompresión con zlib
+Enunciado: Implementa funciones para comprimir y descomprimir strings utilizando el módulo zlib.
+
+Creación de un Servidor UDP con dgram
+Enunciado: Configura un servidor UDP básico que escuche en un puerto específico y responda con un mensaje predefinido utilizando el módulo dgram.
+
+Manejo de Variables de Entorno con dotenv
+Enunciado: Crea una aplicación que cargue variables de entorno desde un archivo .env utilizando el módulo dotenv y muestra estas variables en la consola.
+
+Cifrado y Descifrado de Datos con crypto
+Enunciado: Escribe funciones para cifrar y descifrar un string utilizando el módulo crypto.
