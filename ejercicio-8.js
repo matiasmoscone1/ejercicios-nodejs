@@ -14,12 +14,16 @@ GET /uptime: Devuelve un JSON con el tiempo de actividad del sistema (en segundo
 desde que se inició el sistema.
 */
 
+//cargando modulos 
 const http = require("node:http");
 const os = require("node:os");
 
+//Si existe una variable de entorno que sea puerto, utiliza esa, sino el puerto sera 3000
 const port = process.env.PORT || 3000;
 
+//creando servidor
 const server = http.createServer((req, res) => {
+    //url y creando objeto con datos del sistema operativo
     if(req.url === "/system-info"){
         const info = {
             name: os.release(),
@@ -34,12 +38,14 @@ const server = http.createServer((req, res) => {
             cpus_free: os.cpus(),
             hostname: os.hostname() 
         };
+        //respuesta del servidor convertido el objeto en JSON para poder mostrarlo
         res.end(JSON.stringify(info));
         
     }
 
 });
 
+//escucha del servidor
 server.listen(port, (err, info) => {
     if(err){
         throw new Error;
