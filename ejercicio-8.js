@@ -40,12 +40,13 @@ const server = http.createServer((req, res) => {
         };
         //respuesta del servidor convertido el objeto en JSON para poder mostrarlo
         res.end(JSON.stringify(info));
+    //creando otra url
     }else if(req.url === "/uptime"){
-        const info2 = {
+        const info = {
             time: Number(os.uptime().toFixed(0)),
             unit: "Seconds"
         }
-        res.end(JSON.stringify(info2));
+        res.end(JSON.stringify(info));
     }else if(req.url === "/"){
         res.end("Pagina principal");
     }
