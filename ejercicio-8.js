@@ -42,7 +42,8 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify(info));
     }else if(req.url === "/uptime"){
         const info2 = {
-            time: os.uptime()
+            time: Number(os.uptime().toFixed(0)),
+            unit: "Seconds"
         }
         res.end(JSON.stringify(info2));
     }else if(req.url === "/"){
