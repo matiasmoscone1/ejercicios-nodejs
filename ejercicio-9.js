@@ -21,9 +21,9 @@ const server = http.createServer((req, res) => {
                 loadvg: os.loadavg(),
                 network_interference: os.networkInterfaces(),
                 disk_space: {
-                    total: diskSpace.size,
-                    free: diskSpace.free,
-                    used: diskSpace.size - diskSpace.free
+                    total: Number((diskSpace.size / 1024 / 1024 / 1024).toFixed(0)),
+                    free: Number((diskSpace.free / 1024 / 1024 / 1024).toFixed(0)),
+                    used: Number(((diskSpace.size - diskSpace.free) / 1024 / 1024 / 1024).toFixed(0))
                 }
             }       
             res.end(JSON.stringify(info)); 
