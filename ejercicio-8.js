@@ -40,8 +40,15 @@ const server = http.createServer((req, res) => {
         };
         //respuesta del servidor convertido el objeto en JSON para poder mostrarlo
         res.end(JSON.stringify(info));
-        
+    }else if(req.url === "/uptime"){
+        const info2 = {
+            time: os.uptime()
+        }
+        res.end(JSON.stringify(info2));
+    }else if(req.url === "/"){
+        res.end("Pagina principal");
     }
+
 
 });
 
