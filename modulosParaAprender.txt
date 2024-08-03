@@ -1,0 +1,18 @@
+
+https: Similar a http, pero para conexiones seguras.
+
+url: Para manejar URLs, incluyendo su análisis y construcción.
+
+path: Para trabajar con rutas de archivos y directorios de manera segura y eficiente.
+
+querystring: Para manejar cadenas de consulta (query strings) en URLs.
+
+crypto: Para realizar operaciones criptográficas, como encriptación y hash.
+
+events: Para manejar eventos y suscriptores, clave en la arquitectura basada en eventos de Node.js.
+
+stream: Para trabajar con flujos de datos (streams), que son esenciales para el manejo de archivos grandes o datos en tiempo real.
+
+child_process: Para crear y manejar procesos hijos, permitiéndote ejecutar otros programas y scripts desde Node.js.
+
+util: Para varias utilidades, incluyendo promisificación de funciones basadas en callback y formateo de cadenas.

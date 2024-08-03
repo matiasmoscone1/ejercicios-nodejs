@@ -35,6 +35,29 @@ Crea un programa que elimine nuevoMensaje.txt.
 Listar Archivos en un Directorio:
 Crea un programa que liste todos los archivos en un directorio específico.
 
+
+
+---------------------------------------- EJERCICIOS URL -----------------------------------------------------
+Ejercicio 1: Analiza una URL dada y extrae su protocolo, host, path, y parámetros de consulta. Imprime cada uno de estos componentes.
+
+Ejercicio 2: Crea una URL a partir de un objeto que contenga el protocolo, host, path y parámetros de consulta. Asegúrate de que la URL generada sea válida.
+
+Ejercicio 3: Dada una URL con parámetros de consulta, extrae los valores de esos parámetros y conviértelos en un objeto JavaScript. Por ejemplo, para la URL http://example.com?name=John&age=30, el objeto resultante debería ser { name: 'John', age: '30' }.
+
+Ejercicio 4: Modifica una URL dada para cambiar su path y agregar un nuevo parámetro de consulta. Por ejemplo, cambia el path de http://example.com/oldpath a /newpath y agrega el parámetro foo=bar.
+
+Ejercicio 5: Dada una URL con un fragmento (hash), elimina el fragmento y devuelve la URL sin él. Por ejemplo, para http://example.com/page#section, la URL resultante debería ser http://example.com/page.
+
+Ejercicio 6: Convierte una URL relativa a una URL absoluta utilizando una URL base proporcionada. Por ejemplo, convierte /path/to/resource en http://example.com/path/to/resource utilizando http://example.com como base.
+
+Ejercicio 7: Extrae y muestra solo el nombre del dominio de una URL completa. Por ejemplo, para http://www.example.com/path, deberías obtener www.example.com.
+
+Ejercicio 8: Dada una URL completa y un objeto de parámetros, construye una nueva URL que incluya esos parámetros adicionales. Por ejemplo, si tienes http://example.com/path y el objeto { foo: 'bar' }, la nueva URL debería ser http://example.com/path?foo=bar.
+
+Ejercicio 9: Implementa una función que tome una URL completa y devuelva un objeto con los componentes protocol, host, pathname, y search de la URL.
+
+Ejercicio 10: Extrae y decodifica los parámetros de consulta de una URL que contiene valores codificados en URL. Por ejemplo, para http://example.com/?name=John%20Doe&age=30, el objeto resultante debería ser { name: 'John Doe', age: '30' }.
+
 ----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
 
 Manejo de Fechas y Tiempos con date-fns
@@ -66,3 +89,10 @@ Enunciado: Crea una aplicación que cargue variables de entorno desde un archivo
 
 Cifrado y Descifrado de Datos con crypto
 Enunciado: Escribe funciones para cifrar y descifrar un string utilizando el módulo crypto.
+
+
+
+
+
+
+
