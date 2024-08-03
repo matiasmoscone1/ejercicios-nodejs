@@ -5,9 +5,9 @@ Imprime cada uno de estos componentes. https://nodejs.org/api/url.html */
 
 const my_url = new URL("https://nodejs.org/api/url.html");
 
-
 console.log(my_url);
 
+console.log(` Host: ${my_url.host} \n Path: ${my_url.pathname} \n Parametros: ${my_url.searchParams}`);
 
 
 
