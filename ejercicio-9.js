@@ -22,9 +22,9 @@ const server = http.createServer((req, res) => {
                 cpus: os.cpus(),
                 /* uptime: PC prendida expresada en dias */
                 uptime: Number((os.uptime() / 86400).toFixed(0)),
-                /* loadgvg: valores = al nro de nucleos -> estan ocupados pero no sobrecargados 
+                /* loadavg: valores = al nro de nucleos -> estan ocupados pero no sobrecargados 
                             valores > al nro de nucleos realentizaciones severas */
-                loadvg: os.loadavg(),
+                loadavg: os.loadavg(),
                 network_interference: os.networkInterfaces(),
                 /* disk_space: espacio en el disco */
                 disk_space: {
@@ -34,17 +34,37 @@ const server = http.createServer((req, res) => {
                 }
             }       
             res.end(JSON.stringify(info)); 
+
             if(info.total_memory < 12){
                 console.log("Recomendacion: Agregar memoria RAM.");
-            }else if(info.uptime > 15){
-                console.log("Recomendacion: Actualizar windows y reiniciar.")
-            }else if(info.cpus[0].speed < 2000){
-                console.log("Recomendacion: Cambiar procesador por uno mejor.")
+            }else{
+                console.log("RAM: ok.");
             }
+            if(info.uptime > 15){
+                console.log("Recomendacion: Actualizar windows y reiniciar.");
+            }else{
+                console.log("Uptime: ok.");
+            }
+            if(info.cpus[0].speed < 2000){
+                console.log("Recomendacion: Cambiar procesador por uno mejor.");
+            }else{
+                console.log("Procesador: ok.");
+            }
+            if(info.loadavg[0] >= info.cpus.length){
+                console.log("Recomendacion: Cambiar procesador por uno mejor.")
+            }else{
+                console.log("Carga CPU: ok.");
+            }            
+            if(info.disk_space.free < 15){
+                console.log("Recomendacion: Libera espacio del disco.");
+            }else{
+                console.log("Disco: ok.");
+            }
+        }).catch((err) => {
+            res.writeHead("500", {"Content-Type": "text/plain"})
+            res.end("Error al obtener la informacion del sistema.", err);
         })
-        /* 
-        BLOQUE COMPARATIVO
-        */    
+
         
 
         
