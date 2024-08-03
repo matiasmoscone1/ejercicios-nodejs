@@ -15,16 +15,18 @@ const server = http.createServer((req, res) => {
     if(req.url === "/"){
         checkDiskSpace("C:").then((diskSpace) => {
             const info = {
-                /* total_memory: cantidad de RAM expresada en GB*/
+                /* total_memory: cantidad de RAM expresada en GB */
                 total_memory: Number((os.totalmem() / 1024 / 1024 / 1024).toFixed(0)),
+                /* cpus: array de objetos, que cada objeto es un nucleo donde muestra, 
+                         speed: velocidad del procesador expresado en Mhz */ 
                 cpus: os.cpus(),
                 /* uptime: PC prendida expresada en dias */
                 uptime: Number((os.uptime() / 86400).toFixed(0)),
                 /* loadgvg: valores = al nro de nucleos -> estan ocupados pero no sobrecargados 
-                            valores > al nro de nucleos realentizaciones severas
-                */
+                            valores > al nro de nucleos realentizaciones severas */
                 loadvg: os.loadavg(),
                 network_interference: os.networkInterfaces(),
+                /* disk_space: espacio en el disco */
                 disk_space: {
                     total: Number((diskSpace.size / 1024 / 1024 / 1024).toFixed(0)),
                     free: Number((diskSpace.free / 1024 / 1024 / 1024).toFixed(0)),
