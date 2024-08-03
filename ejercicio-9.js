@@ -34,10 +34,18 @@ const server = http.createServer((req, res) => {
                 }
             }       
             res.end(JSON.stringify(info)); 
+            if(info.total_memory < 12){
+                console.log("Recomendacion: Agregar memoria RAM.");
+            }else if(info.uptime > 15){
+                console.log("Recomendacion: Actualizar windows y reiniciar.")
+            }else if(info.cpus[0].speed < 2000){
+                console.log("Recomendacion: Cambiar procesador por uno mejor.")
+            }
         })
         /* 
         BLOQUE COMPARATIVO
         */    
+        
 
         
 
