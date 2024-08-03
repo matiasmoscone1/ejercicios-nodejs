@@ -1,0 +1,24 @@
+Carga Promedio del Sistema:
+
+loadvg[0]: Promedio de carga del sistema en el último minuto.
+loadvg[1]: Promedio de carga del sistema en los últimos cinco minutos.
+loadvg[2]: Promedio de carga del sistema en los últimos quince minutos.
+Estos valores indican cuántos procesos están esperando para ser ejecutados en la CPU. Un valor de carga promedio de 1 significa que la CPU está completamente ocupada pero no sobrecargada. Valores superiores a 1 indican que hay más procesos esperando para ser ejecutados que núcleos disponibles, lo que puede causar retrasos y reducir el rendimiento del sistema.
+
+Interpretación de los Valores de Carga:
+
+Valores bajos (cercanos a 0): El sistema está subutilizado o no tiene una carga significativa.
+Valores alrededor del número de núcleos de la CPU: El sistema está manejando la carga adecuadamente. Por ejemplo, si tienes 12 núcleos, una carga promedio de 12 indica que todos los núcleos están ocupados, pero no sobrecargados.
+Valores altos (mucho mayores que el número de núcleos): El sistema está sobrecargado, lo que puede causar ralentizaciones significativas y tiempos de respuesta más largos.
+Situaciones de Alta Carga:
+
+Procesos pesados: Ejecución de procesos intensivos en CPU, como compilación de software, procesamiento de datos, o renderizado de gráficos.
+Procesos en bucle infinito: Programas que están atrapados en bucles infinitos pueden consumir una cantidad significativa de recursos.
+Problemas de I/O: Procesos esperando acceso a recursos de entrada/salida (discos duros, redes) pueden aumentar la carga promedio si hay cuellos de botella en el sistema de I/O.
+Memoria insuficiente: Si el sistema no tiene suficiente memoria RAM y comienza a usar intercambio de disco (swap), esto puede aumentar la carga del sistema.
+Monitoreo y Solución:
+
+Monitoreo continuo: Utiliza herramientas como top, htop, vmstat, o glances para monitorear la carga promedio del sistema y otros parámetros en tiempo real.
+Optimización de procesos: Identifica y optimiza o elimina los procesos que consumen excesivamente la CPU.
+Ajuste de recursos: Asegúrate de que el sistema tenga suficientes recursos (CPU, RAM, almacenamiento rápido) para manejar la carga esperada.
+Actualizaciones y mantenimiento: Mantén el sistema operativo y los programas actualizados para aprovechar las optimizaciones y correcciones de errores.
