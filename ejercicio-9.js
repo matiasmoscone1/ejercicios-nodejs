@@ -4,6 +4,7 @@ Crea un script en NodeJS que determine si una PC es veloz y si se puede mejorar
 */
 
 const os = require("node:os");
+const si = require("systeminformation");
 const http = require("node:http");
 const checkDiskSpace = require("check-disk-space").default;
 
@@ -11,9 +12,20 @@ const checkDiskSpace = require("check-disk-space").default;
 const port = process.env.PORT || 3000;
 
 
-const server = http.createServer((req, res) => {
+const getSystemTemperatures = async () => {
+    const tempData = await si.cpuTemperature();
+    return tempData.main;
+};
+
+const getRealTimeCPUUsage = async () => {
+    const load = await si.currentLoad();
+    return Number((load.currentLoad).toFixed(0));
+};
+
+const server = http.createServer(async (req, res) => {
     if(req.url === "/"){
-        checkDiskSpace("C:").then((diskSpace) => {
+        try{
+        const diskSpace = await checkDiskSpace("C:");
             const info = {
                 /* total_memory: cantidad de RAM expresada en GB */
                 total_memory: Number((os.totalmem() / 1024 / 1024 / 1024).toFixed(0)),
@@ -25,15 +37,15 @@ const server = http.createServer((req, res) => {
                 /* loadavg: valores = al nro de nucleos -> estan ocupados pero no sobrecargados 
                             valores > al nro de nucleos realentizaciones severas */
                 loadavg: os.loadavg(),
-                network_interference: os.networkInterfaces(),
                 /* disk_space: espacio en el disco */
                 disk_space: {
                     total: Number((diskSpace.size / 1024 / 1024 / 1024).toFixed(0)),
                     free: Number((diskSpace.free / 1024 / 1024 / 1024).toFixed(0)),
                     used: Number(((diskSpace.size - diskSpace.free) / 1024 / 1024 / 1024).toFixed(0))
-                }
-            }       
-            res.end(JSON.stringify(info)); 
+                },
+                temperature: await getSystemTemperatures(),
+                cpu_usage: await getRealTimeCPUUsage()
+            }      
 
             if(info.total_memory < 12){
                 console.log("Recomendacion: Agregar memoria RAM.");
@@ -60,10 +72,18 @@ const server = http.createServer((req, res) => {
             }else{
                 console.log("Disco: ok.");
             }
-        }).catch((err) => {
-            res.writeHead("500", {"Content-Type": "text/plain"})
-            res.end("Error al obtener la informacion del sistema.", err);
-        })
+            if(info.cpu_usage > 80){
+                console.log(`Recomendacion: Cierra aplicaciones innecesarias o pestañas del navegador, actualiza windows.
+                                            Tambien puede desactivar servicios innecesarios o actualizar drivers del PC.`);
+            }else{
+                console.log("Uso CPU: ok");
+            }
+            res.end(JSON.stringify(info)); 
+
+        } catch (err){
+            res.writeHead("500", {"Content-Type": "text/plain"});
+            res.end("No se pudo leer las caracteristicas del sistema", err);
+        }
 
         
 
