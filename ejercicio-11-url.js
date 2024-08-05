@@ -8,8 +8,13 @@ const objectURL = {
     searchParam: {query: "nodejs", sort:"asc", filter:"desactive"}
 }
 
-const my_url = new URL(objectURL.protocol+objectURL.host+objectURL.path);
+const my_url = new URL(`${objectURL.protocol}${objectURL.host}${objectURL.path}?
+${Object.keys(objectURL.searchParam)[0]}=${objectURL.searchParam.query}&
+${Object.keys(objectURL.searchParam)[1]}=${objectURL.searchParam.sort}&
+${Object.keys(objectURL.searchParam)[2]}=${objectURL.searchParam.filter}`);
 
 console.log(my_url.href);
+
+
 
 
