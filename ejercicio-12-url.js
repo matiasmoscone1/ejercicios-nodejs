@@ -7,11 +7,12 @@ const my_url = new URL("http://example.com?name=John&age=30");
 
 const my_object = new Object;
 
-console.log(my_url.searchParams.keys());
-console.log(my_url.searchParams.values());
+//console.log(my_url.searchParams.keys());
+//console.log(my_url.searchParams.values());
 
-my_url.searchParams.forEach((key, value) => {
-    console.log(value,key);
+my_url.searchParams.forEach((value, key) => {
+    my_object[key] = value;
 });
 
+console.log("El objeto extraido de los parametros es: ", my_object);
 
