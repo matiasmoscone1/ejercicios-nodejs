@@ -8,7 +8,8 @@ const my_url = new URL("http://example.com/oldpath");
 //console.log(my_url);
 
 my_url.pathname = "/newpath";
+my_url.searchParams.append("foo", "bar");
 
-console.log(my_url.searchParams);
+console.log(my_url);
 
 
