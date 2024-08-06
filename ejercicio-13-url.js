@@ -24,12 +24,10 @@ const addParams = () => {
    
 }
 
-my_url.pathname = "/newpath";
-
-
-async function ejecutarFunciones() {
-    await addParams();
+const showURL = () => {
+    my_url.pathname = "/newpath";
     console.log(my_url);
 }
 
-ejecutarFunciones();
+addParams().then(() => showURL());
+
