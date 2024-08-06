@@ -6,7 +6,7 @@ const rl = require("node:readline");
 const my_url = new URL("http://example.com/oldpath");
 
 const addParams = () => {
-    return new Promise(() => {
+    return new Promise((resolve) => {
         const interface = rl.createInterface({
             input: process.stdin,
             output: process.stdout
@@ -16,6 +16,7 @@ const addParams = () => {
             interface.question("Agrega el valor: ", (value) => {
                 my_url.searchParams.append(key, value);
                 interface.close();
+                resolve();
             });
         });
 
@@ -24,12 +25,11 @@ const addParams = () => {
 }
 
 my_url.pathname = "/newpath";
-//my_url.searchParams.append("foo", "bar");
 
-const showURL = () => {
+
+async function ejecutarFunciones() {
+    await addParams();
     console.log(my_url);
 }
 
-addParams().then(showURL());
-
-
+ejecutarFunciones();
