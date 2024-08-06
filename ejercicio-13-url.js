@@ -5,21 +5,31 @@ y agrega el parámetro foo=bar. */
 const rl = require("node:readline");
 const my_url = new URL("http://example.com/oldpath");
 
-const interface = rl.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const addParams = () => {
+    return new Promise(() => {
+        const interface = rl.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        
+        interface.question("Agrega la propiedad: ", (key) => {
+            interface.question("Agrega el valor: ", (value) => {
+                my_url.searchParams.append(key, value);
+                interface.close();
+            });
+        });
 
-
-interface.question("Agrega la propiedad: ", (key) => {
-    interface.question("Agrega el valor: ", (value) => {
-        my_url.searchParams.append(key, value);
-    });
-});
+    })
+   
+}
 
 my_url.pathname = "/newpath";
 //my_url.searchParams.append("foo", "bar");
 
-//console.log(my_url);
+const showURL = () => {
+    console.log(my_url);
+}
+
+addParams().then(showURL());
 
 
