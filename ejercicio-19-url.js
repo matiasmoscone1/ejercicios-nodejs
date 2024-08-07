@@ -6,10 +6,13 @@ el objeto resultante debería ser { name: 'John Doe', age: '30' }. */
 
 const my_url = new URL("http://example.com/?name=John%20Doe&age=30");
 
-//console.log(my_url.searchParams);
+const my_object = new Object;
 
-const url = "http://example.com/?name=John%20Doe&age=30";
-console.log(decodeURIComponent(url));
+my_url.searchParams.forEach((value, key) => {
+    my_object[key] = decodeURI(value);
+});
+
+console.log(my_object);
 
 
 
