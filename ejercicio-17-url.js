@@ -6,7 +6,8 @@ const my_url = new URL("http://example.com/path");
 
 const my_object = {foo: "bar", tema: "obscuro"};
 
-my_url.searchParams.append(Object.keys(my_object), my_object.foo);
+for(let key in my_object){
+    my_url.searchParams.append(key, my_object[key]);
+}
 
-console.log(Object.keys(my_object));
-console.log(my_url);
+console.log(my_url.href);

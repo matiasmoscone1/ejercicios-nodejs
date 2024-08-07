@@ -15,4 +15,3 @@ my_url.searchParams.forEach((value, key) => {
 });
 
 console.log("El objeto extraido de los parametros es: ", my_object);
-
