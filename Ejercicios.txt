@@ -58,6 +58,32 @@ Ejercicio 9: Implementa una función que tome una URL completa y devuelva un obj
 
 Ejercicio 10: Extrae y decodifica los parámetros de consulta de una URL que contiene valores codificados en URL. Por ejemplo, para http://example.com/?name=John%20Doe&age=30, el objeto resultante debería ser { name: 'John Doe', age: '30' }.
 
+
+
+Ejercicio: Servidor de Redirección de URLs Cortas
+Descripción:
+Vas a crear un servidor en Node.js que funcione como un acortador de URLs, similar a servicios como Bit.ly. 
+El servidor debe:
+Guardar una URL original y devolver una URL corta:
+
+Al enviar una solicitud POST a /shorten, el servidor recibirá una URL original y generará una clave corta única (por ejemplo, una cadena de 6 caracteres alfanuméricos).
+El servidor debe devolver la URL corta que incluye la clave generada, la cual será utilizada para redireccionar a la URL original.
+Redirigir la URL corta a la original:
+
+Al acceder a la URL corta (por ejemplo, /abc123), el servidor debe redirigir al usuario a la URL original asociada con esa clave.
+Manejo de errores:
+
+Si se accede a una URL corta que no existe, el servidor debe devolver un error 404 con un mensaje personalizado.
+Si no se envía una URL válida al intentar acortar, el servidor debe devolver un error 400 con un mensaje de error apropiado.
+Almacenamiento de URLs:
+
+Utiliza un objeto en memoria para almacenar la relación entre las claves cortas y las URLs originales (puedes expandir esto para usar una base de datos en el futuro).
+
+
+
+
+
+
 ----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
 
 Manejo de Fechas y Tiempos con date-fns
