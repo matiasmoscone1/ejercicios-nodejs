@@ -20,6 +20,8 @@ const urlShortener = (url) => {
         }
     })
     urlDatabase[shortURL] = url.pathname;
+
+    
     return shortURL;
 
 }
@@ -35,9 +37,12 @@ const server = http.createServer((req, res) => {
     if(req.url === "/matias-moscone-section-one"){
         res.end("Esta en la seccion 1 de matias moscone.");
     }
+    if(req.url === "/matias-moscone-section-two"){
+        res.end("Esta en la seccion 2 de matias moscone.");
+    }
     if(urlDatabase[path]){
         res.writeHead(302, {"Location": urlDatabase[path]});
-        res.end("Ha sido redirigido a la seccion 1 de matias moscone.");
+        res.end(`Ha sido redirigido...`);
     }else{
         res.writeHead(404, {"Content-Type": "text/plain"});
         res.end("Url corta no encontrada...");
@@ -50,7 +55,9 @@ server.listen(port, () => {
     console.log("El servidor esta siendo escuchado en el puerto: ", port);
 
     const my_url = new URL(`http://localhost:${port}/matias-moscone-section-one`);
-    console.log(urlShortener(my_url));
+    urlShortener(my_url);
+    const my_url2 = new URL(`http://localhost:${port}/matias-moscone-section-two`);
+    urlShortener(my_url2);
     console.log(urlDatabase);
 
 
