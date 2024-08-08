@@ -5,26 +5,34 @@ const http = require("node:http");
 
 const port = process.env.PORT || 3000;
 
+const urlDatabase = {
+
+};
 
 const urlShortener = (url) => {
     const regExURL = /[+\/\-\\_]/;
     
-    url.pathname.split("").forEach((letter) => {
-        if(regExURL.test(letter)){
-            console.log("separador");
-        }    
-    }) 
-    /*
-    if(regExURL.test(url.pathname)){
-        console.log("separador");
-    }*/
-
-    //console.log(url);    
+    const arrPath = url.pathname.split(regExURL);
+    let shortURL = "";
+    arrPath.forEach((word) => {
+        if(word.length > 1){
+            shortURL += word[0];
+        }
+    })
+    urlDatabase[shortURL] = url.pathname;
+    return shortURL;
 
 }
 
 const server = http.createServer((req, res) => {
-    res.end("Servidor listo");
+    
+    if(req.url === "/"){
+        res.end("Esta en pagina principal.");
+    }
+
+    if(req.url === "/matias-moscone-section-one"){
+        res.end("Esta en la seccion 1 de matias moscone.");
+    }
 
       
 });
@@ -33,9 +41,8 @@ server.listen(port, () => {
     console.log("El servidor esta siendo escuchado en el puerto: ", port);
 
     const my_url = new URL(`http://localhost:${port}/matias-moscone-section-one`);
-    urlShortener(my_url);
-
-    //console.log(my_url);
+    console.log(urlShortener(my_url));
+    console.log(urlDatabase);
 
 
 });
