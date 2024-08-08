@@ -26,12 +26,21 @@ const urlShortener = (url) => {
 
 const server = http.createServer((req, res) => {
     
+    const path = req.url.slice(1);
+
     if(req.url === "/"){
         res.end("Esta en pagina principal.");
     }
 
     if(req.url === "/matias-moscone-section-one"){
         res.end("Esta en la seccion 1 de matias moscone.");
+    }
+    if(urlDatabase[path]){
+        res.writeHead(302, {"Location": urlDatabase[path]});
+        res.end("Ha sido redirigido a la seccion 1 de matias moscone.");
+    }else{
+        res.writeHead(404, {"Content-Type": "text/plain"});
+        res.end("Url corta no encontrada...");
     }
 
       
