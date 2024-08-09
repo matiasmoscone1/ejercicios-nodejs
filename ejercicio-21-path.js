@@ -9,3 +9,10 @@ const extName = path.extname("C:/Users/matia/OneDrive/Desktop/Node JS/Ejercicios
 
 console.log(`Nombre del directorio: ${dirName} \nNombre del archivo: ${fileName} \nNombre de la extension: ${extName}`);
 
+const part1 = "C:/Users/matia/OneDrive/";
+const part2 = "Desktop/Node JS/"
+const part3 = "Ejercicios NodeJS/mensaje.txt";
+
+const completePath = path.join(part1, part2, part3);
+console.log(completePath);
+
