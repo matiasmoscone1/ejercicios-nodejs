@@ -20,11 +20,10 @@ const urlShortener = (url) => {
         }
     })
     urlDatabase[shortURL] = url.pathname;
-
     
     return shortURL;
-
 }
+
 
 const server = http.createServer((req, res) => {
     
@@ -50,16 +49,15 @@ const server = http.createServer((req, res) => {
 
       
 });
-
+const my_url = new URL(`http://localhost:${port}/matias-moscone-section-one`);
+const my_url2 = new URL(`http://localhost:${port}/matias-moscone-section-two`);
 server.listen(port, () => {
     console.log("El servidor esta siendo escuchado en el puerto: ", port);
 
-    const my_url = new URL(`http://localhost:${port}/matias-moscone-section-one`);
     urlShortener(my_url);
-    const my_url2 = new URL(`http://localhost:${port}/matias-moscone-section-two`);
     urlShortener(my_url2);
     console.log(urlDatabase);
-
+  
 
 });
 

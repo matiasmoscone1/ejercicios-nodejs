@@ -80,6 +80,28 @@ Almacenamiento de URLs:
 Utiliza un objeto en memoria para almacenar la relación entre las claves cortas y las URLs originales (puedes expandir esto para usar una base de datos en el futuro).
 
 
+----------------------------------------------- PATH ------------------------------------------------------
+
+
+Obtener el nombre del archivo: Dado un string con una ruta de archivo, utiliza path.basename() para obtener solo el nombre del archivo (incluyendo su extensión).
+
+Obtener la extensión del archivo: A partir de una ruta, usa path.extname() para determinar la extensión del archivo.
+
+Unir rutas: Utiliza path.join() para combinar varias partes de una ruta en una sola.
+
+Obtener el directorio de un archivo: Dada una ruta, usa path.dirname() para extraer el directorio donde se encuentra el archivo.
+
+Ruta absoluta: Dado un directorio y un archivo, utiliza path.resolve() para generar la ruta absoluta hacia ese archivo.
+
+Normalizar una ruta: Dada una ruta que incluye segmentos como .. o ./, usa path.normalize() para convertirla en una ruta más simple y sin redundancias.
+
+Comparar rutas: Dadas dos rutas, usa path.relative() para encontrar la ruta relativa entre ellas.
+
+Separar ruta en partes: Usa path.parse() para descomponer una ruta en sus partes (directorio, nombre base, extensión, etc.).
+
+Formar una ruta desde partes: Utiliza path.format() para crear una ruta a partir de un objeto que contiene las partes de una ruta (como las obtenidas en el ejercicio anterior).
+
+
 
 
 

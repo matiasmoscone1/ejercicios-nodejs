@@ -16,3 +16,7 @@ stream: Para trabajar con flujos de datos (streams), que son esenciales para el 
 child_process: Para crear y manejar procesos hijos, permitiéndote ejecutar otros programas y scripts desde Node.js.
 
 util: Para varias utilidades, incluyendo promisificación de funciones basadas en callback y formateo de cadenas.
+
+DNS: ...
+
+
