@@ -87,9 +87,9 @@ Obtener el nombre del archivo: Dado un string con una ruta de archivo, utiliza p
 
 Obtener la extensión del archivo: A partir de una ruta, usa path.extname() para determinar la extensión del archivo.
 
-Unir rutas: Utiliza path.join() para combinar varias partes de una ruta en una sola.
-
 Obtener el directorio de un archivo: Dada una ruta, usa path.dirname() para extraer el directorio donde se encuentra el archivo.
+
+Unir rutas: Utiliza path.join() para combinar varias partes de una ruta en una sola.
 
 Ruta absoluta: Dado un directorio y un archivo, utiliza path.resolve() para generar la ruta absoluta hacia ese archivo.
 
