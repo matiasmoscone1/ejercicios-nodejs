@@ -3,6 +3,9 @@ path.basename() para obtener solo el nombre del archivo (incluyendo su extensió
 
 const path = require("node:path");
 
-const name = path.basename("C:/Users/matia/OneDrive/Desktop/Node JS/Ejercicios NodeJS/mensaje.txt");
+const fileName = path.basename("C:/Users/matia/OneDrive/Desktop/Node JS/Ejercicios NodeJS/mensaje.txt");
+const dirName = path.dirname("C:/Users/matia/OneDrive/Desktop/Node JS/Ejercicios NodeJS/mensaje.txt")
+const extName = path.extname("C:/Users/matia/OneDrive/Desktop/Node JS/Ejercicios NodeJS/mensaje.txt");
 
-console.log(name);
+console.log(`Nombre del directorio: ${dirName} \nNombre del archivo: ${fileName} \nNombre de la extension: ${extName}`);
+
