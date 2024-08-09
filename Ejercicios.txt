@@ -101,8 +101,29 @@ Separar ruta en partes: Usa path.parse() para descomponer una ruta en sus partes
 
 Formar una ruta desde partes: Utiliza path.format() para crear una ruta a partir de un objeto que contiene las partes de una ruta (como las obtenidas en el ejercicio anterior).
 
+Comprobar si es absoluto: Dada una ruta, usa path.isAbsolute() para verificar si es una ruta absoluta o relativa.
 
+---------------------------------------------- QUERYSTRING ----------------------------------------------
 
+Convertir un objeto en una cadena de consulta: Dado un objeto con varias propiedades, usa querystring.stringify() para convertirlo en una cadena de consulta (query string).
+
+Parsear una cadena de consulta: Dada una cadena de consulta, utiliza querystring.parse() para convertirla en un objeto de JavaScript.
+
+Codificar una cadena: Usa querystring.escape() para codificar una cadena de texto, convirtiendo caracteres especiales en su representación de escape.
+
+Decodificar una cadena: Dada una cadena codificada, usa querystring.unescape() para decodificarla, devolviendo los caracteres originales.
+
+Manejo de parámetros duplicados: Dada una cadena de consulta con parámetros duplicados, usa querystring.parse() para ver cómo se manejan los valores duplicados.
+
+Agregar parámetros a una URL existente: Dada una URL con una cadena de consulta, usa querystring.stringify() para agregar nuevos parámetros sin sobrescribir los existentes.
+
+Modificar un parámetro en una cadena de consulta: Dada una cadena de consulta, utiliza querystring.parse() para modificar uno de sus parámetros y luego conviértela de nuevo a una cadena usando querystring.stringify().
+
+Eliminar un parámetro de una cadena de consulta: Dada una cadena de consulta, elimina un parámetro específico y vuelve a convertir el objeto resultante en una cadena de consulta.
+
+Manejo de caracteres especiales en los valores: Usa querystring.stringify() y querystring.parse() para trabajar con valores que contienen caracteres especiales (por ejemplo, &, =, %).
+
+Convertir un objeto con arreglos en una cadena de consulta: Dado un objeto con propiedades que contienen arreglos, usa querystring.stringify() para ver cómo se manejan los valores de los arreglos en la cadena de consulta
 
 
 
