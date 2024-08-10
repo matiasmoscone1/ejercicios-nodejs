@@ -13,13 +13,31 @@ const data = {
       phone: "123-456-7890"
     }
 };
-for(let i in data){
-    if(typeof data[i] === "object" && !Array.isArray(data[i])){
-        console.log(data[i]);
+
+const checkObject = () => {
+    const items = [];
+    for(let i in data){
+        if(typeof data[i] === "object" && !Array.isArray(data[i])){
+            for(let j in data[i]){
+                items.push(data[i][j]);
+            }
+        }else{
+            items.push(data[i]);
+        }
     }
+    items.forEach((prop) => {
+        for(let i in data){
+            prop = i;
+        }
+    })
+    return(querystring.stringify(items));
 }
 
-//console.log(querystring.stringify(data));
+console.log(checkObject());
+
+
+
+
 
 
 
