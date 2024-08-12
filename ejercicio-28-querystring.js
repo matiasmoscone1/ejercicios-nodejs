@@ -5,12 +5,22 @@ para convertirla en un objeto de JavaScript. */
 
 const querystring = require("node:querystring");
 
-const my_query = "name=JohnDoe&age=29&city=NewYork&skills=JavaScript,Node.js,React&active=true&education[degree]=Bachelor&education[major]=ComputerScience";
+const myQuery = "name=JohnDoe&age=29&city=NewYork&skills=JavaScript,Node.js,React&active=true&education[degree]=Bachelor&education[major]=ComputerScience";
 
-console.log(querystring.parse(my_query));
+const parsedQuery = querystring.parse(myQuery);
 
+//console.log(parsedQuery);
 
+const education = {
+    degree: parsedQuery["education[degree]"],
+    major: parsedQuery["education[major]"]
+};
 
+delete parsedQuery["education[degree]"];
+delete parsedQuery["education[major]"];
 
+parsedQuery.education = education;
+
+console.log(parsedQuery);
 
 
