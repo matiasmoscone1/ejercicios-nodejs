@@ -126,6 +126,42 @@ Manejo de caracteres especiales en los valores: Usa querystring.stringify() y qu
 Convertir un objeto con arreglos en una cadena de consulta: Dado un objeto con propiedades que contienen arreglos, usa querystring.stringify() para ver cómo se manejan los valores de los arreglos en la cadena de consulta
 
 
+------------------------------------------------- CRYPTO ------------------------------------------------- 
+
+Generar un Hash SHA-256:
+Escribe un script que tome una cadena de texto como entrada y genere su hash utilizando el algoritmo SHA-256.
+
+Comparar contraseñas hash:
+Crea una función que reciba una contraseña en texto plano y su versión hasheada, y verifique si coinciden utilizando el algoritmo SHA-512.
+
+Encriptar y desencriptar un mensaje con AES:
+Utiliza el algoritmo de encriptación simétrica AES-256-CBC para encriptar un mensaje. Luego, escribe otro script que desencripte el mensaje cifrado y recupere el texto original.
+
+Generar un par de claves pública y privada RSA:
+Genera un par de claves RSA (pública y privada) utilizando crypto.generateKeyPairSync() y guárdalas en archivos separados.
+
+Firmar un mensaje digitalmente:
+Firma un mensaje utilizando una clave privada RSA y verifica la firma utilizando la clave pública correspondiente.
+
+Crear un token seguro para autenticación:
+Genera un token aleatorio y seguro utilizando crypto.randomBytes() para ser utilizado en un sistema de autenticación.
+
+Derivar una clave de una contraseña:
+Deriva una clave segura a partir de una contraseña usando el algoritmo PBKDF2 y genera un hash que incluya una sal aleatoria.
+
+Encriptación y desencriptación con claves derivadas:
+Utiliza la clave derivada en el enunciado anterior para encriptar y luego desencriptar un archivo de texto.
+
+Validar la integridad de un archivo:
+Calcula el hash de un archivo utilizando SHA-1 y luego verifica que el archivo no haya sido modificado comparando el hash calculado con un hash preexistente.
+
+Generar y verificar un HMAC:
+Crea un HMAC (Hash-based Message Authentication Code) utilizando SHA-256 para un mensaje dado, y luego escribe un script que verifique la integridad del mensaje usando el HMAC.
+
+
+
+
+
 
 ----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
 
