@@ -7,4 +7,8 @@ const hash = crypto.createHash("sha256").update("soy matias moscone").digest("he
 
 console.log(hash);
 
+const secretKey = "asdasdasd";
+const hmac = crypto.createHmac("sha256", secretKey).update("soy matias moscone");
+
+console.log(hmac.digest("hex"));
 
