@@ -6,8 +6,14 @@ const querystring = require("node:querystring");
 
 const myURL = "https://www.example.com/search?category=books&sort=asc&page=2&color=red"
 
-const parsedQuery = myURL.split("?")[1]querystring.parse(myURL);
+const filterURL = myURL.split("?")[1];
 
-console.log(parsedQuery);
+const parsedQuery = querystring.parse(filterURL);
 
+parsedQuery.page = "3";
+parsedQuery.color = "blue";
 
+const stringifyQuery = querystring.stringify(parsedQuery);
+
+const myURLChanged = myURL.split("?")[0] + "?" +stringifyQuery;
+console.log(myURLChanged);
