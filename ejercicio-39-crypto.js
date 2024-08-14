@@ -1,6 +1,9 @@
 /* Generar un par de claves pública y privada RSA: Genera un par de claves RSA 
 (pública y privada) utilizando crypto.generateKeyPairSync() y guárdalas en 
 archivos separados. */
+/* Firmar un mensaje digitalmente: Firma un mensaje utilizando una clave privada RSA y 
+verifica la firma utilizando la clave pública correspondiente. */
+
 
 const crypto = require("node:crypto");
 const fs = require("node:fs");
