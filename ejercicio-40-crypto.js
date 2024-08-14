@@ -15,7 +15,14 @@ const keys = crypto.generateKeyPairSync("rsa", {
     }
 });
 
-console.log(keys.publicKey, keys.privateKey);
+//console.log(keys.publicKey, keys.privateKey);
 
+const message = "Este mensaje va a ser firmado digitalmente.";
 
+const sign = crypto.createSign("sha256").update(message).end();
 
+const signature = sign.sign(keys.privateKey);
+
+const verify = crypto.createVerify("sha256").update(message).end();
+
+console.log(verify.verify(keys.publicKey, signature));
