@@ -21,7 +21,7 @@ const encryptMessage = (msj) => {
 }
 
 const decryptMessage = (encMessage) => {
-    const descipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
+    const descipher = crypto.createDecipheriv("aes-256-cbc", secretKey, iv);
     let decrypted = descipher.update(encMessage, "hex", "utf-8");
     decrypted += descipher.final("utf-8");
 
