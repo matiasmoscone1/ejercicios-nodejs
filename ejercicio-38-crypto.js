@@ -8,6 +8,7 @@ const secretKey = "asdasdasd";
 const iv = crypto.randomBytes(16);
 
 const cipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
+const descipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
 
 const password = "hola123";
 
@@ -17,6 +18,14 @@ const encryptMessage = (msj) => {
     encrypted += cipher.final("hex");
     
     console.log(encrypted);
+
+    let decrypted = descipher.update(encrypted, "hex", "utf-8");
+    decrypted += descipher.final("utf-8");
+
+    console.log(decrypted);
 }
 
 encryptMessage(password);
+
+
+
