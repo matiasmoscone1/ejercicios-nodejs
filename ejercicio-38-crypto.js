@@ -4,11 +4,10 @@ desencripte el mensaje cifrado y recupere el texto original. */
 
 const crypto = require("node:crypto");
 
-const secretKey = "asdasdasd";
+const secretKey = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 
 const cipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
-const descipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
 
 const password = "hola123";
 
@@ -17,15 +16,24 @@ const encryptMessage = (msj) => {
 
     encrypted += cipher.final("hex");
     
-    console.log(encrypted);
-
-    let decrypted = descipher.update(encrypted, "hex", "utf-8");
-    decrypted += descipher.final("utf-8");
-
-    console.log(decrypted);
+    //console.log(encrypted);
+    return encrypted;
 }
 
-encryptMessage(password);
+const decryptMessage = (encMessage) => {
+    const descipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
+    let decrypted = descipher.update(encMessage, "hex", "utf-8");
+    decrypted += descipher.final("utf-8");
 
+    //console.log(decrypted);
+
+    return decrypted;
+}
+
+const enc = encryptMessage(password);
+console.log("Texto cifrado: ", enc);
+
+const dec = decryptMessage(enc);
+console.log("Texto descifrado: ", dec);
 
 
