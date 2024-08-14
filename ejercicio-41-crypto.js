@@ -4,6 +4,18 @@ crypto.randomBytes() para ser utilizado en un sistema de autenticación. */
 
 const crypto = require("node:crypto");
 
-const token = crypto.randomBytes(3);
+const generateToken = () => {
+    crypto.randomBytes(3, (err, buf) => {
+        if(err){
+            throw new Error;
+        }else{
+            console.log(buf.toString("hex"));
+            return(buf);    
+        }
+    });
 
-console.log(token.toString("hex"));
+}
+
+generateToken();
+
+
