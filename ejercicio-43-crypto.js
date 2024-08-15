@@ -14,29 +14,12 @@ const devKey = () => {
                 throw reject;
             }else{
                 resolve(derivedKey);
-                //console.log(derivedKey.toString("hex"));
             }
         });   
     });
 }
 
-/*
-devKey().then((key) => {
-    const secretKey = crypto.randomBytes(32);
-    const iv = crypto.randomBytes(16);
-    let cipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
-    let decipher = crypto.createDecipheriv("aes-256-cbc", secretKey, iv);
 
-    let encrypted = cipher.update(key, "utf-8", "hex");
-    encrypted += cipher.final("hex");    
-
-    let decrypt = decipher.update(encrypted, "hex", "utf-8");
-    decrypt += decipher.final("utf-8"); 
-    console.log(key);
-    console.log(encrypted);
-    console.log(decrypt);
-});
-*/
 devKey().then((key) => {
     const iv = crypto.randomBytes(16);
     const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
@@ -45,6 +28,9 @@ devKey().then((key) => {
     const input = fs.createReadStream(path.join(__dirname, "mensaje.txt"));
     const output = fs.createWriteStream(path.join(__dirname, "mensaje_encriptado.txt"));
     
+    const encryptedInput = fs.createReadStream(path.join(__dirname, "mensaje_encriptado.txt"));
+    const decryptedOutput = fs.createWriteStream(path.join(__dirname, "mensaje_encriptado_desencriptado.txt"));
+
     input.on("data", (chunk) => {
         const encryptedChunk = cipher.update(chunk);
         output.write(encryptedChunk);
@@ -56,6 +42,15 @@ devKey().then((key) => {
         console.log("Archivo encriptado");    
     })
     
+    encryptedInput.on("data", (chunk) => {
+        const decryptedChunk = decipher.update(chunk);
+        decryptedOutput.write(decryptedChunk);
+    })
+    encryptedInput.on("end", () => {
+        const finalChunk = decipher.final();
+        decryptedOutput.write(finalChunk);
+    })
+
 });
 
 
