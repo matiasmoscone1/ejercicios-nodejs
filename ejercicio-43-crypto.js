@@ -28,30 +28,22 @@ devKey().then((key) => {
     const input = fs.createReadStream(path.join(__dirname, "mensaje.txt"));
     const output = fs.createWriteStream(path.join(__dirname, "mensaje_encriptado.txt"));
     
-    const encryptedInput = fs.createReadStream(path.join(__dirname, "mensaje_encriptado.txt"));
-    const decryptedOutput = fs.createWriteStream(path.join(__dirname, "mensaje_encriptado_desencriptado.txt"));
+    input.pipe(cipher).pipe(output);
 
-    input.on("data", (chunk) => {
-        const encryptedChunk = cipher.update(chunk);
-        output.write(encryptedChunk);
-    });
+    output.on("finish", () => {
+        console.log("Archivo encriptado");
+        const encryptedInput = fs.createReadStream(path.join(__dirname, "mensaje_encriptado.txt"));
+        const decryptedOutput = fs.createWriteStream(path.join(__dirname, "mensaje_encriptado_desencriptado.txt"));
+        
+        encryptedInput.pipe(decipher).pipe(decryptedOutput);
     
-    output.on("end", () => {
-        const finalChunk = cipher.final();
-        output.write(finalChunk);
-        console.log("Archivo encriptado");    
+        decryptedOutput.on("finish", () => {
+            console.log("Archivo desencriptado");
+        })
     })
-    
-    encryptedInput.on("data", (chunk) => {
-        const decryptedChunk = decipher.update(chunk);
-        decryptedOutput.write(decryptedChunk);
-    })
-    encryptedInput.on("end", () => {
-        const finalChunk = decipher.final();
-        decryptedOutput.write(finalChunk);
-    })
-
-});
+}).catch((err) => {
+    console.log("Error al encriptar y desencriptar el archivo...", err);
+})
 
 
 
