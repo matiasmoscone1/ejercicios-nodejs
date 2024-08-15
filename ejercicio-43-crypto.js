@@ -18,8 +18,21 @@ const devKey = () => {
     });
 }
 
+
 devKey().then((key) => {
+    const secretKey = crypto.randomBytes(32);
+    const iv = crypto.randomBytes(16);
+    let cipher = crypto.createCipheriv("aes-256-cbc", secretKey, iv);
+    let decipher = crypto.createDecipheriv("aes-256-cbc", secretKey, iv);
+
+    let encrypted = cipher.update(key, "utf-8", "hex");
+    encrypted += cipher.final("hex");    
+
+    let decrypt = decipher.update(encrypted, "hex", "utf-8");
+    decrypt += decipher.final("utf-8"); 
     console.log(key);
-})
+    console.log(encrypted);
+    console.log(decrypt);
+});
 
 
