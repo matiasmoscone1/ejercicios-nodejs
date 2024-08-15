@@ -25,4 +25,5 @@ const signature = sign.sign(keys.privateKey);
 
 const verify = crypto.createVerify("sha256").update(message).end();
 
+//Deveria devolver true ya que el verificado coinicide con la firma digital.
 console.log(verify.verify(keys.publicKey, signature));
