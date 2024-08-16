@@ -5,12 +5,25 @@ un hash preexistente. */
 const crypto = require("node:crypto");
 const fs = require("node:fs");
 
+const fileHash = "5c3c9e36e0d71921c53df0acc4e72629d84a85103c5a3804727ebf04d4551cf2";
 
-const hash = crypto.createHash("sha256");
 
-const input = fs.createReadStream(`${__dirname}/mensaje.txt`);
+const readF = () => {
+    return new Promise((resolve, reject) => {
+        const hash = crypto.createHash("sha256");
 
-input.pipe(hash).setEncoding("hex").pipe(process.stdout);
+        const input = fs.createReadStream(`${__dirname}/mensaje.txt`);
 
+        resolve(input.pipe(hash).setEncoding("hex").pipe(process.stdout));        
+    });
+}
+
+readF().then((hash) => {
+    if(fileHash === hash){
+        console.log("Archivo sin modificar");
+    }else{
+        console.log("Archivo modificado!!! Hashes no coinciden...");
+    }   
+})
 
 
