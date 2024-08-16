@@ -14,16 +14,27 @@ const readF = () => {
 
         const input = fs.createReadStream(`${__dirname}/mensaje.txt`);
 
-        resolve(input.pipe(hash).setEncoding("hex").pipe(process.stdout));        
+        let res = "";
+        hash.setEncoding("hex");
+        
+        input.pipe(hash).on("finish", () => {
+            res = hash.read();
+            resolve(res);
+        }).on("error", (err) => {
+            reject(err);
+        });
+        
     });
 }
 
 readF().then((hash) => {
+
     if(fileHash === hash){
-        console.log("Archivo sin modificar");
+        console.log(`Archivo sin modificar \nArchivo original: ${fileHash} \nArchivo leeido: ${hash}`);
     }else{
-        console.log("Archivo modificado!!! Hashes no coinciden...");
-    }   
-})
+        console.log(`Archivo modificado!!! Hashes no coinciden... \nArchivo original: ${fileHash} \nArchivo leeido: ${hash}`);
+    }
+    
+});
 
 
