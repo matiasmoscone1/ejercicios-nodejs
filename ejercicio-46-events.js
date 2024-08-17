@@ -13,6 +13,9 @@ myEmitter.on("saludo", () => {
     console.log("Hola estoy saludando nuevamente!!!!");
 });
 
+myEmitter.addListener("saludo", () => {
+    console.log("Hola estoy saludando nuevamente!!!!");
+});
 
 myEmitter.emit("saludo");
 
