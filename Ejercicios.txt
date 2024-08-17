@@ -160,6 +160,37 @@ Crea un HMAC (Hash-based Message Authentication Code) utilizando SHA-256 para un
 
 
 
+--------------------------------------------- EVENTS ---------------------------------------------------- 
+
+Emisión y Escucha Básica:
+Crea un EventEmitter, emite un evento llamado saludo y escucha ese evento para imprimir un mensaje en la consola.
+
+Emitir con Argumentos:
+Emite un evento llamado sumar que reciba dos números como argumentos, y luego escucha el evento para sumar los números e imprimir el resultado.
+
+Manejo de Múltiples Eventos:
+Crea un EventEmitter que maneje dos eventos diferentes: encender y apagar. Imprime un mensaje diferente para cada evento cuando se emitan.
+
+Escuchar un Evento una Única Vez:
+Emite un evento llamado bienvenida que solo se escuche una vez utilizando el método once. Asegúrate de que, aunque emitas el evento varias veces, solo se escuche una vez.
+
+Contador de Eventos:
+Crea un EventEmitter que cuente cuántas veces se ha emitido un evento llamado click. Imprime el número de veces que el evento ha sido emitido cada vez que se emite.
+
+Encadenamiento de Listeners:
+Emite un evento llamado procesar que pase por tres listeners diferentes, cada uno realizando una operación sobre un valor inicial. El primer listener multiplica el valor por 2, el segundo le suma 10, y el tercero imprime el resultado final.
+
+Propagación de Errores:
+Emite un evento que provoque un error y maneja ese error usando el evento error de EventEmitter.
+
+Remover Listeners:
+Crea un EventEmitter con un listener que imprima un mensaje al escuchar el evento mensaje. Luego, elimina el listener y emite el evento de nuevo para comprobar que ya no se escucha.
+
+Herencia de EventEmitter:
+Crea una clase Reloj que extienda de EventEmitter. Esta clase debe emitir un evento tic cada segundo utilizando setInterval, y un evento finalizado después de 5 segundos.
+
+Eventos Anidados:
+Crea un EventEmitter que emita un evento iniciar, el cual a su vez emita otro evento procesar. Este último debe emitir un evento finalizar cuando termine. Asegúrate de que cada evento desencadene el siguiente, y cada uno imprima un mensaje diferente.
 
 
 
