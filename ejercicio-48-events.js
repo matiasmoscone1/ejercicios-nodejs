@@ -6,12 +6,12 @@ const events = require("node:events");
 const myEmitter = events.EventEmitter();
 
 
-myEmitter.on(nameEvent, () => {
-    if(nameEvent === "encender"){
+myEmitter.on("encender" || "apagar", () => {
+    if("encender"){
         console.log("Evento encendido!!!");
-    }
-    if(nameEvent === "apagar"){
-        console.log("Evento Apagado...");
+    } 
+    if("apagar"){
+        console.log("Evento apagado...");
     }
 });
 
