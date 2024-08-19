@@ -6,14 +6,14 @@ const events = require("node:events");
 const myEmitter = events.EventEmitter();
 
 
-myEmitter.on("encender" || "apagar", () => {
-    if("encender"){
-        console.log("Evento encendido!!!");
-    } 
-    if("apagar"){
-        console.log("Evento apagado...");
-    }
+myEmitter.on("encender", () => {
+    console.log("Evento de encendido!!!");
 });
+
+myEmitter.on("apagar", () => {
+    console.log("Evento de apagado...");
+});
+
 
 myEmitter.emit("encender");
 myEmitter.emit("apagar");
