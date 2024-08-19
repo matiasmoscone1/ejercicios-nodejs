@@ -9,6 +9,11 @@ const myEmitter = new events.EventEmitter();
 
 let value = 10;
 
+// se ejecutara siempre primero este listener
+myEmitter.prependListener("procesar", () => {
+    value = value + 5;
+});
+
 myEmitter.on("procesar", () => {
     value = value * 2;
 }).on("procesar", () => {
@@ -17,5 +22,7 @@ myEmitter.on("procesar", () => {
     console.log("El resultado es: ", value);
 });
  
-
 myEmitter.emit("procesar");
+
+
+
