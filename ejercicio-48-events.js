@@ -3,7 +3,7 @@ encender y apagar. Imprime un mensaje diferente para cada evento cuando se emita
 
 const events = require("node:events");
 
-const myEmitter = events.EventEmitter();
+const myEmitter = new events.EventEmitter();
 
 
 myEmitter.on("encender", () => {
