@@ -5,16 +5,18 @@ const events = require("node:events");
 
 const myEmitter = new events.EventEmitter();
 
-
+/*
 myEmitter.on("error", (err) => {
     console.error("Ocurrio un error: ", err);
 });
+*/
 
 myEmitter.on("saludo", () => {
     console.log("Saludo enviado...");
-})
+    myEmitter.emit("error", new Error("Algo salio mal mientras se enviaba el saludo..."));
+});
 
-myEmitter.emit("error");
+myEmitter.emit("saludo");
 
 
 
