@@ -12,6 +12,7 @@ const saludo = () => {
 
 myEmitter.on("saludo", saludo);
 
+
 myEmitter.emit("saludo");
 
 myEmitter.removeListener("saludo", saludo);
