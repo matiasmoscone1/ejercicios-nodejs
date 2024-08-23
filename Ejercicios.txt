@@ -193,6 +193,30 @@ Eventos Anidados:
 Crea un EventEmitter que emita un evento iniciar, el cual a su vez emita otro evento procesar. Este último debe emitir un evento finalizar cuando termine. Asegúrate de que cada evento desencadene el siguiente, y cada uno imprima un mensaje diferente.
 
 
+------------------------------------------------- STREAM ------------------------------------------------- 
+
+
+Lectura y escritura de archivos: Crea un programa que lea un archivo grande utilizando un Readable stream y lo copie en otro archivo utilizando un Writable stream. Asegúrate de manejar posibles errores durante el proceso.
+
+Transformación de datos: Crea un Transform stream que reciba un archivo de texto y convierta todo el contenido a mayúsculas antes de escribirlo en un nuevo archivo.
+
+Compresión de archivos: Escribe un programa que utilice streams para leer un archivo, comprimirlo usando zlib.createGzip(), y escribir el resultado comprimido en un nuevo archivo.
+
+Concatenación de archivos: Crea un programa que lea múltiples archivos de texto usando Readable streams y los concatene en un único archivo de salida usando un Writable stream.
+
+Stream de datos en tiempo real: Implementa un servidor HTTP que envíe un archivo grande de manera continua utilizando streams. El servidor debería poder manejar múltiples conexiones simultáneas sin bloquear el event loop.
+
+Stream de datos personalizados: Crea un Readable stream personalizado que genere números del 1 al 1000 de forma secuencial y envíalos a un Writable stream que los escriba en un archivo de texto.
+
+Filtrado de datos: Crea un Transform stream que filtre un archivo JSON de manera que solo los objetos que cumplan con ciertos criterios (por ejemplo, edad > 30) sean escritos en un nuevo archivo JSON.
+
+Stream de línea por línea: Escribe un programa que lea un archivo de texto línea por línea usando streams y realice alguna operación en cada línea, como contar el número de palabras o caracteres.
+
+Pipe de streams: Crea una cadena de streams donde los datos se leen de un archivo, se transforman (por ejemplo, se encriptan), y luego se escriben en otro archivo. Usa el método pipe() para conectar los streams.
+
+Implementación de un Duplex stream: Implementa un Duplex stream personalizado que actúe como un eco, es decir, que cualquier dato escrito en él sea inmediatamente leído de nuevo.
+
+
 
 ----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
 

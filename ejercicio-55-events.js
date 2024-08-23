@@ -18,7 +18,7 @@ myEmitter.on("procesar", () => {
 
 myEmitter.on("finalizar", () => {
     console.log("Eventos finalizados...");
-})
+});
 
 myEmitter.emit("iniciar");
 
