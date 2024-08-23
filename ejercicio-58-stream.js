@@ -9,8 +9,17 @@ const readableStream = fs.createReadStream("mensaje.txt");
 const writableStream = fs.createWriteStream("mensaje_comprimido.txt.gz");
 const comprimeStream = zlib.createGzip();
 
+readableStream.pipe(comprimeStream).pipe(writableStream);
 
+readableStream.on("error", (err) => {
+    console.log("Error al leer el archivo: ", err);
+});
 
+writableStream.on("error", (err) => {
+    console.log("Error al escribir el archivo: ", err);
+});
 
-
+comprimeStream.on("error", (err) => {
+    console.log("Error al comprimir el archivo: ", err);
+});
 
