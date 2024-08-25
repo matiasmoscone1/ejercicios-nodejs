@@ -12,8 +12,10 @@ const server = http.createServer((req, res) => {
     const file = "mensaje.txt";
 
     res.writeHead(200, {
-        "Content-Type": "application/octet-stream",
-        "Content-Disposition": `attachment; filename="${file}"`
+        //"Content-Type": "application/octet-stream",
+        //"Content-Disposition": `attachment; filename="${file}"`
+        "Content-Type": "text/plain",
+        "Content-Disposition": "inline"
     });
 
     const readableStream = fs.createReadStream(file);
