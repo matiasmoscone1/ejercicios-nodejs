@@ -23,3 +23,7 @@ comprimeStream.on("error", (err) => {
     console.log("Error al comprimir el archivo: ", err);
 });
 
+
+
+
+

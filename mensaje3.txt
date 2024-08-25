@@ -1,0 +1,5 @@
+
+
+termino la frase que arranco en mensaje.txt y paso por mensaje2.txt
+
+
