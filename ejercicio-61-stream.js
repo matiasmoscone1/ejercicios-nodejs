@@ -5,11 +5,30 @@ conexiones simultáneas sin bloquear el event loop. */
 const http = require("node:http");
 const fs = require("node:fs");
 
-const PORT = process.env || 3000;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-    
 
+    const file = "mensaje.txt";
+
+    res.writeHead(200, {
+        "Content-Type": "application/octet-stream",
+        "Content-Disposition": `attachment; filename="${file}"`
+    });
+
+    const readableStream = fs.createReadStream(file);
+
+    readableStream.pipe(res);
+
+    readableStream.on("error", (err) => {
+        console.log("Error al enviar el archivo: ", err);
+        res.writeHead(500, {"Content-Type": "text/plain"});
+        res.end("Error interno del servidor");
+    });
+
+    readableStream.on("end", () => {
+        console.log("Archivo enviado correctamente!!!");
+    });
 
 });
 
