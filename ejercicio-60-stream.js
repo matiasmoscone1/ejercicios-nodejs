@@ -7,10 +7,12 @@ const readableStream = fs.createReadStream("mensaje.txt");
 const readableStream2 = fs.createReadStream("mensaje2.txt");
 const readableStream3 = fs.createReadStream("mensaje3.txt");
 
+const writableStream = fs.createWriteStream("salida_mensajes.txt");
 
 
-
-
+readableStream.pipe(writableStream);
+readableStream2.pipe(writableStream);
+readableStream3.pipe(writableStream);
 
 
 
