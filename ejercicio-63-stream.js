@@ -10,8 +10,9 @@ const writableStream = fs.createWriteStream("filtrado-json.json");
 
 const transform = new stream.Transform({
     transform(chunk, encoding, callback){
-        const filter = chunk.filter((user) => user.edad > 30);
-        this.push(filter);
+        const parseData = JSON.parse(chunk);
+        const filter = parseData.filter((user) => user.edad > 30);
+        this.push(JSON.stringify(filter));
         callback();
     }
 });
