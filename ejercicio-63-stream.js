@@ -12,16 +12,24 @@ const transform = new stream.Transform({
     transform(chunk, encoding, callback){
         const parseData = JSON.parse(chunk);
         const filter = parseData.filter((user) => user.edad > 30);
-        this.push(JSON.stringify(filter));
+        this.push(JSON.stringify(filter, null, 2));
         callback();
     }
 });
 
 readableStream.pipe(transform).pipe(writableStream);
 
+readableStream.on("error", (err) => {
+    console.log("Error al leer el archivo: ", err);
+});
 
+writableStream.on("error", (err) => {
+    console.log("Error al escribir el archivo: ", err);
+});
 
-
+transform.on("error", (err) => {
+    console.log("Error al filtrar el archivo: ", err);
+});
 
 
 
