@@ -1,2 +1,12 @@
 
 holaaaaaaaa soy matias moscone y este archivo sera en criptado xd
+
+este archivo contiene varias lineas 
+
+
+por ejemplo esta es la 3era
+
+
+y quiero contar cuantos caracteres hay en cada linea
+
+
