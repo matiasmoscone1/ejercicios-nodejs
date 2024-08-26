@@ -10,6 +10,7 @@ const duplex = new stream.Duplex({
     write(chunk, encoding, callback){
         this.push(chunk);
         callback();
+        console.log(chunk.toString());
     },
     final(callback){
         console.log("Stream finalizado...");
