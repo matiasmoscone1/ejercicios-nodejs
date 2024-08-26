@@ -2,8 +2,27 @@
 los objetos que cumplan con ciertos criterios (por ejemplo, edad > 30) sean escritos en 
 un nuevo archivo JSON. */
 
+const fs = require("node:fs");
+const stream = require("node:stream");
 
-// guia ejercicio 57
+const readableStream = fs.createReadStream("prueba-json.json");
+const writableStream = fs.createWriteStream("filtrado-json.json");
+
+const transform = new stream.Transform({
+    transform(chunk, encoding, callback){
+        const filter = chunk.filter((user) => user.edad > 30);
+        this.push(filter);
+        callback();
+    }
+});
+
+readableStream.pipe(transform).pipe(writableStream);
+
+
+
+
+
+
 
 
 
