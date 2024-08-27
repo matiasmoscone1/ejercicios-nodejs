@@ -218,6 +218,31 @@ Implementación de un Duplex stream: Implementa un Duplex stream personalizado q
 
 
 
+--------------------------------------------- CHILD_PROCESS --------------------------------------------- 
+
+
+Crear un proceso hijo que ejecute un comando de shell básico: Usa child_process.exec para ejecutar ls -la y muestra el resultado en la consola.
+
+Ejecutar un script de Node.js desde otro script de Node.js: Usa child_process.spawn para ejecutar un archivo script.js y muestra su salida.
+
+Leer la salida estándar de un proceso hijo en tiempo real: Utiliza child_process.spawn para ejecutar ping google.com y muestra la salida en tiempo real a medida que se recibe.
+
+Capturar errores de un proceso hijo: Ejecuta un comando inválido con child_process.exec y maneja el error que ocurre.
+
+Ejecutar un comando con argumentos y capturar su salida: Usa child_process.exec para ejecutar echo "Hello, World!" y captura la salida.
+
+Crear un proceso hijo que se comunique con el proceso padre mediante un canal de comunicación: Usa child_process.fork para crear un proceso hijo que se comunique con el proceso padre enviando y recibiendo mensajes.
+
+Ejecutar un proceso en segundo plano: Usa child_process.exec o child_process.spawn para ejecutar un comando como sleep 10 y verifica que el proceso se ejecute en segundo plano.
+
+Gestionar la salida estándar y la salida de errores de un proceso hijo por separado: Usa child_process.spawn para ejecutar un comando y captura tanto stdout como stderr por separado.
+
+Ejecutar un script y pasarle argumentos desde el proceso padre: Usa child_process.spawn para ejecutar un script con argumentos y muestra cómo se reciben esos argumentos en el script hijo.
+
+Crear un proceso hijo y finalizarlo de manera programática: Usa child_process.spawn para iniciar un proceso y luego termina el proceso hijo usando process.kill.
+
+
+
 ----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
 
 Manejo de Fechas y Tiempos con date-fns
