@@ -18,5 +18,9 @@ child.on("error", (err) => {
     console.log("Ha ocurrido un error: ", err);
 });
 
+setTimeout(() => {
+    child.kill();
+    console.log("Proceso ha finalizado...");
+}, 2000);
 
 
