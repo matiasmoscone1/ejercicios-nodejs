@@ -11,8 +11,11 @@ child.stdout.on("data", (data) => {
     console.log(`Resuldao del comando ${command}: ${data}`);
 });
 
-child.stderr.on("error", (err) => {
+child.stderr.on("data", (err) => {
     console.log(`Error al ejecutar el comando ${command}: ${err}`);
 });
 
+child.on("error", (err) => {
+    console.log(`Error al ejecutar el comando ${command}: ${err.message}`);
+});
 
