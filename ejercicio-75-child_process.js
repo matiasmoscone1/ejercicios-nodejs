@@ -4,10 +4,10 @@ script hijo. */
 
 const child_process = require("node:child_process");
 
-const child = child_process.spawn("node", ["script-suma.js"]);
+const child = child_process.spawn("node", ["script-suma.js", 20, 30]);
 
 child.stdout.on("data", (data) => {
-    console.log("Resultado: ", data);
+    console.log("Resultado:", data.toString());
 });
 
 child.stderr.on("data", (data) => {
