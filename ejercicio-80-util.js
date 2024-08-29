@@ -21,6 +21,6 @@ newFunctionPromise((err, ret) => {
     }else{
         console.log("Se hizo correctamente el callbackify en la funcion!!!");
     }
-})
+});
 
 
