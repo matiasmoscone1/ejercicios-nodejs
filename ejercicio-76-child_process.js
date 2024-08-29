@@ -19,7 +19,7 @@ child.on("error", (err) => {
 });
 
 setTimeout(() => {
-    child.kill();
+    child.kill("SIGTERM");
     console.log("Proceso ha finalizado...");
 }, 2000);
 

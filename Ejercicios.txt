@@ -242,6 +242,31 @@ Ejecutar un script y pasarle argumentos desde el proceso padre: Usa child_proces
 Crear un proceso hijo y finalizarlo de manera programática: Usa child_process.spawn para iniciar un proceso y luego termina el proceso hijo usando process.kill.
 
 
+-------------------------------------------------- UTIL -------------------------------------------------- 
+
+util.format: Crea una función que reciba un nombre, edad y país, y utilice util.format para generar un mensaje que siga el formato: "Nombre: <nombre>, Edad: <edad>, País: <país>".
+
+util.promisify: Convierte una función de callback a una función que retorne una promesa utilizando util.promisify. Utiliza una función de lectura de archivos del módulo fs como ejemplo.
+
+util.types.isPromise: Escribe una función que verifique si un objeto dado es una promesa utilizando util.types.isPromise.
+
+util.callbackify: Toma una función que retorna una promesa y conviértela en una función que usa callbacks utilizando util.callbackify.
+
+util.inspect: Crea un objeto anidado con múltiples niveles de profundidad y utiliza util.inspect para imprimir una representación legible del objeto, ajustando las opciones de profundidad y colores.
+
+util.deprecate: Implementa una función que simule el envío de un correo electrónico, pero márcala como obsoleta utilizando util.deprecate, indicando que debería usarse una nueva función en su lugar.
+
+util.isDeepStrictEqual: Escribe una función que compare dos objetos utilizando util.isDeepStrictEqual para verificar si son profundamente iguales.
+
+util.TextEncoder y util.TextDecoder: Convierte una cadena de texto a un Uint8Array usando TextEncoder y luego conviértelo de vuelta a una cadena de texto utilizando TextDecoder.
+
+util.inherits: Crea una clase que herede de otra utilizando util.inherits y demuestra cómo se pueden extender las funcionalidades de la clase base.
+
+util.log: Escribe una función que registre un mensaje en la consola utilizando util.log, que incluye una marca de tiempo junto con el mensaje.
+
+
+
+
 
 ----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
 
