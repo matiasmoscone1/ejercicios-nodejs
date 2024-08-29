@@ -7,6 +7,12 @@ const fs = require("node:fs");
 
 const readFileAsync = util.promisify(fs.readFile);
 
+readFileAsync("mensaje.txt").then((data) => {
+    console.log(data.toString());
+}).catch((err) => {
+    console.log("Ha ocurrido un error: ", err);
+})
+/*
 async function callbackFunction() {
     try{
         const data = await readFileAsync("mensaje.txt");
@@ -14,9 +20,9 @@ async function callbackFunction() {
     }catch(err){
         console.log("Ocurrio un error: ", err);
     }
-}
+}*/
 
-callbackFunction();
+//callbackFunction();
 
 
 
