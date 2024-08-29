@@ -5,9 +5,9 @@ const util = require("node:util");
 
 
 const functionFormat = (name, age, country) => {
-    return(util.format(`Nombre: ${name}, Edad: ${age}, Pais: ${country}`));
+    console.log(util.format(`Nombre: %s, Edad: %s, Pais: %s`, name, age, country));
 }
 
-
+functionFormat("Matias", "28", "Argentina");
 
 
