@@ -5,18 +5,19 @@ como ejemplo. */
 const util = require("node:util");
 const fs = require("node:fs");
 
+const readFileAsync = util.promisify(fs.readFile);
 
-const callbackFunction = () => {
-    fs.readFile("mensaje.txt", (err, data) => {
-        if(err){
-            console.log("Error al leer el archivo: ", err);
-        }else{
-            console.log(data.toString());
-        }
-    });
+async function callbackFunction() {
+    try{
+        const data = await readFileAsync("mensaje.txt");
+        console.log(data.toString());
+    }catch(err){
+        console.log("Ocurrio un error: ", err);
+    }
 }
 
 callbackFunction();
+
 
 
 
