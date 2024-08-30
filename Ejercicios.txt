@@ -267,42 +267,42 @@ util.log: Escribe una función que registre un mensaje en la consola utilizando 
 --------------------------------------------------- DNS --------------------------------------------------- 
 
 Resolver una dirección IP desde un nombre de dominio:
-1. Usa dns.lookup() para resolver la dirección IP de un dominio como example.com.
+Usa dns.lookup() para resolver la dirección IP de un dominio como example.com.
 Muestra la dirección IP obtenida en la consola.
 
-2. Obtener todos los registros A de un dominio:
+Obtener todos los registros A de un dominio:
 Usa dns.resolve4() para obtener todas las direcciones IPv4 asociadas a un dominio.
 Muestra todas las direcciones IP en la consola.
 
-3. Obtener registros AAAA (IPv6) de un dominio:
+Obtener registros AAAA (IPv6) de un dominio:
 Usa dns.resolve6() para obtener las direcciones IPv6 de un dominio.
 Muestra las direcciones obtenidas en la consola.
 
-4. Obtener registros MX (Mail Exchange) de un dominio:
+Obtener registros MX (Mail Exchange) de un dominio:
 Usa dns.resolveMx() para obtener los registros MX de un dominio.
 Muestra la lista de servidores de correo y sus prioridades.
 
-5. Resolver un nombre de dominio desde una dirección IP (Reverse DNS):
+Resolver un nombre de dominio desde una dirección IP (Reverse DNS):
 Usa dns.reverse() para resolver el nombre de dominio asociado a una dirección IP específica.
 Muestra el nombre de dominio en la consola.
 
-6. Obtener registros TXT de un dominio:
+Obtener registros TXT de un dominio:
 Usa dns.resolveTxt() para obtener los registros TXT de un dominio.
 Muestra el contenido de los registros en la consola.
 
-7. Obtener registros NS (Name Server) de un dominio:
+Obtener registros NS (Name Server) de un dominio:
 Usa dns.resolveNs() para obtener la lista de servidores de nombres (NS) de un dominio.
 Muestra los servidores de nombres en la consola.
 
-8. Obtener registros SRV (Service) de un dominio:
+Obtener registros SRV (Service) de un dominio:
 Usa dns.resolveSrv() para obtener los registros SRV de un dominio.
 Muestra la información del servicio en la consola.
 
-9. Consultar un servidor DNS específico:
+Consultar un servidor DNS específico:
 Usa dns.resolve() con la opción resolver.setServers() para consultar un servidor DNS específico en lugar de usar el predeterminado.
 Resuelve un dominio y muestra el resultado utilizando el servidor DNS personalizado.
 
-10. Detectar cambios en los servidores DNS configurados:
+Detectar cambios en los servidores DNS configurados:
 Usa dns.getServers() para obtener la lista de servidores DNS configurados en tu sistema.
 Muestra la lista de servidores y observa si cambia después de un intervalo de tiempo (ejemplo: 10 segundos).
 
