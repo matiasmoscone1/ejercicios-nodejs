@@ -24,6 +24,17 @@ const objeto1 = {
 };
 
 const objeto2 = {
+    nombre: "Carlos",
+    edad: 30,
+    direccion: {
+      calle: "Av. Principal",
+      numero: 123,
+      ciudad: "Madrid"
+    },
+    hobbies: ["leer", "correr", "cocinar"]
+};
+/*
+const objeto2 = {
     nombre: "Lucía",
     edad: 25,
     direccion: {
@@ -32,7 +43,7 @@ const objeto2 = {
         ciudad: "Barcelona"
     },
     hobbies: ["escribir", "nadar", "viajar"]
-};
+};*/
 
 
 compareObjects(objeto1, objeto2);
