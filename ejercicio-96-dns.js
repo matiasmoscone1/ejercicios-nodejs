@@ -12,14 +12,15 @@ dns.resolve("google.com", (err, data) => {
     if(err){
         console.log("Ha ocurrido un error al obtener la ip:", err);
     }else{
-        console.log("Ip:", data);
+        servers.push(data[0]);
+        dns.setServers(servers);
     }
-    dns.setServers(data);
+   
 });
 
 
 setTimeout(() => {
-    console.log(servers);
+    console.log("Servidores DNS:", dns.getServers());
 }, 5000);
 
 
