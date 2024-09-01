@@ -3,9 +3,9 @@ Crea un programa que maneje correctamente los errores cuando una consulta DNS fa
 try/catch o la función de callback de dns para capturar errores.
 Prueba con un dominio inexistente y muestra un mensaje de error adecuado. */
 
-const dns = require("node:dns");
+const dns = require("node:dns/promises");
 
-const domain = "google.com";
+const domain = "goodfgdfgle.com";
 /*
 const getDomain = () => {    
     dns.resolve(domain, (err, data) => {
@@ -18,15 +18,16 @@ const getDomain = () => {
 
 getDomain();*/
 
-const getDomain = () => {
-    return new Promise((resolve, reject) => {
-        try{
-            resolve(dns.resolve(domain));
-        }catch(err){
-            console.log("Ha ocurrido un error:", err);
-        }
-    });
+const getDomain = async () => {
+    try{
+        const ip = await dns.resolve(domain);
+        console.log("Resultado:", ip);
+    }catch(err){
+        console.log("Ha ocurrido un error:", err.message);
+    }
 }
+
+getDomain();
 
 
 
