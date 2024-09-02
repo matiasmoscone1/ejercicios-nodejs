@@ -3,31 +3,24 @@ Crea un servidor HTTPS que responda con "Hello, Secure World!" a cualquier solic
 Usa certificados autofirmados para configurar el servidor. */
 
 const https = require("node:https");
-const crypto = require("node:crypto");
+const selfsigned = require("selfsigned");
 
-const keys = crypto.generateKeyPairSync("rsa", {
-    modulusLength: 2048 
-});
+const attrs = [{ name: "commonName", value: "localhost" }];
+const pems = selfsigned.generate(attrs, { days: 720 });
 
-const dataSign = "Cadena de texto que verifica la firma";
-
-const sign = crypto.createSign("SHA256");
-sign.write(dataSign);
-sign.end();
-
-const cert = sign.sign(keys.privateKey);
-
-console.log(cert);
 const options = {
-    key: keys.privateKey.export({ type: "pkcs1", format: "pem"}),
-    cert: cert.toString("base64")
+    key: pems.private,
+    cert: pems.cert
 }
 
 const server = https.createServer(options, (req, res) => {
-
-    res.writeHead(200);
-    res.end("Hello, Secure World!");
-
+    if(req.url === "/"){
+        res.writeHead(200, {"Content-Type": "text/plain"});
+        res.end("Hello, Secure World!");
+    }else{
+        res.writeHead(404, {"Content-type": "text/plain"});
+        res.end("Ha ocurrido un error en la carga del servidor");
+    }
 });
 
 server.listen(3000, (err) => {
