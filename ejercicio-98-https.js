@@ -11,16 +11,16 @@ const keys = crypto.generateKeyPairSync("rsa", {
 
 const dataSign = "Cadena de texto que verifica la firma";
 
-const sign = crypto.createSign("sha256");
+const sign = crypto.createSign("SHA256");
 sign.write(dataSign);
 sign.end();
 
+const cert = sign.sign(keys.privateKey);
 
-
-
+console.log(cert);
 const options = {
-    key: "asd123",
-    cert: "asd123"
+    key: keys.privateKey.export({ type: "pkcs1", format: "pem"}),
+    cert: cert.toString("base64")
 }
 
 const server = https.createServer(options, (req, res) => {
@@ -30,7 +30,7 @@ const server = https.createServer(options, (req, res) => {
 
 });
 
-server.listen(3000, (err, data) => {
+server.listen(3000, (err) => {
     if(err){
         console.log("Ha ocurrido un error al levantar el servidor:", err);
     }else{
