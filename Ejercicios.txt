@@ -311,6 +311,39 @@ Crea un programa que maneje correctamente los errores cuando una consulta DNS fa
 Prueba con un dominio inexistente y muestra un mensaje de error adecuado.
 
 
+------------------------------------------------- HTTPS ------------------------------------------------- 
+
+
+Crear un servidor HTTPS básico:
+Crea un servidor HTTPS que responda con "Hello, Secure World!" a cualquier solicitud. Usa certificados autofirmados para configurar el servidor.
+
+Servir un archivo HTML:
+Crea un servidor HTTPS que sirva un archivo HTML estático desde el sistema de archivos cuando un cliente acceda al servidor.
+
+Redirigir HTTP a HTTPS:
+Configura un servidor HTTP que redirija automáticamente todas las solicitudes a su equivalente HTTPS.
+
+Crear un servidor HTTPS con varios endpoints:
+Configura un servidor HTTPS con diferentes rutas (por ejemplo, /, /about, /contact) y responde con diferentes mensajes o archivos según la ruta solicitada.
+
+Configurar un servidor HTTPS con opciones avanzadas:
+Crea un servidor HTTPS que acepte solo ciertas versiones de TLS y algoritmos de cifrado. Explora las opciones de configuración como secureOptions y ciphers.
+
+Hacer solicitudes GET y POST a un servidor HTTPS externo:
+Usa el módulo https para realizar solicitudes GET y POST a un servidor HTTPS externo, como una API pública, y maneja la respuesta en tu aplicación.
+
+Implementar manejo de errores en solicitudes HTTPS:
+Crea un programa que maneje correctamente los errores al hacer solicitudes HTTPS a un servidor externo (por ejemplo, manejo de errores de red, tiempos de espera, etc.).
+
+Servidor HTTPS con autenticación básica:
+Configura un servidor HTTPS que requiera autenticación básica (usuario y contraseña) para acceder a ciertos endpoints.
+
+Streaming de datos a través de HTTPS:
+Crea un servidor HTTPS que envíe archivos grandes (por ejemplo, un video o un archivo de registro) en modo de streaming a los clientes.
+
+Cliente HTTPS con certificado personalizado:
+Crea un cliente HTTPS que se conecte a un servidor utilizando un certificado de cliente personalizado para autenticar la conexión.
+
 
 
 
