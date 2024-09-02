@@ -3,6 +3,20 @@ Crea un servidor HTTPS que responda con "Hello, Secure World!" a cualquier solic
 Usa certificados autofirmados para configurar el servidor. */
 
 const https = require("node:https");
+const crypto = require("node:crypto");
+
+const keys = crypto.generateKeyPairSync("rsa", {
+    modulusLength: 2048 
+});
+
+const dataSign = "Cadena de texto que verifica la firma";
+
+const sign = crypto.createSign("sha256");
+sign.write(dataSign);
+sign.end();
+
+
+
 
 const options = {
     key: "asd123",
@@ -23,6 +37,8 @@ server.listen(3000, (err, data) => {
         console.log("Servidor levantado en puerto: 3000");
     }
 });
+
+
 
 
 
