@@ -7,13 +7,14 @@ const http = require("node:http");
 const selfsigned = require("selfsigned");
 
 const port = process.env.PORT || 3000;
-const portHTTPS = process.env.PORT || 5000;
+const portHTTPS = process.env.PORTHTTPS || 5000;
 
 const server = http.createServer((req, res) => {
 
     if(req.url === "/"){
-        res.writeHead(200, {"Content-Type": "text/plain"});
-        res.end("Hola bienvenido al servidor http");
+        res.writeHead(302, {"location":`https://localhost:${portHTTPS}${req.url}`});
+        res.end("Ha sido redireccionado al servidor HTTPS");
+        console.log(`Redirigiendo a https://localhost:${portHTTPS}${req.url}`);
     }else{
         res.writeHead(404, {"Content-Type": "text/plain"});
         res.end("Ha ocurrido un error...");
@@ -41,7 +42,7 @@ const serverHTTPS = https.createServer(options, (req, res) => {
     
     if(req.url === "/"){
         res.writeHead(200, {"Content-Type": "text/plain"});
-        res.end("Hola bienvenido al servidor https");
+        res.end("Hola bienvenido al servidor HTTPS");
     }else{
         res.writeHead(404, {"Content-Type": "text/plain"});
         res.end("Ha ocurrido un error...");
