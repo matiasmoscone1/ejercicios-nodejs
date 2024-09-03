@@ -13,6 +13,8 @@ const options = {
     cert: pems.cert
 }
 
+const port = process.env.PORT || 3000;
+
 const server = https.createServer(options, (req, res) => {
 
     if(req.url === "/"){
@@ -24,11 +26,21 @@ const server = https.createServer(options, (req, res) => {
     }else if(req.url === "/contact"){
         res.writeHead(200, {"Content-Type":"text/plain"});
         res.end("Bienvenido a la seccion contact");
-    }else{
+    }
+    else{
         res.writeHead(404, {"Content-Type":"text/plain"});
         res.end("Ha ocurrido un error al cargar la pagina...");
     }
 
 });
+
+server.listen(port, (err) => {
+    if(err){
+        console.log("Ha ocurrido un error al levantar el servidor:", err);
+    }else{
+        console.log("Servidor escuchando en el puerto:", port);
+    }
+});
+
 
 
