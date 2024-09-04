@@ -51,10 +51,13 @@ const info = JSON.stringify({
 });
 
 const req2 = https.request(options2, (res) => {
+    let data = "";
 
-    res.on("data", (data) => {
+    res.on("data", (chunk) => {
+        data += chunk;
         console.log(data.toString());
     });
+
 
     res.on("error", (err) => {
         console.log("Ha ocurrido un error al obtener los datos:", err);
