@@ -6,13 +6,28 @@ como una API pública, y maneja la respuesta en tu aplicación. */
 
 const https = require("node:https");
 
-
+/*
 https.get("https://jsonplaceholder.typicode.com/users", (res) => {
     //console.log(res);
     res.on("data", (data) => {
         console.log(data.toString());
     });
-})
+});*/
+
+const options = {
+    hostname: "jsonplaceholder.typicode.com",
+    port: 3000,
+    path: "/users",
+    method: "GET"
+};
+
+const req = https.request(options, (res) => {
+    res.on("data", (data) => {
+        console.log(data.toString());
+    });
+});
+
+console.log(req);
 
 
 
