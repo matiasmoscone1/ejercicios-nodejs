@@ -16,7 +16,7 @@ https.get("https://jsonplaceholder.typicode.com/users", (res) => {
 
 const options = {
     hostname: "jsonplaceholder.typicode.com",
-    port: 3000,
+    port: 443,
     path: "/users",
     method: "GET"
 };
@@ -25,9 +25,15 @@ const req = https.request(options, (res) => {
     res.on("data", (data) => {
         console.log(data.toString());
     });
+ 
+    res.on("error", (err) => {
+        console.log("Ha ocurrido un error al obtener los datos:", err);
+    })
+
 });
 
-console.log(req);
+req.end();
+
 
 
 
