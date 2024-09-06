@@ -22,9 +22,6 @@ const options = {
     path: "/registro",
     port: 443,
     method: "GET",
-    headers: {
-        "Authorization": "Basic" + new Buffer(usuario + ":" + contrasenia).toString("base64")
-    }
 };
 
 const server = https.createServer(options, (req, res) => {
@@ -40,9 +37,18 @@ const server = https.createServer(options, (req, res) => {
     const credentials = Buffer.from(base64Credentials, 'base64').toString('utf8'); 
     const [username, password] = credentials.split(':');
         
-
-    
+    if (username === usuario && password === contrasenia) {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Access granted.');
+      } else {
+        res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="Protected Area"' });
+        res.end('Invalid credentials.');
+      }
+    } else {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.end('Public endpoint.');
     }
+    
 });
 
 server.listen(port, (err) => {
