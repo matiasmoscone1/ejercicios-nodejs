@@ -8,8 +8,8 @@ const selfsigned = require("selfsigned");
 
 const port = process.env.PORT || 443;
 
-const usuario = new Buffer("userprueba").toString("base64");
-const contrasenia = new Buffer("passprueba").toString("base64");
+const usuario = "userprueba";
+const contrasenia = "passprueba";
 
 const attrs = [{ name: "commonName", value: "localhost" }];
 const pems = selfsigned.generate(attrs, { days: 720 });
@@ -28,8 +28,21 @@ const options = {
 };
 
 const server = https.createServer(options, (req, res) => {
+    if (req.url === '/registro') { 
+        const authHeader = req.headers['authorization'];
+    
+        if (!authHeader) {
+          res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="Protected Area"' });
+          return res.end('Authorization required.');
+        }
 
+    const base64Credentials = authHeader.split(' ')[1]; 
+    const credentials = Buffer.from(base64Credentials, 'base64').toString('utf8'); 
+    const [username, password] = credentials.split(':');
+        
 
+    
+    }
 });
 
 server.listen(port, (err) => {
