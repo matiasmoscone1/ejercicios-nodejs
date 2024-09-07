@@ -16,15 +16,12 @@ const options = {
     cert: pems.cert
 }
 
-const readableFile = fs.createReadStream("Ejercicios.txt");
 
 const server = https.createServer(options, (req, res) => {
+    const readableFile = fs.createReadStream("alarm-clock.mp3");
+
     if(req.url === "/streaming"){
-        //res.end(readableFile);
         readableFile.pipe(res);
-        /*readableFile.on("data", (data) => {
-            res.end(data.toString());
-        });*/
     }
 });
 
