@@ -6,6 +6,8 @@ const https = require("node:https");
 const fs = require("node:fs");
 const selfsigned = require("selfsigned");
 
+const port = process.env.PORT || 443;
+
 const attrs = [{ name: "commonName", value: "localhost" }];
 const pems = selfsigned.generate(attrs, { days: 720 });
 
@@ -18,7 +20,11 @@ const readableFile = fs.createReadStream("Ejercicios.txt");
 
 const server = https.createServer(options, (req, res) => {
     if(req.url === "/streaming"){
-        res.end(readableFile);
+        //res.end(readableFile);
+        readableFile.pipe(res);
+        /*readableFile.on("data", (data) => {
+            res.end(data.toString());
+        });*/
     }
 });
 
