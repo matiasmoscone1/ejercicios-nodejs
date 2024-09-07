@@ -3,7 +3,8 @@ Crea un servidor HTTPS que envíe archivos grandes (por ejemplo, un video o un a
 registro) en modo de streaming a los clientes. */
 
 const https = require("node:https");
-
+const fs = require("node:fs");
+const selfsigned = require("selfsigned");
 
 const attrs = [{ name: "commonName", value: "localhost" }];
 const pems = selfsigned.generate(attrs, { days: 720 });
@@ -13,8 +14,12 @@ const options = {
     cert: pems.cert
 }
 
-const server = https.createServer(options, (req, res) => {
+const readableFile = fs.createReadStream("Ejercicios.txt");
 
+const server = https.createServer(options, (req, res) => {
+    if(req.url === "/streaming"){
+        res.end(readableFile);
+    }
 });
 
 server.listen(port, (err) => {
