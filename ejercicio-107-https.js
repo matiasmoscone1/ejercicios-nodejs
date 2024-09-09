@@ -11,12 +11,10 @@ const attrs = [{ name: "commonName", value: "localhost" }];
 const pems = selfsigned.generate(attrs, { days: 720 });
 
 const options = {
-    hostname: "localhost",
-    port: 443,
-    path: "/",
-    method: "GET",
     key: pems.private,
-    cert: pems.cert
+    cert: pems.cert,
+    requestCert: true,
+    rejectUnauthorized: false
 }
 
 const server = https.createServer(options, (req, res) => {
