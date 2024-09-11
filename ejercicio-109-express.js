@@ -7,12 +7,25 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+const user = {
+    id: 1,
+    nombre: "Matias",
+    apellido: "Messi",
+    email: "matias@asdasd.com"
+}
+
 app.get("/", (req, res) => {
     res.send("Bienvenido a la pagina principal");
 });
 
-app.get("/users", (req, res) => {
-    res.send("Bienvenido a la pagina usuarios");
+app.get("/user/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+
+    if(user.id === userId){
+        res.send(`Bienvenido usuario: ${user.nombre} ${user.apellido}`);
+    }else{
+        res.status(404).send("El id no coincide con ningun usuario...");
+    }
 });
 
 app.listen(port, (err) => {
