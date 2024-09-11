@@ -345,6 +345,84 @@ Cliente HTTPS con certificado personalizado:
 Crea un cliente HTTPS que se conecte a un servidor utilizando un certificado de cliente personalizado para autenticar la conexión.
 
 
+------------------------------------------------ EXPRESS ------------------------------------------------ 
+
+					Ejercicios Básicos
+
+Servidor básico con Express: Crea un servidor simple que responda "Hello World" en la ruta raíz (/).
+
+Rutas básicas: Agrega rutas como /about y /contact que respondan con diferentes mensajes.
+
+Parámetros en rutas: Crea una ruta que reciba un parámetro dinámico, como /user/:id, y devuelva el ID del usuario.
+
+Manejo de archivos estáticos: Sirve archivos estáticos como HTML, CSS o imágenes desde una carpeta public.
+
+Uso de query en rutas: Crea una ruta que reciba parámetros de consulta (/search?query=nombre) y devuelve el valor.
+
+Redirección de rutas: Redirige una ruta (ej: /old-page) a una nueva ruta (ej: /new-page).
+
+Enviar un archivo HTML estático: Usa res.sendFile() para enviar un archivo HTML cuando se acceda a una ruta específica.
+
+Manejo de errores simples: Implementa un middleware de manejo de errores para capturar rutas no encontradas.
+
+Middleware básico: Crea un middleware que imprima en consola la URL de cada solicitud.
+
+Usar next() en middleware: Crea dos middlewares que manejen una solicitud y luego pasen el control con next().
+
+					Ejercicios Intermedios
+
+Manejo de formularios con POST: Crea un formulario que envíe datos a una ruta y procese el cuerpo del formulario.
+
+Usar req.body con JSON: Crea una ruta que reciba datos en formato JSON y los procese.
+
+Manejo de sesiones: Usa express-session para manejar sesiones de usuario.
+
+Autenticación básica: Implementa un sistema de login simple usando sesiones o cookies.
+
+Manejo de cookies: Usa el middleware cookie-parser para crear, leer y borrar cookies.
+
+Conectar a una base de datos: Usa MongoDB y Mongoose para conectar Express con una base de datos y manejar operaciones CRUD (Create, Read, Update, Delete).
+
+Rutas protegidas: Implementa un middleware que proteja rutas, permitiendo el acceso solo a usuarios autenticados.
+
+Subir archivos: Usa multer para permitir la subida de archivos a través de un formulario.
+
+Paginación de resultados: Implementa paginación para un conjunto de datos (como usuarios o productos) en la base de datos.
+
+Configuración de variables de entorno: Usa dotenv para cargar configuraciones sensibles desde un archivo .env.
+
+					Ejercicios Avanzados
+
+Implementar autenticación JWT: Usa JSON Web Tokens (JWT) para autenticar y autorizar a los usuarios.
+
+Cargar y descargar archivos: Implementa la lógica para que los usuarios puedan subir y descargar archivos de un servidor Express.
+
+WebSockets con socket.io: Crea una aplicación en tiempo real que use WebSockets para enviar mensajes en tiempo real.
+
+Validación de datos con express-validator: Usa esta librería para validar los datos recibidos en un formulario o solicitud.
+
+Implementar CORS: Agrega el middleware para manejar solicitudes CORS entre diferentes dominios.
+
+API RESTful: Crea una API RESTful completa que permita operaciones CRUD sobre recursos (como usuarios o productos).
+
+Limitar el número de solicitudes: Implementa un middleware de limitación de solicitudes (rate-limiting) para proteger la API.
+
+Caching con Redis: Usa Redis para almacenar en caché los datos de la API y mejorar el rendimiento.
+
+Autenticación con OAuth2.0: Implementa autenticación usando un proveedor externo como Google o Facebook.
+
+Testear una aplicación Express: Usa supertest o chai para escribir pruebas unitarias y de integración para tu servidor Express.
+
+Bonus
+Despliegue en un servidor real: Aprende a desplegar una aplicación Express en servicios como Heroku o DigitalOcean.
+
+
+
+
+
+
+
+
 
 
 ----------------------------------------- MAS EJERCICIOS ------------------------------------------------ 
@@ -378,10 +456,5 @@ Enunciado: Crea una aplicación que cargue variables de entorno desde un archivo
 
 Cifrado y Descifrado de Datos con crypto
 Enunciado: Escribe funciones para cifrar y descifrar un string utilizando el módulo crypto.
-
-
-
-
-
 
 
