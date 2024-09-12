@@ -7,6 +7,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/search", (req, res) => {
+    const data = req.query();
+    
+    res.status(200).send(`La query es:`, data);
 
 });
 
