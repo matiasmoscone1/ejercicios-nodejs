@@ -7,8 +7,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/old-page", (req, res) => {
-
-
+    res.status(301).redirect("/new-page");
+    //res.status(200).send("Se redirigió a la nueva pagina :)");
 });
 
 app.listen(port, (err) => {
