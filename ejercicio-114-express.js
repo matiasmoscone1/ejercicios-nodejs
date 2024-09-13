@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal");
 });
 
+app.use((req, res, next) => {
+    res.status(404).send("Pagina no encontrada...");
+});
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Ocurrio un error al cargar la pagina");
