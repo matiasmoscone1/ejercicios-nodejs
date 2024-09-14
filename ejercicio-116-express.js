@@ -7,12 +7,15 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use((req, res, next) => {
-    res.status(200).send("Se esta ejecutando el primer middleware");
-    next();
+    console.log("Se esta ejecutando el primer middleware");
+    if(req.url !== "/" && req.url !== "/about"){
+        res.status(404).send("Filtro primer middleware: Pagina no encontrada...");
+    }
+    next();    
 });
 
 app.use((req, res, next) => {
-    res.status(200).send("Se esta ejecutando el segundo middleware");
+    console.log("Se esta ejecutando el segundo middleware");
     next();
 });
 
