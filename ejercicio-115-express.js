@@ -5,16 +5,19 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
     res.status(200).send("Bienvenido a la pagina principal");
+    next();
 });
 
-app.get("/search", (req, res) => {
+app.get("/search", (req, res, next) => {
     res.status(200).send("Bienvenido a la pagina de busqueda :)");
+    next();
 });
 
 app.use((req, res, next) => {
     console.log(req.url);
+    //next();
 });
 
 
