@@ -16,6 +16,7 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
     console.log("Se esta ejecutando el segundo middleware");
+    console.log(`Hora de solicitud filtrada por segundo middleware: \nSolcitud: ${req.protocol}://${req.headers.host}${req.url} \nHora: ${new Date().toISOString()}`);
     next();
 });
 
