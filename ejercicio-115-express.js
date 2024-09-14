@@ -16,8 +16,7 @@ app.get("/search", (req, res, next) => {
 });
 
 app.use((req, res, next) => {
-    console.log(req.url);
-    //next();
+    console.log(req.headers.host + req.url);
 });
 
 
