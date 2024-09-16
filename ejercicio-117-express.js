@@ -9,12 +9,17 @@ const port = process.env.PORT || 3000;
 
 
 app.get("/", (req, res) => {
-    res.status(200).send("Bienvenido a la pagina principal");
+    res.status(200).sendFile(`${path.join(__dirname)}/formulario.html`)
 });
 
-app.get("/register", (req, res) => {
-    res.status(200).sendFile(`${path.join(__dirname)}/formulario.html`);
+app.post("/register", (req, res) => {
+    console.log(req.body);
+    //res.status(200).sendFile(`${path.join(__dirname)}/formulario.html`);
+    res.status(200).send("Datos enviados y procesados correctamente!");
 });
+
+
+
 
 app.listen(port, (err) => {
     if(err){
