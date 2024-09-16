@@ -7,6 +7,7 @@ const path = require("node:path");
 
 const port = process.env.PORT || 3000;
 
+app.use(express.urlencoded({ extended: true}));
 
 app.get("/", (req, res) => {
     res.status(200).sendFile(`${path.join(__dirname)}/formulario.html`)
@@ -14,8 +15,7 @@ app.get("/", (req, res) => {
 
 app.post("/register", (req, res) => {
     console.log(req.body);
-    //res.status(200).sendFile(`${path.join(__dirname)}/formulario.html`);
-    res.status(200).send("Datos enviados y procesados correctamente!");
+    res.status(200).send(`------------- Registro exitoso ------------- \nNombre: ${req.body.name}\nApellido: ${req.body.lastname}\nEmail: ${req.body.email}\nDireccion: ${req.body.address}\nTelefono: ${req.body.telephone}`);
 });
 
 
