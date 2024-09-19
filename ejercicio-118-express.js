@@ -11,13 +11,11 @@ app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!!!");
 });
 
-app.get("/json", (req, res) => {
-/*    if(req.body){
-        res.status(200).send((req.body));
-    }*/
-    res.status(200).send((req.body));
+app.post("/json", (req, res) => {
+    const data = req.body;
+    console.log(data);
+    res.status(200).send(JSON.stringify(data));
 });
-
 
 app.listen(port, (err) => {
     if(err){
