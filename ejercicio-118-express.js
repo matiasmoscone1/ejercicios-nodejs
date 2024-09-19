@@ -5,6 +5,8 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+let database = {};
+
 app.use(express.json({"Content-type":"application/json"}));
 
 app.get("/", (req, res) => {
@@ -14,7 +16,12 @@ app.get("/", (req, res) => {
 app.post("/json", (req, res) => {
     const data = req.body;
     console.log(data);
+    database = {...database, data};
     res.status(200).send(JSON.stringify(data));
+});
+
+app.get("/json", (req, res) => {
+    res.status(200).send(JSON.stringify(database));
 });
 
 app.listen(port, (err) => {
