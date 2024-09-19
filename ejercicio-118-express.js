@@ -5,14 +5,17 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+app.use(express.json({"Content-type":"application/json"}));
 
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!!!");
 });
 
 app.get("/json", (req, res) => {
-    
-    
+/*    if(req.body){
+        res.status(200).send((req.body));
+    }*/
+    res.status(200).send((req.body));
 });
 
 
