@@ -25,6 +25,8 @@ const isAuthenticated = (req, res, next) => {
     }
 };
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!!!");
 });
@@ -34,7 +36,8 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    if(req.body.users.user === username && req.body.users.pass === password){
+    console.log(req.body);
+    if(users.user === req.body.username && users.pass === req.body.password){
         req.session.user = username;
         res.redirect("/controlpanel");
     }else{
@@ -42,7 +45,7 @@ app.post("/login", (req, res) => {
     }
 });
 
-app.get("/controlpanel", (req, res) => {
+app.get("/controlpanel", isAuthenticated, (req, res) => {
     res.status(200).send(`<h3>Usuario logueado con exito, disfrute del panel de control!!!</h3>`);
 });
 
