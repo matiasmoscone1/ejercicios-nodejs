@@ -14,11 +14,12 @@ const users = {
 app.use(session({
     secret: "123456",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false }
 }));
 
 const isAuthenticated = (req, res, next) => {
-    if(req.session.users){
+    if(req.session.user){
         return next();
     }else{
         res.redirect("/login");
@@ -37,8 +38,9 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res) => {
     console.log(req.body);
-    if(users.user === req.body.username && users.pass === req.body.password){
-        req.session.user = username;
+    if(req.body.username === users.user && req.body.password === users.pass){
+        console.log(req.session);
+        req.session.user = req.body.username;
         res.redirect("/controlpanel");
     }else{
         res.send("Usuario o contraseña incorrecta...");
