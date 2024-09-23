@@ -15,6 +15,7 @@ app.use(session({
 app.get("/", (req, res) => {
     req.session.user = "Lionel Messi";
     req.session.role = "Admin";
+    console.log(req.session);
     req.session.visit = req.session.visit ? ++req.session.visit : 1; 
     res.status(200).send(`El usuario ${req.session.user} con el rol ${req.session.role}
     ha visitado la pagina ${req.session.visit} veces`);
