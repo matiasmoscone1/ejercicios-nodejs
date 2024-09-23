@@ -1,12 +1,23 @@
 /* Manejo de sesiones: Usa express-session para manejar sesiones de usuario. */
 
 const express = require("express");
+const session = require("express-session");
 const app = express();
 
 const port = process.env.PORT || 3000;
 
+app.use(session({
+    secret: "123456",
+    resave: true,
+    saveUninitialized: true
+}));
+
 app.get("/", (req, res) => {
-    res.status(200).send("Bienvenido a la pagina principal");
+    req.session.user = "Lionel Messi";
+    req.session.role = "Admin";
+    req.session.visit = req.session.visit ? req.session.visit++ : 1; 
+    res.status(200).send(`El usuario ${req.session.user} con el rol ${req.user.role}
+    ha visitado la pagina ${req.session.visit} veces`);
 });
 
 app.listen(port, (err) => {
