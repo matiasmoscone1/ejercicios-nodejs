@@ -12,6 +12,24 @@ const dbUsers = [{
     password: "1234"
 }];
 
+app.use(session({
+    secret: "123456",
+    resave: false,
+    saveUninitialized: true
+}));
+
+
+app.get("/", (req, res) => {
+    res.status(200).send("Bienvenido a la pagina principal");
+});
+
+app.get("/login", (req, res) => {
+    res.status(200).sendFile(`${__dirname}/formAuth.html`);
+});
+
+app.post("/login", (req, res, next) => {
+    console.log(req.body);
+});
 
 app.listen(port, (err) => {
     if(err){
