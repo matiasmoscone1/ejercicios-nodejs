@@ -22,7 +22,7 @@ app.use(session({
 
 const isAuth = (req, res, next) => {
     if(req.session.username){
-        next();
+        return next();
     }else{
         res.redirect("/login");
     }
@@ -36,9 +36,9 @@ app.get("/login", (req, res) => {
     res.status(200).sendFile(`${__dirname}/formAuth.html`);
 });
 
-app.post("/login", (req, res, next) => {
+app.post("/login", (req, res) => {
     console.log(req.body);
-    if(req.body.username === dbUsers.username && req.body.passowrd === dbUsers.passowrd){
+    if(req.body.username === dbUsers[0].username && req.body.password === dbUsers[0].password){
         req.session.username = req.body.username;
         res.redirect("/panel");
     }else{
@@ -56,6 +56,16 @@ app.get("/stock", isAuth, (req, res) => {
 
 app.get("/database", isAuth, (req, res) => {
     res.status(200).send("Ruta protegida 3");
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if(err){
+            res.status(200).send("Ocurrio un problema al cerrar la session:", err);
+        }else{
+            res.redirect("/login");
+        }
+    });
 });
 
 app.listen(port, (err) => {
