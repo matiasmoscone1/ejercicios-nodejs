@@ -20,8 +20,12 @@ app.use(session({
     saveUninitialized: true
 }));
 
-const isAuth = () => {
-
+const isAuth = (req, res, next) => {
+    if(req.session.username){
+        next();
+    }else{
+        res.redirect("/login");
+    }
 }
 
 app.get("/", (req, res) => {
@@ -35,9 +39,10 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res, next) => {
     console.log(req.body);
     if(req.body.username === dbUsers.username && req.body.passowrd === dbUsers.passowrd){
-        next();
+        req.session.username = req.body.username;
+        res.redirect("/panel");
     }else{
-        res.redirect("/login");
+        res.status(200).send("Usuario o contraseña incorrecto...");
     }
 });
 
