@@ -12,12 +12,17 @@ const dbUsers = [{
     password: "1234"
 }];
 
+app.use(express.urlencoded({ extended: true }));
+
 app.use(session({
     secret: "123456",
     resave: false,
     saveUninitialized: true
 }));
 
+const isAuth = () => {
+
+}
 
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal");
@@ -29,6 +34,23 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res, next) => {
     console.log(req.body);
+    if(req.body.username === dbUsers.username && req.body.passowrd === dbUsers.passowrd){
+        next();
+    }else{
+        res.redirect("/login");
+    }
+});
+
+app.get("/panel", isAuth, (req, res) => {
+    res.status(200).send("Ruta protegida 1");
+});
+
+app.get("/stock", isAuth, (req, res) => {
+    res.status(200).send("Ruta protegida 2");
+});
+
+app.get("/database", isAuth, (req, res) => {
+    res.status(200).send("Ruta protegida 3");
 });
 
 app.listen(port, (err) => {
