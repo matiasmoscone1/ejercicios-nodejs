@@ -10,12 +10,11 @@ app.use(cookieParser());
 
 app.get("/", (req, res) => {
     console.log(req.cookies);
-    console.log(req.signedCookies);
     res.status(200).send("Bienvenido a la pagina principal");
 });
 
 app.get("/setCookie", (req, res) => {
-    res.cookie("PrimeraCookie", "valorCookie", {maxAge: 50000, httpOnly: true});
+    res.cookie("PrimeraCookie", "valorCookie", {maxAge: 50000, httpOnly: true });
     res.status(200).send("Cookie creada");
 });
 
