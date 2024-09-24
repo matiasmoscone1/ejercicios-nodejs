@@ -18,6 +18,11 @@ app.get("/setCookie", (req, res) => {
     res.status(200).send("Cookie creada");
 });
 
+app.get("/removeCookie", (req, res) => {
+    res.clearCookie("PrimeraCookie");
+    res.status(200).send("Cookie removida");
+});
+
 app.listen(port, (err) => {
     if(err){
         console.log("Ha ocurrido un error al levantar el servidor:", err);
