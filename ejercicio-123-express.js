@@ -2,10 +2,13 @@
 
 const express = require("express");
 const app = express();
+const fs = require("node:fs");
 const multer = require("multer");
-const upload = multer({ dest: "uploads"});
+const upload = multer({ dest: "uploads/"});
 
 const port = process.env.PORT || 3000;
+
+app.use("/photos", express.static(`${__dirname}/uploads`));
 
 app.post("/upload", upload.single("avatar"), (req, res, next) => {
     console.log(req.body);
@@ -16,6 +19,23 @@ app.get("/upload", (req, res) => {
     res.status(200).sendFile(`${__dirname}/avatar.html`);
 });
 
+app.get("/photos", (req, res) => {
+    fs.readdir(`${__dirname}/uploads`, (err, files) => {
+        if(err){
+            return res.status(500).send("Error al leer los archivos");
+        }else{
+            const html = `<html>
+                <body>
+                    <h2>Imagenes</h2>
+                    ${files.map((file) => `<img src="${__dirname}/uploads/${file}"></img>`)}
+                </body>
+            </html>`
+            console.log(files);
+            res.status(200).send(html);
+        }
+    })
+    res.status(200).sendFile(`${__dirname}/uploads`);
+});
 
 app.listen(port, (err) => {
     if(err){
