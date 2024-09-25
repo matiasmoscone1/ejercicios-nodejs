@@ -41,8 +41,7 @@ app.get("/photos", (req, res) => {
             const html = `<html>
                 <body>
                     <h2>Imagenes</h2>
-                    ${files.map((file) => `<img src="${__dirname}/uploads/${file}" style=width:200px; height: 400px></img>`).join('')}
-                    <img src="avatar-1727273279835.jpeg" style=width:200px; height: 300px></img>
+                        ${files.map((file) => `<img src="${file}" style=width:200px; height: 400px></img>`).join('')}
                     </body>
             </html>`
             res.status(200).send(html);
