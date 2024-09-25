@@ -3,11 +3,11 @@
 const express = require("express");
 const app = express();
 const multer = require("multer");
-const upload = multer({ dest: "uploads/"});
+const upload = multer({ dest: "uploads"});
 
 const port = process.env.PORT || 3000;
 
-app.post("/upload", upload.single(), (req, res, next) => {
+app.post("/upload", upload.single("avatar"), (req, res, next) => {
     console.log(req.body);
     console.log(req.file);
 });
