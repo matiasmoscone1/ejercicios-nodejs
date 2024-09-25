@@ -381,8 +381,6 @@ Autenticación básica: Implementa un sistema de login simple usando sesiones o 
 
 Manejo de cookies: Usa el middleware cookie-parser para crear, leer y borrar cookies.
 
-Conectar a una base de datos: Usa MongoDB y Mongoose para conectar Express con una base de datos y manejar operaciones CRUD (Create, Read, Update, Delete).
-
 Rutas protegidas: Implementa un middleware que proteja rutas, permitiendo el acceso solo a usuarios autenticados.
 
 Subir archivos: Usa multer para permitir la subida de archivos a través de un formulario.
@@ -391,6 +389,7 @@ Paginación de resultados: Implementa paginación para un conjunto de datos (com
 
 Configuración de variables de entorno: Usa dotenv para cargar configuraciones sensibles desde un archivo .env.
 
+Conectar a una base de datos: Usa MongoDB y Mongoose para conectar Express con una base de datos y manejar operaciones CRUD (Create, Read, Update, Delete).
 					Ejercicios Avanzados
 
 Implementar autenticación JWT: Usa JSON Web Tokens (JWT) para autenticar y autorizar a los usuarios.
