@@ -4,9 +4,21 @@ const express = require("express");
 const app = express();
 const fs = require("node:fs");
 const multer = require("multer");
-const upload = multer({ dest: "uploads/"});
+const path = require("node:path");
 
 const port = process.env.PORT || 3000;
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "uploads/");
+    },
+    filename: (req, file, callback) => {
+        const ext = path.extname(file.originalname);
+        callback(null, file.fieldname + "-" + Date.now() + ext);
+    }
+})
+
+const upload = multer({ storage: storage});
 
 app.use("/photos", express.static(`${__dirname}/uploads`));
 
@@ -24,13 +36,15 @@ app.get("/photos", (req, res) => {
         if(err){
             return res.status(500).send("Error al leer los archivos");
         }else{
+            console.log(files);
+            console.log(__dirname);
             const html = `<html>
                 <body>
                     <h2>Imagenes</h2>
-                    ${files.map((file) => `<img src="${__dirname}/uploads/${file}"></img>`)}
-                </body>
+                    ${files.map((file) => `<img src="${__dirname}/uploads/${file}" style=width:200px; height: 400px></img>`).join('')}
+                    <img src="avatar-1727273279835.jpeg" style=width:200px; height: 300px></img>
+                    </body>
             </html>`
-            console.log(files);
             res.status(200).send(html);
         }
     })
