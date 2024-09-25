@@ -7,12 +7,13 @@ const upload = multer({ dest: "uploads/"});
 
 const port = process.env.PORT || 3000;
 
-app.post("/login", upload.none(), (req, res, next) => {
+app.post("/upload", upload.single(), (req, res, next) => {
     console.log(req.body);
+    console.log(req.file);
 });
 
-app.get("/login", (req, res) => {
-    res.status(200).sendFile(`${__dirname}/formAuth.html`);
+app.get("/upload", (req, res) => {
+    res.status(200).sendFile(`${__dirname}/avatar.html`);
 });
 
 
