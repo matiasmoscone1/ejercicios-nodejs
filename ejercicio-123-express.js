@@ -5,9 +5,15 @@ const app = express();
 const multer = require("multer");
 const upload = multer({ dest: "uploads/"});
 
-
-
 const port = process.env.PORT || 3000;
+
+app.post("/login", upload.none(), (req, res, next) => {
+    console.log(req.body);
+});
+
+app.get("/login", (req, res) => {
+    res.status(200).sendFile(`${__dirname}/formAuth.html`);
+});
 
 
 app.listen(port, (err) => {
