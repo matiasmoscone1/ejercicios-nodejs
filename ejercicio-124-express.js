@@ -11,14 +11,7 @@ app.get("/", (req, res) => {
     console.log(dbUsers);
     res.status(200).send("Bienvenido a la pagina principal");
 });
-/*
-app.get(`/page/1`, (req, res) => {
-    let limit = 0;
-    while(limit < 4){
-        console.log(dbUsers[limit]);
-        limit++;
-    }    
-});*/
+
 
 app.get(`/page/:n`, (req, res) => {
     let page = req.params.n;
@@ -26,7 +19,8 @@ app.get(`/page/:n`, (req, res) => {
     let first = (page - 1) * limit;
     let last = page * limit;
     const users = dbUsers.slice(first, last);
-    console.log(`Page: ${page} - ${JSON.stringify(users)}`);
+    //console.log(`Page: ${page} - ${JSON.stringify(users)}`);
+    res.status(200).json(users);
 });
 
 app.listen(port, (err) => {

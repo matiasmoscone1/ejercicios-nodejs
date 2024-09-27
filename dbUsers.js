@@ -2,82 +2,82 @@
 const dbUsers = [{
     id: 1,
     nombre: "Matias",
-    Apellido: "Moscone"
+    apellido: "Moscone"
 },
 {
     id: 2,
     nombre: "Lionel",
-    Apellido: "Messi"
+    apellido: "Messi"
 },
 {
     id: 3,
     nombre: "Angel",
-    Apellido: "Di Maria"
+    apellido: "Di Maria"
 },
 {
     id: 4,
     nombre: "Alexis",
-    Apellido: "Mac Allister"
+    apellido: "Mac Allister"
 },
 {
     id: 5,
     nombre: "Cristian",
-    Apellido: "Romero"
+    apellido: "Romero"
 },
 {
     id: 6,
     nombre: "Nahuel",
-    Apellido: "Molina"
+    apellido: "Molina"
 },
 {
     id: 7,
     nombre: "Lisandro",
-    Apellido: "Martinez"
+    apellido: "Martinez"
 },
 {
     id: 8,
     nombre: "Nicolas",
-    Apellido: "Tagliafico"
+    apellido: "Tagliafico"
 },
 {
     id: 9,
     nombre: "Rodrigo",
-    Apellido: "De Paul"
+    apellido: "De Paul"
 },
 {
     id: 10,
     nombre: "Enzo",
-    Apellido: "Fernandez"
+    apellido: "Fernandez"
 },
 {
     id: 11,
     nombre: "Julian",
-    Apellido: "Alvarez"
+    apellido: "Alvarez"
 },
 {
     id: 12,
     nombre: "Alejandro",
-    Apellido: "Garnacho"
+    apellido: "Garnacho"
 },
 {
     id: 13,
     nombre: "Nicolas",
-    Apellido: "Otamendi"
+    apellido: "Otamendi"
 },
 {
     id: 14,
     nombre: "Leandro",
-    Apellido: "Paredes"
+    apellido: "Paredes"
 },
 {
     id: 15,
     nombre: "German",
-    Apellido: "Pezzela"
+    apellido: "Pezzela"
 },
 {
     id: 16,
     nombre: "Gonzalo",
-    Apellido: "Montiel"
+    apellido: "Montiel"
 }
 ];
 
