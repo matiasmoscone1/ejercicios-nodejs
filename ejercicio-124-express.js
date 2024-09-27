@@ -11,6 +11,23 @@ app.get("/", (req, res) => {
     console.log(dbUsers);
     res.status(200).send("Bienvenido a la pagina principal");
 });
+/*
+app.get(`/page/${n}`, (req, res) => {
+
+});*/
+
+app.get(`/page/1`, (req, res) => {
+    let limit = 0;
+    while(limit < 4){
+        /*const html = `<html>
+                <body>
+                        ${files.map((file) => `<img src="${file}" style=width:200px; height: 400px></img>`).join('')}
+                    </body>
+            </html>`*/
+        console.log(dbUsers[limit]);
+        limit++;
+    }    
+});
 
 app.listen(port, (err) => {
     if(err){
