@@ -390,6 +390,7 @@ Paginación de resultados: Implementa paginación para un conjunto de datos (com
 Configuración de variables de entorno: Usa dotenv para cargar configuraciones sensibles desde un archivo .env.
 
 Conectar a una base de datos: Usa MongoDB y Mongoose para conectar Express con una base de datos y manejar operaciones CRUD (Create, Read, Update, Delete).
+
 					Ejercicios Avanzados
 
 Implementar autenticación JWT: Usa JSON Web Tokens (JWT) para autenticar y autorizar a los usuarios.
