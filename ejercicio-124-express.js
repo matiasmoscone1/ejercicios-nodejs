@@ -21,15 +21,18 @@ app.get(`/page/1`, (req, res) => {
 });*/
 
 app.get(`/page/:n`, (req, res) => {
-    const page = req.params.n;
+    let page = req.params.n;
     let first = 0;
     let last = 4;
-    const users = dbUsers.slice(first, last);
-    console.log(users);
-    for(page; page <= 10; page++){
+    //const users = dbUsers.slice(first, last);
+    //console.log(users);
+    while(page < 5){
         first = first + 4;
-        last = last + 4;
-    }
+        last = last + 4; 
+        const users = dbUsers.slice(first, last);
+        console.log(`Page: ${page} - ${users}`);
+        page++;
+    };
     
 
 });
