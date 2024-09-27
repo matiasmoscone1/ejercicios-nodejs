@@ -12,21 +12,26 @@ app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal");
 });
 /*
-app.get(`/page/${n}`, (req, res) => {
-
-});*/
-
 app.get(`/page/1`, (req, res) => {
     let limit = 0;
     while(limit < 4){
-        /*const html = `<html>
-                <body>
-                        ${files.map((file) => `<img src="${file}" style=width:200px; height: 400px></img>`).join('')}
-                    </body>
-            </html>`*/
         console.log(dbUsers[limit]);
         limit++;
     }    
+});*/
+
+app.get(`/page/:n`, (req, res) => {
+    const page = req.params.n;
+    let first = 0;
+    let last = 4;
+    const users = dbUsers.slice(first, last);
+    console.log(users);
+    for(page; page <= 10; page++){
+        first = first + 4;
+        last = last + 4;
+    }
+    
+
 });
 
 app.listen(port, (err) => {
