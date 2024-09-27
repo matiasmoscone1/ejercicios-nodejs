@@ -5,9 +5,11 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const app = express();
 
-const port = dotenv.process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
-
+app.get("/", (req, res) => {
+    res.status(200).send(process.env.SECRET_KEY);
+});
 
 app.listen(port, (err) => {
     if(err){
