@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <form action="/products" method="post" enctype="multipart/form-data">
+        <label>Article</label>
+        <input type="text" name="article" required/>
+        <label>Category</label>
+        <input type="text" name="category" required/>
+        <label>Price</label>
+        <input type="number" name="price" required/>
+        <label>Description</label>
+        <input type="text" name="description" required/>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

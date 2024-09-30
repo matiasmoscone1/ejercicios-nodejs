@@ -7,9 +7,15 @@ const app = express();
 
 const port = process.env.PORT || 4000;
 
+app.use("/products", express.static(`${__dirname}/formProduct.html`));
+
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!");
 });
+
+app.get("/products",(req, res) => {
+
+})
 
 
 app.listen(port, (err) => {
