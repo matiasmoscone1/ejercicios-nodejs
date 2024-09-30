@@ -12,12 +12,18 @@ mongoose.connect(process.env.MONGODB_CONNECT);
 
 app.use("/products", express.static(`${__dirname}/formProduct.html`));
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!");
 });
 
 app.post("/products", (req, res) => {
-
+    console.log(req.body);
+    /*const { article, category, price, description } = req.body;
+    const newProduct = new Product({ article, category, price, description});
+    newProduct.save();*/
+    //res.status(200).json(newProduct);
 });
 
 
