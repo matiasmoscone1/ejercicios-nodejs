@@ -41,6 +41,20 @@ app.get("/products/view", async (req, res) => {
     }
 });
 
+app.get("/products/view/:id", async (req, res) => {
+    const idProduct = req.params.id;
+    console.log(idProduct);
+    try {
+        const data = await Product.find();
+        return res.json(data);
+    } catch (err) {
+        res.status(500).send({
+            message:
+                err.message || "Error al realizar la búsqueda"
+        });
+    }
+});
+
 app.listen(port, (err) => {
     if(err){
         console.log("Ha ocurrido un error al levantar el servidor:", err);
