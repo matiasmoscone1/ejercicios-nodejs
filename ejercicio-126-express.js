@@ -45,7 +45,7 @@ app.get("/products/view/:id", async (req, res) => {
     const idProduct = req.params.id;
     console.log(idProduct);
     try {
-        const data = await Product.find();
+        const data = await Product.findById(idProduct);
         return res.json(data);
     } catch (err) {
         res.status(500).send({
