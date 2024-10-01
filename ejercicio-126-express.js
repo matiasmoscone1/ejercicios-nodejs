@@ -22,13 +22,24 @@ app.get("/products", (req, res) => {
 });
 
 app.post("/products", (req, res) => {
-    console.log(req.body);
-    const { article, category, price, description } = req.body;
-    const newProduct = new Product({ article, category, price, description});
+    //console.log(req.body);
+    const { article, brand, category, price, description } = req.body;
+    const newProduct = new Product({ article, brand, category, price, description});
     newProduct.save();
     res.status(200).send("Producto agregado correctamente!");
 });
 
+app.get("/products/view", async (req, res) => {
+    try {
+        const data = await Product.find();
+        return res.json(data);
+    } catch (err) {
+        res.status(500).send({
+            message:
+                err.message || "Error al realizar la búsqueda"
+        });
+    }
+});
 
 app.listen(port, (err) => {
     if(err){
