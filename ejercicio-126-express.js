@@ -33,7 +33,7 @@ app.get("/products/view", async (req, res) => {
     try {
         const data = await Product.find();
         return res.json(data);
-    } catch (err) {
+    }catch(err) {
         res.status(500).send({
             message:
                 err.message || "Error al realizar la búsqueda"
@@ -47,10 +47,25 @@ app.get("/products/view/:id", async (req, res) => {
     try {
         const data = await Product.findById(idProduct);
         return res.json(data);
-    } catch (err) {
+    }catch(err) {
         res.status(500).send({
-            message:
-                err.message || "Error al realizar la búsqueda"
+            message: err.message || "Error al realizar la búsqueda"
+        });
+    }
+});
+
+app.get("/products/remove/:id", async (req, res) => {
+    const removeId = req.params.id;
+    try{
+        const prod = await Product.findByIdAndDelete(removeId);
+        if(prod){
+            return res.status(200).send("Producto Eliminado con exito...");
+        }else{
+            return res.status(500).send("No se pudo eliminar el producto");
+        }
+    }catch(err){
+        res.status(500).send({
+            message: err.message || "Error al realizar la busqueda"
         });
     }
 });
