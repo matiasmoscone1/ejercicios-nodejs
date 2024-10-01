@@ -6,12 +6,14 @@ require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
 const Product = require("./models/product_model.js");
+const methodOverride = require("method-override");
 
 const port = process.env.PORT || 4000;
 
 mongoose.connect(process.env.MONGODB_CONNECT);
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!");
@@ -69,6 +71,59 @@ app.get("/products/remove/:id", async (req, res) => {
         });
     }
 });
+
+app.get("/products/update/:id", async (req, res) => {
+    const idProduct = req.params.id;
+    try {
+        const product = await Product.findById(idProduct);
+        if (product) {
+            res.send(`
+                <form action="/products/update/${product._id}" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                    <label>Article</label>
+                    <input type="text" name="article" value="${product.article}" required/>
+                    <label>Brand</label>
+                    <input type="text" name="brand" value="${product.brand}" required/>
+                    <label>Category</label>
+                    <input type="text" name="category" value="${product.category}" required/>
+                    <label>Price</label>
+                    <input type="number" name="price" value="${product.price}" required/>
+                    <label>Description</label>
+                    <input type="text" name="description" value="${product.description}" required/>
+                    <input type="submit" value="Update"/>
+                </form>
+            `);
+        } else {
+            res.status(404).send("Producto no encontrado...");
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || "Error al realizar la búsqueda"
+        });
+    }
+});
+
+app.put("/products/update/:id", async (req, res) => {
+    const updateProd = req.params.id;
+    console.log(req.body);
+    const  { article, brand, category, price, description } = req.body;
+    try{
+        const productUpdated = await Product.findByIdAndUpdate(updateProd,{
+            article, brand, category, price, description
+        }, { new: true });
+        if(productUpdated){
+            res.status(200).send("Producto actualizado correctamente!!!");
+        }else{
+            res.status(404).send("Producto no encontrado...");
+        }
+    }catch(err){
+        res.status(500).send({
+            message: err.message || "No se pudo actualizar el producto..."
+        });
+    }
+    
+});
+
 
 app.listen(port, (err) => {
     if(err){
