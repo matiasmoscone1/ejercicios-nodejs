@@ -13,7 +13,7 @@ const port = process.env.PORT || 4000;
 mongoose.connect(process.env.MONGODB_CONNECT);
 
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
+//app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!");
@@ -79,7 +79,7 @@ app.get("/products/update/:id", async (req, res) => {
         if (product) {
             res.send(`
                 <form action="/products/update/${product._id}" method="POST">
-                    <input type="hidden" name="_method" value="PUT">
+                    
                     <label>Article</label>
                     <input type="text" name="article" value="${product.article}" required/>
                     <label>Brand</label>
@@ -103,8 +103,10 @@ app.get("/products/update/:id", async (req, res) => {
     }
 });
 
-app.put("/products/update/:id", async (req, res) => {
+
+app.post("/products/update/:id", async (req, res) => {
     const updateProd = req.params.id;
+    console.log(req.method);
     console.log(req.body);
     const  { article, brand, category, price, description } = req.body;
     try{
