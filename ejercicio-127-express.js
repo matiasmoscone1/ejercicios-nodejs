@@ -5,9 +5,16 @@ asegúrate de que cada conjunto de rutas esté disponible bajo /users, /products
 
 const express = require("express");
 const app = express();
+const users = require("./users");
+const products = require("./users");
+const orders = require("./users");
+
 
 const port = process.env.PORT || 4000;
 
+app.use("/users", users);
+app.use("/products", products);
+app.use("/orders", orders);
 
 
 
