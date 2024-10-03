@@ -1,4 +1,4 @@
-const expres = require("express");
+const express = require("express");
 const router = express.Router();
 
 
@@ -14,3 +14,5 @@ router.get("/category", (req, res) => {
     res.status(200).send("Selecciona una categoria de productos!");
 });
 
+
+module.exports = router;

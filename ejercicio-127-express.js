@@ -5,9 +5,10 @@ asegúrate de que cada conjunto de rutas esté disponible bajo /users, /products
 
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const users = require("./users");
-const products = require("./users");
-const orders = require("./users");
+const products = require("./products");
+const orders = require("./orders");
 
 
 const port = process.env.PORT || 4000;

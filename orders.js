@@ -13,6 +13,6 @@ router.get("/recent", (req, res) => {
     res.status(200).send("Ordenes mas recientes...");
 });
 
-
+module.exports = router;
 
 
