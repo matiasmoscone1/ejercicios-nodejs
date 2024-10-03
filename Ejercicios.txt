@@ -368,7 +368,7 @@ Manejo de errores simples: Implementa un middleware de manejo de errores para ca
 Middleware básico: Crea un middleware que imprima en consola la URL de cada solicitud.
 
 Usar next() en middleware: Crea dos middlewares que manejen una solicitud y luego pasen el control con next().
-
+				
 					Ejercicios Intermedios
 
 Manejo de formularios con POST: Crea un formulario que envíe datos a una ruta y procese el cuerpo del formulario.
@@ -390,6 +390,31 @@ Paginación de resultados: Implementa paginación para un conjunto de datos (com
 Configuración de variables de entorno: Usa dotenv para cargar configuraciones sensibles desde un archivo .env.
 
 Conectar a una base de datos: Usa MongoDB y Mongoose para conectar Express con una base de datos y manejar operaciones CRUD (Create, Read, Update, Delete).
+
+
+				----------- EXPRESS.ROUTE ----------- 
+
+Dividir rutas en módulos
+Crea tres archivos de rutas separados: users.js, products.js, y orders.js. Cada archivo debe manejar un conjunto de rutas relacionadas con su entidad (usuarios, productos, órdenes). Luego, agrégalos a tu archivo principal app.js y asegúrate de que cada conjunto de rutas esté disponible bajo /users, /products, y /orders.
+
+2. Rutas anidadas con express.Router()
+Crea una ruta anidada para manejar categorías y productos dentro de esas categorías. Por ejemplo:
+
+/categories: Devuelve todas las categorías.
+/categories/:categoryId/products: Devuelve todos los productos dentro de una categoría específica.
+Utiliza express.Router() para modularizar las rutas y que las rutas de productos sean parte de la ruta de categorías.
+
+3. Middleware específico en un Router
+Implementa un middleware específico para el router de usuarios (users.js). Este middleware debe verificar si un usuario tiene un token válido antes de acceder a las rutas de usuarios. Si no tiene un token válido, envía un mensaje de "Acceso denegado".
+
+4. Cargar controladores en los routers
+Crea un archivo de controladores para cada grupo de rutas (usersController.js, productsController.js, etc.). Los controladores deben manejar la lógica de las respuestas de cada ruta y ser importados en los archivos de rutas que usan express.Router(). Asocia cada ruta en el router con su respectivo controlador.
+
+5. Agrupar rutas por versión de API
+Usa express.Router() para crear dos versiones diferentes de tu API:
+
+La versión 1 (/api/v1/) con rutas para obtener usuarios y productos.
+La versión 2 (/api/v2/) donde las rutas devuelven información adicional (por ejemplo, más detalles del producto o usuario).
 
 					Ejercicios Avanzados
 
