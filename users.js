@@ -13,9 +13,11 @@ router.get("/filter", (req, res) => {
     res.status(200).send("Filtrado de usuarios!!!");
 });
 
+const validToken = "1234";
+
 const verifyToken = (req, res, next) => {
     const token = req.headers["authorization"];
-    if(token){
+    if(token === validToken){
         next();
     }else{
         res.status(404).send("Token no valido...");
