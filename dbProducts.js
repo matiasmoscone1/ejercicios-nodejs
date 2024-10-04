@@ -1,6 +1,4 @@
 
-const categories = ["Electronica", "Jardineria", "Electrodomesticos"];
-
 const products = [
     {
         nombre: "Computadora",
@@ -64,5 +62,5 @@ const products = [
     }
 ];
 
-module.exports = {categories, products};
+module.exports = { products };
 
