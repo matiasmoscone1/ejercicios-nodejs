@@ -9,11 +9,11 @@ parte de la ruta de categorías. */
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const categories = require("./categories");
 
 const port = process.env.PORT || 4000;
 
-
-
+app.use("/categories", categories);
 
 
 
