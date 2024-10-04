@@ -13,6 +13,9 @@ router.get("/filter", (req, res) => {
     res.status(200).send("Filtrado de usuarios!!!");
 });
 
+router.get("/dashboard-admin", (req, res) => {
+    res.status(200).send("SOLO PUEDE ENTRAR EL ADMIN CON UN TOKEN A ESTA PAGINA!!!!");
+});
 
 module.exports = router;
 

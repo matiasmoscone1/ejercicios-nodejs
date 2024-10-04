@@ -16,9 +16,6 @@ const port = process.env.PORT || 4000;
 app.use("/categories", categories);
 
 
-
-
-
 app.listen(port, (err) => {
     if(err){
         console.log("Ha ocurrido un error al levantar el servidor:", err);
