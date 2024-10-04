@@ -13,7 +13,17 @@ router.get("/filter", (req, res) => {
     res.status(200).send("Filtrado de usuarios!!!");
 });
 
-router.get("/dashboard-admin", (req, res) => {
+const verifyToken = (req, res, next) => {
+    const token = req.headers["authorization"];
+    if(token){
+        next();
+    }else{
+        res.status(404).send("Token no valido...");
+    }
+    console.log(req.headers);
+};
+
+router.get("/dashboard-admin", verifyToken, (req, res) => {
     res.status(200).send("SOLO PUEDE ENTRAR EL ADMIN CON UN TOKEN A ESTA PAGINA!!!!");
 });
 
