@@ -9,13 +9,19 @@ router.get("/", (req, res) => {
 
 router.get("/", usersController.index);
 
+/*
 router.get("/list", (req, res) => {
     res.status(200).send("------------- Listado de usuarios -------------");
-});
+});*/
 
+router.get("/list", usersController.list);
+
+/*
 router.get("/filter", (req, res) => {
     res.status(200).send("Filtrado de usuarios!!!");
-});
+});*/
+
+router.get("/filter", usersController.filter);
 
 const validToken = "1234";
 

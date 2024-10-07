@@ -7,12 +7,13 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const users = require("./users");
+const products = require("./products");
 
 const port = process.env.PORT || 4000;
 
 app.use("/users", users);
 
-
+app.use("/products", products);
 
 app.listen(port, (err) => {
     if(err){
