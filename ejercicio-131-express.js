@@ -7,10 +7,11 @@ La versión 2 (/api/v2/) donde las rutas devuelven información adicional
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const products = require("./products");
 
 const port = process.env.PORT || 4000;
 
-
+app.use("/products", products);
 
 
 

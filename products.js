@@ -9,6 +9,10 @@ router.get("/", (req, res) => {
 
 router.get("/", productsController.index);
 
+router.get("/api/v1", productsController.v1);
+
+router.get("/api/v2", productsController.v2);
+
 /*
 router.get("/view", (req, res) => {
     res.status(200).send("TODOS LOS PRODUCTOS");
