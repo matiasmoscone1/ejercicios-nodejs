@@ -27,7 +27,7 @@ productsController.v2 = (req, res) => {
                 <td>${prod.precio}</td>
                 <td>${prod.descripcion}</td>
                 </tr>`);
-            })}
+            }).join("")}
         </tbody>
     </table>`
     res.status(200).send(html);
