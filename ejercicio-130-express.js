@@ -6,10 +6,11 @@ express.Router(). Asocia cada ruta en el router con su respectivo controlador. *
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const users = require("./users");
 
 const port = process.env.PORT || 4000;
 
-
+app.use("/users", users);
 
 
 
