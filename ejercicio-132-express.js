@@ -19,6 +19,19 @@ const token = jwt.sign(payload, secretKey, {expiresIn: "1h"});
 
 console.log(token);
 
+const verifyToken = () => {
+    
+}
+
+
+app.get("/", (req, res) => {
+    res.status(200).send("Bienivenido a la pagina principal!!!");
+});
+
+app.get("/dashboard-admin", (req, res) => {
+    
+});
+
 
 app.listen(port, (err) => {
     if(err){
