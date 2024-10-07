@@ -411,7 +411,6 @@ Crea un archivo de controladores para cada grupo de rutas (usersController.js, p
 
 5. Agrupar rutas por versión de API
 Usa express.Router() para crear dos versiones diferentes de tu API:
-
 La versión 1 (/api/v1/) con rutas para obtener usuarios y productos.
 La versión 2 (/api/v2/) donde las rutas devuelven información adicional (por ejemplo, más detalles del producto o usuario).
 
