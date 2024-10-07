@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const usersController = require("./usersControllers");
 
+/*
 router.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina Users");
-});
+});*/
+
+router.get("/", usersController.index);
 
 router.get("/list", (req, res) => {
     res.status(200).send("------------- Listado de usuarios -------------");
