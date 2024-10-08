@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.get("/dashboard-admin", (req, res) => {
     const authHeader = req.headers["authorization"];
+    console.log(authHeader);
 
     if(!authHeader){
         res.status(404).send("Error: token no proporcionado...");
