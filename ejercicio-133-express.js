@@ -21,6 +21,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 
+app.get("/", (req, res) => {
+    res.status(200).sendFile(`${__dirname}/downloadUpload.html`);
+});
+
 app.post("/upload", upload.single("file"), (req, res) => {
     if(!req.file){
         res.status(404).send("No hay ningun archivo seleccionado para subir...");
@@ -28,9 +32,11 @@ app.post("/upload", upload.single("file"), (req, res) => {
     res.status(200).send("Archivo subido correctamente al servidor!!!");
 });
 
-app.get("/download/:filename", (req, res) => {
-    const fileName = req.params.filename;
-    const filePath = `${__dirname}/${fileName}`;
+app.get("/download", (req, res) => {
+    const fileName = req.query.filename;
+    //console.log(fileName);
+    const filePath = `${__dirname}/uploads/${fileName}`;
+    console.log(filePath);
     res.download(filePath, (err) => {
         if(err){
             res.status(404).send("Archivo no encontrado...");
