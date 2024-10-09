@@ -17,9 +17,7 @@ const storage = multer.diskStorage({
     }
 });
 
-
 const upload = multer({ storage });
-
 
 app.get("/", (req, res) => {
     res.status(200).sendFile(`${__dirname}/downloadUpload.html`);
