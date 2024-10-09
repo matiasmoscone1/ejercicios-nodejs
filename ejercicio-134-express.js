@@ -3,12 +3,20 @@ enviar mensajes en tiempo real. */
 
 const express = require("express");
 const app = express();
-require("dotenv"),config();
+require("dotenv").config();
+const { Server } = require("socket.io");
 
 const port = process.env.PORT || 4000;
 
+const io = new Server(app);
 
+app.get("/", (req, res) => {
+    res.status(200).sendFile(`${__dirname}/chatSocket.html`);
+});
 
+io.on("connection", (socket) => {
+    console.log("Se ha conectado un usuario!");
+})
 
 
 
