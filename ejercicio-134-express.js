@@ -19,6 +19,12 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
     console.log("Se ha conectado un usuario!!!");
+
+    socket.on("message", (message) => {
+        console.log("Se ha recibido el mensaje:", message);
+        io.emit("message", message);
+    });
+
     socket.on("disconnect", () => {
         console.log("Se ha desconectado un usuario...");
     });
@@ -26,7 +32,7 @@ io.on("connection", (socket) => {
 
 
 
-app.listen(port, (err) => {
+server.listen(port, (err) => {
     if(err){
         console.log("Ha ocurrido un error al levantar el servidor:", err);
     }else{
