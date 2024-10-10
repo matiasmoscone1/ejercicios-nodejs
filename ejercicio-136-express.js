@@ -7,16 +7,18 @@ require("dotenv").config();
 const cors = require("cors");
 const port = process.env.PORT || 4000;
 
+const animales = ["Perro", "Gato", "Elefante", "Mamut", "Ardilla", "Bob Esponja"];
+/*
 app.use(cors({
     origin: "http://localhost:5173"
-}));
+}));*/
 
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal");
 });
 
-app.get("/about", (req, res) => {
-    res.status(302).redirect("http://localhost:3000/");
+app.get("/datos", (req, res) => {
+    res.status(200).json(animales);
 });
 
 app.listen(port, (err) => {
