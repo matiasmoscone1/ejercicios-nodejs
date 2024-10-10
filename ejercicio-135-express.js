@@ -10,10 +10,17 @@ const port = process.env.PORT || 4000;
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-
     res.status(200).send("Bienvenido a la pagina principal!!!");
 });
 
+app.get("/validation", (req, res) => {
+    res.status(200).sendFile(`${__dirname}/formValidation.html`);    
+});
+
+app.post("/validation", (req, res) => {
+    
+    console.log(req.body);
+});
 
 app.listen(port, (err) => {
     if(err){
