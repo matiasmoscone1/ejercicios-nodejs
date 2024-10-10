@@ -7,8 +7,12 @@ require("dotenv").config();
 
 const port = process.env.PORT || 4000;
 
+app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
 
+    res.status(200).send("Bienvenido a la pagina principal!!!");
+});
 
 
 app.listen(port, (err) => {
