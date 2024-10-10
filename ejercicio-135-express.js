@@ -4,10 +4,20 @@ recibidos en un formulario o solicitud. */
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const { check, validationResult } = require("express-validator");
 
 const port = process.env.PORT || 4000;
 
 app.use(express.urlencoded({ extended: true }));
+
+const validationForm = () => {
+    return([
+        check("name").notEmpty().withMessage("No puede estar vacio el campo Nombre..."),
+        check("lastname").notEmpty().withMessage("No puede estar vacio el campo Apellido..."),
+        check("email").isEmail().withMessage("Debe respetar un formato de email valido..."),
+        check("adress").notEmpty().withMessage("No puede estar vacio el campo Direccion...")
+    ]);
+}
 
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal!!!");
@@ -18,8 +28,8 @@ app.get("/validation", (req, res) => {
 });
 
 app.post("/validation", (req, res) => {
-    
     console.log(req.body);
+
 });
 
 app.listen(port, (err) => {
@@ -28,5 +38,5 @@ app.listen(port, (err) => {
     }else{
         console.log("Servidor levantado en el puerto:", port);
     }
-})
+});
 
