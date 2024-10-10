@@ -12,10 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const validationForm = () => {
     return([
-        check("name").notEmpty().withMessage("No puede estar vacio el campo Nombre..."),
-        check("lastname").notEmpty().withMessage("No puede estar vacio el campo Apellido..."),
+        check("name").notEmpty().isLength({ min: 4, max: 12}).withMessage("No puede estar vacio el campo Nombre..."),
+        check("lastname").notEmpty().isLength({ min: 6, max: 16}).withMessage("No puede estar vacio el campo Apellido..."),
         check("email").isEmail().withMessage("Debe respetar un formato de email valido..."),
-        check("adress").notEmpty().withMessage("No puede estar vacio el campo Direccion...")
+        check("adress").notEmpty().isLength({ min: 3, max: 16}).withMessage("No puede estar vacio el campo Direccion...")
     ]);
 }
 
