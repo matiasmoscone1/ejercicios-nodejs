@@ -8,10 +8,10 @@ const cors = require("cors");
 const port = process.env.PORT || 4000;
 
 const animales = ["Perro", "Gato", "Elefante", "Mamut", "Ardilla", "Bob Esponja"];
-/*
+
 app.use(cors({
-    origin: "http://localhost:5173"
-}));*/
+    origin: ["http://localhost:3000", "http://localhost:5173"]
+}));
 
 app.get("/", (req, res) => {
     res.status(200).send("Bienvenido a la pagina principal");
