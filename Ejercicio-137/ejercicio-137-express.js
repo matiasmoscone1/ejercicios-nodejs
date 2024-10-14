@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const connection = require("./config/db.js");
-
+require("./config/db.js");
+const user = require("./routes/userRoutes");
 const port = process.env.PORT || 4000;
 
 
-
+app.use("/user", user);
 
 app.listen(port, (err) => {
     if(err){
