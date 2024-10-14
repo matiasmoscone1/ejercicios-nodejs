@@ -1,6 +1,7 @@
 const User = require("../models/userModel.js");
 const userController = {};
 
+
 userController.read = (req, res) => {
     res.status(200).send("Aqui sera el endpoint del json de usuarios");
 }

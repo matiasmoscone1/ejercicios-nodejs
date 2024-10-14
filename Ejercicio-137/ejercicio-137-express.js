@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 require("./config/db.js");
-const user = require("./routes/userRoutes");
+const users = require("./routes/userRoutes");
 const port = process.env.PORT || 4000;
 
 
-app.use("/user", user);
+app.use("/users", users);
 
 app.listen(port, (err) => {
     if(err){
