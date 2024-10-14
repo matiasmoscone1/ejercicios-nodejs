@@ -5,10 +5,7 @@ const mongoose = require("mongoose");
 
 const connection = async () => {
     try{
-        await mongoose.connect(process.env.MONGODB_CONNECT_II, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(process.env.MONGODB_CONNECT_II);
         console.log("Conexion a la BDD exitosa!");
     }catch(err){
         if(err){
