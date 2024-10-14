@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get("/read", userController.read);
 
+router.get("/form", userController.form);
 router.post("/create", userController.create);
 
 router.delete("/delete", userController.delete);

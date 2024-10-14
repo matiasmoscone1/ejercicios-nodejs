@@ -1,9 +1,14 @@
 const User = require("../models/userModel.js");
 const userController = {};
-
+const path = require("node:path");
 
 userController.read = (req, res) => {
     res.status(200).send("Aqui sera el endpoint del json de usuarios");
+}
+
+userController.form = (req, res) => {
+    const filePath = path.join(__dirname, "../public/form.html");
+    res.status(200).sendFile(filePath);
 }
 
 userController.create = (req, res) => {

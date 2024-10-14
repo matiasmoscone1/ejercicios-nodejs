@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./app.css">
     <title>CRUD NODE</title>
 </head>
 <body>
-    <form action="/users/create" method="post">
-        <label>Username</label>
-        <input />
-        <label>Password</label>
-        <input />
-        <label></label>
-        <input />
-        <label>Username</label>
-        <input />
-        <label>Username</label>
-        <input />
-
-    </form>
-
+    <div class="form-container">
+        <form action="/users/create" method="post">
+            <label>Username</label>
+            <input type="text" name="username"/>
+            <label>Password</label>
+            <input type="password" name="password"/>
+            <label>Rol</label>
+            <input type="text" name="rol"/>
+            <label>Email</label>
+            <input type="email" name="email"/>
+            <label>Age</label>
+            <input type="number" name="age"/>
+            <button type="submit">Enviar</button>
+        </form> 
+    </div>
 </body>
 </html>
