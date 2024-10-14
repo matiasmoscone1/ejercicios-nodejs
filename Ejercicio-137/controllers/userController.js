@@ -1,7 +1,9 @@
 
 const userController = {};
 
-
+userController.read = (req, res) => {
+    
+}
 
 
 
