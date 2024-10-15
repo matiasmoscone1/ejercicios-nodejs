@@ -37,7 +37,6 @@ userController.delete = async (req, res) => {
         const userId = req.params.id;
         await User.findByIdAndDelete(userId);
         res.status(200).send(`Usuario con el id: ${userId} eliminado con exito!`);
-        //console.log(userId);
     }catch(err){
         res.status(500).send("No se pudo eliminar el usuario debio a un problema ocurrido en el servidor:", err);
     }

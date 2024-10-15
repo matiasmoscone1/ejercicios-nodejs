@@ -13,6 +13,8 @@ router.post("/create", userController.create);
 
 router.delete("/delete/:id", userController.delete);
 
+router.get("/delete/:id", userController.delete);
+
 router.put("/update", userController.update);
 
 
