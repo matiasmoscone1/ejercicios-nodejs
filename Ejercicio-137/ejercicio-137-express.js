@@ -5,7 +5,7 @@ require("./config/db.js");
 const users = require("./routes/userRoutes");
 const port = process.env.PORT || 4000;
 
-
+app.use(express.urlencoded({ extended: true }));
 app.use("/users", users);
 
 app.listen(port, (err) => {

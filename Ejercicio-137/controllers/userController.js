@@ -1,9 +1,12 @@
 const User = require("../models/userModel.js");
 const userController = {};
 const path = require("node:path");
+const db = require("mongoose");
 
 userController.read = (req, res) => {
-    res.status(200).send("Aqui sera el endpoint del json de usuarios");
+    //res.status(200).send("Aqui sera el endpoint del json de usuarios");
+    const users = db.getCollection("test");    
+    res.status(200).json(users);
 }
 
 userController.form = (req, res) => {
