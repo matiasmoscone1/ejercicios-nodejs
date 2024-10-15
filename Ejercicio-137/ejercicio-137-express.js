@@ -6,6 +6,7 @@ const users = require("./routes/userRoutes");
 const port = process.env.PORT || 4000;
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use("/users", users);
 
 app.listen(port, (err) => {

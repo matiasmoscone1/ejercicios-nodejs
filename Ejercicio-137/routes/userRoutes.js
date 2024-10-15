@@ -11,9 +11,9 @@ router.get("/form", userController.form);
 
 router.post("/create", userController.create);
 
-router.delete("/delete", userController.delete);
+router.delete("/delete/:id", userController.delete);
 
-router.post("/update", userController.update);
+router.put("/update", userController.update);
 
 
 module.exports = router;
