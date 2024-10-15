@@ -18,11 +18,16 @@ userController.form = (req, res) => {
     res.status(200).sendFile(filePath);
 }
 
-userController.create = (req, res) => {
+userController.create = async (req, res) => {
     const { username, password, rol, email, age } = req.body;
-    const newUser = new User({ username, password, rol, email, age });
-    newUser.save();
-    res.status(200).send("Usuario creado con exito!");
+    try{
+        const newUser = await new User({ username, password, rol, email, age });
+        newUser.save();
+        res.status(200).send("Usuario creado con exito!");
+    }catch(err){
+        res.status(500).send("Ha ocurrido un error al enviar los datos del usuario...");
+    }
+
 }
 
 userController.update = (req, res) => {
