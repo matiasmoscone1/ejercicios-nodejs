@@ -28,8 +28,22 @@ userController.create = async (req, res) => {
     }
 }
 
-userController.update = (req, res) => {
-    res.status(200).send("Aqui se mostrara para cambiar algnu usuario");
+userController.update = async (req, res) => {
+    //res.status(200).send("Aqui se mostrara para cambiar algnu usuario");
+    try{
+        const userId = req.params.id;
+        const { username, password, rol, email, age } = req.body;        
+        await User.findOneAndUpdate(userId, {
+            username: username,
+            password: password,
+            rol: rol,
+            email: email,
+            age: age
+        });
+        //await User.updateOne({_id: userId});
+    }catch(err){
+        res.status(500).send("No se pudo hacer la actualizacion debido a un problema en el servidor:", err);
+    }
 }
 
 userController.delete = async (req, res) => {
