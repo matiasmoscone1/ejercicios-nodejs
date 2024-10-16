@@ -32,13 +32,13 @@ userController.update = async (req, res) => {
     try{
         const userId = req.params.id;
         const { username, password, rol, email, age } = req.body;        
-        const updateUser = await User.findOneAndUpdate(userId, {
+        const updateUser = await User.findOneAndUpdate({_id: userId}, {
             username: username,
             password: password,
             rol: rol,
             email: email,
             age: age
-        });
+        }, {new: true});
         if(updateUser){
             res.status(200).send("Usuario actualizado correctamente!");
         }else{
@@ -55,7 +55,7 @@ userController.formUpdate = async (req, res) => {
     if(user){
         const html = `<html>
             <body>
-                <form action="/users/update" method="post">
+                <form action="/users/update/${user._id}" method="post">
                     <label>Username</label>
                     <input type="text" name="username" value="${user.username}"/>
                     <label>Password</label>

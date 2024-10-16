@@ -15,7 +15,7 @@ router.delete("/delete/:id", userController.delete);
 
 router.get("/delete/:id", userController.delete);
 
-router.post("/update", userController.update);
+router.post("/update/:id", userController.update);
 
 router.get("/update/:id", userController.formUpdate);
 
