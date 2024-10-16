@@ -49,6 +49,16 @@ userController.update = async (req, res) => {
     }
 }
 
+userController.formUpdate = async (req, res) => {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    if(user){
+        const html = ``;
+    }else{
+        res.status(404).send("Usuario no encontrado...");
+    }
+}
+
 userController.delete = async (req, res) => {
     try{
         const userId = req.params.id;

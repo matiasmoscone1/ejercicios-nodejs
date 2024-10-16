@@ -17,6 +17,8 @@ router.get("/delete/:id", userController.delete);
 
 router.post("/update", userController.update);
 
+router.get("/update/:id", userController.formUpdate);
+
 
 
 module.exports = router;
