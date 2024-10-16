@@ -38,7 +38,7 @@ userController.update = async (req, res) => {
             rol: rol,
             email: email,
             age: age
-        }, {new: true});
+        });
         if(updateUser){
             res.status(200).send("Usuario actualizado correctamente!");
         }else{
@@ -53,7 +53,24 @@ userController.formUpdate = async (req, res) => {
     const userId = req.params.id;
     const user = await User.findById(userId);
     if(user){
-        const html = ``;
+        const html = `<html>
+            <body>
+                <form action="/users/update" method="post">
+                    <label>Username</label>
+                    <input type="text" name="username" value="${user.username}"/>
+                    <label>Password</label>
+                    <input type="password" name="password" value="${user.password}"/>
+                    <label>Rol</label>
+                    <input type="text" name="rol" value="${user.rol}"/>
+                    <label>Email</label>
+                    <input type="email" name="email" value="${user.email}"/>
+                    <label>Age</label>
+                    <input type="number" name="age" value="${user.age}"/>
+                    <input type="submit" value="Enviar"/>
+                </form>
+            </body>
+        </html>`;
+        res.status(200).send(html);
     }else{
         res.status(404).send("Usuario no encontrado...");
     }
