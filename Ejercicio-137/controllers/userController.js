@@ -1,7 +1,7 @@
 const User = require("../models/userModel.js");
 const userController = {};
 const path = require("node:path");
-
+const validatorInput = require("../middlewares/validatorInput");
 
 userController.read = async (req, res) => {
     try{
