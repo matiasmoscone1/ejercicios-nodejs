@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
 const loginController = {}
 
@@ -21,6 +22,7 @@ loginController.login = (req, res) => {
 
 
 loginController.validLogin = async (req, res) => {
+    
     try{
         const user = await User.findOne({ username: req.body.username });
     
@@ -31,7 +33,8 @@ loginController.validLogin = async (req, res) => {
         const isMatch = await bcrypt.compare(req.body.password, user.password);
     
         if(isMatch){
-            res.status(200).send("Usuario logueado con exito!!!");
+            const token = jwt.sign({userId: user._id, rol: user.rol},"fnatic", {expiresIn: "1h"});
+            res.status(200).send("Usuario logueado con exito!!!", token);
         }else{
             res.status(404).send("Contraseña incorrecta...");
         } 
