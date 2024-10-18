@@ -7,6 +7,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login", loginController.login);
+router.post("/login", loginController.validLogin);
 
 router.get("/read", userController.read);
 
