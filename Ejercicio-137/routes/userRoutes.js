@@ -1,6 +1,8 @@
 const userController = require("../controllers/userController.js");
 const {validatorInput, validator } = require("../middlewares/validatorInput");
 const loginController = require("../controllers/userLoginController");
+const authMiddleware = require("../middlewares/authMiddleware");
+const adminMiddleware = require("../middlewares/adminMiddleware");
 
 const express = require("express");
 
@@ -9,19 +11,19 @@ const router = express.Router();
 router.get("/login", loginController.login);
 router.post("/login", loginController.validLogin);
 
-router.get("/read", userController.read);
+router.get("/read", adminMiddleware, authMiddleware, userController.read);
 
-router.get("/form", userController.form);
+router.get("/form", adminMiddleware, authMiddleware, userController.form);
 
-router.post("/create", validatorInput, validator, userController.create);
+router.post("/create", adminMiddleware, authMiddleware, validatorInput, validator, userController.create);
 
-router.delete("/delete/:id", userController.delete);
+router.delete("/delete/:id", adminMiddleware, authMiddleware, userController.delete);
 
-router.get("/delete/:id", userController.delete);
+router.get("/delete/:id", adminMiddleware, authMiddleware, userController.delete);
 
-router.post("/update/:id", validatorInput, validator, userController.update);
+router.post("/update/:id", adminMiddleware, authMiddleware, validatorInput, validator, userController.update);
 
-router.get("/update/:id", userController.formUpdate);
+router.get("/update/:id", adminMiddleware, authMiddleware, userController.formUpdate);
 
 
 
