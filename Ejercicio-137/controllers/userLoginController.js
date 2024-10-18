@@ -27,7 +27,8 @@ loginController.validLogin = async (req, res) => {
         const user = await User.findOne({ username: req.body.username });
     
         if(!user){
-            return {success: false, message: "Usuario no encontrado..."};
+            //return {success: false, message: "Usuario no encontrado..."};
+            res.status(404).send("Usuario no encontrado...");
         }
 
         const isMatch = await bcrypt.compare(req.body.password, user.password);
@@ -36,7 +37,8 @@ loginController.validLogin = async (req, res) => {
             //return {success: true, message: "Autenticacion exitosa!!!"};
             res.status(200).send("Usuario logueado con exito!!!");
         }else{
-            return {success: false, message: "Contraseña incorrecta..."};
+            //return {success: false, message: "Contraseña incorrecta..."};
+            res.status(404).send("Contraseña incorrecta...");
         } 
     }catch(err){
         //return {success: false, message: "Error en el servidor..."};
