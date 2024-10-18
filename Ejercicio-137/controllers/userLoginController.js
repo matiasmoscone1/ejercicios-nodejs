@@ -1,4 +1,5 @@
-
+const bcrypt = require("bcrypt");
+const User = require("../models/userModel");
 
 const loginController = {}
 
@@ -6,7 +7,7 @@ const loginController = {}
 loginController.login = (req, res) => {
     const html = `<html>
         <body>
-            <form action="users/login" method="post">
+            <form action="/users/login" method="post">
                 <label>Username</label>
                 <input type="text" name="username" required/>
                 <label>Password</label>
@@ -19,7 +20,28 @@ loginController.login = (req, res) => {
 }
 
 
-loginController.validLogin = (req, res) => {
+loginController.validLogin = async (req, res) => {
+    console.log(req.body);
+
+    try{
+        const user = await User.findOne({ username: req.body.username });
+    
+        if(!user){
+            return {success: false, message: "Usuario no encontrado..."};
+        }
+
+        const isMatch = await bcrypt.compare(req.body.password, user.password);
+    
+        if(isMatch){
+            //return {success: true, message: "Autenticacion exitosa!!!"};
+            res.status(200).send("Usuario logueado con exito!!!");
+        }else{
+            return {success: false, message: "Contraseña incorrecta..."};
+        } 
+    }catch(err){
+        //return {success: false, message: "Error en el servidor..."};
+        res.status(500).send("Ha ocurrido un error al autenticar el usuario...");
+    }
 
 }
 
