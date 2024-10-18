@@ -1,6 +1,7 @@
 const User = require("../models/userModel.js");
 const userController = {};
 const path = require("node:path");
+const bcrypt = require("bcrypt");
 
 userController.read = async (req, res) => {
     try{
@@ -19,7 +20,9 @@ userController.form = (req, res) => {
 userController.create = async (req, res) => {
     const { username, password, rol, email, age } = req.body;
     try{
-        const newUser = new User({ username, password, rol, email, age });
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const newUser = new User({ username, password: hashedPassword, rol, email, age });
         await newUser.save();
         res.status(200).send("Usuario creado con exito!");
     }catch(err){
