@@ -1,10 +1,12 @@
 const userController = require("../controllers/userController.js");
 const {validatorInput, validator } = require("../middlewares/validatorInput");
+const loginController = require("../controllers/userLoginController");
 
 const express = require("express");
 
 const router = express.Router();
 
+router.get("/login", loginController.login);
 
 router.get("/read", userController.read);
 
