@@ -89,4 +89,37 @@ userController.delete = async (req, res) => {
 
 }
 
+userController.profile = async (req, res) => {
+
+    try{
+        const user = await User.findById(req.params);
+        if(user){
+            const html = `<html>
+            <body>
+                <div class="container-profile">
+                    <ul>
+                        <li>Username: ${user.username}</li>
+                        <li>Age: ${user.age}</li>
+                        <li>Rol: ${user.rol}</li>
+                        <li>Email: ${user.email}</li>                
+                    </ul>
+                </div>
+            </body>
+        </html>`;
+        res.status(200).send(html);
+        }else{
+            res.status(404).send("Usuario no encontrado...");
+        }
+    }catch(err){
+        res.status(500).send("Hubo un problema con el servidor...");
+    }
+    
+
+
+
+
+}
+
+
+
 module.exports = userController;

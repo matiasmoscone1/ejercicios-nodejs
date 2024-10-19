@@ -11,19 +11,21 @@ const router = express.Router();
 router.get("/login", loginController.login);
 router.post("/login", loginController.validLogin);
 
-router.get("/read", adminMiddleware, authMiddleware, userController.read);
+router.get("/profile", authMiddleware, userController.profile);
 
-router.get("/form", adminMiddleware, authMiddleware, userController.form);
+router.get("/read", authMiddleware, adminMiddleware, userController.read);
 
-router.post("/create", adminMiddleware, authMiddleware, validatorInput, validator, userController.create);
+router.get("/form", authMiddleware, adminMiddleware, userController.form);
 
-router.delete("/delete/:id", adminMiddleware, authMiddleware, userController.delete);
+router.post("/create", authMiddleware, adminMiddleware, validatorInput, validator, userController.create);
 
-router.get("/delete/:id", adminMiddleware, authMiddleware, userController.delete);
+router.delete("/delete/:id", authMiddleware, adminMiddleware, userController.delete);
 
-router.post("/update/:id", adminMiddleware, authMiddleware, validatorInput, validator, userController.update);
+router.get("/delete/:id", authMiddleware, adminMiddleware, userController.delete);
 
-router.get("/update/:id", adminMiddleware, authMiddleware, userController.formUpdate);
+router.post("/update/:id", authMiddleware, adminMiddleware, validatorInput, validator, userController.update);
+
+router.get("/update/:id", authMiddleware, adminMiddleware, userController.formUpdate);
 
 
 
