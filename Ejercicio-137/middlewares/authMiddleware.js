@@ -3,12 +3,12 @@ const jwt = require("jsonwebtoken");
 
 const authMiddleware = (req, res, next) => {
 
-    const token = req.headers.authorization.split(" ")[1];
-
     try{
+        const token = req.headers.authorization.split(" ")[1];
+
         if(!token){
             res.status(401).send("Acceso denegado, no proporciono un token valido...");
-        }0    
+        };
         const decodedToken = jwt.verify(token, "fnatic");
         req.user = decodedToken;
         next();

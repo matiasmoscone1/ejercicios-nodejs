@@ -90,7 +90,6 @@ userController.delete = async (req, res) => {
 }
 
 userController.profile = async (req, res) => {
-
     try{
         const user = await User.findById(req.params);
         if(user){
@@ -114,10 +113,6 @@ userController.profile = async (req, res) => {
         res.status(500).send("Hubo un problema con el servidor...");
     }
     
-
-
-
-
 }
 
 

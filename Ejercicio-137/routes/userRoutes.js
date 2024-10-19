@@ -11,7 +11,7 @@ const router = express.Router();
 router.get("/login", loginController.login);
 router.post("/login", loginController.validLogin);
 
-router.get("/profile", authMiddleware, userController.profile);
+router.get("/profile/:id", authMiddleware, userController.profile);
 
 router.get("/read", authMiddleware, adminMiddleware, userController.read);
 
