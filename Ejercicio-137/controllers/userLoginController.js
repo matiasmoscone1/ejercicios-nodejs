@@ -33,8 +33,16 @@ loginController.validLogin = async (req, res) => {
         const isMatch = await bcrypt.compare(req.body.password, user.password);
     
         if(isMatch){
+
             const token = jwt.sign({userId: user._id, rol: user.rol},"fnatic", {expiresIn: "1h"});
-            res.status(200).send({message: "Usuario logueado con exito!!!", token});
+            //res.status(200).send({message: "Usuario logueado con exito!!!", token});
+            res.cookie("token", token, {
+                httpOnly: true, 
+                secure: false, 
+                maxAge: 3600000, 
+                sameSite: 'Strict' 
+            });
+            return res.status(200).send({ message: "Usuario logueado con exito!!!" });
         }else{
             res.status(404).send("Contraseña incorrecta...");
         } 
