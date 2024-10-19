@@ -34,7 +34,7 @@ loginController.validLogin = async (req, res) => {
     
         if(isMatch){
             const token = jwt.sign({userId: user._id, rol: user.rol},"fnatic", {expiresIn: "1h"});
-            res.status(200).send({message: "Usuario logueado con exito!!!", token: `Bearer ${token}`});
+            res.status(200).send({message: "Usuario logueado con exito!!!", token});
         }else{
             res.status(404).send("Contraseña incorrecta...");
         } 

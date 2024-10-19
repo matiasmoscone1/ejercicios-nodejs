@@ -2,13 +2,14 @@ const jwt = require("jsonwebtoken");
 
 
 const authMiddleware = (req, res, next) => {
+    console.log(req.headers.authorization);
+    try {
+        const authHeader = req.headers.authorization;
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return res.status(401).send("Acceso denegado, no se proporcionó un token válido...");
+        }
+        const token = authHeader.split(" ")[1];
 
-    try{
-        const token = req.headers.authorization.split(" ")[1];
-
-        if(!token){
-            res.status(401).send("Acceso denegado, no proporciono un token valido...");
-        };
         const decodedToken = jwt.verify(token, "fnatic");
         req.user = decodedToken;
         next();
