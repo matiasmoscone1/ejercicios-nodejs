@@ -12,6 +12,8 @@ router.get("/login", loginController.login);
 router.post("/login", loginController.validLogin);
 
 router.get("/profile/:id", authMiddleware, userController.profile);
+router.get("/settings/:id", authMiddleware, userController.settings);
+
 
 router.get("/read", authMiddleware, adminMiddleware, userController.read);
 

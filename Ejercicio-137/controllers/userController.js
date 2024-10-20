@@ -91,7 +91,7 @@ userController.delete = async (req, res) => {
 
 userController.profile = async (req, res) => {
     try{
-        const user = await User.findById(req.params);
+        const user = await User.findById(req.params.id);
         if(user){
             const html = `<html>
             <body>
@@ -112,8 +112,14 @@ userController.profile = async (req, res) => {
     }catch(err){
         res.status(500).send("Hubo un problema con el servidor...");
     }
-    
 }
+
+userController.settings = (req, res) => {
+    
+
+
+}
+
 
 
 
