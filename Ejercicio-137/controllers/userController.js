@@ -138,8 +138,24 @@ userController.settings = async (req, res) => {
     res.status(200).send(html);
 }
 
-userController.settingUpdate = (req, res) => {
+userController.settingUpdate = async (req, res) => {
     
+    try{
+        const { username, password, email, age } = req.body;
+        const updatedUser = await User.findOneAndUpdate({_id: req.param.id}, {
+            username: username,
+            password: password,
+            email: email,
+            age: age
+        }, {new: true});
+        if(updatedUser){
+            res.status(200).send("Usuario actualizado correctamente!!!");
+        }else{
+            res.status(404).send("Usuario no encontrado...");
+        }
+    }catch(err){
+        res.status(500).send("Hubo un problema en el servidor al actualziar el usuario...");
+    }
 
 }
 
