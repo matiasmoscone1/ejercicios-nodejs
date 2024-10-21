@@ -121,7 +121,7 @@ userController.settings = async (req, res) => {
         <body>
             <div>
                 <h2>Modifica tus propiedades</h2>
-                <form action="/users/settings/update/${user._id}>
+                <form action="/users/settings/update/${user._id}" method="POST">
                     <label>Usuario</label>
                     <input type="text" name="username" value="${user.username}"/>
                     <label>Contraseña</label>
@@ -142,7 +142,7 @@ userController.settingUpdate = async (req, res) => {
     
     try{
         const { username, password, email, age } = req.body;
-        const updatedUser = await User.findOneAndUpdate({_id: req.param.id}, {
+        const updatedUser = await User.findOneAndUpdate({_id: req.params.id}, {
             username: username,
             password: password,
             email: email,
