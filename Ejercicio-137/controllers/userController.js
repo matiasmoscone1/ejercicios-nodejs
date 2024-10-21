@@ -123,18 +123,18 @@ userController.settings = async (req, res) => {
                 <h2>Modifica tus propiedades</h2>
                 <form>
                     <label>Usuario</label>
-                    <input type="text" name="username" value=${User.username}/>
+                    <input type="text" name="username" value="${user.username}"/>
                     <label>Contraseña</label>
-                    <input type="password" name="password" value=${User.password}/>
+                    <input type="password" name="password" value="${user.password}"/>
                     <label>Email</label>
-                    <input type="text" name="email" value=${User.email}/>
+                    <input type="text" name="email" value="${user.email}"/>
                     <label>Age</label>
-                    <input type="text" name="age" value=${User.age}/>
+                    <input type="text" name="age" value="${user.age}"/>
                 </form>
             </div>
         </body>
     </html>`
-
+    res.status(200).send(html);
 
 }
 
