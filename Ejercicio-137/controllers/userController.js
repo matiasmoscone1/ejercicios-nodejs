@@ -121,7 +121,7 @@ userController.settings = async (req, res) => {
         <body>
             <div>
                 <h2>Modifica tus propiedades</h2>
-                <form>
+                <form action="/users/settings/update/${user._id}>
                     <label>Usuario</label>
                     <input type="text" name="username" value="${user.username}"/>
                     <label>Contraseña</label>
@@ -130,11 +130,16 @@ userController.settings = async (req, res) => {
                     <input type="text" name="email" value="${user.email}"/>
                     <label>Age</label>
                     <input type="text" name="age" value="${user.age}"/>
+                    <input type="submit" value="Actualizar"/>
                 </form>
             </div>
         </body>
     </html>`
     res.status(200).send(html);
+}
+
+userController.settingUpdate = (req, res) => {
+    
 
 }
 
