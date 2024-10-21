@@ -144,9 +144,11 @@ userController.settingUpdate = async (req, res) => {
     
     try{
         const { username, password, email, age } = req.body;
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
         const updatedUser = await User.findOneAndUpdate({_id: req.params.id}, {
             username: username,
-            password: password,
+            password: hashedPassword,
             email: email,
             age: age
         }, {new: true});
