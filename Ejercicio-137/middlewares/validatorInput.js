@@ -8,6 +8,13 @@ const validatorInput = [
     check("age").isInt({min: 13}).withMessage("El usuario debe ser mayor a 13 años") 
 ];
 
+const validatorUpdate = [
+    check("username").notEmpty().isLength({min: 4, max: 16}).withMessage("El username debe contener entre 4 y 16 caracteres"),
+    check("password").notEmpty().isLength({min: 4, max: 16}).withMessage("El password debe contener entre 4 y 16 caracteres"),    
+    check("email").isEmail().withMessage("El email debe respetar un formato valido de email"),
+    check("age").isInt({min: 13}).withMessage("El usuario debe ser mayor a 13 años") 
+];
+
 
 const validator = (req, res, next) => {
     const errors = validationResult(req);
@@ -20,17 +27,7 @@ const validator = (req, res, next) => {
     next();
 }
 
-const validatorUpdate = [
-    check("username").notEmpty().isLength({min: 4, max: 16}).withMessage("El username debe contener entre 4 y 16 caracteres"),
-    check("password").notEmpty().isLength({min: 4, max: 16}).withMessage("El password debe contener entre 4 y 16 caracteres"),    
-    check("email").isEmail().withMessage("El email debe respetar un formato valido de email"),
-    check("age").isInt({min: 13}).withMessage("El usuario debe ser mayor a 13 años") 
-];
 
 
 
-
-
-
-
- module.exports = { validatorInput, validator };
+ module.exports = { validatorInput, validatorUpdate ,validator };

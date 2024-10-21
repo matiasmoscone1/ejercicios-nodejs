@@ -1,5 +1,5 @@
 const userController = require("../controllers/userController.js");
-const {validatorInput, validator } = require("../middlewares/validatorInput");
+const {validatorInput, validatorUpdate, validator } = require("../middlewares/validatorInput");
 const loginController = require("../controllers/userLoginController");
 const authMiddleware = require("../middlewares/authMiddleware");
 const adminMiddleware = require("../middlewares/adminMiddleware");
@@ -13,7 +13,7 @@ router.post("/login", loginController.validLogin);
 
 router.get("/profile/:id", authMiddleware, userController.profile);
 router.get("/settings/:id", authMiddleware, userController.settings);
-router.post("/settings/update/:id", authMiddleware, userController.settingUpdate);
+router.post("/settings/update/:id", authMiddleware, validatorUpdate, validator, userController.settingUpdate);
 
 
 router.get("/read", authMiddleware, adminMiddleware, userController.read);

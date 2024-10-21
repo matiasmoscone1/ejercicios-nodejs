@@ -33,10 +33,12 @@ userController.create = async (req, res) => {
 userController.update = async (req, res) => {
     try{
         const userId = req.params.id;
-        const { username, password, rol, email, age } = req.body;        
+        const { username, password, rol, email, age } = req.body;    
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
         const updateUser = await User.findOneAndUpdate({_id: userId}, {
             username: username,
-            password: password,
+            password: hashedPassword,
             rol: rol,
             email: email,
             age: age
