@@ -114,8 +114,26 @@ userController.profile = async (req, res) => {
     }
 }
 
-userController.settings = (req, res) => {
+userController.settings = async (req, res) => {
     
+    const user = await User.findById(req.params.id);
+    const html = `<html>
+        <body>
+            <div>
+                <h2>Modifica tus propiedades</h2>
+                <form>
+                    <label>Usuario</label>
+                    <input type="text" name="username" value=${User.username}/>
+                    <label>Contraseña</label>
+                    <input type="password" name="password" value=${User.password}/>
+                    <label>Email</label>
+                    <input type="text" name="email" value=${User.email}/>
+                    <label>Age</label>
+                    <input type="text" name="age" value=${User.age}/>
+                </form>
+            </div>
+        </body>
+    </html>`
 
 
 }
