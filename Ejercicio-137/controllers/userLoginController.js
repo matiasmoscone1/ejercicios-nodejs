@@ -35,7 +35,7 @@ loginController.validLogin = async (req, res) => {
         if(isMatch){
 
             const token = jwt.sign({userId: user._id, rol: user.rol},"fnatic", {expiresIn: "1h"});
-            //res.status(200).send({message: "Usuario logueado con exito!!!", token});
+        
             res.cookie("token", token, {
                 httpOnly: true, 
                 secure: false, 
