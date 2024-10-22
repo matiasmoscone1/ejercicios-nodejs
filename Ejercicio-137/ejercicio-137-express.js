@@ -6,12 +6,14 @@ const users = require("./routes/userRoutes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 4000;
+const limiter = require("./middlewares/rateLimitMiddleware");
 
 app.use(cors());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/users", users);
+app.use(limiter);
 
 app.listen(port, (err) => {
     if(err){
