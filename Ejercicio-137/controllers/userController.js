@@ -124,8 +124,10 @@ userController.profile = async (req, res) => {
 }
 
 userController.settings = async (req, res) => {
-    
-    const user = await User.findById(req.params.id);
+    const token = req.cookies.token;
+    const decoded = jwt.verify(token, "fnatic");
+    const usuario = decoded.userId;
+    const user = await User.findById(usuario);
     const html = `<html>
         <body>
             <div>
