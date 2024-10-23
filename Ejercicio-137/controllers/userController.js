@@ -2,6 +2,7 @@ const User = require("../models/userModel.js");
 const userController = {};
 const path = require("node:path");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 userController.read = async (req, res) => {
     try{
@@ -92,6 +93,14 @@ userController.delete = async (req, res) => {
 }
 
 userController.profile = async (req, res) => {
+    
+    try{
+        const decoded = jwt.verify(res.cookie("token"), "fnatic");
+        console.log(decoded.userId);
+    }catch(err){
+        console.log("Token erroneo:", err);
+    }
+/*
     try{
         const user = await User.findById(req.params.id);
         if(user){
@@ -116,7 +125,7 @@ userController.profile = async (req, res) => {
         }
     }catch(err){
         res.status(500).send("Hubo un problema con el servidor...");
-    }
+    }*/
 }
 
 userController.settings = async (req, res) => {

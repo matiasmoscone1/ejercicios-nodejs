@@ -34,7 +34,7 @@ loginController.validLogin = async (req, res) => {
     
         if(isMatch){
 
-            const token = jwt.sign({userId: user._id, rol: user.rol},"fnatic", {expiresIn: "1h"});
+            const token = jwt.sign({userId: user._id, rol: user.rol}, "fnatic", {expiresIn: "1h"});
         
             res.cookie("token", token, {
                 httpOnly: true, 
@@ -54,7 +54,7 @@ loginController.validLogin = async (req, res) => {
 
 
 loginController.logout = (req, res) => {
-    console.log(res.cookie("token"));
+    //console.log(res.cookie("token"));
     const destroyCookie = res.clearCookie("token");
     if(destroyCookie){
         res.status(200).send("Usuario deslogueado con exito!!!");
