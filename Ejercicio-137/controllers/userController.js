@@ -93,16 +93,11 @@ userController.delete = async (req, res) => {
 }
 
 userController.profile = async (req, res) => {
-    
+    const token = req.cookies.token;
+    const decoded = jwt.verify(token, "fnatic");
+    const usuario = decoded.userId;
     try{
-        const decoded = jwt.verify(res.cookie("token"), "fnatic");
-        console.log(decoded.userId);
-    }catch(err){
-        console.log("Token erroneo:", err);
-    }
-/*
-    try{
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(usuario);
         if(user){
             const html = `<html>
             <body>
@@ -125,7 +120,7 @@ userController.profile = async (req, res) => {
         }
     }catch(err){
         res.status(500).send("Hubo un problema con el servidor...");
-    }*/
+    }
 }
 
 userController.settings = async (req, res) => {

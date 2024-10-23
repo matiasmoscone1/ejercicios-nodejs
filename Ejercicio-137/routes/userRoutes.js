@@ -13,7 +13,10 @@ router.post("/login", loginController.validLogin);
 router.post("/logout", authMiddleware, loginController.logout);
 
 
-router.get("/profile/:id", authMiddleware, userController.profile);
+//router.get("/profile/:id", authMiddleware, userController.profile);
+
+router.get("/profile", authMiddleware, userController.profile);
+
 router.get("/settings/:id", authMiddleware, userController.settings);
 router.post("/settings/update/:id", authMiddleware, validatorUpdate, validator, userController.settingUpdate);
 
