@@ -10,6 +10,8 @@ const router = express.Router();
 
 router.get("/login", loginController.login);
 router.post("/login", loginController.validLogin);
+router.post("/logout", );
+
 
 router.get("/profile/:id", authMiddleware, userController.profile);
 router.get("/settings/:id", authMiddleware, userController.settings);

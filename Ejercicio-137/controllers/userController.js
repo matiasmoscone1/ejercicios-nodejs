@@ -104,6 +104,9 @@ userController.profile = async (req, res) => {
                         <li>Rol: ${user.rol}</li>
                         <li>Email: ${user.email}</li>                
                     </ul>
+                    <form action="/users/logout" method="POST">
+                        <input type="submit" value="Log Out"/>
+                    </form>
                 </div>
             </body>
         </html>`;
