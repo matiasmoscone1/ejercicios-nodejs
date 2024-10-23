@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get("/login", loginController.login);
 router.post("/login", loginController.validLogin);
-router.post("/logout", );
+router.post("/logout", authMiddleware, loginController.logout);
 
 
 router.get("/profile/:id", authMiddleware, userController.profile);

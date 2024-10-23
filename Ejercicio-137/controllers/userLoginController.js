@@ -53,5 +53,15 @@ loginController.validLogin = async (req, res) => {
 }
 
 
+loginController.logout = (req, res) => {
+    console.log(res.cookie("token"));
+    const destroyCookie = res.clearCookie("token");
+    if(destroyCookie){
+        res.status(200).send("Usuario deslogueado con exito!!!");
+    }else{
+        res.status(404).send("No se pudo desloguear el usuario...");
+    }
+}
+
 
 module.exports = loginController;
