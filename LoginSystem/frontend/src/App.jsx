@@ -11,6 +11,7 @@ function App() {
     fetch("http://localhost:3000/api/auth/login", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
+      credentials: "include",
       body: JSON.stringify({ username, password })
     }).then((response) => response.json())
     .then((data) => console.log(data));
