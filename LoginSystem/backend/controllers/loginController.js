@@ -4,21 +4,18 @@ const loginController = {};
 const jwt = require("jsonwebtoken");
 
 loginController.auth =  async (req, res) => {
-
+    
     try{
         console.log(req.body);
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds)
-        const user = await User.findOne(req.body.username);
+        const user = await User.findOne({username: req.body.username});
 
         if(!user){
             res.status(404).send("Usuario no encontrado...");
         }
-
-        const isMatch = await bcrypt.compare(user.password, hashedPassword);
+        const isMatch = await bcrypt.compare(req.body.password, user.password);
 
         if(isMatch){
-            const token = jwt.sign({userId: user._id, rol: user.rol}, "key123", {expiresIn: "1h"});
+            const token = jwt.sign({userId: user._id, rol: user.rol}, "fnatic", {expiresIn: "1h"});
 
             res.cookie("token", token, {
                 httpOnly: true, 
@@ -26,12 +23,12 @@ loginController.auth =  async (req, res) => {
                 maxAge: 3600000, 
                 sameSite: 'Strict' 
             });
-            res.status(200).send("Usuario logueado con exito!!!");
+            res.status(200).json({message: "Usuario logueado con exito!!!"});
         }else{
-            res.status(404).send("Contraseña incorrecta...");
+            res.status(401).json({message: "Contraseña incorrecta..."});
         }
     }catch(err){
-        res.status(500).send("Hubo un problema con el servidor...");
+        res.status(500).json({message: "Ha ocurrido un error al autenticar el usuario..."});
     }
 
 }

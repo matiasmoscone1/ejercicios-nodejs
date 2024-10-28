@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function App() {
 
-  const [username, setUsername] = useState("user1");
+  const [username, setUsername] = useState("user2");
   const [password, setPassword] = useState("hola123");
 
   const fetchApi = () => {
