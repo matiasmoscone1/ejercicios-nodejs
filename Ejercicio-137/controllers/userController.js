@@ -89,7 +89,6 @@ userController.delete = async (req, res) => {
     }catch(err){
         res.status(500).send("No se pudo eliminar el usuario debio a un problema ocurrido en el servidor:", err);
     }
-
 }
 
 userController.profile = async (req, res) => {
