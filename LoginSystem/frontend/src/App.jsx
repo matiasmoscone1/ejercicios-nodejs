@@ -20,9 +20,20 @@ function App() {
 
   fetchApi();
 
+  const logout = () => {
+    fetch("http://localhost:3000/logout", {
+      method: "POST",
+      credentials: "include"
+    }).then((response) => response.json())
+    .then((data) => console.log(data));
+  }
+
+
   return (
     <>
       <p>frontend de loginsystem</p>
+
+      <button onClick={() => logout()}>Desloguearse</button>
     </>
   )
 }

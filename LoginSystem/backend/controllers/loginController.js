@@ -33,4 +33,11 @@ loginController.auth =  async (req, res) => {
 
 }
 
+loginController.logout = (req, res) => {
+    res.clearCookie("token");
+    res.status(200).json({message: "Usuario deslogueado con exito!!!"});
+}
+
+
+
 module.exports = loginController;
