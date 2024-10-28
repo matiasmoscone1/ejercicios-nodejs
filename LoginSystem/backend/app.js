@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 require("./config/dbConfig");
 require("dotenv").config();
+const cors = require("cors");
 const api = require("./routes/apiRoutes");
 
 const port = process.env.PORT || 4000;
 
 
-
+app.use(cors());
+app.use(express.json());
 app.use("/api", api);
 
 

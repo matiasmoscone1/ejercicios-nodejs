@@ -4,7 +4,11 @@ const loginController = {};
 
 loginController.auth =  async (req, res) => {
 
-    console.log(req.body);
+    try{
+        console.log(req.body);
+    }catch(err){
+        
+    }
 
 }
 
