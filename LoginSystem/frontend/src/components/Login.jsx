@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LoginContext } from "../context/LoginContext";
 
 const Login = () => {
@@ -22,7 +22,6 @@ const Login = () => {
         }catch(err){
             console.log(err);
         }
-        
     }
 
     const fetchLogOut = () => {
@@ -36,9 +35,13 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         saveCredentials(e.target.username.value, e.target.password.value);
-        fetchApi();
     }
 
+    useEffect(() => {
+        if(login.username && login.password){
+            fetchApi();
+        }
+    }, [login]);
 
     return(
     <>
