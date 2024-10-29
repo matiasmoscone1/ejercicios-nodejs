@@ -21,7 +21,7 @@ function App() {
   fetchApi();
 
   const logout = () => {
-    fetch("http://localhost:3000/logout", {
+    fetch("http://localhost:3000/api/logout", {
       method: "POST",
       credentials: "include"
     }).then((response) => response.json())
