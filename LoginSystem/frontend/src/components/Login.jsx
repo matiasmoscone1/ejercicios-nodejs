@@ -3,8 +3,8 @@ import { LoginContext } from "../context/LoginContext";
 
 const Login = () => {
 
-    const { login, saveCredentials } = useContext(LoginContext);
-    const [isLogged, setIsLogged] = useState(false);
+    const { login, saveCredentials, changeLogged } = useContext(LoginContext);
+    
 
     const fetchApi = async () => {
         const {username, password} = login;
@@ -17,7 +17,7 @@ const Login = () => {
                 body: JSON.stringify({ username, password })
             });
             if(response.ok){
-                setIsLogged(true);
+                changeLogged();
             }
         }catch(err){
             console.log(err);
@@ -42,7 +42,7 @@ const Login = () => {
 
     return(
     <>
-    {!isLogged ? 
+    {!login.isLogged ? 
     <div className="login-container">
         <form onSubmit={(e) => handleSubmit(e)}>
             <label>Username</label>
