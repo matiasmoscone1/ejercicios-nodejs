@@ -1,12 +1,16 @@
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
 
 const Login = () => {
 
+    const { handleSubmit } = useContext(LoginContext);
+
     return(<div className="login-container">
-        <form>
+        <form onSubmit={(e) => handleSubmit(e)}>
             <label>Username</label>
-            <input type="text" required/>
+            <input type="text" name="username" required/>
             <label>Password</label>
-            <input type="password" required/>
+            <input type="password" name="password" required/>
             <button type="submit">Log In</button>
         </form>
     </div>)

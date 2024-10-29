@@ -1,6 +1,7 @@
 import reducer from "../reducer/reducer";
 import { useReducer } from "react";
-const LoginContext = createContext();
+
+export const LoginContext = createContext();
 
 const LoginContextProvider = ({ children }) => {
 
