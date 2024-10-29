@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Login from "../src/components/Login";
+import LoginContextProvider from "../src/context/LoginContext";
 
 function App() {
 
@@ -33,8 +34,11 @@ function App() {
   return (
     <>
       <p>frontend de loginsystem</p>
-      <Login />
-      
+
+      <LoginContextProvider>
+        <Login />
+      </LoginContextProvider>
+
       <button onClick={() => logout()}>Desloguearse</button>
     </>
   )
