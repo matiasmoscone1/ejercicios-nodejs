@@ -3,7 +3,13 @@ import { LoginContext } from "../context/LoginContext";
 
 const Login = () => {
 
-    const { handleSubmit } = useContext(LoginContext);
+    const { login, saveCredentials } = useContext(LoginContext);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        saveCredentials(e.target.username.value, e.target.password.value);
+        console.log(login);
+    }
 
     return(<div className="login-container">
         <form onSubmit={(e) => handleSubmit(e)}>
