@@ -1,10 +1,11 @@
 import { useState } from "react";
-
+import Login from "../src/components/Login";
 
 function App() {
 
   const [username, setUsername] = useState("user2");
   const [password, setPassword] = useState("hola123");
+
 
   const fetchApi = () => {
 
@@ -32,7 +33,8 @@ function App() {
   return (
     <>
       <p>frontend de loginsystem</p>
-
+      <Login />
+      
       <button onClick={() => logout()}>Desloguearse</button>
     </>
   )

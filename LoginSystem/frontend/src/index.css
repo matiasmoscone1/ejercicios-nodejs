@@ -6,9 +6,30 @@
 
 .login-container{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.login-container form{
+    width: 30vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    padding: 2em;
+    border: 1px solid black;
+}
 
+.login-container input {
+    width: 20vw;
+    height: 3vh;
+}
+
+.login-container button {
+    margin-top: 2em;
+    width: 20vw;
+    height: 3vh;
+    cursor: pointer;
+}
