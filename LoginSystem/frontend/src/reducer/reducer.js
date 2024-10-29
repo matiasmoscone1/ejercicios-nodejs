@@ -1,7 +1,7 @@
 
-const reducer = () => {
+const reducer = (state, action) => {
 
-
+    
 
 }
 
