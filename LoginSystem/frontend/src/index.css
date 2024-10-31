@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+button{
+    cursor: pointer;
+}
+
 /* ------------------------------------- LOGIN ------------------------------------- */
 .login-container{
     display: flex;
@@ -32,15 +36,58 @@
     margin-top: 2em;
     width: 20vw;
     height: 3vh;
-    cursor: pointer;
 }
 
 
 /* ------------------------------------- DASHBOARD ------------------------------------- */
 
 .dashboard-container{
-    width: 100vw;
-    height: 100vh;
+    width: 80vw;
+    height: 60vh;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4em;
 }
 
+.section-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    gap: 2em;
+}
+
+.section-container p{
+    text-align: justify;
+}
+
+
+.dashboard-profile{
+    position: relative;
+    width: 15vw;
+    height: 10vh;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard-profile div{
+    margin-top: -1.5em;
+    text-align: center;
+}
+
+.dashboard-profile p{
+    font-weight: 600;
+}
+
+.btn-logout{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}

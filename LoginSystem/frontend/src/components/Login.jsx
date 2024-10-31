@@ -25,19 +25,7 @@ const Login = () => {
         }
     }
 
-    const fetchLogOut = async () => {
-        try{
-            const response = await fetch("http://localhost:3000/api/logout", {
-                method: "POST",
-                credentials: "include"
-                });
-            if(response.ok){
-                changeLogged();
-            }            
-        }catch(err){
-            console.log("Hubo un error al desloguear el usuario...");
-        }
-    }
+    
     
 
     const handleSubmit = (e) => {
@@ -65,7 +53,6 @@ const Login = () => {
     </div>
     : <div>
         <Dashboard/>
-        <button onClick={() => fetchLogOut()}>Log Out</button>
     </div>
     }
     </>)
