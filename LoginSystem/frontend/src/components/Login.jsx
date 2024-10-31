@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
-import Dashboard from "./Dashboard";
 
 const Login = () => {
 
     const { login, saveCredentials, changeLogged } = useContext(LoginContext);
     
+    const navigate = useNavigate();
 
     const fetchApi = async () => {
         const {username, password} = login;
@@ -19,14 +20,13 @@ const Login = () => {
             });
             if(response.ok){
                 changeLogged();
+                navigate("/dashboard");
             }
         }catch(err){
             console.log(err);
         }
     }
 
-    
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -52,7 +52,7 @@ const Login = () => {
         </form>
     </div>
     : <div>
-        <Dashboard/>
+        <h2>Usuario logueado con exito!!!</h2>
     </div>
     }
     </>)
