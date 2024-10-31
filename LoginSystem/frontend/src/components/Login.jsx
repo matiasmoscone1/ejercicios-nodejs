@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
-
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
 
     const { login, saveCredentials, changeLogged } = useContext(LoginContext);
@@ -19,6 +19,12 @@ const Login = () => {
                 body: JSON.stringify({ username, password })
             });
             if(response.ok){
+                const data = await response.json();
+                if(data.token){
+                    const decoded = jwtDecode(data.token);
+                    console.log(decoded);
+                }
+                console.log(data.token);
                 changeLogged();
                 navigate("/dashboard");
             }

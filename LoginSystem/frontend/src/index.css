@@ -91,3 +91,30 @@ button{
     right: 0px;
     bottom: 0px;
 }
+
+/* ------------------------------------- PROFILE ------------------------------------- */
+
+.profile-container{
+    width: 60vw;
+    height: 60vh;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+
+.items-profile{
+    width: 40vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}   
+
+.items-profile p{
+    font-weight: 600;
+}

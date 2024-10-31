@@ -15,7 +15,7 @@ loginController.auth =  async (req, res) => {
         const isMatch = await bcrypt.compare(req.body.password, user.password);
 
         if(isMatch){
-            const token = jwt.sign({userId: user._id, rol: user.rol}, "fnatic", {expiresIn: "1h"});
+            const token = jwt.sign({userId: user._id, rol: user.rol, email: user.email}, "fnatic", {expiresIn: "1h"});
 
             res.cookie("token", token, {
                 httpOnly: true, 
@@ -23,7 +23,7 @@ loginController.auth =  async (req, res) => {
                 maxAge: 3600000, 
                 sameSite: 'Strict' 
             });
-            res.status(200).json({message: "Usuario logueado con exito!!!"});
+            res.status(200).json({message: "Usuario logueado con exito!!!", token: token});
         }else{
             res.status(401).json({message: "Contraseña incorrecta..."});
         }
