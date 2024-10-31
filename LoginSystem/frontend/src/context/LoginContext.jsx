@@ -18,7 +18,9 @@ const LoginContextProvider = ({ children }) => {
 
     const changeLogged = () => dispatch({ type: "CHANGE_LOG" });
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged }}>
+    const cleanData = () => dispatch({type: "CLEAN_DATA"});
+
+    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData }}>
         { children }
     </LoginContext.Provider>)
 

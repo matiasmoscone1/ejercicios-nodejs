@@ -8,6 +8,9 @@ const reducer = (state, action) => {
         case "CHANGE_LOG":{
             return({...state, isLogged: !state.isLogged });
         }
+        case "CLEAN_DATA":{
+            return({...state, username: "", password: ""});
+        }
     }
 
 }

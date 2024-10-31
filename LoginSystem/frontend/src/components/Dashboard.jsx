@@ -1,9 +1,12 @@
 import { LoginContext } from "../context/LoginContext";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 const Dashboard = () => {
 
-    const { login, changeLogged } = useContext(LoginContext);
+    const { login, changeLogged, cleanData } = useContext(LoginContext);
+
+    const navigate = useNavigate();
 
     const fetchLogOut = async () => {
         try{
@@ -12,7 +15,9 @@ const Dashboard = () => {
                 credentials: "include"
                 });
             if(response.ok){
-                changeLogged();
+                cleanData();
+                changeLogged();                
+                navigate("/");
             }            
         }catch(err){
             console.log("Hubo un error al desloguear el usuario...");
@@ -28,6 +33,7 @@ const Dashboard = () => {
                 </Link>
             </div>
             <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>
+                     
         </div>
 
         <div className="dashboard-container">
