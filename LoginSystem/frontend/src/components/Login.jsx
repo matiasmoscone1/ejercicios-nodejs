@@ -17,7 +17,7 @@ const Login = () => {
                 body: JSON.stringify({ username, password })
             });
             if(response.ok){
-                changeLogged();
+                changeLogged(true);
             }
         }catch(err){
             console.log(err);
@@ -31,17 +31,19 @@ const Login = () => {
             }).then((response) => response.json())
             .then((data) => console.log(data));
     }
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
         saveCredentials(e.target.username.value, e.target.password.value);
+        
     }
 
     useEffect(() => {
         if(login.username && login.password){
             fetchApi();
         }
-    }, [login]);
+    }, [login.username, login.password]);
 
     return(
     <>
