@@ -24,12 +24,19 @@ const Login = () => {
         }
     }
 
-    const fetchLogOut = () => {
-        fetch("http://localhost:3000/api/logout", {
-            method: "POST",
-            credentials: "include"
-            }).then((response) => response.json())
-            .then((data) => console.log(data));
+    const fetchLogOut = async () => {
+        try{
+            const response = await fetch("http://localhost:3000/api/logout", {
+                method: "POST",
+                credentials: "include"
+                });
+            if(response.ok){
+                changeLogged();
+            }            
+        }catch(err){
+            console.log("Hubo un error al desloguear el usuario...");
+        }
+        
     }
     
 
