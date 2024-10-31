@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* ------------------------------------- LOGIN ------------------------------------- */
 .login-container{
     display: flex;
     justify-content: center;
@@ -33,3 +34,13 @@
     height: 3vh;
     cursor: pointer;
 }
+
+
+/* ------------------------------------- DASHBOARD ------------------------------------- */
+
+.dashboard-container{
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid black;
+}
+

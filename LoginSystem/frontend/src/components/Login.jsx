@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { LoginContext } from "../context/LoginContext";
+import Dashboard from "./Dashboard";
 
 const Login = () => {
 
@@ -36,7 +37,6 @@ const Login = () => {
         }catch(err){
             console.log("Hubo un error al desloguear el usuario...");
         }
-        
     }
     
 
@@ -64,7 +64,7 @@ const Login = () => {
         </form>
     </div>
     : <div>
-        <h2>Usuario logueado con exito!!!</h2>
+        <Dashboard/>
         <button onClick={() => fetchLogOut()}>Log Out</button>
     </div>
     }
