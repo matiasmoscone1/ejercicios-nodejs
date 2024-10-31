@@ -4,7 +4,7 @@ import { LoginContext } from "../context/LoginContext";
 import { jwtDecode } from "jwt-decode";
 const Login = () => {
 
-    const { login, saveCredentials, changeLogged } = useContext(LoginContext);
+    const { login, saveCredentials, changeLogged, addData } = useContext(LoginContext);
     
     const navigate = useNavigate();
 
@@ -22,14 +22,13 @@ const Login = () => {
                 const data = await response.json();
                 if(data.token){
                     const decoded = jwtDecode(data.token);
-                    console.log(decoded);
+                    addData(decoded);
                 }
-                console.log(data.token);
                 changeLogged();
                 navigate("/dashboard");
             }
         }catch(err){
-            console.log(err);
+            console.error("Ha ocurrido un error al autenticar el usuario:", err);
         }
     }
 

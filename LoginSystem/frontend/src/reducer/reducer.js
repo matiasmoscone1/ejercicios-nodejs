@@ -11,6 +11,9 @@ const reducer = (state, action) => {
         case "CLEAN_DATA":{
             return({...state, username: "", password: ""});
         }
+        case "ADD_DATA":{
+            return({...state, email: action.payload.email, rol: action.payload.rol, age: action.payload.age});
+        }
     }
 
 }

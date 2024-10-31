@@ -9,6 +9,8 @@ const LoginContextProvider = ({ children }) => {
     const initialState = {
         username: "",
         password: "",
+        email: "",
+        rol: "",
         isLogged: false
     };
 
@@ -20,7 +22,9 @@ const LoginContextProvider = ({ children }) => {
 
     const cleanData = () => dispatch({type: "CLEAN_DATA"});
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData }}>
+    const addData = (tok) => dispatch({type: "ADD_DATA", payload: tok})
+
+    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData }}>
         { children }
     </LoginContext.Provider>)
 

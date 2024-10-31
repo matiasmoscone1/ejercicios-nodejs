@@ -15,7 +15,7 @@ loginController.auth =  async (req, res) => {
         const isMatch = await bcrypt.compare(req.body.password, user.password);
 
         if(isMatch){
-            const token = jwt.sign({userId: user._id, rol: user.rol, email: user.email}, "fnatic", {expiresIn: "1h"});
+            const token = jwt.sign({userId: user._id, rol: user.rol, email: user.email, age: user.age}, "fnatic", {expiresIn: "1h"});
 
             res.cookie("token", token, {
                 httpOnly: true, 
