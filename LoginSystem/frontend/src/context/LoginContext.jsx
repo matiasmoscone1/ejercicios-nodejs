@@ -14,9 +14,9 @@ const LoginContextProvider = ({ children }) => {
 
     const [login, dispatch] = useReducer(reducer, initialState);
 
-    const saveCredentials = (username, password) => dispatch({type: "SAVE_AUTH", payload: {username, password}});
+    const saveCredentials = (username, password) => dispatch({ type: "SAVE_AUTH", payload: {username, password} });
 
-    const changeLogged = () => dispatch({type: "CHANGE_LOG", payload: true});
+    const changeLogged = () => dispatch({ type: "CHANGE_LOG" });
 
     return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged }}>
         { children }

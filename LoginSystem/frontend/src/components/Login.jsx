@@ -17,7 +17,7 @@ const Login = () => {
                 body: JSON.stringify({ username, password })
             });
             if(response.ok){
-                changeLogged(true);
+                changeLogged();
             }
         }catch(err){
             console.log(err);
@@ -36,7 +36,6 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         saveCredentials(e.target.username.value, e.target.password.value);
-        
     }
 
     useEffect(() => {
