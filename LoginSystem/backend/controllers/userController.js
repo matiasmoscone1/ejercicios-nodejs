@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-
+const bcrypt = require("bcrypt");
 const userController = {};
 
 /*
@@ -15,6 +15,26 @@ userController.users = async (req, res) => {
 
 }*/
 
+userController.basicUpdate = async (req, res) => {
+
+    const { id, username, password, email, age } = req.body;
+    try{
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const user = await User.findOneAndUpdate({_id: id}, {
+            username: username,
+            password: hashedPassword,
+            email: email,
+            age: age
+        }, {new: true});
+        if(user){
+            res.status(200).json({message: "Usuario actualizado con exito!"});
+        }else{
+            res.status(404).json({message: "Usuario no encontrado..."});
+        }
+    }
+
+}
 
 
 module.exports = userController;
