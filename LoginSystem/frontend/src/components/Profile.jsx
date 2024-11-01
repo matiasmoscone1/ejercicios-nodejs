@@ -7,7 +7,6 @@ const Profile = () => {
     const { login } = useContext(LoginContext);
 
 
-
     return(<>
         <div className="profile-container">
             <div className="items-profile">

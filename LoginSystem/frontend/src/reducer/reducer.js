@@ -12,7 +12,7 @@ const reducer = (state, action) => {
             return({...state, username: "", password: ""});
         }
         case "ADD_DATA":{
-            return({...state, email: action.payload.email, rol: action.payload.rol, age: action.payload.age});
+            return({...state, id: action.payload.userId, email: action.payload.email, rol: action.payload.rol, age: action.payload.age});
         }
     }
 

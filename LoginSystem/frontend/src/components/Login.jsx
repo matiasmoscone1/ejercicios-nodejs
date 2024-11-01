@@ -23,6 +23,7 @@ const Login = () => {
                 if(data.token){
                     const decoded = jwtDecode(data.token);
                     addData(decoded);
+                    console.log(decoded);
                 }
                 changeLogged();
                 navigate("/dashboard");
