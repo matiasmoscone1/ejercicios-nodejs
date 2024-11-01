@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const UpdateUser = () => {
 
-    const { login } = useContext(LoginContext);
+    const { login, updateData } = useContext(LoginContext);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         id: login.id,
@@ -34,6 +34,7 @@ const UpdateUser = () => {
                     age: formData.age})
             });
             if(response.ok){
+                updateData(formData);
                 navigate("/profile");
             }
         }catch(err){

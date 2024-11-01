@@ -24,7 +24,9 @@ const LoginContextProvider = ({ children }) => {
 
     const addData = (tok) => dispatch({type: "ADD_DATA", payload: tok})
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData }}>
+    const updateData = (obj) => dispatch({type: "UPDATE_DATA", payload: obj});
+
+    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData }}>
         { children }
     </LoginContext.Provider>)
 
