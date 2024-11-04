@@ -3,19 +3,6 @@ const bcrypt = require("bcrypt");
 const userController = {};
 const mongoose = require("mongoose");
 
-/*
-userController.users = async (req, res) => {
-
-    try{
-        const usuario = await User.findById(req.params.id);
-
-    }catch(err){
-        res.status(404).json({message: "No se encontro ningun usuario..."});
-    }
-
-
-}*/
-
 userController.basicUpdate = async (req, res) => {
 
     const { id, username, password, email, age } = req.body;
