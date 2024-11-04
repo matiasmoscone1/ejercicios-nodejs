@@ -7,23 +7,25 @@ const Dashboard = () => {
     const { login, fetchLogOut } = useContext(LoginContext);
 
     return(<>
-        <div className="dashboard-profile">
-            <div>
-                <p>{login.username}</p>
-                <Link to={"/profile"}>
-                    <button>Your profile</button>
-                </Link>
+        <div className="top-dashboard">
+            {login.rol === "Admin" ? 
+                <div className="dashboard-admin">
+                    <Link to={"/admin-panel"}>
+                        <button>Admin Panel</button>
+                    </Link>
+                </div> 
+                : <></>}
+
+            <div className="dashboard-profile">
+                <div>
+                    <p>{login.username}</p>
+                    <Link to={"/profile"}>
+                        <button>Your profile</button>
+                    </Link>
+                </div>
+                <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>    
             </div>
-            <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>    
         </div>
-    
-        {login.rol === "Admin" ? 
-            <div className="dashboard-admin">
-                <Link to={"/admin-panel"}>
-                    <button>Admin Panel</button>
-                </Link>
-            </div> 
-            : <></>}
 
         <div className="dashboard-container">
             <section className="section-container">

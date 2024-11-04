@@ -41,6 +41,12 @@ button{
 
 /* ------------------------------------- DASHBOARD ------------------------------------- */
 
+.top-dashboard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .dashboard-container{
     width: 80vw;
     height: 60vh;
@@ -91,6 +97,20 @@ button{
     position: absolute;
     right: .5em;
     bottom: .5em;
+}
+
+
+/* ----------------------------------- DASHBOARD-ADMIN ----------------------------------- */
+
+.dashboard-admin{
+    position: relative;
+    width: 15vw;
+    height: 12vh;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -151,7 +171,6 @@ button{
     text-align: center;
     margin-top: 1.5em;
 }
-
 
 
 /* ------------------------------------- UPDATE-USER ------------------------------------- */

@@ -1,8 +1,8 @@
 
 
 const adminMiddleware = (req, res, next) => {
-
-    if(req.user.rol !== "Admin"){
+    const userRole = req.headers["user-role"];
+    if(userRole !== "Admin"){
         res.status(403).json({message: "Solo administradores pueden entrar a esta ruta."});
     }else{
         next();

@@ -4,11 +4,12 @@ const loginController = require("../controllers/loginController");
 const userController = require("../controllers/userController");
 const adminController = require("../controllers/adminController");
 const adminMiddleware = require("../middlewares/adminMiddleware");
+const authenticateToken = require("../middlewares/authenticateToken");
 
 router.post("/auth/login", loginController.auth);
 router.post("/logout", loginController.logout);
 
-router.get("/adminRead", adminMiddleware, adminController.read);
+router.get("/adminRead",  adminMiddleware, adminController.read);
 
 
 router.post("/basicUpdate", userController.basicUpdate);
