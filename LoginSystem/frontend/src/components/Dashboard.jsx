@@ -32,8 +32,7 @@ const Dashboard = () => {
                     <button>Your profile</button>
                 </Link>
             </div>
-            <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>
-                     
+            <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>    
         </div>
 
         <div className="dashboard-container">

@@ -66,17 +66,18 @@ button{
     text-align: justify;
 }
 
-
 .dashboard-profile{
     position: relative;
     width: 15vw;
-    height: 10vh;
+    height: 12vh;
+    margin-left: auto;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .dashboard-profile div{
     margin-top: -1.5em;
     text-align: center;
@@ -88,23 +89,25 @@ button{
 
 .btn-logout{
     position: absolute;
-    right: 0px;
-    bottom: 0px;
+    right: .5em;
+    bottom: .5em;
 }
+
 
 /* ------------------------------------- PROFILE ------------------------------------- */
 
 .profile-container{
-    width: 60vw;
+    width: 100vw;
     height: 100vh;
     border: 1px solid black;
     margin: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2em;
+    position: relative;
 }
-
 
 .items-profile{
     width: 40vw;
@@ -114,10 +117,24 @@ button{
     justify-content: center;
     align-items: center;
     border: 1px solid black;
+    gap: .5em;
 }   
 
 .items-profile p{
     font-weight: 600;
+}
+
+.items-profile button{
+    width: 10vw;
+    height: 3vh;
+}
+
+.profile-home{
+    width: 10vw;
+    height: 5vh;
+    position: absolute;
+    left: 2em;
+    top: 2em;
 }
 
 
@@ -145,6 +162,7 @@ button{
 .update-user-container input {
     width: 20vw;
     height: 3vh;
+    text-align: center;
 }
 
 .update-user-container button {

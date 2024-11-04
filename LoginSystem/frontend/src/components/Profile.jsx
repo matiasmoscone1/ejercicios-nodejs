@@ -9,6 +9,11 @@ const Profile = () => {
 
     return(<>
         <div className="profile-container">
+            <div className="profile-home">
+                <Link to={"/dashboard"}>
+                    <button>Home</button>
+                </Link>
+            </div>
             <div className="items-profile">
                 <p>Usuario: {login.username}</p>
                 <p>Rol: {login.rol}</p>
