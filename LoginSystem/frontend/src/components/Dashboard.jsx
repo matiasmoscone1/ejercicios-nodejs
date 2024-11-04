@@ -1,6 +1,7 @@
 import { LoginContext } from "../context/LoginContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+
 const Dashboard = () => {
 
     const { login, fetchLogOut } = useContext(LoginContext);
@@ -15,6 +16,14 @@ const Dashboard = () => {
             </div>
             <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>    
         </div>
+    
+        {login.rol === "Admin" ? 
+            <div className="dashboard-admin">
+                <Link to={"/admin-panel"}>
+                    <button>Admin Panel</button>
+                </Link>
+            </div> 
+            : <></>}
 
         <div className="dashboard-container">
             <section className="section-container">

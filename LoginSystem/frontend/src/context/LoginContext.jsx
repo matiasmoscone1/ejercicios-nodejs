@@ -25,7 +25,6 @@ const LoginContextProvider = ({ children }) => {
         }
     }
 
-
     const initialState = {
         username: "",
         password: "",

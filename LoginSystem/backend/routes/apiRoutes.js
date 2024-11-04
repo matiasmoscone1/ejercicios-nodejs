@@ -3,15 +3,15 @@ const router = express.Router();
 const loginController = require("../controllers/loginController");
 const userController = require("../controllers/userController");
 const adminController = require("../controllers/adminController");
-
+const adminMiddleware = require("../middlewares/adminMiddleware");
 
 router.post("/auth/login", loginController.auth);
 router.post("/logout", loginController.logout);
 
-router.get("/adminRead", adminController.read);
+router.get("/adminRead", adminMiddleware, adminController.read);
+
 
 router.post("/basicUpdate", userController.basicUpdate);
-router.get("/users",)
 
 
 module.exports = router;
