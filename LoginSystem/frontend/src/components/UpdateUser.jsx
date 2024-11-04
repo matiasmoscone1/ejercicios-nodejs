@@ -1,6 +1,6 @@
 import { LoginContext } from "../context/LoginContext";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const UpdateUser = () => {
 
@@ -53,7 +53,12 @@ const UpdateUser = () => {
                 <input type="email" value={formData.email} name="email" required onChange={(e) => handleChange(e)}/>
                 <label>Age</label>
                 <input type="number" value={formData.age} name="age" required onChange={(e) => handleChange(e)}/>
-                <button type="submit">Send</button>
+                <div>
+                    <button type="submit">Save</button>
+                    <Link to={"/profile"}>
+                        <button>Cancel</button>
+                    </Link>
+                </div>
             </form>
         </div>
     </>)

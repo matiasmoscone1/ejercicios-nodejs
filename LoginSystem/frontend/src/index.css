@@ -148,7 +148,9 @@ button{
 }
 
 .update-user-container button {
-    width: 20vw;
+    width: 8vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
     height: 3vh;
     margin-top: 1em;
 }
