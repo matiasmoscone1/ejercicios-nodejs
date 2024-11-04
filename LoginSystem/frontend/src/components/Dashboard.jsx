@@ -1,28 +1,9 @@
 import { LoginContext } from "../context/LoginContext";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 const Dashboard = () => {
 
-    const { login, changeLogged, cleanData } = useContext(LoginContext);
-
-    const navigate = useNavigate();
-
-    const fetchLogOut = async () => {
-        try{
-            const response = await fetch("http://localhost:3000/api/logout", {
-                method: "POST",
-                credentials: "include"
-                });
-            if(response.ok){
-                cleanData();
-                changeLogged();                
-                navigate("/");
-            }            
-        }catch(err){
-            console.log("Hubo un error al desloguear el usuario...");
-        }
-    }
+    const { login, fetchLogOut } = useContext(LoginContext);
 
     return(<>
         <div className="dashboard-profile">

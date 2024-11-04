@@ -4,8 +4,7 @@ import { LoginContext } from "../context/LoginContext";
 
 const Profile = () => {
 
-    const { login } = useContext(LoginContext);
-
+    const { login, fetchLogOut } = useContext(LoginContext);
 
     return(<>
         <div className="profile-container">
@@ -13,6 +12,9 @@ const Profile = () => {
                 <Link to={"/dashboard"}>
                     <button>Home</button>
                 </Link>
+            </div>
+            <div>
+                <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>
             </div>
             <div className="items-profile">
                 <p>Usuario: {login.username}</p>

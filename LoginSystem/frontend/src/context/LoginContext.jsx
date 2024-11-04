@@ -1,10 +1,30 @@
 import reducer from "../reducer/reducer";
 import { createContext } from "react";
 import { useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const LoginContext = createContext();
 
 const LoginContextProvider = ({ children }) => {
+
+    const navigate = useNavigate();
+
+    const fetchLogOut = async () => {
+        try{
+            const response = await fetch("http://localhost:3000/api/logout", {
+                method: "POST",
+                credentials: "include"
+                });
+            if(response.ok){
+                cleanData();
+                changeLogged();                
+                navigate("/");
+            }            
+        }catch(err){
+            console.log("Hubo un error al desloguear el usuario...");
+        }
+    }
+
 
     const initialState = {
         username: "",
@@ -26,7 +46,7 @@ const LoginContextProvider = ({ children }) => {
 
     const updateData = (obj) => dispatch({type: "UPDATE_DATA", payload: obj});
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData }}>
+    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData, fetchLogOut }}>
         { children }
     </LoginContext.Provider>)
 
