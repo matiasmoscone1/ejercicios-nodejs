@@ -119,3 +119,38 @@ button{
 .items-profile p{
     font-weight: 600;
 }
+
+
+/* ------------------------------------- UPDATE-USER ------------------------------------- */
+
+.update-user-container{
+    height: 100vh;
+    width: 80vw;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.update-user-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+
+.update-user-container input {
+    width: 20vw;
+    height: 3vh;
+}
+
+.update-user-container button {
+    width: 20vw;
+    height: 3vh;
+    margin-top: 1em;
+}
+
+
