@@ -13,7 +13,8 @@ const Profile = () => {
                     <button>Home</button>
                 </Link>
             </div>
-            <div>
+            <div className="profile-logout">
+                <p>{login.username}</p>
                 <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>
             </div>
             <div className="items-profile">
