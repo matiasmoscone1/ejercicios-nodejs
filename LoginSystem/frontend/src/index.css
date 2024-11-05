@@ -248,18 +248,10 @@ button{
     border: none;
 }
 
+.tr-btn-table{
+    width: 6em;
+}
+
 .btn-table{
-    width: 40px;
+    width: 3em;
 }
-
-/*
-.div-table-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5em;
-}
-
-.div-table-container td{
-    border: none;
-}*/

@@ -43,7 +43,7 @@ const AdminPanel = () => {
                         <td>Role</td>
                         <td>Email</td>
                         <td>Age</td>
-                        <td colSpan={2}>Actions</td>
+                        <td className="tr-btn-table" colSpan={2}>Actions</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,11 +58,6 @@ const AdminPanel = () => {
                             <td>{user.age}</td>
                             <td className="btn-table"><button><i class="fas fa-edit"></i></button></td>
                             <td className="btn-table"><button><i class="fas fa-trash-alt"></i></button></td>
-                            {/* 
-                            <div className="div-table-container">
-                                <td><button><i class="fas fa-trash-alt"></i></button></td>
-                                <td><button><i class="fas fa-edit"></i></button></td>
-                            </div>*/}
                         </tr>)
                     })}
                 </tbody>
