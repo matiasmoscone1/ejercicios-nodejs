@@ -1,5 +1,6 @@
 import { LoginContext } from "../../context/LoginContext";
 import { useContext, useEffect } from "react";
+import { useResolvedPath } from "react-router-dom";
 
 const AdminPanel = () => {
 
@@ -18,7 +19,7 @@ const AdminPanel = () => {
                 credentials: "include"
             });
             const data = await response.json();
-            await saveUsers(data);
+            saveUsers(data);
             console.log(data);
         }catch(err){
             console.error("Ha ocurrido un error al listar los usuarios.", err);
@@ -29,7 +30,7 @@ const AdminPanel = () => {
         fetchUsers();
     }, [login]);
 
-    
+    console.log(users.array);
     return(<>
         <div className="admin-panel-container">
             <h2>Admin Panel</h2>
@@ -45,9 +46,17 @@ const AdminPanel = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        
-                    </tr>
+                    {users.array.map((user) => {
+                        return(
+                        <tr>
+                            <td>{user._id}</td>
+                            <td>{user.username}</td>
+                            <td>{user.password}</td>
+                            <td>{user.rol}</td>
+                            <td>{user.email}</td>
+                            <td>{user.age}</td>
+                        </tr>)
+                    })}
                 </tbody>
             </table>
 

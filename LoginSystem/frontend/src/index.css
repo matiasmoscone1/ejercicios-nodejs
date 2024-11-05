@@ -229,5 +229,15 @@ button{
     height: 100vw;
     border: 1px solid black;
     text-align: center;
+    table-layout: fixed;
 }
 
+.table-container tr{
+    height: 1.5em;
+}
+
+.table-container td{
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
