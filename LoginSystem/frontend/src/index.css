@@ -243,3 +243,23 @@ button{
 .table-container thead{
     font-weight: 600;
 }
+
+.table-container button{
+    border: none;
+}
+
+.btn-table{
+    width: 40px;
+}
+
+/*
+.div-table-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.div-table-container td{
+    border: none;
+}*/
