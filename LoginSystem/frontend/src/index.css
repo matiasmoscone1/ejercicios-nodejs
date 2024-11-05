@@ -208,4 +208,26 @@ button{
     margin-top: 1em;
 }
 
+/* ----------------------------------- ADMIN-PANEL ----------------------------------- */
+
+.admin-panel-container{
+    width: 100vw;
+    height: 100vw;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.admin-panel-container h2{
+    padding: 2em;
+}
+
+.table-container{
+    width: 80vw;
+    height: 100vw;
+    border: 1px solid black;
+    text-align: center;
+}
 

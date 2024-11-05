@@ -19,7 +19,7 @@ const Profile = () => {
             </div>
             <div className="items-profile">
                 <p>Usuario: {login.username}</p>
-                <p>Rol: {login.rol}</p>
+                <p>Role: {login.rol}</p>
                 <p>Email: {login.email}</p>
                 <p>Edad: {login.age}</p>                
             <Link to={"/update-user"}>

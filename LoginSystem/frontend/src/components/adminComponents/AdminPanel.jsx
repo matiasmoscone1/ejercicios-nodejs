@@ -26,9 +26,26 @@ const AdminPanel = () => {
     }
 
     fetchUsers();
+
     return(<>
-        <div>
+        <div className="admin-panel-container">
             <h2>Admin Panel</h2>
+            <table border={1} className="table-container">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Username</td>
+                        <td>Password</td>
+                        <td>Role</td>
+                        <td>Email</td>
+                        <td>Age</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
         </div>
     </>)
 
