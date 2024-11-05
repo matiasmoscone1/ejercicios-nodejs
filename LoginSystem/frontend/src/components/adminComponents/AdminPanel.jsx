@@ -1,5 +1,5 @@
 import { LoginContext } from "../../context/LoginContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const AdminPanel = () => {
 
@@ -18,16 +18,18 @@ const AdminPanel = () => {
                 credentials: "include"
             });
             const data = await response.json();
-            saveUsers(data);
+            await saveUsers(data);
             console.log(data);
         }catch(err){
             console.error("Ha ocurrido un error al listar los usuarios.", err);
         }
     }
 
-    fetchUsers();
+    useEffect(() => {
+        fetchUsers();
+    }, [login]);
 
-    console.log(users);
+    
     return(<>
         <div className="admin-panel-container">
             <h2>Admin Panel</h2>
