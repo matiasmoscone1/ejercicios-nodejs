@@ -48,7 +48,7 @@ const AdminPanel = () => {
                 <tbody>
                     {users.array.map((user) => {
                         return(
-                        <tr>
+                        <tr key={user._id}>
                             <td>{user._id}</td>
                             <td>{user.username}</td>
                             <td>{user.password}</td>

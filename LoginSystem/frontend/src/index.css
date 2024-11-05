@@ -226,18 +226,20 @@ button{
 
 .table-container{
     width: 80vw;
-    height: 100vw;
+    height: auto;
     border: 1px solid black;
     text-align: center;
     table-layout: fixed;
-}
-
-.table-container tr{
-    height: 1.5em;
+    border-collapse: collapse;
 }
 
 .table-container td{
+    padding: .2em;
     white-space: nowrap;  
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.table-container thead{
+    font-weight: 600;
 }
