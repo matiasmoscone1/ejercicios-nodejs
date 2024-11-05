@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 const AdminPanel = () => {
 
-    const { login } = useContext(LoginContext);
+    const { login, saveUsers, users } = useContext(LoginContext);
 
     console.log(login.rol);
 
@@ -18,15 +18,16 @@ const AdminPanel = () => {
                 credentials: "include"
             });
             const data = await response.json();
+            saveUsers(data);
             console.log(data);
         }catch(err){
             console.error("Ha ocurrido un error al listar los usuarios.", err);
         }
-
     }
 
     fetchUsers();
 
+    console.log(users);
     return(<>
         <div className="admin-panel-container">
             <h2>Admin Panel</h2>
@@ -42,7 +43,9 @@ const AdminPanel = () => {
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr>
+                        
+                    </tr>
                 </tbody>
             </table>
 

@@ -32,8 +32,12 @@ const LoginContextProvider = ({ children }) => {
         rol: "",
         isLogged: false
     };
+    const initialStateAdmin = {
+        array: []
+    }
 
     const [login, dispatch] = useReducer(reducer, initialState);
+    const [users, dispatchAdmin] = useReducer(reducerAdmin, initialStateAdmin);
 
     const saveCredentials = (username, password) => dispatch({ type: "SAVE_AUTH", payload: {username, password} });
 
@@ -45,7 +49,9 @@ const LoginContextProvider = ({ children }) => {
 
     const updateData = (obj) => dispatch({type: "UPDATE_DATA", payload: obj});
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData, fetchLogOut }}>
+    const saveUsers = (obj) => dispatchAdmin({type: "SAVE_USERS", payload: obj});
+
+    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData, fetchLogOut, saveUsers, users }}>
         { children }
     </LoginContext.Provider>)
 
