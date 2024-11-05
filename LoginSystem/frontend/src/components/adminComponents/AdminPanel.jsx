@@ -34,6 +34,23 @@ const AdminPanel = () => {
     return(<>
         <div className="admin-panel-container">
             <h2>Admin Panel</h2>
+            <div className="filter-container">
+                <div>
+                    <p>Filter by <strong>Username</strong></p>
+                    <input type="text" name="filter-username"/>
+                    <button>Filter</button>
+                </div>
+                <div>
+                    <p>Filter by <strong>Role</strong></p>
+                    <input type="text" name="filter-role"/>
+                    <button>Filter</button>
+                </div>
+                <div>
+                    <p>Filter by <strong>Age</strong></p>
+                    <input type="text" name="filter-age"/> 
+                    <button>Filter</button>
+                </div>
+            </div>
             <table border={1} className="table-container">
                 <thead>
                     <tr>
