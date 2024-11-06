@@ -53,6 +53,15 @@ const AdminPanel = () => {
             </div>
             <table border={1} className="table-container">
                 <thead>
+                    <tr className="tr-create-user" colSpan={7}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colSpan={2}><button>Create User</button></td>
+                    </tr>
                     <tr>
                         <td>Id</td>
                         <td>Username</td>

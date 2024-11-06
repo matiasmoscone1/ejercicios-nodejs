@@ -10,6 +10,7 @@ button{
 
 /* ------------------------------------- LOGIN ------------------------------------- */
 .login-container{
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -280,4 +281,15 @@ button{
 }
 .filter-container input{
     height: 1.5em;
+}
+
+.tr-create-user td{
+    border: none;
+}
+
+.tr-create-user button{
+    padding: .2em;
+    height: 2em;
+    width: 10em;
+    border: 1px solid black;
 }
