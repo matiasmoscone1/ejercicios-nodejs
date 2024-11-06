@@ -49,7 +49,7 @@ const LoginContextProvider = ({ children }) => {
                 cleanData();
                 changeLogged();                
                 navigate("/");
-                localStorage.clear();
+                
             }            
         }catch(err){
             console.log("Hubo un error al desloguear el usuario...");
