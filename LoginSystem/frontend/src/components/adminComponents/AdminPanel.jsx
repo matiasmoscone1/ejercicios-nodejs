@@ -1,10 +1,10 @@
 import { LoginContext } from "../../context/LoginContext";
 import { useContext, useEffect } from "react";
-import { useResolvedPath } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
-    const { login, saveUsers, users } = useContext(LoginContext);
+    const { login, saveUsers, users, fetchLogOut } = useContext(LoginContext);
 
     console.log(login.rol);
 
@@ -33,6 +33,15 @@ const AdminPanel = () => {
     console.log(users.array);
     return(<>
         <div className="admin-panel-container">
+            <div className="dashboard-profile">
+                <div>
+                    <p>{login.username}</p>
+                    <Link to={"/profile"}>
+                        <button>Your profile</button>
+                    </Link>
+                </div>
+                <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>    
+            </div>
             <h2>Admin Panel</h2>
             <div className="filter-container">
                 <div>
@@ -54,12 +63,7 @@ const AdminPanel = () => {
             <table border={1} className="table-container">
                 <thead>
                     <tr className="tr-create-user" colSpan={7}>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td colSpan={6}></td>
                         <td colSpan={2}><button>Create User</button></td>
                     </tr>
                     <tr>

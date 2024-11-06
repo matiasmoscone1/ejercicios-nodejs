@@ -213,7 +213,7 @@ button{
 
 .admin-panel-container{
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -223,6 +223,7 @@ button{
 
 .admin-panel-container h2{
     padding: 2em;
+    margin-top: -2em;
 }
 
 .table-container{
@@ -288,8 +289,10 @@ button{
 }
 
 .tr-create-user button{
-    padding: .2em;
-    height: 2em;
+    height: 1.8em;
     width: 10em;
     border: 1px solid black;
 }
+
+
+
