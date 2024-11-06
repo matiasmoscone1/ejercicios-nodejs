@@ -55,12 +55,33 @@ const LoginContextProvider = ({ children }) => {
 
     const saveUsers = (obj) => dispatchAdmin({type: "SAVE_USERS", payload: obj});
 
+    const fetchUsers = async () => {
+        try{
+            const response = await fetch("http://localhost:3000/api/adminRead", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "User-Role": login.rol},
+                credentials: "include"
+            });
+            const data = await response.json();
+            saveUsers(data);
+            console.log(data);
+        }catch(err){
+            console.error("Ha ocurrido un error al listar los usuarios.", err);
+        }
+    }
+
+    useEffect(() => {
+        fetchUsers();
+    }, [login]);
+
     useEffect(() => {
         localStorage.setItem("login", JSON.stringify(login)); 
         localStorage.setItem("users", JSON.stringify(users)); 
     }, [login, users]);
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData, fetchLogOut, saveUsers, users }}>
+    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers }}>
         { children }
     </LoginContext.Provider>)
 

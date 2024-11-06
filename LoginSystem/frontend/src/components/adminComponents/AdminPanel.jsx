@@ -1,37 +1,18 @@
 import { LoginContext } from "../../context/LoginContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
-    const { login, saveUsers, users, fetchLogOut } = useContext(LoginContext);
+    const { login, users, fetchLogOut } = useContext(LoginContext);
 
-    console.log(login.rol);
-
-    const fetchUsers = async () => {
-        try{
-            const response = await fetch("http://localhost:3000/api/adminRead", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "User-Role": login.rol},
-                credentials: "include"
-            });
-            const data = await response.json();
-            saveUsers(data);
-            console.log(data);
-        }catch(err){
-            console.error("Ha ocurrido un error al listar los usuarios.", err);
-        }
-    }
-
-    useEffect(() => {
-        fetchUsers();
-    }, [login]);
-
-    console.log(users.array);
     return(<>
-        <div className="admin-panel-container">
+        {login.rol === "Admin" ? <div className="admin-panel-container">
+            <div className="profile-home">
+                <Link to={"/dashboard"}>
+                    <button>Home</button>
+                </Link>
+            </div>
             <div className="dashboard-profile">
                 <div>
                     <p>{login.username}</p>
@@ -92,7 +73,10 @@ const AdminPanel = () => {
                 </tbody>
             </table>
 
-        </div>
+        </div>: <div>
+                <h3>Solo pueden entrar administradores a esta seccion.</h3>
+                
+            </div>}
     </>)
 
 }
