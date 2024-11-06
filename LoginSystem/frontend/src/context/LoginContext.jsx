@@ -13,22 +13,6 @@ const LoginContextProvider = ({ children }) => {
     const savedLogin = JSON.parse(localStorage.getItem("login"));
     const savedUsers = JSON.parse(localStorage.getItem("users"));
 
-    const fetchLogOut = async () => {
-        try{
-            const response = await fetch("http://localhost:3000/api/logout", {
-                method: "POST",
-                credentials: "include"
-                });
-            if(response.ok){
-                cleanData();
-                changeLogged();                
-                navigate("/");
-            }            
-        }catch(err){
-            console.log("Hubo un error al desloguear el usuario...");
-        }
-    }
-
     const initialState = savedLogin || {
         username: "",
         password: "",
@@ -54,6 +38,23 @@ const LoginContextProvider = ({ children }) => {
     const updateData = (obj) => dispatch({type: "UPDATE_DATA", payload: obj});
 
     const saveUsers = (obj) => dispatchAdmin({type: "SAVE_USERS", payload: obj});
+
+    const fetchLogOut = async () => {
+        try{
+            const response = await fetch("http://localhost:3000/api/logout", {
+                method: "POST",
+                credentials: "include"
+                });
+            if(response.ok){
+                cleanData();
+                changeLogged();                
+                navigate("/");
+                localStorage.clear();
+            }            
+        }catch(err){
+            console.log("Hubo un error al desloguear el usuario...");
+        }
+    }
 
     const fetchUsers = async () => {
         try{
