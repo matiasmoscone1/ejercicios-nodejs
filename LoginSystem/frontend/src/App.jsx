@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import UpdateUser from "./components/UpdateUser";
 import AdminPanel from "./components/adminComponents/AdminPanel";
 import PrivateRoute from "./components/PrivateRoute";
+import CreateAccount from "./components/CreateAccount";
 import { Routes, Route } from "react-router-dom";
 
 
@@ -16,6 +17,7 @@ function App() {
         
           <Routes>
             <Route path="/" element={<Login />}/>
+            <Route path="/create-account" element={<CreateAccount />}/>
             
             <Route path="/dashboard" element={<PrivateRoute element={<Dashboard/>}/>}/>
             <Route path="/profile" element={<PrivateRoute element={<Profile/>}/>}/>

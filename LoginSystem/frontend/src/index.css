@@ -34,11 +34,18 @@ button{
 }
 
 .login-container button {
-    margin-top: 2em;
     width: 20vw;
     height: 3vh;
 }
 
+.sign-in-line{
+    width: 20vw;
+    border-top: 1px solid gray;
+}
+
+.btn-sign-in{
+    margin-top: 1em;
+}
 
 /* ------------------------------------- DASHBOARD ------------------------------------- */
 

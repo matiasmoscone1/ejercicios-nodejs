@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
 import { jwtDecode } from "jwt-decode";
 const Login = () => {
@@ -48,7 +48,7 @@ const Login = () => {
 
     return(
     <>
-    {!login.isLogged ? 
+    
     <div className="login-container">
         <form onSubmit={(e) => handleSubmit(e)}>
             <label>Username</label>
@@ -56,12 +56,15 @@ const Login = () => {
             <label>Password</label>
             <input type="password" name="password" required/>
             <button type="submit">Log In</button>
+            <div className="sign-in-line"></div>
+            <Link to={"/create-account"}>
+                <button className="btn-sign-in" type="submit">Sign In</button>
+            </Link>
         </form>
+        
     </div>
-    : <div>
-        <h2>Usuario logueado con exito!!!</h2>
-    </div>
-    }
+  
+    
     </>)
 
 }
