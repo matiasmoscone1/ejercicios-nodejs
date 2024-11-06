@@ -40,11 +40,15 @@ button{
 
 .sign-in-line{
     width: 20vw;
+    margin-top: .5em;
     border-top: 1px solid gray;
+}
+.btn-login{
+    margin-top: 1em;
 }
 
 .btn-sign-in{
-    margin-top: 1em;
+    margin-top: 2em;
 }
 
 /* ------------------------------------- DASHBOARD ------------------------------------- */
@@ -214,6 +218,51 @@ button{
     margin-right: 2vw;
     height: 3vh;
     margin-top: 1em;
+}
+
+/* ---------------------------------- CREATE-ACCOUNT ----------------------------------- */
+
+.create-account-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-account-container form{
+    width: 70vw;
+    height: 70vh;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+
+.create-account-container input{
+    width: 20vw;
+    height: 3vh;
+}
+
+.create-account-container button{
+    width: 20vw;
+    height: 3vh;
+}
+
+.div-account{
+    width: 20vw;
+    margin-top: .5em;
+    border-top: .2px solid gray;
+}
+
+.btn-submit-account{
+    margin-top: 1em;
+}
+
+.btn-cancel-account{
+    margin-top: 3em;
 }
 
 /* ----------------------------------- ADMIN-PANEL ----------------------------------- */

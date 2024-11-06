@@ -55,7 +55,7 @@ const Login = () => {
             <input type="text" name="username" required/>
             <label>Password</label>
             <input type="password" name="password" required/>
-            <button type="submit">Log In</button>
+            <button className="btn-login" type="submit">Log In</button>
             <div className="sign-in-line"></div>
             <Link to={"/create-account"}>
                 <button className="btn-sign-in" type="submit">Sign In</button>
