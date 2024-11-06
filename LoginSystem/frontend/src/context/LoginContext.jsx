@@ -1,7 +1,7 @@
 import reducer from "../reducer/reducer";
 import reducerAdmin from "../reducer/reducerAdmin";
 import { createContext } from "react";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const LoginContext = createContext();
@@ -9,6 +9,9 @@ export const LoginContext = createContext();
 const LoginContextProvider = ({ children }) => {
 
     const navigate = useNavigate();
+
+    const savedLogin = JSON.parse(localStorage.getItem("login"));
+    const savedUsers = JSON.parse(localStorage.getItem("users"));
 
     const fetchLogOut = async () => {
         try{
@@ -26,14 +29,14 @@ const LoginContextProvider = ({ children }) => {
         }
     }
 
-    const initialState = {
+    const initialState = savedLogin || {
         username: "",
         password: "",
         email: "",
         rol: "",
         isLogged: false
     };
-    const initialStateAdmin = {
+    const initialStateAdmin = savedUsers || {
         array: []
     }
 
@@ -51,6 +54,11 @@ const LoginContextProvider = ({ children }) => {
     const updateData = (obj) => dispatch({type: "UPDATE_DATA", payload: obj});
 
     const saveUsers = (obj) => dispatchAdmin({type: "SAVE_USERS", payload: obj});
+
+    useEffect(() => {
+        localStorage.setItem("login", JSON.stringify(login)); 
+        localStorage.setItem("users", JSON.stringify(users)); 
+    }, [login, users]);
 
     return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData, fetchLogOut, saveUsers, users }}>
         { children }
