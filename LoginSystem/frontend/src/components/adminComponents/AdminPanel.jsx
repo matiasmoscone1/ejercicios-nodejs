@@ -9,7 +9,6 @@ const AdminPanel = () => {
     console.log(login.rol);
 
     const fetchUsers = async () => {
-        
         try{
             const response = await fetch("http://localhost:3000/api/adminRead", {
                 method: "GET",
@@ -86,8 +85,8 @@ const AdminPanel = () => {
                             <td>{user.rol}</td>
                             <td>{user.email}</td>
                             <td>{user.age}</td>
-                            <td className="btn-table"><button><i class="fas fa-edit"></i></button></td>
-                            <td className="btn-table"><button><i class="fas fa-trash-alt"></i></button></td>
+                            <td className="btn-table"><button><i className="fas fa-edit"></i></button></td>
+                            <td className="btn-table"><button><i className="fas fa-trash-alt"></i></button></td>
                         </tr>)
                     })}
                 </tbody>

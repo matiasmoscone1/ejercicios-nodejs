@@ -17,6 +17,7 @@ const reducer = (state, action) => {
         case "UPDATE_DATA":{
             return({...state, username: action.payload.username, password: action.payload.password, email: action.payload.email, age: action.payload.age});
         }
+
     }
 
 }

@@ -37,5 +37,4 @@ loginController.logout = (req, res) => {
 }
 
 
-
 module.exports = loginController;

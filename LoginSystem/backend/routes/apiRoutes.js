@@ -11,6 +11,7 @@ router.post("/logout", loginController.logout);
 router.get("/adminRead",  adminMiddleware, adminController.read);
 
 
+
 router.post("/basicUpdate", userController.basicUpdate);
 
 
