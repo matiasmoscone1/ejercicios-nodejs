@@ -23,8 +23,9 @@ const CreateAccount = () => {
                 navigate("/");
             }else{
                 const errorData = await response.json();
+                console.log(errorData);
                 if(errorData){
-                    alert("Error:", errorData.message);   
+                    alert(`Error: ${errorData.message}`);   
                 }    
             }
         }catch(err){

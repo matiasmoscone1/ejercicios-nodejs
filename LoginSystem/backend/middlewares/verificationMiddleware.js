@@ -7,11 +7,11 @@ const verificationMiddleware = async (req, res, next) => {
     try{
         const verifyUser = await User.findOne({ username });
         if(verifyUser){
-            res.status(400).json({message: "El nombre de usuario ya existe."});
+            return res.status(400).json({message: "El nombre de usuario ya existe."});
         }
         const verifyEmail = await User.findOne({ email });
         if(verifyEmail){
-            res.status(400).json({message: "El email ingresado ya existe."});
+            return res.status(400).json({message: "El email ingresado ya existe."});
         }
         next();
     }catch(err){
