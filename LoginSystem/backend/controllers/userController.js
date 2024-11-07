@@ -27,5 +27,20 @@ userController.basicUpdate = async (req, res) => {
 
 }
 
+userController.createUser = async (req, res) => {
+    
+    const { username, password, email, age } = req.body;
+    try{
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const newUser = new User({username, hashedPassword, rol: "User", email, age});
+        await newUser.save();
+        res.status(200).json({message: "Usuario creado con exito!"});
+    }catch(err){
+        res.status(500).json({message: "Error al crear la cuenta."});
+    }
+
+}
+
 
 module.exports = userController;
