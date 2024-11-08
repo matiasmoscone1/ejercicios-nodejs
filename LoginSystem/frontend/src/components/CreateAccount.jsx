@@ -20,7 +20,6 @@ const CreateAccount = () => {
                 })
             });
             if(response.ok){
-                //alert("Usuario creado con exito, sera redirigido al Login!");
                 setFlagPopUp(true);
                 setInterval(() => {
                     setFlagPopUp(false);

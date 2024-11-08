@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
-    const { login, users, fetchLogOut } = useContext(LoginContext);
+    const { login, users, fetchLogOut, fetchDelete } = useContext(LoginContext);
 
     return(<>
         {login.rol === "Admin" ? <div className="admin-panel-container">
@@ -67,7 +67,7 @@ const AdminPanel = () => {
                             <td>{user.email}</td>
                             <td>{user.age}</td>
                             <td className="btn-table"><button><i className="fas fa-edit"></i></button></td>
-                            <td className="btn-table"><button><i className="fas fa-trash-alt"></i></button></td>
+                            <td className="btn-table"><button onClick={() => fetchDelete()}><i className="fas fa-trash-alt"></i></button></td>
                         </tr>)
                     })}
                 </tbody>

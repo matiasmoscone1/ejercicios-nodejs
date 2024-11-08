@@ -39,6 +39,8 @@ const LoginContextProvider = ({ children }) => {
 
     const saveUsers = (obj) => dispatchAdmin({type: "SAVE_USERS", payload: obj});
 
+    const deleteUser = (id) => dispatchAdmin({type: "DELETE_USER", payload: id});
+
     const fetchLogOut = async () => {
         try{
             const response = await fetch("http://localhost:3000/api/logout", {
@@ -82,7 +84,8 @@ const LoginContextProvider = ({ children }) => {
         localStorage.setItem("users", JSON.stringify(users)); 
     }, [login, users]);
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers }}>
+    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, 
+    cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, deleteUser }}>
         { children }
     </LoginContext.Provider>)
 
