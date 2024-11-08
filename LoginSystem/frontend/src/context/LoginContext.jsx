@@ -39,8 +39,6 @@ const LoginContextProvider = ({ children }) => {
 
     const saveUsers = (obj) => dispatchAdmin({type: "SAVE_USERS", payload: obj});
 
-    const deleteUser = (id) => dispatchAdmin({type: "DELETE_USER", payload: id});
-
     const fetchLogOut = async () => {
         try{
             const response = await fetch("http://localhost:3000/api/logout", {
@@ -75,6 +73,21 @@ const LoginContextProvider = ({ children }) => {
         }
     }
 
+    const fetchDelete = async (id) => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/deleteUser/${id}`,{
+                method: "DELETE",
+                headers: {"Content-Type":"application/json", "User-Role": login.rol},
+                credentials: "include"
+            });
+            if(response.ok){
+                alert("Seguro quiere eliminar el usuario?");
+            }
+        }catch(err){
+            console.error("Ocurrio un problema al eliminar el usuario:", err);
+        }
+    }
+
     useEffect(() => {
         fetchUsers();
     }, [login]);
@@ -85,7 +98,7 @@ const LoginContextProvider = ({ children }) => {
     }, [login, users]);
 
     return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, 
-    cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, deleteUser }}>
+    cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete }}>
         { children }
     </LoginContext.Provider>)
 

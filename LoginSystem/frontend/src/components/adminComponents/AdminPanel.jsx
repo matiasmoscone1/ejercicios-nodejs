@@ -67,7 +67,7 @@ const AdminPanel = () => {
                             <td>{user.email}</td>
                             <td>{user.age}</td>
                             <td className="btn-table"><button><i className="fas fa-edit"></i></button></td>
-                            <td className="btn-table"><button onClick={() => fetchDelete()}><i className="fas fa-trash-alt"></i></button></td>
+                            <td className="btn-table"><button onClick={() => fetchDelete(user._id)}><i className="fas fa-trash-alt"></i></button></td>
                         </tr>)
                     })}
                 </tbody>
