@@ -1,10 +1,14 @@
 import { LoginContext } from "../../context/LoginContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
     const { login, users, fetchLogOut, fetchDelete } = useContext(LoginContext);
+
+    useEffect(() => {
+
+    }, [users]);
 
     return(<>
         {login.rol === "Admin" ? <div className="admin-panel-container">

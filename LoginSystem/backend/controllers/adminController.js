@@ -13,8 +13,13 @@ adminController.read = async (req, res) => {
 }
 
 adminController.delete = async (req, res) => {
-    const { id } = req.params.id;
-    console.log(id);
+    const userId = req.params.id;
+    try{
+        await User.findByIdAndDelete(userId);
+        res.status(200).json({message: "Usuario eliminado con exito!"});        
+    }catch(err){
+        res.status(500).json({message: "Error al eliminar el usuario."});
+    }
 }
 
 module.exports = adminController;

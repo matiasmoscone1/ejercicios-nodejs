@@ -75,13 +75,14 @@ const LoginContextProvider = ({ children }) => {
 
     const fetchDelete = async (id) => {
         try{
-            const response = await fetch(`http://localhost:3000/api/deleteUser/${id}`,{
+            const response = await fetch(`http://localhost:3000/api/adminDelete/${id}`,{
                 method: "DELETE",
                 headers: {"Content-Type":"application/json", "User-Role": login.rol},
                 credentials: "include"
             });
             if(response.ok){
                 alert("Seguro quiere eliminar el usuario?");
+                fetchUsers();
             }
         }catch(err){
             console.error("Ocurrio un problema al eliminar el usuario:", err);
