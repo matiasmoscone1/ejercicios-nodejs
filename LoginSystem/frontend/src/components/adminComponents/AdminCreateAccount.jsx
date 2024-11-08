@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 const AdminCreateAccount = () => {
 
-    const { setFlagPopUp, login, fetchUsers } = useContext(LoginContext);
-    const [dataNewUser, setDataNewUser] = useState({});
+    const { setFlagPopUp, login, fetchUsers, handleNewUser, dataNewUser } = useContext(LoginContext);
 
     const fetchCreateAccount = async () => {
         try{
@@ -28,11 +27,6 @@ const AdminCreateAccount = () => {
         }catch(err){
             console.error("Ha ocurrido un error al crear la cuenta:", err);
         }
-    }
-
-    const handleNewUser = (e) => {
-        const { name, value } = e.target;
-        setDataNewUser({...dataNewUser, [name]:value});
     }
 
     const handleSubmit = (e) => {

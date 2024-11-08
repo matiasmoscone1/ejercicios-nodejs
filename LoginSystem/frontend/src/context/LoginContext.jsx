@@ -27,6 +27,7 @@ const LoginContextProvider = ({ children }) => {
     const [login, dispatch] = useReducer(reducer, initialState);
     const [users, dispatchAdmin] = useReducer(reducerAdmin, initialStateAdmin);
 
+    const [dataNewUser, setDataNewUser] = useState({});
     const [flagPopUp, setFlagPopUp] = useState(false);
     const [flagPopUpEdit, setFlagPopUpEdit] = useState(false); 
     const [selectedUser, setSelectedUser] = useState({});
@@ -92,6 +93,11 @@ const LoginContextProvider = ({ children }) => {
             console.error("Ocurrio un problema al eliminar el usuario:", err);
         }
     }
+    
+    const handleNewUser = (e) => {
+        const { name, value } = e.target;
+        setDataNewUser({...dataNewUser, [name]:value});
+    }
 
     useEffect(() => {
         fetchUsers();
@@ -104,7 +110,8 @@ const LoginContextProvider = ({ children }) => {
 
     return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, 
     cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete,
-    flagPopUp, setFlagPopUp, flagPopUpEdit, setFlagPopUpEdit, selectedUser, setSelectedUser }}>
+    flagPopUp, setFlagPopUp, flagPopUpEdit, setFlagPopUpEdit, selectedUser, setSelectedUser,
+    dataNewUser, setDataNewUser, handleNewUser }}>
         { children }
     </LoginContext.Provider>)
 
