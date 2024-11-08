@@ -366,20 +366,36 @@ button{
 }
 
 .admin-create-account-container{
-    width: 60vw;
-    height: 60vh;
+    width: 70vw;
+    height: 70vh;
     background-color: white;
+    border: 1px solid black;
     z-index: 9999;
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
+.admin-create-account-container form{
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .2em;
+}
+
+.admin-create-account-container button{
+    width: 20vw;
+    height: 3vh;
+}
+
+.admin-create-account-container input{
+    width: 20vw;
+    height: 3vh;
+}
 
 
 
