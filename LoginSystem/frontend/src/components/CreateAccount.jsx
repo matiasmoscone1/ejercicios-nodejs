@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const CreateAccount = () => {
 
+    const [flagPopUp, setFlagPopUp] = useState(false);
     const [dataNewUser, setDataNewUser] = useState({});
     const navigate = useNavigate();
 
@@ -19,8 +20,12 @@ const CreateAccount = () => {
                 })
             });
             if(response.ok){
-                alert("Usuario creado con exito, sera redirigido al Login!");
-                navigate("/");
+                //alert("Usuario creado con exito, sera redirigido al Login!");
+                setFlagPopUp(true);
+                setInterval(() => {
+                    setFlagPopUp(false);
+                    navigate("/");                                        
+                }, (2000));
             }else{
                 const errorData = await response.json();
                 console.log(errorData);
@@ -44,6 +49,9 @@ const CreateAccount = () => {
     }
 
     return(<>
+        {flagPopUp && <div className="pop-up">
+            <p>Usuario creado con exito, sera redirigido al login...</p>    
+        </div>}
         <div className="create-account-container">
             <form onSubmit={(e) => handleSubmit(e)}>
                 <label>Username</label>
