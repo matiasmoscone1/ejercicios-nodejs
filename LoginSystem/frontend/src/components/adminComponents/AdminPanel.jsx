@@ -1,18 +1,22 @@
 import { LoginContext } from "../../context/LoginContext";
 import AdminCreateAccount from "./AdminCreateAccount";
+import AdminEditAccount from "./AdminEditAccount";
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
-    const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp } = useContext(LoginContext);
+    const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp,
+        flagPopUpEdit, setFlagPopUpEdit, setSelectedUser } = useContext(LoginContext);
 
-    useEffect(() => {
-
-    }, [users]);
+    const handleSelectUser = (user) => {
+        setFlagPopUpEdit(true);
+        setSelectedUser(user);
+    }
 
     return(<>
         {flagPopUp && <AdminCreateAccount />}
+        {flagPopUpEdit && <AdminEditAccount />}
         {login.rol === "Admin" ? <div className="admin-panel-container">
             <div className="profile-home">
                 <Link to={"/dashboard"}>
@@ -72,7 +76,7 @@ const AdminPanel = () => {
                             <td>{user.rol}</td>
                             <td>{user.email}</td>
                             <td>{user.age}</td>
-                            <td className="btn-table"><button><i className="fas fa-edit"></i></button></td>
+                            <td className="btn-table"><button onClick={() => handleSelectUser(user)}><i className="fas fa-edit"></i></button></td>
                             <td className="btn-table"><button onClick={() => fetchDelete(user._id)}><i className="fas fa-trash-alt"></i></button></td>
                         </tr>)
                     })}
