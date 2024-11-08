@@ -27,7 +27,7 @@ adminController.create = async (req, res) => {
     try{
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const newUser = await new User({username, password: hashedPassword, rol, email, age});
+        const newUser = new User({username, password: hashedPassword, rol, email, age});
         await newUser.save();
         res.status(200).json({message: "Usuario creado con exito!"});
     }catch(err){

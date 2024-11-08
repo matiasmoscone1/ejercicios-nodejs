@@ -2,18 +2,23 @@ import { useContext, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
 const AdminCreateAccount = () => {
 
-    const { setFlagPopUp } = useContext(LoginContext);
+    const { setFlagPopUp, login, fetchUsers } = useContext(LoginContext);
     const [dataNewUser, setDataNewUser] = useState({});
 
     const fetchCreateAccount = async () => {
         try{
             const response = await fetch("http://localhost:3000/api/adminCreate", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({dataNewUser})
+                headers: {"Content-Type":"application/json", "User-Role": login.rol},
+                body: JSON.stringify({username: dataNewUser.username,
+                    password: dataNewUser.password,
+                    rol: dataNewUser.rol,
+                    email: dataNewUser.email,
+                    age: dataNewUser.age})
             });
             if(response.ok){
                 setFlagPopUp(false);
+                fetchUsers();
             }else{
                 const errorData = await response.json();
                 if(errorData){
