@@ -27,6 +27,8 @@ const LoginContextProvider = ({ children }) => {
     const [login, dispatch] = useReducer(reducer, initialState);
     const [users, dispatchAdmin] = useReducer(reducerAdmin, initialStateAdmin);
 
+    const [flagPopUp, setFlagPopUp] = useState(false);
+
     const saveCredentials = (username, password) => dispatch({ type: "SAVE_AUTH", payload: {username, password} });
 
     const changeLogged = () => dispatch({ type: "CHANGE_LOG" });
@@ -99,7 +101,8 @@ const LoginContextProvider = ({ children }) => {
     }, [login, users]);
 
     return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, 
-    cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete }}>
+    cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete,
+    flagPopUp, setFlagPopUp }}>
         { children }
     </LoginContext.Provider>)
 

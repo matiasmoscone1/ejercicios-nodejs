@@ -1,16 +1,18 @@
 import { LoginContext } from "../../context/LoginContext";
-import { useContext, useEffect } from "react";
+import AdminCreateAccount from "./AdminCreateAccount";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
-    const { login, users, fetchLogOut, fetchDelete } = useContext(LoginContext);
+    const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp } = useContext(LoginContext);
 
     useEffect(() => {
 
     }, [users]);
 
     return(<>
+        {flagPopUp && <AdminCreateAccount />}
         {login.rol === "Admin" ? <div className="admin-panel-container">
             <div className="profile-home">
                 <Link to={"/dashboard"}>
@@ -48,7 +50,7 @@ const AdminPanel = () => {
                 <thead>
                     <tr className="tr-create-user" colSpan={7}>
                         <td colSpan={6}></td>
-                        <td colSpan={2}><button>Create User</button></td>
+                        <td colSpan={2}><button onClick={() => setFlagPopUp(true)}>Create User</button></td>
                     </tr>
                     <tr>
                         <td>Id</td>
