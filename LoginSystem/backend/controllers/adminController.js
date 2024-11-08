@@ -22,6 +22,19 @@ adminController.delete = async (req, res) => {
     }
 }
 
+adminController.create = async (req, res) => {
+    const { username, password, rol, email, age } = req.body;
+    try{
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const newUser = await new User({username, password: hashedPassword, rol, email, age});
+        await newUser.save();
+        res.status(200).json({message: "Usuario creado con exito!"});
+    }catch(err){
+        res.status(500).json({message: "Hubo un problema al crear la cuenta."});
+    }
+}
+
 module.exports = adminController;
 
 

@@ -11,6 +11,7 @@ router.post("/logout", loginController.logout);
 
 router.get("/adminRead",  adminMiddleware, adminController.read);
 router.delete("/adminDelete/:id", adminMiddleware, adminController.delete);
+router.post("/adminCreate", adminMiddleware, verificationMiddleware, adminController.create);
 
 router.post("/createUser", verificationMiddleware, userController.createUser);
 router.post("/basicUpdate", userController.basicUpdate);
