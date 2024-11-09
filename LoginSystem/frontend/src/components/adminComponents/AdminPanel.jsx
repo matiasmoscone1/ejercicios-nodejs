@@ -1,6 +1,6 @@
 import { LoginContext } from "../../context/LoginContext";
 import AdminCreateAccount from "./AdminCreateAccount";
-import AdminEditAccount from "./AdminEditAccount";
+import AdminUpdateAccount from "./AdminUpdateAccount";
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const AdminPanel = () => {
 
     return(<>
         {flagPopUp && <AdminCreateAccount />}
-        {flagPopUpEdit && <AdminEditAccount />}
+        {flagPopUpEdit && <AdminUpdateAccount />}
         {login.rol === "Admin" ? <div className="admin-panel-container">
             <div className="profile-home">
                 <Link to={"/dashboard"}>

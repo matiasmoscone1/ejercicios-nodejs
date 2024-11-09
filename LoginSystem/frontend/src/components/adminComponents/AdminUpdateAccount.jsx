@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 
-const AdminEditAccount = () => {
+const AdminUpdateAccount = () => {
 
     const { setFlagPopUpEdit, fetchUsers, selectedUser, handleNewUser, dataNewUser } = useContext(LoginContext);
 
@@ -13,6 +13,7 @@ const AdminEditAccount = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         fetchUpdateAccount();
+        fetchUsers();
     }
 
 
@@ -38,4 +39,4 @@ const AdminEditAccount = () => {
 
 }
 
-export default AdminEditAccount;
+export default AdminUpdateAccount;
