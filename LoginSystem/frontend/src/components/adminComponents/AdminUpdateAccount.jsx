@@ -3,24 +3,24 @@ import { LoginContext } from "../../context/LoginContext";
 
 const AdminUpdateAccount = () => {
 
-    const { setFlagPopUpEdit, fetchUsers, login, selectedUser, handleNewUser, dataNewUser } = useContext(LoginContext);
+    const { setFlagPopUpEdit, fetchUsers, login, selectedUser, handleNewUser } = useContext(LoginContext);
 
+    console.log(selectedUser);
     const fetchUpdateAccount = async () => {
         try{
-            const response = await fetch("http://localhost:3000/api/adminUpdate", {
+            const response = await fetch(`http://localhost:3000/api/adminUpdate/${selectedUser._id}`, {
                 method: "POST",
                 headers: {"Content-Type":"application/json", "User-Role": login.rol},
-                body: JSON.stringify({username: selectedUser.username,
+                body: JSON.stringify({
                     username: selectedUser.username,
                     password: selectedUser.password,
                     rol: selectedUser.rol,
                     email: selectedUser.email,
                     age: selectedUser.age
-                }),
-                credentials: "include",
+                })
             });
             if(response.ok){
-                setFlagPopUp(false);
+                setFlagPopUpEdit(false);
             }else{
                 const errorData = await response.json();
                 if(errorData){
@@ -28,7 +28,7 @@ const AdminUpdateAccount = () => {
                 }
             }
         }catch(err){
-            console.error("Hubo un error al actualizar el usuario.");
+            console.error("Hubo un error al actualizar el usuario.", err);
         }
 
     }
@@ -36,7 +36,6 @@ const AdminUpdateAccount = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         fetchUpdateAccount();
-        fetchUsers();
     }
 
 

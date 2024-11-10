@@ -36,7 +36,26 @@ adminController.create = async (req, res) => {
 }
 
 adminController.update = async (req, res) => {
-    
+    try{
+        const userId = req.params.id;
+        const { username, password, rol, email, age } = req.body;
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const userUpdate = await User.findOneAndUpdate({_id: userId}, {
+            username: username,
+            password: hashedPassword,
+            rol: rol,
+            email: email,
+            age: age
+        }, {new: true});
+        if(userUpdate){
+            res.status(200).json({message: "Usuario actualizado con exito!"});
+        }else{
+            res.status(404).json({message: "Usuario no encontrado."});
+        }
+    }catch(err){
+        res.status(500).json({message: "Hubo un error en el servidor al actualizar el usuario."});
+    }
 
 }
 
