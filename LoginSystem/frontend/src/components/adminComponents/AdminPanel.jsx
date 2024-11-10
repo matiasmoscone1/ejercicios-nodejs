@@ -23,7 +23,8 @@ const AdminPanel = () => {
 
     const handleFilter = (e) => {
         const { name, value } = e.target;
-        setFilterOptions({...setFilterOptions, [name]: value});
+        setFilterOptions({...filterOptions, [name]: value});
+        console.log(filterOptions);
     }
 
     return(<>
@@ -49,17 +50,17 @@ const AdminPanel = () => {
                 <div className="filter-container">
                     <div>
                         <p>Filter by <strong>Username</strong></p>
-                        <input type="text" value={filterOptions.username} name="filter-username" onChange={(e) => handleFilter(e)}/>
+                        <input type="text" value={filterOptions.username} name="username" onChange={(e) => handleFilter(e)}/>
                         <button onClick={() => filterUsername(users, filterOptions.username)}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Role</strong></p>
-                        <input type="text" value={filterOptions.rol} name="filter-role" onChange={() => handleFilter(e)}/>
+                        <input type="text" value={filterOptions.rol} name="rol" onChange={(e) => handleFilter(e)}/>
                         <button onClick={() => filterRole(users, filterOptions.rol)}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Age</strong></p>
-                        <input type="text" value={filterOptions.age} name="filter-age" onChange={() => handleFilter(e)}/> 
+                        <input type="number" value={filterOptions.age} name="age" onChange={(e) => handleFilter(e)}/> 
                         <button onClick={() => filterAge(users, filterOptions.age)}>Filter</button>
                     </div>
                 </div>

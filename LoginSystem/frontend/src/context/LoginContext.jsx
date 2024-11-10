@@ -47,9 +47,9 @@ const LoginContextProvider = ({ children }) => {
 
     const filterUsername = (obj, filterOption) => dispatchAdmin({type: "FILTER_USERNAME", payload: {obj, filter: filterOption}});
 
-    const filterRole = (obj) => dispatchAdmin({type: "FILTER_ROLE", payload: obj});
+    const filterRole = (obj, filterOption) => dispatchAdmin({type: "FILTER_ROLE", payload: {obj, filter: filterOption}});
 
-    const filterAge = (obj) => dispatchAdmin({type: "FILTER_AGE", payload: obj});
+    const filterAge = (obj, filterOption) => dispatchAdmin({type: "FILTER_AGE", payload: {obj, filter: parseInt(filterOption)}});
 
     const clearFilters = () => dispatchAdmin({type: "CLEAR_FILTERS"});
 

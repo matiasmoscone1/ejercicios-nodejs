@@ -6,10 +6,14 @@ const reducerAdmin = (state, action) => {
         case "SAVE_USERS":
             return({...state, originalArray: action.payload, array: action.payload});
         case "FILTER_USERNAME":
-            console.log(state);
-            console.log(action.payload.filter);
             const newList = state.originalArray.filter((user) => action.payload.filter === user.username);
             return{...state, array: newList};
+        case "FILTER_ROLE":
+            const newListRol = state.originalArray.filter((user) => action.payload.filter === user.rol);
+            return{...state, array: newListRol};
+        case "FILTER_AGE":
+            const newListAge = state.originalArray.filter((user) => action.payload.filter === user.age);
+            return{...state, array: newListAge};
         case "CLEAR_FILTERS": 
         return({...state, array: state.originalArray});
 
