@@ -10,7 +10,7 @@ const verificationMiddlewareUpdate = async (req, res, next) => {
             return res.status(400).json({message: "El nombre de usuario ya existe."});
         }
         const verifyEmail = await User.findOne({ email });
-        if(verifyEmail && userId !== verifyUser._id.toString()){
+        if(verifyEmail && userId !== verifyEmail._id.toString()){
             return res.status(400).json({message: "El email ingresado ya existe."});
         }
         next();
