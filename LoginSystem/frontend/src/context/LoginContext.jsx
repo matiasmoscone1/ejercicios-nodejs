@@ -97,6 +97,7 @@ const LoginContextProvider = ({ children }) => {
     const handleNewUser = (e) => {
         const { name, value } = e.target;
         setDataNewUser({...dataNewUser, [name]:value});
+        setSelectedUser({...dataNewUser, [name]:value});
     }
 
     useEffect(() => {

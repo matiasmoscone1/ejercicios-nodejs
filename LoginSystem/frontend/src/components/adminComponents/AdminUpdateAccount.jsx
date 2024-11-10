@@ -3,10 +3,33 @@ import { LoginContext } from "../../context/LoginContext";
 
 const AdminUpdateAccount = () => {
 
-    const { setFlagPopUpEdit, fetchUsers, selectedUser, handleNewUser, dataNewUser } = useContext(LoginContext);
+    const { setFlagPopUpEdit, fetchUsers, login, selectedUser, handleNewUser, dataNewUser } = useContext(LoginContext);
 
-    const fetchUpdateAccount = () => {
-        
+    const fetchUpdateAccount = async () => {
+        try{
+            const response = await fetch("http://localhost:3000/api/adminUpdate", {
+                method: "POST",
+                headers: {"Content-Type":"application/json", "User-Role": login.rol},
+                body: JSON.stringify({username: selectedUser.username,
+                    username: selectedUser.username,
+                    password: selectedUser.password,
+                    rol: selectedUser.rol,
+                    email: selectedUser.email,
+                    age: selectedUser.age
+                }),
+                credentials: "include",
+            });
+            if(response.ok){
+                setFlagPopUp(false);
+            }else{
+                const errorData = await response.json();
+                if(errorData){
+                    alert(`Error: ${errorData.message}`);
+                }
+            }
+        }catch(err){
+            console.error("Hubo un error al actualizar el usuario.");
+        }
 
     }
 

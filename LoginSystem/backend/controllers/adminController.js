@@ -36,7 +36,6 @@ adminController.create = async (req, res) => {
 }
 
 adminController.update = async (req, res) => {
-
     
 
 }
