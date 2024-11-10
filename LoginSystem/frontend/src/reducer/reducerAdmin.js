@@ -16,7 +16,6 @@ const reducerAdmin = (state, action) => {
             return{...state, array: newListAge};
         case "CLEAR_FILTERS": 
         return({...state, array: state.originalArray});
-
     }
 }
 

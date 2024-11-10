@@ -32,6 +32,11 @@ const LoginContextProvider = ({ children }) => {
     const [flagPopUp, setFlagPopUp] = useState(false);
     const [flagPopUpEdit, setFlagPopUpEdit] = useState(false); 
     const [selectedUser, setSelectedUser] = useState({});
+    const [filterOptions, setFilterOptions] = useState({
+        username: "",
+        rol: "",
+        age: ""
+    });
 
     const saveCredentials = (username, password) => dispatch({ type: "SAVE_AUTH", payload: {username, password} });
 
@@ -124,7 +129,7 @@ const LoginContextProvider = ({ children }) => {
     cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete,
     flagPopUp, setFlagPopUp, flagPopUpEdit, setFlagPopUpEdit, selectedUser, setSelectedUser,
     dataNewUser, setDataNewUser, handleNewUser, filterUsername, clearFilters, filterRole,
-    filterAge }}>
+    filterAge, filterOptions, setFilterOptions }}>
         { children }
     </LoginContext.Provider>)
 

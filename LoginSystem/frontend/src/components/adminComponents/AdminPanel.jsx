@@ -8,13 +8,8 @@ const AdminPanel = () => {
 
     const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp,
         flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername,
-    clearFilters, filterRole, filterAge } = useContext(LoginContext);
+    clearFilters, filterRole, filterAge, filterOptions, setFilterOptions } = useContext(LoginContext);
 
-    const [filterOptions, setFilterOptions] = useState({
-        username: "",
-        rol: "",
-        age: ""
-    });
 
     const handleSelectUser = (user) => {
         setFlagPopUpEdit(true);
@@ -24,7 +19,6 @@ const AdminPanel = () => {
     const handleFilter = (e) => {
         const { name, value } = e.target;
         setFilterOptions({...filterOptions, [name]: value});
-        console.log(filterOptions);
     }
 
     return(<>
@@ -51,7 +45,7 @@ const AdminPanel = () => {
                     <div>
                         <p>Filter by <strong>Username</strong></p>
                         <input type="text" value={filterOptions.username} name="username" onChange={(e) => handleFilter(e)}/>
-                        <button onClick={() => filterUsername(users, filterOptions.username)}>Filter</button>
+                        <button onClick={() => {filterUsername(users, filterOptions.username); setFilterOptions({username: "", rol: "", age: ""})}}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Role</strong></p>
@@ -65,7 +59,7 @@ const AdminPanel = () => {
                     </div>
                 </div>
                 <div className="btn-clear-filters">
-                    <button onClick={() => {clearFilters()}}>Clear Filters</button>
+                    <button onClick={() => {clearFilters()}}>Clear Filter</button>
                 </div>
             </div>
             <table border={1} className="table-container">
