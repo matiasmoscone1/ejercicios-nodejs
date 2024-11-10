@@ -51,6 +51,7 @@ const LoginContextProvider = ({ children }) => {
 
     const filterAge = (obj) => dispatchAdmin({type: "FILTER_AGE", payload: obj});
 
+    const clearFilters = () => dispatchAdmin({type: "CLEAR_FILTERS"});
 
     const fetchLogOut = async () => {
         try{
@@ -122,7 +123,8 @@ const LoginContextProvider = ({ children }) => {
     return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, 
     cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete,
     flagPopUp, setFlagPopUp, flagPopUpEdit, setFlagPopUpEdit, selectedUser, setSelectedUser,
-    dataNewUser, setDataNewUser, handleNewUser, filterUsername }}>
+    dataNewUser, setDataNewUser, handleNewUser, filterUsername, clearFilters, filterRole,
+    filterAge }}>
         { children }
     </LoginContext.Provider>)
 

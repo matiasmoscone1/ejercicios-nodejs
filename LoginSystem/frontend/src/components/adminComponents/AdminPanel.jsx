@@ -7,9 +7,14 @@ import { Link } from "react-router-dom";
 const AdminPanel = () => {
 
     const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp,
-        flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername } = useContext(LoginContext);
+        flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername,
+    clearFilters, filterRole, filterAge } = useContext(LoginContext);
 
-    const [filterOption, setFilterOption] = useState("");
+    const [filterOptions, setFilterOptions] = useState({
+        username: "",
+        rol: "",
+        age: ""
+    });
 
     const handleSelectUser = (user) => {
         setFlagPopUpEdit(true);
@@ -17,7 +22,8 @@ const AdminPanel = () => {
     }
 
     const handleFilter = (e) => {
-        setFilterOption(e.target.value);
+        const { name, value } = e.target;
+        setFilterOptions({...setFilterOptions, [name]: value});
     }
 
     return(<>
@@ -43,22 +49,22 @@ const AdminPanel = () => {
                 <div className="filter-container">
                     <div>
                         <p>Filter by <strong>Username</strong></p>
-                        <input type="text" name="filter-username" onChange={(e) => handleFilter(e)}/>
-                        <button onClick={() => filterUsername(users, filterOption)}>Filter</button>
+                        <input type="text" value={filterOptions.username} name="filter-username" onChange={(e) => handleFilter(e)}/>
+                        <button onClick={() => filterUsername(users, filterOptions.username)}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Role</strong></p>
-                        <input type="text" name="filter-role"/>
-                        <button>Filter</button>
+                        <input type="text" value={filterOptions.rol} name="filter-role" onChange={() => handleFilter(e)}/>
+                        <button onClick={() => filterRole(users, filterOptions.rol)}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Age</strong></p>
-                        <input type="text" name="filter-age"/> 
-                        <button>Filter</button>
+                        <input type="text" value={filterOptions.age} name="filter-age" onChange={() => handleFilter(e)}/> 
+                        <button onClick={() => filterAge(users, filterOptions.age)}>Filter</button>
                     </div>
                 </div>
                 <div className="btn-clear-filters">
-                    <button>Clear Filters</button>
+                    <button onClick={() => {clearFilters()}}>Clear Filters</button>
                 </div>
             </div>
             <table border={1} className="table-container">

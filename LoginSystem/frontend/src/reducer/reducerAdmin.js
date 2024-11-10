@@ -10,7 +10,10 @@ const reducerAdmin = (state, action) => {
             console.log(action.payload.filter);
             const newList = state.originalArray.filter((user) => action.payload.filter === user.username);
             return{...state, array: newList};
-        }
+        case "CLEAR_FILTERS": 
+        return({...state, array: state.originalArray});
+
+    }
 }
 
 export default reducerAdmin;
