@@ -1,19 +1,24 @@
 import { LoginContext } from "../../context/LoginContext";
 import AdminCreateAccount from "./AdminCreateAccount";
 import AdminUpdateAccount from "./AdminUpdateAccount";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
     const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp,
-        flagPopUpEdit, setFlagPopUpEdit, setSelectedUser } = useContext(LoginContext);
+        flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername } = useContext(LoginContext);
+
+    const [filterOption, setFilterOption] = useState("");
 
     const handleSelectUser = (user) => {
         setFlagPopUpEdit(true);
         setSelectedUser(user);
     }
 
+    const handleFilter = (e) => {
+        setFilterOption(e.target.value);
+    }
 
     return(<>
         {flagPopUp && <AdminCreateAccount />}
@@ -37,8 +42,8 @@ const AdminPanel = () => {
             <div className="filter-container">
                 <div>
                     <p>Filter by <strong>Username</strong></p>
-                    <input type="text" name="filter-username"/>
-                    <button>Filter</button>
+                    <input type="text" name="filter-username" onChange={(e) => handleFilter(e)}/>
+                    <button onClick={() => filterUsername(users, filterOption)}>Filter</button>
                 </div>
                 <div>
                     <p>Filter by <strong>Role</strong></p>

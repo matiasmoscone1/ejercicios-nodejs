@@ -21,6 +21,7 @@ const LoginContextProvider = ({ children }) => {
         isLogged: false
     };
     const initialStateAdmin = savedUsers || {
+        originalArray: [],
         array: []
     }
 
@@ -43,6 +44,13 @@ const LoginContextProvider = ({ children }) => {
     const updateData = (obj) => dispatch({type: "UPDATE_DATA", payload: obj});
 
     const saveUsers = (obj) => dispatchAdmin({type: "SAVE_USERS", payload: obj});
+
+    const filterUsername = (obj, filterOption) => dispatchAdmin({type: "FILTER_USERNAME", payload: {obj, filter: filterOption}});
+
+    const filterRole = (obj) => dispatchAdmin({type: "FILTER_ROLE", payload: obj});
+
+    const filterAge = (obj) => dispatchAdmin({type: "FILTER_AGE", payload: obj});
+
 
     const fetchLogOut = async () => {
         try{
@@ -100,6 +108,8 @@ const LoginContextProvider = ({ children }) => {
         setSelectedUser({...selectedUser, [name]:value});
     }
 
+
+
     useEffect(() => {
         fetchUsers();
     }, [login]);
@@ -112,7 +122,7 @@ const LoginContextProvider = ({ children }) => {
     return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, 
     cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete,
     flagPopUp, setFlagPopUp, flagPopUpEdit, setFlagPopUpEdit, selectedUser, setSelectedUser,
-    dataNewUser, setDataNewUser, handleNewUser }}>
+    dataNewUser, setDataNewUser, handleNewUser, filterUsername }}>
         { children }
     </LoginContext.Provider>)
 
