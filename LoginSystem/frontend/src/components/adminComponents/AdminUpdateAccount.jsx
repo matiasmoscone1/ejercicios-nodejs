@@ -33,9 +33,10 @@ const AdminUpdateAccount = () => {
 
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        fetchUpdateAccount();
+        await fetchUpdateAccount();
+        await fetchUsers();
     }
 
 
