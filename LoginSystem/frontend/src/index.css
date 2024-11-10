@@ -333,12 +333,25 @@ button{
     font-size: 16px;
 }
 
-.filter-container{
+.filters{
     width: 90vw;
-    height: 10vh;
+    height: 15vh;
     border: 1px solid black;
-    margin-top: -1em;
-    margin-bottom: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.btn-clear-filters button{
+    width: 8em;
+    height: 1.5em;
+}
+
+.filter-container{
+    margin-top: 1em;
     display: flex;
     justify-content: center;
     align-items: center;

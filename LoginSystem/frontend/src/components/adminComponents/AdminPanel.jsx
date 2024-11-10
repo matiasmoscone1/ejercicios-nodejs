@@ -39,21 +39,26 @@ const AdminPanel = () => {
                 <button className="btn-logout" onClick={() => fetchLogOut()}>Log Out</button>    
             </div>
             <h2>Admin Panel</h2>
-            <div className="filter-container">
-                <div>
-                    <p>Filter by <strong>Username</strong></p>
-                    <input type="text" name="filter-username" onChange={(e) => handleFilter(e)}/>
-                    <button onClick={() => filterUsername(users, filterOption)}>Filter</button>
+            <div className="filters">
+                <div className="filter-container">
+                    <div>
+                        <p>Filter by <strong>Username</strong></p>
+                        <input type="text" name="filter-username" onChange={(e) => handleFilter(e)}/>
+                        <button onClick={() => filterUsername(users, filterOption)}>Filter</button>
+                    </div>
+                    <div>
+                        <p>Filter by <strong>Role</strong></p>
+                        <input type="text" name="filter-role"/>
+                        <button>Filter</button>
+                    </div>
+                    <div>
+                        <p>Filter by <strong>Age</strong></p>
+                        <input type="text" name="filter-age"/> 
+                        <button>Filter</button>
+                    </div>
                 </div>
-                <div>
-                    <p>Filter by <strong>Role</strong></p>
-                    <input type="text" name="filter-role"/>
-                    <button>Filter</button>
-                </div>
-                <div>
-                    <p>Filter by <strong>Age</strong></p>
-                    <input type="text" name="filter-age"/> 
-                    <button>Filter</button>
+                <div className="btn-clear-filters">
+                    <button>Clear Filters</button>
                 </div>
             </div>
             <table border={1} className="table-container">
