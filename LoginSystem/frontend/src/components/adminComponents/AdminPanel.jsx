@@ -10,7 +10,7 @@ const AdminPanel = () => {
         flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername,
     clearFilters, filterRole, filterAge, filterOptions, setFilterOptions } = useContext(LoginContext);
 
-
+   
     const handleSelectUser = (user) => {
         setFlagPopUpEdit(true);
         setSelectedUser(user);
@@ -65,7 +65,8 @@ const AdminPanel = () => {
             <table border={1} className="table-container">
                 <thead>
                     <tr className="tr-create-user" colSpan={7}>
-                        <td colSpan={6}></td>
+                        <td colSpan={3}>Usuarios totales: {users.array.length}</td>
+                        <td colSpan={3}></td>
                         <td colSpan={2}><button onClick={() => setFlagPopUp(true)}>Create User</button></td>
                     </tr>
                     <tr>
