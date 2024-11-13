@@ -5,6 +5,8 @@ const reducerAdmin = (state, action) => {
     switch(action.type){
         case "SAVE_USERS":
             return({...state, originalArray: action.payload, array: action.payload});
+        case "SORT_USERS":
+            return({...state, array: action.payload});
         case "FILTER_USERNAME":
             const newList = state.originalArray.filter((user) => action.payload.filter === user.username);
             return{...state, array: newList};
