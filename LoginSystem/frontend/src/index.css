@@ -87,7 +87,7 @@ button{
 .dashboard-profile{
     position: relative;
     width: 15vw;
-    height: 12vh;
+    height: 14vh;
     margin-left: auto;
     border: 1px solid black;
     display: flex;
@@ -103,6 +103,11 @@ button{
 
 .dashboard-profile p{
     font-weight: 600;
+    padding: .2em;
+}
+
+.dashboard-profile button{
+    padding: .2em;
 }
 
 .btn-logout{
@@ -123,6 +128,10 @@ button{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.dashboard-admin button{
+    padding: .5em;
 }
 
 
@@ -157,8 +166,7 @@ button{
 }
 
 .items-profile button{
-    width: 10vw;
-    height: 3vh;
+    padding: .5em;
 }
 
 .profile-home{
@@ -167,6 +175,10 @@ button{
     position: absolute;
     left: 2em;
     top: 2em;
+}
+
+.profile-home button{
+    padding: 1em;
 }
 
 .profile-logout{
@@ -182,6 +194,10 @@ button{
     font-weight: 600;
     text-align: center;
     margin-top: 1.5em;
+}
+
+.profile-logout button{
+    padding: .2em;
 }
 
 
@@ -371,6 +387,7 @@ button{
 .tr-create-user td{
     border: none;
 }
+
 
 .tr-create-user button{
     height: 1.8em;
