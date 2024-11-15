@@ -18,6 +18,6 @@ router.post("/adminUpdate/:id", adminMiddleware, verificationMiddlewareUpdate, a
 
 router.post("/createUser", verificationMiddleware, userController.createUser);
 router.post("/basicUpdate", userController.basicUpdate);
-
+router.post("/createPost", userController.createPost);
 
 module.exports = router;
