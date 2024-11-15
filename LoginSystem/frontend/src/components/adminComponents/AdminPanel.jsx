@@ -8,17 +8,21 @@ const AdminPanel = () => {
 
     const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp,
         flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername,
-    clearFilters, filterRole, filterAge, filterOptions, setFilterOptions } = useContext(LoginContext);
+    clearFilters, filterRole, filterAge, filterOptions, setFilterOptions, dispatchGlobal, global } = useContext(LoginContext);
 
+    
    
     const handleSelectUser = (user) => {
-        setFlagPopUpEdit(true);
-        setSelectedUser(user);
+        //setFlagPopUpEdit(true);
+        dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: true})
+        //setSelectedUser(user);
+        dispatchGlobal({type: "SELECTED_USER", payload: user});
     }
 
     const handleFilter = (e) => {
         const { name, value } = e.target;
-        setFilterOptions({...filterOptions, [name]: value});
+        dispatchGlobal({type: "FILTER_OPTIONS", payload: {...global.filterOptions, [name]:value}});
+        //setFilterOptions({...filterOptions, [name]: value});
     }
 
     return(<>

@@ -27,11 +27,15 @@ const LoginContextProvider = ({ children }) => {
     }
 
     const initialStateGlobal = {
+        dataNewUser: {},
+        selectedUser: {},
         filterOptions: {
             username: "",
             rol: "",
             age: ""
         },
+        flagPopUp: false,
+        flagPopUpEdit: false,
         flagPost: false
     };
 
@@ -39,7 +43,7 @@ const LoginContextProvider = ({ children }) => {
     const [users, dispatchAdmin] = useReducer(reducerAdmin, initialStateAdmin);
     const [global, dispatchGlobal] = useReducer(reducerGlobal, initialStateGlobal);
    
-
+/*
     const [dataNewUser, setDataNewUser] = useState({});
     const [flagPopUp, setFlagPopUp] = useState(false);
     const [flagPopUpEdit, setFlagPopUpEdit] = useState(false); 
@@ -48,7 +52,7 @@ const LoginContextProvider = ({ children }) => {
         username: "",
         rol: "",
         age: ""
-    });
+    });*/
 
     const saveCredentials = (username, password) => dispatch({ type: "SAVE_AUTH", payload: {username, password} });
 
@@ -123,8 +127,10 @@ const LoginContextProvider = ({ children }) => {
     
     const handleNewUser = (e) => {
         const { name, value } = e.target;
-        setDataNewUser({...dataNewUser, [name]:value});
-        setSelectedUser({...selectedUser, [name]:value});
+        dispatchGlobal({type: "DATA_NEW_USER", payload: {...global.dataNewUser, [name]:value}});
+        dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
+/*        setDataNewUser({...dataNewUser, [name]:value});
+        setSelectedUser({...selectedUser, [name]:value});*/
     }
 
     const sortArray = () => {
@@ -149,11 +155,35 @@ const LoginContextProvider = ({ children }) => {
         localStorage.setItem("users", JSON.stringify(users)); 
     }, [login, users]);
 
-    return(<LoginContext.Provider value={{ login, saveCredentials, changeLogged, 
-    cleanData, addData, updateData, fetchLogOut, saveUsers, users, fetchUsers, fetchDelete,
-    flagPopUp, setFlagPopUp, flagPopUpEdit, setFlagPopUpEdit, selectedUser, setSelectedUser,
-    dataNewUser, setDataNewUser, handleNewUser, filterUsername, clearFilters, filterRole,
-    filterAge, filterOptions, setFilterOptions }}>
+    return(<LoginContext.Provider value={{ 
+        login, 
+        saveCredentials, 
+        changeLogged, 
+        cleanData, 
+        addData, 
+        updateData, 
+        fetchLogOut, 
+        saveUsers, 
+        users, 
+        fetchUsers, 
+        fetchDelete,
+        global,
+        dispatchGlobal,
+        flagPopUp: global.flagPopUp, 
+        setFlagPopUp: (value) => dispatchGlobal({type: "FLAG_POPUP", payload: value}), 
+        flagPopUpEdit: global.flagPopUpEdit, 
+        setFlagPopUpEdit: (value) => dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: value}), 
+        selectedUser: global.selectedUser, 
+        setSelectedUser: (value) => dispatchGlobal({type: "SELECTED_USER", payload: value}),
+        dataNewUser: global.dataNewUser, 
+        setDataNewUser: (value) => dispatchGlobal({type: "DATA_NEW_USER", payload: value}), 
+        handleNewUser, 
+        filterUsername, 
+        clearFilters, 
+        filterRole,
+        filterAge, 
+        filterOptions: global.filterOption, 
+        setFilterOptions: (options) => dispatchGlobal({type: "FILTER_OPTIONS", payload: options}) }}>
         { children }
     </LoginContext.Provider>)
 

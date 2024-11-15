@@ -45,6 +45,7 @@ const Login = () => {
         }
     }, [login.username, login.password]);
 
+    console.log(login);
 
     return(
     <>
