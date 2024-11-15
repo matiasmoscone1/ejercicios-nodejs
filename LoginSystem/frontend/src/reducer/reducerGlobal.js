@@ -2,7 +2,7 @@
 
 const reducerGlobal = (state, action) => {
     switch(action.type){
-        case "DATA_NEW_USER":{
+        case "SELECTED_USER":{
 
         }
     }

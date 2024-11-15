@@ -50,12 +50,12 @@ const AdminPanel = () => {
                     <div>
                         <p>Filter by <strong>Role</strong></p>
                         <input type="text" value={filterOptions.rol} name="rol" onChange={(e) => handleFilter(e)}/>
-                        <button onClick={() => filterRole(users, filterOptions.rol)}>Filter</button>
+                        <button onClick={() => {filterRole(users, filterOptions.rol); setFilterOptions({username: "", rol: "", age: ""})}}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Age</strong></p>
                         <input type="number" value={filterOptions.age} name="age" onChange={(e) => handleFilter(e)}/> 
-                        <button onClick={() => filterAge(users, filterOptions.age)}>Filter</button>
+                        <button onClick={() => {filterAge(users, filterOptions.age); setFilterOptions({username: "", rol: "", age: ""})}}>Filter</button>
                     </div>
                 </div>
                 <div className="btn-clear-filters">

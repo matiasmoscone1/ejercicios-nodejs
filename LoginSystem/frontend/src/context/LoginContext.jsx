@@ -27,8 +27,6 @@ const LoginContextProvider = ({ children }) => {
     }
 
     const initialStateGlobal = {
-        dataNewUser: {},
-        selectedUser: {},
         filterOptions: {
             username: "",
             rol: "",
