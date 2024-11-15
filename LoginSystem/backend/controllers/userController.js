@@ -45,7 +45,7 @@ userController.createUser = async (req, res) => {
 }
 
 userController.createPost = async (req, res) => {
-    const { id, title, content, author } = req.body;
+    const { id, title, content } = req.body;
 
     try{    
         const user = await User.findOne({_id: id});

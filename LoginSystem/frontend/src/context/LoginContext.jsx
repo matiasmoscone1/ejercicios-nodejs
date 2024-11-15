@@ -1,5 +1,6 @@
 import reducer from "../reducer/reducer";
 import reducerAdmin from "../reducer/reducerAdmin";
+import reducerGlobal from "../reducer/reducerGlobal";
 import { createContext } from "react";
 import { useReducer, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,8 +26,21 @@ const LoginContextProvider = ({ children }) => {
         array: []
     }
 
+    const initialStateGlobal = {
+        dataNewUser: {},
+        selectedUser: {},
+        filterOptions: {
+            username: "",
+            rol: "",
+            age: ""
+        },
+        flagPost: false
+    };
+
     const [login, dispatch] = useReducer(reducer, initialState);
     const [users, dispatchAdmin] = useReducer(reducerAdmin, initialStateAdmin);
+    const [global, dispatchGlobal] = useReducer(reducerGlobal, initialStateGlobal);
+   
 
     const [dataNewUser, setDataNewUser] = useState({});
     const [flagPopUp, setFlagPopUp] = useState(false);

@@ -28,6 +28,9 @@ const Dashboard = () => {
         </div>
 
         <div className="dashboard-container">
+            <div className="new-post-container">
+                <button>New Post</button>
+            </div>
             <section className="section-container">
                 <h3>Noticias</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate alias voluptas facere, tenetur doloremque ipsum et optio accusamus id ullam quidem nam sequi porro, sunt omnis, temporibus laborum maxime blanditiis?</p>
