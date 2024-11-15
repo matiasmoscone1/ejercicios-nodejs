@@ -3,7 +3,7 @@ import { LoginContext } from "../../context/LoginContext";
 
 const AdminUpdateAccount = () => {
 
-    const { setFlagPopUpEdit, fetchUsers, login, selectedUser,
+    const { fetchUsers, login,
          handleNewUser, global, dispatchGlobal } = useContext(LoginContext);
 
     console.log(global);
@@ -56,7 +56,7 @@ const AdminUpdateAccount = () => {
                     <input type="number" name="age" value={global.selectedUser.age} onChange={(e) => handleNewUser(e)}/>
                     <button className="btn-submit-account" type="submit">Submit</button>
                     <div className="div-account"></div>
-                    <button className="btn-cancel-account" onClick={() => dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: false})/*setFlagPopUpEdit(false)*/}>Cancel</button> 
+                    <button className="btn-cancel-account" onClick={() => dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: false})}>Cancel</button> 
                 </form>
             </div></>)
     

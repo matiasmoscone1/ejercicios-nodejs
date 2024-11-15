@@ -22,6 +22,7 @@ const AdminPanel = () => {
         dispatchGlobal({type: "FILTER_OPTIONS", payload: {...global.filterOptions, [name]:value}});
     }
 
+
     return(<>
         {global.flagPopUp && <AdminCreateAccount />}
         {global.flagPopUpEdit && <AdminUpdateAccount />}
@@ -45,18 +46,18 @@ const AdminPanel = () => {
                 <div className="filter-container">
                     <div>
                         <p>Filter by <strong>Username</strong></p>
-                        <input type="text" value={global.filterOptions.username} name="username" onChange={(e) => handleFilter(e)}/>
-                        <button onClick={() => {filterUsername(users, global.filterOptions.username); dispatchGlobal({type: "CLEAR_FLTERS"})}}>Filter</button>
+                        <input type="text" value={global.filterOptions.username || ""} name="username" onChange={(e) => handleFilter(e)}/>
+                        <button onClick={() => {filterUsername(users, global.filterOptions.username); dispatchGlobal({type: "CLEAR_FILTERS"})}}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Role</strong></p>
-                        <input type="text" value={filterOptions.rol} name="rol" onChange={(e) => handleFilter(e)}/>
-                        <button onClick={() => {filterRole(users, filterOptions.rol); dispatchGlobal({type: "CLEAR_FLTERS"})}}>Filter</button>
+                        <input type="text" value={global.filterOptions.rol || ""} name="rol" onChange={(e) => handleFilter(e)}/>
+                        <button onClick={() => {filterRole(users, global.filterOptions.rol); dispatchGlobal({type: "CLEAR_FILTERS"})}}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Age</strong></p>
-                        <input type="number" value={filterOptions.age} name="age" onChange={(e) => handleFilter(e)}/> 
-                        <button onClick={() => {filterAge(users, filterOptions.age); dispatchGlobal({type: "CLEAR_FLTERS"})}}>Filter</button>
+                        <input type="number" value={global.filterOptions.age || ""} name="age" onChange={(e) => handleFilter(e)}/> 
+                        <button onClick={() => {filterAge(users, global.filterOptions.age); dispatchGlobal({type: "CLEAR_FILTERS"})}}>Filter</button>
                     </div>
                 </div>
                 <div className="btn-clear-filters">
