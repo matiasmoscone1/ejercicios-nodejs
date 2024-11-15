@@ -43,6 +43,7 @@ const LoginContextProvider = ({ children }) => {
     const [users, dispatchAdmin] = useReducer(reducerAdmin, initialStateAdmin);
     const [global, dispatchGlobal] = useReducer(reducerGlobal, initialStateGlobal);
    
+
 /*
     const [dataNewUser, setDataNewUser] = useState({});
     const [flagPopUp, setFlagPopUp] = useState(false);
@@ -182,7 +183,7 @@ const LoginContextProvider = ({ children }) => {
         clearFilters, 
         filterRole,
         filterAge, 
-        filterOptions: global.filterOption, 
+        filterOptions: global.filterOptions, 
         setFilterOptions: (options) => dispatchGlobal({type: "FILTER_OPTIONS", payload: options}) }}>
         { children }
     </LoginContext.Provider>)

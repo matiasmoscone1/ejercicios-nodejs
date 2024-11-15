@@ -11,7 +11,6 @@ const AdminPanel = () => {
     clearFilters, filterRole, filterAge, filterOptions, setFilterOptions, dispatchGlobal, global } = useContext(LoginContext);
 
     
-   
     const handleSelectUser = (user) => {
         //setFlagPopUpEdit(true);
         dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: true})
@@ -48,8 +47,8 @@ const AdminPanel = () => {
                 <div className="filter-container">
                     <div>
                         <p>Filter by <strong>Username</strong></p>
-                        <input type="text" value={filterOptions.username} name="username" onChange={(e) => handleFilter(e)}/>
-                        <button onClick={() => {filterUsername(users, filterOptions.username); setFilterOptions({username: "", rol: "", age: ""})}}>Filter</button>
+                        <input type="text" value={global.filterOptions.username} name="username" onChange={(e) => handleFilter(e)}/>
+                        <button onClick={() => {filterUsername(users, global.filterOptions.username); setFilterOptions({username: "", rol: "", age: ""})}}>Filter</button>
                     </div>
                     <div>
                         <p>Filter by <strong>Role</strong></p>
@@ -71,7 +70,7 @@ const AdminPanel = () => {
                     <tr className="tr-create-user" colSpan={7}>
                         <td colSpan={3}>Usuarios totales: {users.array.length}</td>
                         <td colSpan={3}></td>
-                        <td colSpan={2}><button onClick={() => setFlagPopUp(true)}>Create User</button></td>
+                        <td colSpan={2}><button onClick={() => dispatchGlobal({type: "FLAG_POPUP", payload: true})/*setFlagPopUp(true)*/}>Create User</button></td>
                     </tr>
                     <tr>
                         <td>Id</td>

@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    height: 150vh;
+}
+
 button{
     cursor: pointer;
 }
@@ -326,6 +330,7 @@ button{
     text-align: center;
     table-layout: fixed;
     border-collapse: collapse;
+    margin-bottom: 5em;
 }
 
 .table-container td{
@@ -365,6 +370,8 @@ button{
     align-items: center;
     gap: 1em;
     margin-bottom: 2em;
+    padding-top: 1em;
+    padding-bottom: 2em;
 }
 
 .btn-clear-filters button{
