@@ -4,7 +4,7 @@ import { LoginContext } from "../../context/LoginContext";
 const AdminUpdateAccount = () => {
 
     const { setFlagPopUpEdit, fetchUsers, login, selectedUser,
-         handleNewUser, global, globalDispatch } = useContext(LoginContext);
+         handleNewUser, global, dispatchGlobal } = useContext(LoginContext);
 
     console.log(global);
 
@@ -22,7 +22,6 @@ const AdminUpdateAccount = () => {
                 })
             });
             if(response.ok){
-                //setFlagPopUpEdit(false);
                 dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: false});
             }else{
                 const errorData = await response.json();

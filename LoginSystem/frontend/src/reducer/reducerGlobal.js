@@ -12,7 +12,8 @@ const reducerGlobal = (state, action) => {
             return({...state, flagPopUp: action.payload});
         case "FLAG_POPUP_EDIT":
             return({...state, flagPopUpEdit: action.payload});
-        
+        case "CLEAR_FILTERS":
+            return{...state, filterOptions: {username: "", email: "", age: ""}};
     }
 }
 
