@@ -11,7 +11,7 @@ const reducerGlobal = (state, action) => {
         case "FLAG_POPUP":
             return({...state, flagPopUp: action.payload});
         case "FLAG_POPUP_EDIT":
-            return({...state, flagPopUp: action.payload});
+            return({...state, flagPopUpEdit: action.payload});
         
     }
 }

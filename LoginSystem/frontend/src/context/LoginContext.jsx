@@ -103,7 +103,6 @@ const LoginContextProvider = ({ children }) => {
             });
             const data = await response.json();
             saveUsers(data);
-            sortArray();
             console.log(data);
         }catch(err){
             console.error("Ha ocurrido un error al listar los usuarios.", err);
@@ -130,9 +129,15 @@ const LoginContextProvider = ({ children }) => {
         const { name, value } = e.target;
         dispatchGlobal({type: "DATA_NEW_USER", payload: {...global.dataNewUser, [name]:value}});
         dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
-/*        setDataNewUser({...dataNewUser, [name]:value});
+        /*        setDataNewUser({...dataNewUser, [name]:value});
         setSelectedUser({...selectedUser, [name]:value});*/
     }
+    /*
+    const handleEditUser = (e) => {
+        const { name, value } = e.target;
+        dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
+    }*/
+
 
     const sortArray = () => {
         const sortedArray = [...users.array].sort((a,b) => {
@@ -149,6 +154,7 @@ const LoginContextProvider = ({ children }) => {
 
     useEffect(() => {
         fetchUsers();
+        sortArray();
     }, [login]);
 
     useEffect(() => {

@@ -9,13 +9,14 @@ const AdminPanel = () => {
     const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp,
         flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername,
     clearFilters, filterRole, filterAge, filterOptions, setFilterOptions, dispatchGlobal, global } = useContext(LoginContext);
+  
+    console.log(global);
 
-    
     const handleSelectUser = (user) => {
         //setFlagPopUpEdit(true);
-        dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: true})
         //setSelectedUser(user);
         dispatchGlobal({type: "SELECTED_USER", payload: user});
+        dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: true})
     }
 
     const handleFilter = (e) => {
@@ -25,8 +26,8 @@ const AdminPanel = () => {
     }
 
     return(<>
-        {flagPopUp && <AdminCreateAccount />}
-        {flagPopUpEdit && <AdminUpdateAccount />}
+        {global.flagPopUp && <AdminCreateAccount />}
+        {global.flagPopUpEdit && <AdminUpdateAccount />}
         {login.rol === "Admin" ? <div className="admin-panel-container">
             <div className="profile-home">
                 <Link to={"/dashboard"}>

@@ -3,24 +3,27 @@ import { LoginContext } from "../../context/LoginContext";
 
 const AdminUpdateAccount = () => {
 
-    const { setFlagPopUpEdit, fetchUsers, login, selectedUser, handleNewUser } = useContext(LoginContext);
+    const { setFlagPopUpEdit, fetchUsers, login, selectedUser,
+         handleNewUser, global, globalDispatch } = useContext(LoginContext);
 
-    console.log(selectedUser);
+    console.log(global);
+
     const fetchUpdateAccount = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/api/adminUpdate/${selectedUser._id}`, {
+            const response = await fetch(`http://localhost:3000/api/adminUpdate/${global.selectedUser._id}`, {
                 method: "POST",
                 headers: {"Content-Type":"application/json", "User-Role": login.rol},
                 body: JSON.stringify({
-                    username: selectedUser.username,
-                    password: selectedUser.password,
-                    rol: selectedUser.rol,
-                    email: selectedUser.email,
-                    age: selectedUser.age
+                    username: global.selectedUser.username,
+                    password: global.selectedUser.password,
+                    rol: global.selectedUser.rol,
+                    email: global.selectedUser.email,
+                    age: global.selectedUser.age
                 })
             });
             if(response.ok){
-                setFlagPopUpEdit(false);
+                //setFlagPopUpEdit(false);
+                dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: false});
             }else{
                 const errorData = await response.json();
                 if(errorData){
@@ -39,23 +42,22 @@ const AdminUpdateAccount = () => {
         await fetchUsers();
     }
 
-
     return(<>
         <div className="admin-create-account-container">
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <label>Username</label>
-                    <input type="text" name="username" value={selectedUser.username} onChange={(e) => handleNewUser(e)}/>
+                    <input type="text" name="username" value={global.selectedUser.username} onChange={(e) => handleNewUser(e)}/>
                     <label>Password</label>
-                    <input type="password" name="password" value={selectedUser.password} onChange={(e) => handleNewUser(e)}/>
+                    <input type="password" name="password" value={global.selectedUser.password} onChange={(e) => handleNewUser(e)}/>
                     <label>Rol</label>
-                    <input type="text" name="rol" value={selectedUser.rol} onChange={(e) => handleNewUser(e)}/>
+                    <input type="text" name="rol" value={global.selectedUser.rol} onChange={(e) => handleNewUser(e)}/>
                     <label>Email</label>
-                    <input type="email" name="email" value={selectedUser.email} onChange={(e) => handleNewUser(e)}/>
+                    <input type="email" name="email" value={global.selectedUser.email} onChange={(e) => handleNewUser(e)}/>
                     <label>Age</label>
-                    <input type="number" name="age" value={selectedUser.age} onChange={(e) => handleNewUser(e)}/>
+                    <input type="number" name="age" value={global.selectedUser.age} onChange={(e) => handleNewUser(e)}/>
                     <button className="btn-submit-account" type="submit">Submit</button>
                     <div className="div-account"></div>
-                    <button className="btn-cancel-account" onClick={() => setFlagPopUpEdit(false)}>Cancel</button> 
+                    <button className="btn-cancel-account" onClick={() => dispatchGlobal({type: "FLAG_POPUP_EDIT", payload: false})/*setFlagPopUpEdit(false)*/}>Cancel</button> 
                 </form>
             </div></>)
     
