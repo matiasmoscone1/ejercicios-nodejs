@@ -5,24 +5,23 @@ const NewPost = () => {
 
     const { login, dispatchGlobal, global } = useContext(LoginContext);
 
-    console.log(login);
     const fetchNewPost = async () => {
         try{
             const response = await fetch("http://localhost:3000/api/createPost", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: {
-                    id: login._id,
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({
+                    id: login.id,
                     title: global.title, 
                     content: global.content
-                },
+                }),
                 credentials: "include"
             });
             if(response.ok){
                 console.log(response);
             }
         }catch(err){
-            console.log(err);
+            console.log("Ocurrio un problema al crear el post", err);
         }
     }
 
