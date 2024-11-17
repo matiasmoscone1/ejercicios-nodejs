@@ -66,6 +66,12 @@ userController.createPost = async (req, res) => {
 
 }
 
+userController.readPost = async (req, res) => {
+    
+    
+
+}
+
 
 
 module.exports = userController;

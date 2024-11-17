@@ -5,9 +5,10 @@ import NewPost from "./NewPost";
 
 const Dashboard = () => {
 
-    const { login, fetchLogOut, global, dispatchGlobal } = useContext(LoginContext);
+    const { login, fetchLogOut, global, dispatchGlobal, posts } = useContext(LoginContext);
 
     console.log(global);
+    console.log(posts);
     return(<>
         <div className="top-dashboard">
             {login.rol === "Admin" ? 

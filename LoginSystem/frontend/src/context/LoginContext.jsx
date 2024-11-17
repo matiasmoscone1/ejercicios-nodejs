@@ -74,6 +74,8 @@ const LoginContextProvider = ({ children }) => {
 
     const clearFilters = () => dispatchAdmin({type: "CLEAR_FILTERS"});
 
+    const savePosts = (obj) => dispatchPost({type: "SAVE_POST", payload: obj})
+
     const fetchLogOut = async () => {
         try{
             const response = await fetch("http://localhost:3000/api/logout", {
@@ -123,6 +125,24 @@ const LoginContextProvider = ({ children }) => {
             console.error("Ocurrio un problema al eliminar el usuario:", err);
         }
     }
+
+    const fetchPosts = async () => {
+        try{
+            const response = await fetch("http://localhost:3000/api/readPost", {
+                method: "GET",
+                headers: {"Content-Type":"application/json"},
+                credentials: "include"
+            });
+            if(response.ok){
+                const data = await response.json();
+                savePosts(data);
+            }
+        }catch(err){    
+            console.error("Ha ocurrido un error al obtener los datos de los posteos.");
+        }
+
+    }
+
     
     const handleNewUser = (e) => {
         const { name, value } = e.target;
@@ -145,6 +165,7 @@ const LoginContextProvider = ({ children }) => {
 
     useEffect(() => {
         fetchUsers();
+        fetchPosts();
         sortArray();
     }, [login]);
 
@@ -163,6 +184,7 @@ const LoginContextProvider = ({ children }) => {
         fetchLogOut, 
         saveUsers, 
         users, 
+        posts,
         fetchUsers, 
         fetchDelete,
         global,
