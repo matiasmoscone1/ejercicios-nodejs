@@ -127,6 +127,12 @@ button{
     height: 2em;
 }
 
+.new-post{
+    border: 1px solid black;
+    width: 80vw;
+    height: 15vh;
+}
+
 
 /* ----------------------------------- DASHBOARD-ADMIN ----------------------------------- */
 

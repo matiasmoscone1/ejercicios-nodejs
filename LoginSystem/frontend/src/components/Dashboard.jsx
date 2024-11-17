@@ -7,6 +7,7 @@ const Dashboard = () => {
 
     const { login, fetchLogOut, global, dispatchGlobal } = useContext(LoginContext);
 
+    console.log(global);
     return(<>
         <div className="top-dashboard">
             {login.rol === "Admin" ? 
@@ -30,7 +31,8 @@ const Dashboard = () => {
 
         <div className="dashboard-container">
             <div className="new-post-container">
-                <button>New Post</button>
+                <button onClick={() => dispatchGlobal({type: "FLAG_NEW_POST", payload: true})}>New Post</button>
+                {global.flagPost && <NewPost/>}
             </div>
             <section className="section-container">
                 <h3>Noticias</h3>

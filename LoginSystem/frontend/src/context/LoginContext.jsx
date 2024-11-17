@@ -119,18 +119,12 @@ const LoginContextProvider = ({ children }) => {
         const { name, value } = e.target;
         dispatchGlobal({type: "DATA_NEW_USER", payload: {...global.dataNewUser, [name]:value}});
         dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
-        /*        setDataNewUser({...dataNewUser, [name]:value});
-        setSelectedUser({...selectedUser, [name]:value});*/
     }
-    /*
-    const handleEditUser = (e) => {
-        const { name, value } = e.target;
-        dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
-    }*/
+    
 
 
-    const sortArray = () => {
-        const sortedArray = [...users.array].sort((a,b) => {
+    const sortArray = async () => {
+        const sortedArray = await [...users.array].sort((a,b) => {
             if(a.rol === "Admin" && b.rol !== "Admin"){
                 return -1;
             }

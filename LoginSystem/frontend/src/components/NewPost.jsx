@@ -3,8 +3,8 @@
 
 const NewPost = () => {
 
-    return(<div>
-
+    return(<div className="new-post">
+        <textarea cols={20} rows={5}/>
     </div>)
 
 }
