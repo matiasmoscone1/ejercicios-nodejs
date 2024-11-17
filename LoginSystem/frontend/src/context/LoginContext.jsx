@@ -118,21 +118,10 @@ const LoginContextProvider = ({ children }) => {
         }
     }
     
-
     const handleNewUser = (e) => {
         const { name, value } = e.target;
         dispatchGlobal({type: "DATA_NEW_USER", payload: {...global.dataNewUser, [name]:value}});
         dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
-    }
-    
-    const handleTitlePost = (e) => {
-        const { name, value } = e.target;
-        dispatchGlobal({type: "SAVE_TITLE", payload: {...global.title, [name]:value}});
-    }
-    
-    const handleContentPost = (e) => {
-        const { name, value } = e.target;
-        dispatchGlobal({type: "SAVE_CONTENT", payload: {...global.content, [name]:value}});
     }
 
     const sortArray = async () => {

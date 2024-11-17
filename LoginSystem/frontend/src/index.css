@@ -134,7 +134,15 @@ button{
 .title-content-container input{
     width: 60vw;
     height: 2em;
+    padding: 1em;
 }
+
+.title-content-container textarea{
+    width: 60vw;
+    height: 15vh;
+    padding: 1em;
+}
+
 
 .new-post-container{
 
@@ -144,6 +152,8 @@ button{
     width: 8em;
     height: 2em;
 }
+
+
 
 .new-post{
     width: 80vw;
@@ -155,10 +165,6 @@ button{
 
 }
 
-.new-post textarea{
-    width: 60vw;
-    height: 15vh;
-}
 
 .btn-new-post{
     display: flex;

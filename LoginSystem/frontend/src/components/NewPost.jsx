@@ -29,9 +29,9 @@ const NewPost = () => {
     return(<div className="new-post">
         <div className="title-content-container">
             <label>Title</label>
-            <input type="text" name="title-post"/>
+            <input type="text" name="title-post" onChange={(e) => dispatchGlobal({type: "SAVE_TITLE", payload: e.target.value})}/>
             <label>Content</label>
-            <textarea cols={20} rows={5} name="content-post"/>
+            <textarea cols={20} rows={5} name="content-post" onChange={(e) => dispatchGlobal({type: "SAVE_CONTENT", payload: e.target.value})}/>
         </div>
         <div className="btn-new-post">
             <button onClick={() => fetchNewPost()}>Post</button>
