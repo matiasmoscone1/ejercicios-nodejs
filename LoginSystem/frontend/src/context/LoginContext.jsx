@@ -1,6 +1,7 @@
 import reducer from "../reducer/reducer";
 import reducerAdmin from "../reducer/reducerAdmin";
 import reducerGlobal from "../reducer/reducerGlobal";
+import reducerPost from "../reducer/reducerPost";
 import { createContext } from "react";
 import { useReducer, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -42,10 +43,15 @@ const LoginContextProvider = ({ children }) => {
         content: ""
     };
 
+    const initialStatePost = {
+        array: []
+    };
+
+
     const [login, dispatch] = useReducer(reducer, initialState);
     const [users, dispatchAdmin] = useReducer(reducerAdmin, initialStateAdmin);
     const [global, dispatchGlobal] = useReducer(reducerGlobal, initialStateGlobal);
-   
+    const [posts, dispatchPost] = useReducer(reducerPost, initialStatePost);
 
 
     const saveCredentials = (username, password) => dispatch({ type: "SAVE_AUTH", payload: {username, password} });
