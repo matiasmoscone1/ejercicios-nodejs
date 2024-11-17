@@ -37,7 +37,9 @@ const LoginContextProvider = ({ children }) => {
         flagPopUp: false,
         flagPopUpEdit: false,
         flagPost: false,
-        flagBtnNewPost: true
+        flagBtnNewPost: true,
+        title: "",
+        content: ""
     };
 
     const [login, dispatch] = useReducer(reducer, initialState);
@@ -116,13 +118,22 @@ const LoginContextProvider = ({ children }) => {
         }
     }
     
+
     const handleNewUser = (e) => {
         const { name, value } = e.target;
         dispatchGlobal({type: "DATA_NEW_USER", payload: {...global.dataNewUser, [name]:value}});
         dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
     }
     
-
+    const handleTitlePost = (e) => {
+        const { name, value } = e.target;
+        dispatchGlobal({type: "SAVE_TITLE", payload: {...global.title, [name]:value}});
+    }
+    
+    const handleContentPost = (e) => {
+        const { name, value } = e.target;
+        dispatchGlobal({type: "SAVE_CONTENT", payload: {...global.content, [name]:value}});
+    }
 
     const sortArray = async () => {
         const sortedArray = await [...users.array].sort((a,b) => {

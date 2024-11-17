@@ -3,7 +3,7 @@ import { LoginContext } from "../context/LoginContext";
 
 const NewPost = () => {
 
-    const { login, dispatchGlobal } = useContext(LoginContext);
+    const { login, dispatchGlobal, global } = useContext(LoginContext);
 
     console.log(login);
     const fetchNewPost = async () => {
@@ -13,12 +13,17 @@ const NewPost = () => {
                 headers: {"Content-Type": "application/json"},
                 body: {
                     id: login._id,
-                    /*title: , 
-                    content:*/
+                    title: global.title, 
+                    content: global.content
                 },
                 credentials: "include"
-            })
-        }catch()
+            });
+            if(response.ok){
+                console.log(response);
+            }
+        }catch(err){
+            console.log(err);
+        }
     }
 
     return(<div className="new-post">
