@@ -16,6 +16,8 @@ const reducerGlobal = (state, action) => {
             return{...state, filterOptions: {username: "", email: "", age: ""}};
         case "FLAG_NEW_POST":
             return{...state, flagPost: action.payload};
+        case "FLAG_BTN_NEW_POST":
+            return{...state, flagBtnNewPost: action.payload};    
     }
 }
 

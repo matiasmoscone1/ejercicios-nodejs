@@ -31,7 +31,7 @@ const Dashboard = () => {
 
         <div className="dashboard-container">
             <div className="new-post-container">
-                <button onClick={() => dispatchGlobal({type: "FLAG_NEW_POST", payload: true})}>New Post</button>
+                {global.flagBtnNewPost && <button onClick={() => {dispatchGlobal({type: "FLAG_NEW_POST", payload: true}); dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: false})}}>New Post</button>}
                 {global.flagPost && <NewPost/>}
             </div>
             <section className="section-container">

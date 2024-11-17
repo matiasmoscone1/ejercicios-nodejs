@@ -122,6 +122,9 @@ button{
     bottom: .5em;
 }
 
+.new-post-container{
+
+}
 
 .new-post-container button{
     width: 8em;
@@ -136,6 +139,7 @@ button{
     justify-content: center;
     align-items: center;
     gap: 2em;
+
 }
 
 .new-post textarea{

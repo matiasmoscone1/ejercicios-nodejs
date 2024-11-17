@@ -36,7 +36,8 @@ const LoginContextProvider = ({ children }) => {
         },
         flagPopUp: false,
         flagPopUpEdit: false,
-        flagPost: false
+        flagPost: false,
+        flagBtnNewPost: true
     };
 
     const [login, dispatch] = useReducer(reducer, initialState);
