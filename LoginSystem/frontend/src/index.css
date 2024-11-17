@@ -66,7 +66,7 @@ button{
 
 .dashboard-container{
     width: 80vw;
-    height: 60vh;
+    height: auto;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -75,6 +75,7 @@ button{
     margin-left: auto;
     margin-right: auto;
     margin-top: 4em;
+    padding: 2em;
 }
 
 .section-container{
@@ -84,6 +85,7 @@ button{
     align-items: center;
     padding: 2em;
     gap: 2em;
+    margin-top: 2em;
 }
 
 .section-container p{
@@ -122,6 +124,18 @@ button{
     bottom: .5em;
 }
 
+.title-content-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+.title-content-container input{
+    width: 60vw;
+    height: 2em;
+}
+
 .new-post-container{
 
 }
@@ -132,7 +146,6 @@ button{
 }
 
 .new-post{
-    border: 1px solid black;
     width: 80vw;
     height: 25vh;
     display: flex;
@@ -144,6 +157,7 @@ button{
 
 .new-post textarea{
     width: 60vw;
+    height: 15vh;
 }
 
 .btn-new-post{

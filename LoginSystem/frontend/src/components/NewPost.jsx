@@ -27,8 +27,12 @@ const NewPost = () => {
     }
 
     return(<div className="new-post">
-        <input type="text" name="title-post"/>
-        <textarea cols={20} rows={5} name="content-post"/>
+        <div className="title-content-container">
+            <label>Title</label>
+            <input type="text" name="title-post"/>
+            <label>Content</label>
+            <textarea cols={20} rows={5} name="content-post"/>
+        </div>
         <div className="btn-new-post">
             <button onClick={() => fetchNewPost()}>Post</button>
             <button onClick={() => {dispatchGlobal({type: "FLAG_NEW_POST", payload: false}); dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: true})}}>Cancel</button>
