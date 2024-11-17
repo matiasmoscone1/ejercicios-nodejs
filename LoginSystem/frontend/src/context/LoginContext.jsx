@@ -104,7 +104,6 @@ const LoginContextProvider = ({ children }) => {
             });
             const data = await response.json();
             saveUsers(data);
-            console.log(data);
         }catch(err){
             console.error("Ha ocurrido un error al listar los usuarios.", err);
         }

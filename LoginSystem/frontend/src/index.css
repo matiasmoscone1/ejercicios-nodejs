@@ -144,16 +144,10 @@ button{
 }
 
 
-.new-post-container{
-
-}
-
 .new-post-container button{
     width: 8em;
     height: 2em;
 }
-
-
 
 .new-post{
     width: 80vw;
@@ -165,7 +159,6 @@ button{
 
 }
 
-
 .btn-new-post{
     display: flex;
     flex-direction: column;
@@ -174,6 +167,18 @@ button{
     gap: 1em;
 }
 
+.post-container{
+    width: 80vw;
+    height: 20vh;
+    border: 1px solid black;
+}
+
+.post-container .post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 /* ----------------------------------- DASHBOARD-ADMIN ----------------------------------- */
 

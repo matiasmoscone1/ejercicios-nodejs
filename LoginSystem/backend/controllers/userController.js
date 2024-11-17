@@ -45,7 +45,7 @@ userController.createUser = async (req, res) => {
 }
 
 userController.createPost = async (req, res) => {
-    const { id, title, content } = req.body;
+    const { id, title, content, authorUsername, authorRol } = req.body;
 
     try{    
         const user = await User.findOne({_id: id});
@@ -53,7 +53,9 @@ userController.createPost = async (req, res) => {
             const newPost = new Post({
                 title: title,
                 content: content,
-                author: user._id
+                author: user._id,
+                authorUsername: authorUsername,
+                authorRol: authorRol
             });
             await newPost.save();
             res.status(200).json({message: "Post creado con exito!"});
@@ -67,9 +69,12 @@ userController.createPost = async (req, res) => {
 }
 
 userController.readPost = async (req, res) => {
-    
-    
-
+    try{
+        const collectionPost = await Post.find();
+        res.status(200).json(collectionPost);
+    }catch(err){
+        res.status(404).json({message: "No se encontro ningun posteo."});
+    }
 }
 
 

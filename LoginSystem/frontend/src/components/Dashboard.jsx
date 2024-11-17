@@ -2,6 +2,7 @@ import { LoginContext } from "../context/LoginContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import NewPost from "./NewPost";
+import Posts from "./Posts";
 
 const Dashboard = () => {
 
@@ -36,11 +37,7 @@ const Dashboard = () => {
                 {global.flagPost && <NewPost/>}
             </div>
             <section className="section-container">
-                <h3>Noticias</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate alias voluptas facere, tenetur doloremque ipsum et optio accusamus id ullam quidem nam sequi porro, sunt omnis, temporibus laborum maxime blanditiis?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate alias voluptas facere, tenetur doloremque ipsum et optio accusamus id ullam quidem nam sequi porro, sunt omnis, temporibus laborum maxime blanditiis?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate alias voluptas facere, tenetur doloremque ipsum et optio accusamus id ullam quidem nam sequi porro, sunt omnis, temporibus laborum maxime blanditiis?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate alias voluptas facere, tenetur doloremque ipsum et optio accusamus id ullam quidem nam sequi porro, sunt omnis, temporibus laborum maxime blanditiis?</p>
+                <Posts />
             </section>
         </div>
     </>)

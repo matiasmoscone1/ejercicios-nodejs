@@ -6,12 +6,15 @@ const NewPost = () => {
     const { login, dispatchGlobal, global } = useContext(LoginContext);
 
     const fetchNewPost = async () => {
+        console.log(login);
         try{
             const response = await fetch("http://localhost:3000/api/createPost", {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify({
                     id: login.id,
+                    authorUsername: login.username,
+                    authorRol: login.rol,
                     title: global.title, 
                     content: global.content
                 }),
