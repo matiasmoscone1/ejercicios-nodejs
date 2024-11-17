@@ -44,16 +44,6 @@ const LoginContextProvider = ({ children }) => {
     const [global, dispatchGlobal] = useReducer(reducerGlobal, initialStateGlobal);
    
 
-/*
-    const [dataNewUser, setDataNewUser] = useState({});
-    const [flagPopUp, setFlagPopUp] = useState(false);
-    const [flagPopUpEdit, setFlagPopUpEdit] = useState(false); 
-    const [selectedUser, setSelectedUser] = useState({});
-    const [filterOptions, setFilterOptions] = useState({
-        username: "",
-        rol: "",
-        age: ""
-    });*/
 
     const saveCredentials = (username, password) => dispatch({ type: "SAVE_AUTH", payload: {username, password} });
 

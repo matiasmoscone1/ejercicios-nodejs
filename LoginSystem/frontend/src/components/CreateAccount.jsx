@@ -7,8 +7,6 @@ const CreateAccount = () => {
 
     const { dataNewUser, flagPopUp, handleNewUser, dispatchGlobal } = useContext(LoginContext);
 
-/*    const [flagPopUp, setFlagPopUp] = useState(false);
-    const [dataNewUser, setDataNewUser] = useState({});*/
     const navigate = useNavigate();
 
     const fetchCreateUser = async () => {
@@ -24,10 +22,9 @@ const CreateAccount = () => {
                 })
             });
             if(response.ok){
-                /*setFlagPopUp(true);*/
+
                 dispatchGlobal({type: "FLAG_POPUP", payload: true});
                 setInterval(() => {
-                    /*setFlagPopUp(false);*/
                     dispatchGlobal({type: "FLAG_POPUP", payload: false});
                     navigate("/");                                        
                 }, (2000));
@@ -47,11 +44,6 @@ const CreateAccount = () => {
         e.preventDefault();    
         fetchCreateUser();
     }
-/*
-    const handleNewUser = (e) => {
-        const {name, value} = e.target;
-        setDataNewUser({...dataNewUser, [name]:value});        
-    }*/
 
     return(<>
         {flagPopUp && <div className="pop-up">

@@ -1,10 +1,11 @@
 import { LoginContext } from "../context/LoginContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import NewPost from "./NewPost";
 
 const Dashboard = () => {
 
-    const { login, fetchLogOut } = useContext(LoginContext);
+    const { login, fetchLogOut, global, dispatchGlobal } = useContext(LoginContext);
 
     return(<>
         <div className="top-dashboard">

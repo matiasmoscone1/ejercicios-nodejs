@@ -6,11 +6,9 @@ import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
 
-    const { login, users, fetchLogOut, fetchDelete, flagPopUp, setFlagPopUp,
-        flagPopUpEdit, setFlagPopUpEdit, setSelectedUser, filterUsername,
-    clearFilters, filterRole, filterAge, filterOptions, setFilterOptions, dispatchGlobal, global } = useContext(LoginContext);
+    const { login, users, fetchLogOut, fetchDelete, filterUsername,
+    clearFilters, filterRole, filterAge, dispatchGlobal, global } = useContext(LoginContext);
   
-    console.log(global);
 
     const handleSelectUser = (user) => {
         dispatchGlobal({type: "SELECTED_USER", payload: user});
