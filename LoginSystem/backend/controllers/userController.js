@@ -46,7 +46,6 @@ userController.createUser = async (req, res) => {
 
 userController.createPost = async (req, res) => {
     const { id, title, content, authorUsername, authorRol } = req.body;
-
     try{    
         const user = await User.findOne({_id: id});
         if(user){
@@ -74,6 +73,16 @@ userController.readPost = async (req, res) => {
         res.status(200).json(collectionPost);
     }catch(err){
         res.status(404).json({message: "No se encontro ningun posteo."});
+    }
+}
+
+userController.deletePost = async (req, res) => {
+    const userId = req.params.id
+    try{
+        await Post.findByIdAndDelete(userId);
+        res.status(200).json({message: "Post eliminado con exito!"}); 
+    }catch(err){
+        res.status(404).json({message: "No se encontro el post para eliminar."})
     }
 }
 
