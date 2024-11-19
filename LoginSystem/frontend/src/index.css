@@ -169,8 +169,33 @@ button{
 
 .post-container{
     width: 80vw;
-    height: 20vh;
+    height: auto;
     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.post-structure{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    width: 100%;
+    height: auto;
+    padding: 1em;
+}
+
+.post-structure h3 h4{
+    font-weight: 500;
+}
+
+.post-user-rol{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
 }
 
 .post-container .post{
@@ -179,6 +204,8 @@ button{
     justify-content: center;
     align-items: center;
 }
+
+
 
 /* ----------------------------------- DASHBOARD-ADMIN ----------------------------------- */
 
