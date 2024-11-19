@@ -203,6 +203,15 @@ button{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: .5em;
+}
+
+.post-edit-delete{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 
 

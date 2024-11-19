@@ -143,6 +143,22 @@ const LoginContextProvider = ({ children }) => {
 
     }
 
+    const fetchDeletePosts = async (id) => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/deletePost/${id}`, {
+                method: "DELETE",
+                headers: {"Content-Type":"application/json"},
+                credentials: "include"
+            });
+            if(response.ok){
+                fetchPosts();
+            }
+        }catch(err){    
+            console.error("Ha ocurrido un error al obtener los datos de los posteos.");
+        }
+
+    }
+
     
     const handleNewUser = (e) => {
         const { name, value } = e.target;
@@ -202,6 +218,7 @@ const LoginContextProvider = ({ children }) => {
         dataNewUser: global.dataNewUser, 
         setDataNewUser: (value) => dispatchGlobal({type: "DATA_NEW_USER", payload: value}), 
         handleNewUser, 
+        fetchDeletePosts,
         filterUsername, 
         clearFilters, 
         filterRole,

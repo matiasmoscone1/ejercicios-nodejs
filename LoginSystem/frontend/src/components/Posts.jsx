@@ -3,7 +3,7 @@ import { LoginContext } from "../context/LoginContext";
 
 const Posts = () => {
     
-    const { posts } = useContext(LoginContext);
+    const { posts, fetchDeletePosts } = useContext(LoginContext);
 
     return(<div className="post-container">
         {posts.array.map((post) => {
@@ -17,9 +17,9 @@ const Posts = () => {
                     <h3>{post.title}</h3>
                     <p>{post.content}</p>
                 </div>
-                <div>
+                <div className="post-edit-delete">
                     <td className=""><button onClick={() => {}}><i className="fas fa-edit"></i></button></td>
-                    <td className=""><button onClick={() => {}}><i className="fas fa-trash-alt"></i></button></td>
+                    <td className=""><button onClick={() => fetchDeletePosts(post._id)}><i className="fas fa-trash-alt"></i></button></td>
                 </div>
             </div>);
         })}
