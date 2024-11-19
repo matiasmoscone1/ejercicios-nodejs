@@ -22,6 +22,8 @@ const NewPost = () => {
             });
             if(response.ok){
                 console.log(response);
+                dispatchGlobal({type: "FLAG_NEW_POST", payload: false});
+                dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: true});
             }
         }catch(err){
             console.log("Ocurrio un problema al crear el post", err);

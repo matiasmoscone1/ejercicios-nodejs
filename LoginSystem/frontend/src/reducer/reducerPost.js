@@ -5,6 +5,7 @@ const reducerPost = (state, action) => {
         case "SAVE_POST":{
             return({...state, array: action.payload});
         }
+        
     }
 
 }
