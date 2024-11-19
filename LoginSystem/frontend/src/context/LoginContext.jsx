@@ -148,8 +148,9 @@ const LoginContextProvider = ({ children }) => {
             const response = await fetch(`http://localhost:3000/api/deletePost/${id}`, {
                 method: "DELETE",
                 headers: {"Content-Type":"application/json"},
-                body: JSON.strinfify({
-                    username: login.username
+                body: JSON.stringify({
+                    username: login.username,
+                    rol: login.rol
                 }),
                 credentials: "include"
             });
@@ -158,7 +159,7 @@ const LoginContextProvider = ({ children }) => {
                 fetchPosts();
             }
         }catch(err){    
-            console.error("Ha ocurrido un error al obtener los datos de los posteos.");
+            console.error("Ha ocurrido un error al obtener los datos de los posteos.", err);
         }
 
     }
