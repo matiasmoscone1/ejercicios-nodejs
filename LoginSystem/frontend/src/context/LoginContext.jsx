@@ -40,7 +40,8 @@ const LoginContextProvider = ({ children }) => {
         flagPost: false,
         flagBtnNewPost: true,
         title: "",
-        content: ""
+        content: "",
+        countPost: 0
     };
 
     const initialStatePost = {
@@ -164,9 +165,13 @@ const LoginContextProvider = ({ children }) => {
 
     useEffect(() => {
         fetchUsers();
-        fetchPosts();
         sortArray();
     }, [login]);
+
+    
+    useEffect(() => {
+        fetchPosts();
+    }, [global.countPost]);
 
     useEffect(() => {
         localStorage.setItem("login", JSON.stringify(login)); 

@@ -22,6 +22,7 @@ const NewPost = () => {
             });
             if(response.ok){
                 console.log(response);
+                dispatchGlobal({type: "COUNT_POST", payload: 1});
                 dispatchGlobal({type: "FLAG_NEW_POST", payload: false});
                 dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: true});
             }

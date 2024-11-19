@@ -22,6 +22,9 @@ const reducerGlobal = (state, action) => {
             return{...state, title: action.payload};    
         case "SAVE_CONTENT":
             return{...state, content: action.payload};    
+        case "COUNT_POST":
+            return{...state, countPost: action.payload};    
+            
     }
 }
 
