@@ -18,8 +18,8 @@ const Posts = () => {
                     <p>{post.content}</p>
                 </div>
                 <div className="post-edit-delete">
-                    <td className=""><button onClick={() => {}}><i className="fas fa-edit"></i></button></td>
-                    <td className=""><button onClick={() => fetchDeletePosts(post._id)}><i className="fas fa-trash-alt"></i></button></td>
+                    <button onClick={() => {}}><i className="fas fa-edit"></i></button>
+                    <button onClick={() => fetchDeletePosts(post._id)}><i className="fas fa-trash-alt"></i></button>
                 </div>
             </div>);
         })}

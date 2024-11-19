@@ -148,9 +148,13 @@ const LoginContextProvider = ({ children }) => {
             const response = await fetch(`http://localhost:3000/api/deletePost/${id}`, {
                 method: "DELETE",
                 headers: {"Content-Type":"application/json"},
+                body: JSON.strinfify({
+                    username: login.username
+                }),
                 credentials: "include"
             });
             if(response.ok){
+                dispatchGlobal({type: "COUNT_POST", payload: -1});
                 fetchPosts();
             }
         }catch(err){    
@@ -205,6 +209,7 @@ const LoginContextProvider = ({ children }) => {
         saveUsers, 
         users, 
         posts,
+        fetchPosts,
         fetchUsers, 
         fetchDelete,
         global,

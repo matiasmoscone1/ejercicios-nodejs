@@ -77,9 +77,9 @@ userController.readPost = async (req, res) => {
 }
 
 userController.deletePost = async (req, res) => {
-    const userId = req.params.id
+    const postId = req.params.id
     try{
-        await Post.findByIdAndDelete(userId);
+        await Post.findByIdAndDelete(postId);
         res.status(200).json({message: "Post eliminado con exito!"}); 
     }catch(err){
         res.status(404).json({message: "No se encontro el post para eliminar."})

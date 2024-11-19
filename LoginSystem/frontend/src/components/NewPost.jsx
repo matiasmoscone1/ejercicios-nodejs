@@ -3,10 +3,9 @@ import { LoginContext } from "../context/LoginContext";
 
 const NewPost = () => {
 
-    const { login, dispatchGlobal, global } = useContext(LoginContext);
+    const { login, dispatchGlobal, global, fetchPosts } = useContext(LoginContext);
 
     const fetchNewPost = async () => {
-        console.log(login);
         try{
             const response = await fetch("http://localhost:3000/api/createPost", {
                 method: "POST",
@@ -21,10 +20,10 @@ const NewPost = () => {
                 credentials: "include"
             });
             if(response.ok){
-                console.log(response);
                 dispatchGlobal({type: "COUNT_POST", payload: 1});
                 dispatchGlobal({type: "FLAG_NEW_POST", payload: false});
                 dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: true});
+                fetchPosts();
             }
         }catch(err){
             console.log("Ocurrio un problema al crear el post", err);
