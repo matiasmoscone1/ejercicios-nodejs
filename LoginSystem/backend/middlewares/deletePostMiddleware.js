@@ -8,7 +8,7 @@ const deletePostMiddleware = async (req, res, next) => {
             return next();
         }else{
             if(post.authorUsername !== req.body.username){
-                return res.status(404).json({message: "No se puede eliminar este posteo."});
+                return res.status(404).json({message: "No puede borrar el posteo de otro usuario."});
             }else{
                 return next();
             }

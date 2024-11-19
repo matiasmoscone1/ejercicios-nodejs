@@ -118,7 +118,6 @@ const LoginContextProvider = ({ children }) => {
                 credentials: "include"
             });
             if(response.ok){
-                alert("Seguro quiere eliminar el usuario?");
                 fetchUsers();
             }
         }catch(err){
@@ -157,6 +156,9 @@ const LoginContextProvider = ({ children }) => {
             if(response.ok){
                 dispatchGlobal({type: "COUNT_POST", payload: -1});
                 fetchPosts();
+            }else{
+                const errData = await response.json();
+                alert(`Error: ${errData.message}`);
             }
         }catch(err){    
             console.error("Ha ocurrido un error al obtener los datos de los posteos.", err);

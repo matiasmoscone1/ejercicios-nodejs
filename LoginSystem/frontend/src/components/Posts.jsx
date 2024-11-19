@@ -19,7 +19,7 @@ const Posts = () => {
                 </div>
                 <div className="post-edit-delete">
                     <button onClick={() => {}}><i className="fas fa-edit"></i></button>
-                    <button onClick={() => fetchDeletePosts(post._id)}><i className="fas fa-trash-alt"></i></button>
+                    <button onClick={() => {alert("Seguro quiere eliminar el posteo?");fetchDeletePosts(post._id)}}><i className="fas fa-trash-alt"></i></button>
                 </div>
             </div>);
         })}
