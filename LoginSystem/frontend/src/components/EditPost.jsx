@@ -34,7 +34,7 @@ const EditPost = () => {
         }
     }
 
-    return(<div className="new-post">
+    return(<div className="edit-post">
         <div className="title-content-container">
             <label>Title</label>
             <input type="text" name="title-post" value={global.flagEdit.obj.title} onChange={(e) => dispatchGlobal({type: "EDIT_POST_TITLE", payload: e.target.value})}/>

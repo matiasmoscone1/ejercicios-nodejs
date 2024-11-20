@@ -156,7 +156,22 @@ button{
     justify-content: center;
     align-items: center;
     gap: 2em;
+}
 
+.edit-post{
+    width: 90vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    gap: 2em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    border: 1px solid black;
 }
 
 .btn-new-post{
