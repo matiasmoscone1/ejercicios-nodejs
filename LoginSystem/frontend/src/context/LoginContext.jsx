@@ -38,6 +38,10 @@ const LoginContextProvider = ({ children }) => {
         flagPopUp: false,
         flagPopUpEdit: false,
         flagPost: false,
+        flagEdit: {
+            flag: false,
+            id: ""
+        },
         flagBtnNewPost: true,
         title: "",
         content: "",

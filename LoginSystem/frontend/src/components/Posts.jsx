@@ -3,7 +3,7 @@ import { LoginContext } from "../context/LoginContext";
 
 const Posts = () => {
     
-    const { posts, fetchDeletePosts } = useContext(LoginContext);
+    const { posts, fetchDeletePosts, dispatchGlobal } = useContext(LoginContext);
 
     return(<div className="post-container">
         {posts.array.map((post) => {
@@ -18,7 +18,7 @@ const Posts = () => {
                     <p>{post.content}</p>
                 </div>
                 <div className="post-edit-delete">
-                    <button onClick={() => {}}><i className="fas fa-edit"></i></button>
+                    <button onClick={() => dispatchGlobal({type: "FLAG_EDIT_POST", payload: {flag: true, id: post._id}})}><i className="fas fa-edit"></i></button>
                     <button onClick={() => {alert("Seguro quiere eliminar el posteo?");fetchDeletePosts(post._id)}}><i className="fas fa-trash-alt"></i></button>
                 </div>
             </div>);

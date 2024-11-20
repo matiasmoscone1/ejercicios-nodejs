@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import NewPost from "./NewPost";
 import Posts from "./Posts";
+import EditPost from "./EditPost";
 
 const Dashboard = () => {
 
@@ -34,6 +35,7 @@ const Dashboard = () => {
         <div className="dashboard-container">
             <div className="new-post-container">
                 {global.flagBtnNewPost && <button onClick={() => {dispatchGlobal({type: "FLAG_NEW_POST", payload: true}); dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: false})}}>New Post</button>}
+                {global.flagEditPost && <EditPost/>}
                 {global.flagPost && <NewPost/>}
             </div>
             <section className="section-container">
