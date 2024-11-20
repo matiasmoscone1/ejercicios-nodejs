@@ -8,7 +8,7 @@ const verifyPostMiddleware = async (req, res, next) => {
             return next();
         }else{
             if(post.authorUsername !== req.body.username){
-                return res.status(404).json({message: "No puede borrar el posteo de otro usuario."});
+                return res.status(404).json({message: "No puede modificar el posteo de otro usuario."});
             }else{
                 return next();
             }

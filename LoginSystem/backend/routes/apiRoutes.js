@@ -21,6 +21,7 @@ router.post("/basicUpdate", userController.basicUpdate);
 router.post("/createPost", userController.createPost);
 router.get("/readPost", userController.readPost);
 router.delete("/deletePost/:id", verifyPostMiddleware, userController.deletePost);
+router.post("/updatePost/:id", verifyPostMiddleware, userController.updatePost);
 
 
 module.exports = router;

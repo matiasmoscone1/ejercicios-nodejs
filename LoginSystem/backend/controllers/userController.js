@@ -86,6 +86,22 @@ userController.deletePost = async (req, res) => {
     }
 }
 
+userController.updatePost = async (req, res) => {
+    const { title, content } = req.body;
+    try{
+        const editPost = await Post.findByIdAndUpdate({_id: req.params.id}, {
+            title: title,
+            content: content
+        });
+        if(editPost){
+            res.status(200).json({message: "Post actualizado con exito!"});
+        }else{
+            res.status(404).json({message: "Post no encontrado."});
+        }
+    }catch(err){
+        res.status(500).json({message: "Hubo un problema en el servidor al actualizar el post."});
+    }
+}
 
 
 module.exports = userController;

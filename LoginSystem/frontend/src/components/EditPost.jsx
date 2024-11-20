@@ -9,15 +9,14 @@ const EditPost = () => {
 
     const fetchEditPost = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/api/editPost/${global.flagEdit.obj._id}`, {
+            const response = await fetch(`http://localhost:3000/api/updatePost/${global.flagEdit.obj._id}`, {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify({
-                    id: login.id,
-                    authorUsername: login.username,
-                    authorRol: login.rol,
-                    title: global.title, 
-                    content: global.content
+                    title: global.flagEdit.obj.title, 
+                    content: global.flagEdit.obj.content,
+                    username: login.username,
+                    rol: login.rol
                 }),
                 credentials: "include"
             });
@@ -26,6 +25,9 @@ const EditPost = () => {
                 dispatchGlobal({type: "FLAG_NEW_POST", payload: false});
                 dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: true});
                 fetchPosts();
+            }else{
+                const errData = await response.json();
+                console.log(errData);
             }
         }catch(err){
             console.log("Ocurrio un problema al editar el post", err);
