@@ -22,12 +22,12 @@ const EditPost = () => {
             });
             if(response.ok){
                 dispatchGlobal({type: "COUNT_POST", payload: 1});
-                dispatchGlobal({type: "FLAG_NEW_POST", payload: false});
+                dispatchGlobal({type: "FLAG_EDIT_POST", payload: false});
                 dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: true});
                 fetchPosts();
             }else{
                 const errData = await response.json();
-                console.log(errData);
+                alert(`Error: ${errData.message}`);
             }
         }catch(err){
             console.log("Ocurrio un problema al editar el post", err);
