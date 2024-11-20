@@ -6,7 +6,7 @@ const adminController = require("../controllers/adminController");
 const adminMiddleware = require("../middlewares/adminMiddleware");
 const verificationMiddleware = require("../middlewares/verificationMiddleware");
 const verificationMiddlewareUpdate = require("../middlewares/verificationMiddlewareUpdate");
-const deletePostMiddleware = require("../middlewares/deletePostMiddleware");
+const verifyPostMiddleware = require("../middlewares/verifyPostMiddleware");
 
 router.post("/auth/login", loginController.auth);
 router.post("/logout", loginController.logout);
@@ -20,7 +20,7 @@ router.post("/createUser", verificationMiddleware, userController.createUser);
 router.post("/basicUpdate", userController.basicUpdate);
 router.post("/createPost", userController.createPost);
 router.get("/readPost", userController.readPost);
-router.delete("/deletePost/:id", deletePostMiddleware, userController.deletePost);
+router.delete("/deletePost/:id", verifyPostMiddleware, userController.deletePost);
 
 
 module.exports = router;

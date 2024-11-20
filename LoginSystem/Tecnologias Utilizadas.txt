@@ -1,0 +1,18 @@
+
+
+
+Principales:
+- React 
+- Express
+- MongoDB
+
+Secundarias: 
+- JWT
+- bcrypt
+- mongoose
+- dotenv
+- express.Router()
+- react-router-dom
+- hooks: (useContext, useReducer, useEffect)
+
+

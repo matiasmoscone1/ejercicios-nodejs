@@ -1,6 +1,6 @@
 const Post = require("../models/postModel");
 
-const deletePostMiddleware = async (req, res, next) => {
+const verifyPostMiddleware = async (req, res, next) => {
 
     try{
         const post = await Post.findById(req.params.id);
@@ -19,4 +19,4 @@ const deletePostMiddleware = async (req, res, next) => {
 }
 
 
-module.exports = deletePostMiddleware;
+module.exports = verifyPostMiddleware;

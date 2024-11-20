@@ -206,6 +206,10 @@ button{
     gap: .5em;
 }
 
+.post-container .post{
+    padding: 2em;
+}
+
 .post-edit-delete{
     display: flex;
     flex-direction: column;
