@@ -16,6 +16,7 @@ const Posts = () => {
                 <div className="post">
                     <h3>{post.title}</h3>
                     <p>{post.content}</p>
+                    <p className="date-post">Created at: { new Date(post.createdAt).toLocaleString() }</p>
                 </div>
                 <div className="post-edit-delete">
                     <button onClick={() => {dispatchGlobal({type: "FLAG_EDIT_POST", payload: {flag: true, obj: post}}); dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: false})}}><i className="fas fa-edit"></i></button>

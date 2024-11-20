@@ -221,6 +221,11 @@ button{
     gap: .5em;
 }
 
+.post-container .post .date-post{
+    margin-top: 2em;
+    margin-bottom: -2em;
+}
+
 .post-container .post{
     padding: 2em;
 }
