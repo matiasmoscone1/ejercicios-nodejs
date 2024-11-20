@@ -35,9 +35,9 @@ const EditPost = () => {
     return(<div className="new-post">
         <div className="title-content-container">
             <label>Title</label>
-            <input type="text" name="title-post" value={global.flagEdit.obj.title} onChange={(e) => dispatchGlobal({type: "SAVE_TITLE", payload: e.target.value})}/>
+            <input type="text" name="title-post" value={global.flagEdit.obj.title} onChange={(e) => dispatchGlobal({type: "EDIT_POST_TITLE", payload: e.target.value})}/>
             <label>Content</label>
-            <textarea cols={20} rows={5} name="content-post" value={global.flagEdit.obj.content} onChange={(e) => dispatchGlobal({type: "SAVE_CONTENT", payload: e.target.value})}/>
+            <textarea cols={20} rows={5} name="content-post" value={global.flagEdit.obj.content} onChange={(e) => dispatchGlobal({type: "EDIT_POST_CONTENT", payload: e.target.value})}/>
         </div>
         <div className="btn-new-post">
             <button onClick={() => fetchEditPost()}>Edit</button>
