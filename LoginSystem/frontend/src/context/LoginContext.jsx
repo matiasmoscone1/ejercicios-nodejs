@@ -40,7 +40,7 @@ const LoginContextProvider = ({ children }) => {
         flagPost: false,
         flagEdit: {
             flag: false,
-            id: ""
+            obj: {}
         },
         flagBtnNewPost: true,
         title: "",

@@ -17,7 +17,7 @@ const reducerGlobal = (state, action) => {
         case "FLAG_NEW_POST":
             return{...state, flagPost: action.payload};
         case "FLAG_EDIT_POST":
-            return{...state, flag: action.payload.flag, id: action.payload.id};    
+            return{...state, flagEdit: {flag: action.payload.flag, obj: action.payload.obj}};    
         case "FLAG_BTN_NEW_POST":
             return{...state, flagBtnNewPost: action.payload};    
         case "SAVE_TITLE":

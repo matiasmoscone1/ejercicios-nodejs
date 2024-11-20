@@ -5,11 +5,11 @@ const EditPost = () => {
 
     const { login, dispatchGlobal, global, fetchPosts } = useContext(LoginContext);
 
-    console.log(global.flagEditPost);
-    
+    console.log(global.flagEdit);
+
     const fetchEditPost = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/api/editPost/${global.flagEditPost.id}`, {
+            const response = await fetch(`http://localhost:3000/api/editPost/${global.flagEdit.obj._id}`, {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify({
@@ -28,16 +28,16 @@ const EditPost = () => {
                 fetchPosts();
             }
         }catch(err){
-            console.log("Ocurrio un problema al crear el post", err);
+            console.log("Ocurrio un problema al editar el post", err);
         }
     }
 
     return(<div className="new-post">
         <div className="title-content-container">
             <label>Title</label>
-            <input type="text" name="title-post" onChange={(e) => dispatchGlobal({type: "SAVE_TITLE", payload: e.target.value})}/>
+            <input type="text" name="title-post" value={global.flagEdit.obj.title} onChange={(e) => dispatchGlobal({type: "SAVE_TITLE", payload: e.target.value})}/>
             <label>Content</label>
-            <textarea cols={20} rows={5} name="content-post" onChange={(e) => dispatchGlobal({type: "SAVE_CONTENT", payload: e.target.value})}/>
+            <textarea cols={20} rows={5} name="content-post" value={global.flagEdit.obj.content} onChange={(e) => dispatchGlobal({type: "SAVE_CONTENT", payload: e.target.value})}/>
         </div>
         <div className="btn-new-post">
             <button onClick={() => fetchEditPost()}>Edit</button>

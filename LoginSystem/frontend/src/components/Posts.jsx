@@ -18,7 +18,7 @@ const Posts = () => {
                     <p>{post.content}</p>
                 </div>
                 <div className="post-edit-delete">
-                    <button onClick={() => dispatchGlobal({type: "FLAG_EDIT_POST", payload: {flag: true, id: post._id}})}><i className="fas fa-edit"></i></button>
+                    <button onClick={() => {dispatchGlobal({type: "FLAG_EDIT_POST", payload: {flag: true, obj: post}}); dispatchGlobal({type: "FLAG_BTN_NEW_POST", payload: false})}}><i className="fas fa-edit"></i></button>
                     <button onClick={() => {alert("Seguro quiere eliminar el posteo?");fetchDeletePosts(post._id)}}><i className="fas fa-trash-alt"></i></button>
                 </div>
             </div>);
