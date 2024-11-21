@@ -123,6 +123,7 @@ const LoginContextProvider = ({ children }) => {
             });
             if(response.ok){
                 fetchUsers();
+                fetchAndSortUsers();
             }
         }catch(err){
             console.error("Ocurrio un problema al eliminar el usuario:", err);
@@ -190,11 +191,12 @@ const LoginContextProvider = ({ children }) => {
         dispatchAdmin({type: "SORT_USERS", payload: sortedArray});
     }
 
-    useEffect(() => {
-        const fetchAndSortUsers = async () => {
-            await fetchUsers();
-            sortArray();
-        }
+    const fetchAndSortUsers = async () => {
+        await fetchUsers();
+        sortArray();
+    }
+
+    useEffect(() => {        
         fetchAndSortUsers();
      }, [login]);
 

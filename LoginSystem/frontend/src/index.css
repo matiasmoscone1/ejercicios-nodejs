@@ -219,6 +219,10 @@ button{
     justify-content: center;
     align-items: center;
     gap: .5em;
+    width: 100%; 
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .post-container .post .date-post{
