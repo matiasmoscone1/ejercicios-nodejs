@@ -81,6 +81,7 @@ const LoginContextProvider = ({ children }) => {
 
     const savePosts = (obj) => dispatchPost({type: "SAVE_POST", payload: obj})
 
+
     const fetchLogOut = async () => {
         try{
             const response = await fetch("http://localhost:3000/api/logout", {
@@ -122,8 +123,7 @@ const LoginContextProvider = ({ children }) => {
                 credentials: "include"
             });
             if(response.ok){
-                fetchUsers();
-                fetchAndSortUsers();
+                fetchUsers(); 
             }
         }catch(err){
             console.error("Ocurrio un problema al eliminar el usuario:", err);
@@ -168,16 +168,8 @@ const LoginContextProvider = ({ children }) => {
         }catch(err){    
             console.error("Ha ocurrido un error al obtener los datos de los posteos.", err);
         }
-
     }
-
-    
-    const handleNewUser = (e) => {
-        const { name, value } = e.target;
-        dispatchGlobal({type: "DATA_NEW_USER", payload: {...global.dataNewUser, [name]:value}});
-        dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
-    }
-
+/*
     const sortArray = () => {
         const sortedArray = [...users.array].sort((a,b) => {
             if(a.rol === "Admin" && b.rol !== "Admin"){
@@ -194,10 +186,18 @@ const LoginContextProvider = ({ children }) => {
     const fetchAndSortUsers = async () => {
         await fetchUsers();
         sortArray();
+    }*/
+
+    
+    const handleNewUser = (e) => {
+        const { name, value } = e.target;
+        dispatchGlobal({type: "DATA_NEW_USER", payload: {...global.dataNewUser, [name]:value}});
+        dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
     }
 
+
     useEffect(() => {        
-        fetchAndSortUsers();
+        fetchUsers();
      }, [login]);
 
     

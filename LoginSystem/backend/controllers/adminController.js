@@ -5,7 +5,10 @@ const adminController = {};
 
 adminController.read = async (req, res) => {
     try{
-        const collection = await User.find();
+        const collection = await User.find().sort({
+            rol: 1,
+            username: 1
+        });
         res.status(200).json(collection);
     }catch(err){
         res.status(404).json({message: "No se encontro ningun usuario."});
@@ -47,7 +50,7 @@ adminController.update = async (req, res) => {
             rol: rol,
             email: email,
             age: age
-        }, {new: true});
+        });
         if(userUpdate){
             res.status(200).json({message: "Usuario actualizado con exito!"});
         }else{
