@@ -177,8 +177,8 @@ const LoginContextProvider = ({ children }) => {
         dispatchGlobal({type: "SELECTED_USER", payload: {...global.selectedUser, [name]:value}});
     }
 
-    const sortArray = async () => {
-        const sortedArray = await [...users.array].sort((a,b) => {
+    const sortArray = () => {
+        const sortedArray = [...users.array].sort((a,b) => {
             if(a.rol === "Admin" && b.rol !== "Admin"){
                 return -1;
             }
@@ -191,9 +191,12 @@ const LoginContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        fetchUsers();
-        sortArray();
-    }, [login]);
+        const fetchAndSortUsers = async () => {
+            await fetchUsers();
+            sortArray();
+        }
+        fetchAndSortUsers();
+     }, [login]);
 
     
     useEffect(() => {
