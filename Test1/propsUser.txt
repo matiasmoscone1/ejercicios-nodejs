@@ -1,0 +1,15 @@
+
+
+username
+password
+email
+firstName
+lastName
+avatar
+role
+createdAt
+location
+birthDate
+
+
+
