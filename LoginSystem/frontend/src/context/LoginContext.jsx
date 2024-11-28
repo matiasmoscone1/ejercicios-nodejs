@@ -169,25 +169,6 @@ const LoginContextProvider = ({ children }) => {
             console.error("Ha ocurrido un error al obtener los datos de los posteos.", err);
         }
     }
-/*
-    const sortArray = () => {
-        const sortedArray = [...users.array].sort((a,b) => {
-            if(a.rol === "Admin" && b.rol !== "Admin"){
-                return -1;
-            }
-            if(a.rol !== "Admin" && b.rol === "Admin"){
-                return 1;
-            }
-            return 0;
-        });
-        dispatchAdmin({type: "SORT_USERS", payload: sortedArray});
-    }
-
-    const fetchAndSortUsers = async () => {
-        await fetchUsers();
-        sortArray();
-    }*/
-
     
     const handleNewUser = (e) => {
         const { name, value } = e.target;
