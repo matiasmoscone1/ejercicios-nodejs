@@ -42,5 +42,33 @@ userController.delete = async (req, res) => {
     }
 }
 
+userController.update = async (req, res) => {
+    const { username, password, email, firstName, lastName, avatar,
+        role, location, birthDate } = req.body;
+    const userId = req.params.id;
+    try{
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const updatedUser = await User.findByIdAndUpdate(userId, {
+            username: username,
+            password: hashedPassword,
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            avatar: avatar,
+            role: role,
+            location: location,
+            birthDate: birthDate
+        }, {new: true});
+        if(updatedUser){
+            res.status(200).json({message: "Usuario actualizado con exito!"});
+        }else{
+            res.status(404).json({message: "Usuario no encontrado"});
+        }
+    }catch(err){
+        res.status(500).json({message: `Hubo un problema al actualizar el usuario: ${err.message}`});
+    }
+}
+
 
 module.exports = userController;
