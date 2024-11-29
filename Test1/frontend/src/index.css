@@ -1,0 +1,23 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.form-create-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  gap: .5em;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+
+
