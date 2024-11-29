@@ -20,4 +20,18 @@
 }
 
 
+.read-user-container{
+  width: 80%;
+  height: auto;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  gap: 2em;
+}
 
+.card{
+  width: 12em;
+  height: 15em;
+  border: 1px solid black;
+}

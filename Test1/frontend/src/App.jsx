@@ -1,5 +1,6 @@
 
 import CreateUser from "./components/CreateUser";
+import ReadUser from "./components/ReadUser";
 
 function App() {
 
@@ -7,7 +8,7 @@ function App() {
     <>
       <h2>Frontend</h2>
       <CreateUser /> 
-
+      <ReadUser />
     </>
   )
 }
