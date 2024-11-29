@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body{
+  width: 100vw;
+  height: 100vh;
+}
 
 .form-create-user{
   display: flex;
@@ -21,17 +25,23 @@
 
 
 .read-user-container{
-  width: 80%;
+  width: 70%;
   height: auto;
   border: 1px solid black;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   gap: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
 }
 
 .card{
-  width: 12em;
+  width: auto;
   height: 15em;
   border: 1px solid black;
 }
+
+
+

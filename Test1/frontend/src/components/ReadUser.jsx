@@ -24,6 +24,23 @@ const ReadUser = () => {
         }
     }
 
+    const fetchDelete = async (id) => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/deleteUser/${id}`, {
+                method: "DELETE",
+                headers: {"Content-Type":"application/json"}
+            });
+            if(response.ok){
+                console.log("Usuario eliminado con exito!");
+            }else{
+                const errData = await response.json();
+                console.log("Ha ocurrido un error:", errData);
+            }
+        }catch(err){
+            console.log("Ocurrio un error al querer eliminar el usuario:", err);
+        }
+    }
+
 
     useEffect(() => {
         fetchUsers();
@@ -37,6 +54,7 @@ const ReadUser = () => {
                 <p>{user.firstName} {user.lastName}</p>
                 <p>{user.role}</p>
                 <p>{user.location}</p>
+                <button onClick={() => fetchDelete(user._id)}>Delete</button>
             </div>
     )
         })}
