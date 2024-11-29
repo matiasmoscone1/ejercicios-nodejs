@@ -17,18 +17,39 @@ const CreateUser = () => {
         setData({...data, [name]:value});
     }
 
+    const fetchCreate = async () => {
+        console.log(data);
+        try{
+            const response = await fetch("http://localhost:3000/api/createUser",{
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({
+                    username: data.username,
+                    password: data.password,
+                    email: data.email, 
+                    firstname: data.firstname, 
+                    lastname: data.lastname, 
+                    role: data.role, 
+                    location: data.location, 
+                    birthdate: data.birthdate
+                })
+            });
+            if(response.ok){
+                console.log("Usuario creado con exito!");
+            }else{
+                const errData = await response.json();
+                console.log(errData);
+            }
+        }catch(err){
+            console.log("No se pudo crear el usuario.", err);
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        fetchCreate();
     }
 
-    const fetchCreate = async () => {
-        try{
-            const response = fetch("http://localhost:3000/api/createUser", 
-            )
-        }
-
-    }
 
     console.log(data);
     return(<div className="form-container">
@@ -49,7 +70,7 @@ const CreateUser = () => {
             <input type="string" name="location" onChange={(e) => handleInput(e)}/>
             <label>BirthDate</label> 
             <input type="date" name="birthdate" onChange={(e) => handleInput(e)}/>
-            <input type="submit" value="Send" />
+            <button type="submit">Send</button>
         </form>
     </div>)
 

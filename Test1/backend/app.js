@@ -10,7 +10,9 @@ app.use(cors({
     origin: 'http://localhost:5173', 
   }));
 
+app.use(express.json());
 app.use("/api", api);
+
 
 app.listen(port, (err) => {
     if(err){

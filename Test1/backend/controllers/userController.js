@@ -13,13 +13,14 @@ userController.read = async (req, res) => {
 }
 
 userController.create = async (req, res) => {
-    const { username, password, email, firstName, lastName, avatar,
-        role, createdAt, location, birthDate } = req.body;
+    const { username, password, email, firstname, lastname,
+        role, location, birthdate } = req.body;
+    console.log(req.body);
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);    
     try{
-        const user = new User({username, hashedPassword, email, firstName, lastName, avatar,
-            role, createdAt, location, birthDate});
+        const user = new User({username, password: hashedPassword, email, firstName: firstname, lastName: lastname,
+            role, createdAt: Date.now(), location, birthDate: birthdate});
         await user.save();
         res.status(200).json({message: "Usuario creado con exito!"});
     }catch(err){
