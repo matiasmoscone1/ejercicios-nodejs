@@ -43,8 +43,7 @@ const ReadUser = () => {
         }
     }
 
-    const fetchUpdate = async (e) => {
-        e.preventDefault();
+    const fetchUpdate = async (id) => {
         try{
             const response = await fetch(`http://localhost:3000/api/updateUser/${id}`, {
                 method: "POST",
@@ -82,7 +81,9 @@ const ReadUser = () => {
     console.log(users);
 
     console.log(selectUser);
-    return(<div className="read-user-container">
+    return(
+    <>
+    <div className="read-user-container">
         {users.map((user) => {
             return(<div className="card" key={user._id}>
                 <img src={`${user.avatar}`}/>
@@ -96,9 +97,10 @@ const ReadUser = () => {
             </div> 
             )
         })}
+        </div>
         {flagUpdate && 
-            <div>
-                <form className="form-create-user" onSubmit={(e) => fetchUpdate(e)}>
+            <div className="form-update-container">
+                <form className="form-create-user" onSubmit={() => fetchUpdate(selectUser._id)}>
                     <label>Username</label> 
                     <input type="string" value={selectUser.username} name="username" onChange={(e) => handleInput(e)}/>
                     <label>Password</label> 
@@ -106,9 +108,9 @@ const ReadUser = () => {
                     <label>Email</label> 
                     <input type="email" value={selectUser.email} name="email" onChange={(e) => handleInput(e)}/>
                     <label>Firstname</label> 
-                    <input type="string" value={selectUser.firstname} name="firstname" onChange={(e) => handleInput(e)}/>
+                    <input type="string" value={selectUser.firstName} name="firstName" onChange={(e) => handleInput(e)}/>
                     <label>Lastname</label> 
-                    <input type="string" value={selectUser.lastname} name="lastname" onChange={(e) => handleInput(e)}/>
+                    <input type="string" value={selectUser.lastName} name="lastName" onChange={(e) => handleInput(e)}/>
                     <label>Role</label> 
                     <input type="string" value={selectUser.role} name="role" onChange={(e) => handleInput(e)}/>
                     <label>Location</label> 
@@ -118,7 +120,7 @@ const ReadUser = () => {
                     <button type="submit">Update</button>
                 </form>
             </div>}    
-    </div>)
+    </>)
 
 }
 
