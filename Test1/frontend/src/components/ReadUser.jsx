@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-
 const ReadUser = () => {
 
     const [users, setUsers] = useState([]);
@@ -54,7 +53,7 @@ const ReadUser = () => {
                     email: selectUser.email, 
                     firstName: selectUser.firstName, 
                     lastName: selectUser.lastName, 
-                    avatar: "",
+                    avatar: "/images/emiliano-martinez-seleccion-argentina-1902501.jpg",
                     role: selectUser.role, 
                     location: selectUser.location, 
                     birthDate: selectUser.birthDate
