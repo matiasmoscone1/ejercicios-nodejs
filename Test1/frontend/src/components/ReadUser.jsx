@@ -54,8 +54,11 @@ const ReadUser = () => {
                 <p>{user.firstName} {user.lastName}</p>
                 <p>{user.role}</p>
                 <p>{user.location}</p>
-                <button onClick={() => fetchDelete(user._id)}>Delete</button>
-            </div>
+                <div className="btn-container">
+                    <button onClick={() => fetchDelete(user._id)}>Update</button>                
+                    <button onClick={() => fetchDelete(user._id)}>Delete</button>
+                </div>
+            </div> 
     )
         })}
     </div>)
