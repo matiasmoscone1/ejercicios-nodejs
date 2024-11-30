@@ -5,6 +5,7 @@ import { useState } from "react";
 const ReadUser = () => {
 
     const [users, setUsers] = useState([]);
+    const [selectUser, setSelectUser] = useState({});
 
     const fetchUsers = async () => {
         try{
@@ -47,6 +48,7 @@ const ReadUser = () => {
     }, []);
     console.log(users);
 
+    console.log(selectUser);
     return(<div className="read-user-container">
         {users.map((user) => {
             return(<div className="card" key={user._id}>
@@ -55,8 +57,8 @@ const ReadUser = () => {
                 <p>{user.role}</p>
                 <p>{user.location}</p>
                 <div className="btn-container">
-                    <button onClick={() => fetchDelete(user._id)}>Update</button>                
-                    <button onClick={() => fetchDelete(user._id)}>Delete</button>
+                    <button onClick={() => {setSelectUser(user); /*fetchUpdate(user._id)*/}}>Update</button>
+                    <button onClick={() => fetchDelete(user._id)}>Delete</button>                
                 </div>
             </div> 
     )
