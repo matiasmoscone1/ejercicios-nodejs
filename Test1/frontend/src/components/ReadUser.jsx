@@ -43,17 +43,36 @@ const ReadUser = () => {
         }
     }
 
-    const fetchUpdate = async () => {
-
+    const fetchUpdate = async (e) => {
+        e.preventDefault();
         try{
-            const response = await fetch(`http://localhost:3000/api/updateUser/${id}`)
-
+            const response = await fetch(`http://localhost:3000/api/updateUser/${id}`, {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({
+                    username: selectUser.username,
+                    password: selectUser.password,
+                    email: selectUser.email, 
+                    firstName: selectUser.firstName, 
+                    lastName: selectUser.lastName, 
+                    avatar: "",
+                    role: selectUser.role, 
+                    location: selectUser.location, 
+                    birthDate: selectUser.birthDate
+                })
+            });
             if(response.ok){
                 setFlagUpdate(false);
             }
+        }catch(err){
+            console.log("No se pudo relizar la actualizacion del usuario:", err);
         }
 
+    }
 
+    const handleInput = (e) => {
+        const {value, name} = e.target;
+        setSelectUser({...selectUser, [name]:value});
     }
 
 
@@ -77,8 +96,27 @@ const ReadUser = () => {
             </div> 
             )
         })}
-        {flagUpdate && <div>
-            
+        {flagUpdate && 
+            <div>
+                <form className="form-create-user" onSubmit={(e) => fetchUpdate(e)}>
+                    <label>Username</label> 
+                    <input type="string" value={selectUser.username} name="username" onChange={(e) => handleInput(e)}/>
+                    <label>Password</label> 
+                    <input type="password" value={selectUser.password} name="password" onChange={(e) => handleInput(e)}/>
+                    <label>Email</label> 
+                    <input type="email" value={selectUser.email} name="email" onChange={(e) => handleInput(e)}/>
+                    <label>Firstname</label> 
+                    <input type="string" value={selectUser.firstname} name="firstname" onChange={(e) => handleInput(e)}/>
+                    <label>Lastname</label> 
+                    <input type="string" value={selectUser.lastname} name="lastname" onChange={(e) => handleInput(e)}/>
+                    <label>Role</label> 
+                    <input type="string" value={selectUser.role} name="role" onChange={(e) => handleInput(e)}/>
+                    <label>Location</label> 
+                    <input type="string" value={selectUser.location} name="location" onChange={(e) => handleInput(e)}/>
+                    <label>BirthDate</label> 
+                    <input type="date" value={selectUser.birthdate} name="birthdate" onChange={(e) => handleInput(e)}/>
+                    <button type="submit">Update</button>
+                </form>
             </div>}    
     </div>)
 
