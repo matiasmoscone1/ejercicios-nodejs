@@ -6,6 +6,7 @@ const ReadUser = () => {
 
     const [users, setUsers] = useState([]);
     const [selectUser, setSelectUser] = useState({});
+    const [flagUpdate, setFlagUpdate] = useState(false);
 
     const fetchUsers = async () => {
         try{
@@ -42,6 +43,19 @@ const ReadUser = () => {
         }
     }
 
+    const fetchUpdate = async () => {
+
+        try{
+            const response = await fetch(`http://localhost:3000/api/updateUser/${id}`)
+
+            if(response.ok){
+                setFlagUpdate(false);
+            }
+        }
+
+
+    }
+
 
     useEffect(() => {
         fetchUsers();
@@ -57,12 +71,15 @@ const ReadUser = () => {
                 <p>{user.role}</p>
                 <p>{user.location}</p>
                 <div className="btn-container">
-                    <button onClick={() => {setSelectUser(user); /*fetchUpdate(user._id)*/}}>Update</button>
+                    <button onClick={() => {setSelectUser(user); setFlagUpdate(true)}}>Update</button>
                     <button onClick={() => fetchDelete(user._id)}>Delete</button>                
                 </div>
             </div> 
-    )
+            )
         })}
+        {flagUpdate && <div>
+            
+            </div>}    
     </div>)
 
 }
