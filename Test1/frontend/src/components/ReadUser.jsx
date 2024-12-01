@@ -72,14 +72,15 @@ const ReadUser = () => {
         }
     }
 
-    const fetchPhoto = async (id, e) => {
+    const fetchPhoto = async (e) => {
+        console.log(selectUser._id);
         e.preventDefault();
         try{
             const formData = new FormData();
             formData.append("photo", selectFile);
-            formData.append("userId", id);
+            formData.append("userId", selectUser._id);
 
-            const response = await fetch(`http://localhost:3000/api/updateUser/${id}`, {
+            const response = await fetch(`http://localhost:3000/api/updateUser/${selectUser._id}`, {
                 method: "POST",
                 body: formData
             });
@@ -115,7 +116,7 @@ const ReadUser = () => {
         {users.map((user) => {
             return(<div className="card" key={user._id}>
                 <img src={`${user.avatar}`}/>
-                <button onClick={() => setFlagPhoto({flag: true, id: user._id})}>Update Photo</button>
+                <button onClick={() => {setSelectUser(user); setFlagPhoto({flag: true, id: user._id})}}>Update Photo</button>
                 <p>{user.firstName} {user.lastName}</p>
                 <p>{user.role}</p>
                 <p>{user.location}</p>
@@ -151,7 +152,7 @@ const ReadUser = () => {
             </div>}    
             {flagPhoto.flag && 
                 <div className="form-photo">
-                    <form onSubmit={(e) => fetchPhoto(selectUser._id, e)}>
+                    <form onSubmit={(e) => fetchPhoto(e)}>
                         <input type="file" onChange={(e) => handleFile(e)}/>
                         <input type="submit" value="Send"/>
                     </form>
