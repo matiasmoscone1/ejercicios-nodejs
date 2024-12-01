@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const userController = {};
+const multer = require("multer");
 
 
 userController.read = async (req, res) => {
@@ -72,6 +73,7 @@ userController.update = async (req, res) => {
 }
 
 userController.updatePhoto = async (req, res) => {
+    console.log(req.file);
     
 }
 

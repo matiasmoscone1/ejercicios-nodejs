@@ -72,11 +72,22 @@ const ReadUser = () => {
         }
     }
 
-    const fetchPhoto = async (id) => {
+    const fetchPhoto = async (id, e) => {
+        e.preventDefault();
         try{
-            const response = await fetch(`http://localhost:3000/api/updateUser/${id}`, {
+            const formData = new FormData();
+            formData.append("photo", selectFile);
+            formData.append("userId", id);
 
-            })
+            const response = await fetch(`http://localhost:3000/api/updateUser/${id}`, {
+                method: "POST",
+                body: formData
+            });
+            if(response.ok){
+                console.log("Foto actualizada con exito!");
+            }
+        }catch(err){
+            console.log("Ha ocurrido un error al subir la foto:", err)
         }
     }
 
@@ -140,7 +151,7 @@ const ReadUser = () => {
             </div>}    
             {flagPhoto.flag && 
                 <div className="form-photo">
-                    <form onSubmit={() => fetchPhoto()}>
+                    <form onSubmit={(e) => fetchPhoto(selectUser._id, e)}>
                         <input type="file" onChange={(e) => handleFile(e)}/>
                         <input type="submit" value="Send"/>
                     </form>
