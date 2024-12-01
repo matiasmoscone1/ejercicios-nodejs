@@ -71,5 +71,9 @@ userController.update = async (req, res) => {
     }
 }
 
+userController.updatePhoto = async (req, res) => {
+    
+}
+
 
 module.exports = userController;
