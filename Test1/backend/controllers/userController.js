@@ -1,8 +1,6 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const userController = {};
-const multer = require("multer");
-
 
 userController.read = async (req, res) => {
     try{
@@ -45,7 +43,7 @@ userController.delete = async (req, res) => {
 }
 
 userController.update = async (req, res) => {
-    const { username, password, email, firstName, lastName, avatar,
+    const { username, password, email, firstName, lastName,
         role, location, birthDate } = req.body;
     const userId = req.params.id;
     try{
@@ -57,7 +55,6 @@ userController.update = async (req, res) => {
             email: email,
             firstName: firstName,
             lastName: lastName,
-            avatar: avatar,
             role: role,
             location: location,
             birthDate: birthDate
@@ -74,7 +71,19 @@ userController.update = async (req, res) => {
 
 userController.updatePhoto = async (req, res) => {
     console.log(req.file);
-    
+    const userId = req.params.id;
+    try{
+        const updatedUser = await User.findByIdAndUpdate(userId, {
+            avatar: req.file.buffer
+        });
+        if(updatedUser){
+            res.status(200).json({message: "Foto actualizada con exito!"});
+        }else{
+            res.status(404).json({message: "Usuario no encontrado."});
+        }
+    }catch(err){
+        res.status(500).json({message: "Ha ocurrido un error al actualizar la foto de perfil:", err});
+    }
 }
 
 

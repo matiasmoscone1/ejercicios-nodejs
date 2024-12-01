@@ -19,6 +19,10 @@ const ReadUser = () => {
                 headers: {"Content-Type":"application/json"}
             });
             const data = await response.json();
+            console.log(data);
+           /* const blob = data.avatar();
+            const imgUrl = URL.createObjectURL(blob);
+            console.log(imgUrl);*/
             setUsers(data);
             if(!response.ok){
                 const errData = response.json();
@@ -75,12 +79,13 @@ const ReadUser = () => {
     const fetchPhoto = async (e) => {
         console.log(selectUser._id);
         e.preventDefault();
+
         try{
             const formData = new FormData();
             formData.append("photo", selectFile);
             formData.append("userId", selectUser._id);
-
-            const response = await fetch(`http://localhost:3000/api/updateUser/${selectUser._id}`, {
+    
+            const response = await fetch(`http://localhost:3000/api/updatePhoto/${selectUser._id}`, {
                 method: "POST",
                 body: formData
             });

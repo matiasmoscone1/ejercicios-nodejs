@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
         maxlength: 32
     },
     avatar: {
-        type: String,
+        type: Buffer,
         required: false
     },
     role: {
