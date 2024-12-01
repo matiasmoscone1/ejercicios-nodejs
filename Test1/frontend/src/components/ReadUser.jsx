@@ -7,6 +7,7 @@ const ReadUser = () => {
     const [selectUser, setSelectUser] = useState({});
     const [flagUpdate, setFlagUpdate] = useState(false);
     const [flagPhoto, setFlagPhoto] = useState(false);
+    const [selectFile, setSelectFile] = useState(null);
 
     const fetchUsers = async () => {
         try{
@@ -73,6 +74,12 @@ const ReadUser = () => {
         const {value, name} = e.target;
         setSelectUser({...selectUser, [name]:value});
     }
+    
+    const handleFile = (e) => {
+        const file = e.target.files[0];
+        setSelectFile(file);
+        console.log(file);        
+    }
 
 
     useEffect(() => {
@@ -124,7 +131,7 @@ const ReadUser = () => {
             {flagPhoto && 
                 <div className="form-photo">
                     <form onSubmit={() => fetchPhoto()}>
-                        <input type="file" />
+                        <input type="file" onChange={() => handleFile()}/>
                         <input type="submit" value="Send"/>
                     </form>
                 </div>
