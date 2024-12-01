@@ -19,16 +19,11 @@ const ReadUser = () => {
                 headers: {"Content-Type":"application/json"}
             });
             const data = await response.json();
-            console.log(data);
-           /* const blob = data.avatar();
-            const imgUrl = URL.createObjectURL(blob);
-            console.log(imgUrl);*/
             setUsers(data);
             if(!response.ok){
                 const errData = response.json();
                 console.log(errData.message);               
             }
-
         }catch(err){
             console.log("Ocurrio un error al leer los usuarios:", err);
         }
@@ -120,7 +115,13 @@ const ReadUser = () => {
     <div className="read-user-container">
         {users.map((user) => {
             return(<div className="card" key={user._id}>
-                <img src={`${user.avatar}`}/>
+                {/*<img src={`${user.avatar}`}/>*/}
+                <img src={user.avatar ? `data:image/png;base64,${btoa(
+        new Uint8Array(user.avatar.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte), 
+            ''
+        )
+    )}` : 'default-avatar.png'}/>
                 <button onClick={() => {setSelectUser(user); setFlagPhoto({flag: true, id: user._id})}}>Update Photo</button>
                 <p>{user.firstName} {user.lastName}</p>
                 <p>{user.role}</p>
