@@ -6,6 +6,7 @@ const ReadUser = () => {
     const [users, setUsers] = useState([]);
     const [selectUser, setSelectUser] = useState({});
     const [flagUpdate, setFlagUpdate] = useState(false);
+    const [flagPhoto, setFlagPhoto] = useState(false);
 
     const fetchUsers = async () => {
         try{
@@ -86,6 +87,7 @@ const ReadUser = () => {
         {users.map((user) => {
             return(<div className="card" key={user._id}>
                 <img src={`${user.avatar}`}/>
+                <button onClick={() => setFlagPhoto(true)}>Update Photo</button>
                 <p>{user.firstName} {user.lastName}</p>
                 <p>{user.role}</p>
                 <p>{user.location}</p>
@@ -119,6 +121,14 @@ const ReadUser = () => {
                     <button type="submit">Update</button>
                 </form>
             </div>}    
+            {flagPhoto && 
+                <div className="form-photo">
+                    <form onSubmit={() => fetchPhoto()}>
+                        <input type="file" />
+                        <input type="submit" value="Send"/>
+                    </form>
+                </div>
+            }
     </>)
 
 }
