@@ -87,6 +87,20 @@ body{
   margin-right: auto;
 }
 
+.btn-update-photo{
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .form-photo form{
   display: flex;
   flex-direction: column;

@@ -122,7 +122,7 @@ const ReadUser = () => {
             ''
         )
     )}` : 'default-avatar.png'}/>
-                <button onClick={() => {setSelectUser(user); setFlagPhoto({flag: true, id: user._id})}}>Update Photo</button>
+                <button className="btn-update-photo" onClick={() => {setSelectUser(user); setFlagPhoto({flag: true, id: user._id})}}></button>
                 <p>{user.firstName} {user.lastName}</p>
                 <p>{user.role}</p>
                 <p>{user.location}</p>
