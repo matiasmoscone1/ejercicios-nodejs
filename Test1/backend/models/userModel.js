@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 const fs = require("node:fs");
-const path = require("node:path");
 
-const defaultAvatarPath = path.join(__dirname, "default-avatar.png");
-const defaultAvatar = fs.readSync(defaultAvatarPath);
+const defaultAvatar = fs.readFileSync("./assets/images/default-avatar.png");
+
 
 const userSchema = new mongoose.Schema({
     username: {
