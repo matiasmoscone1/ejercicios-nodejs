@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
+const fs = require("node:fs");
+const path = require("node:path");
 
+const defaultAvatarPath = path.join(__dirname, "default-avatar.png");
+const defaultAvatar = fs.readSync(defaultAvatarPath);
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -34,6 +38,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: Buffer,
+        default: defaultAvatar,
         required: false
     },
     role: {
