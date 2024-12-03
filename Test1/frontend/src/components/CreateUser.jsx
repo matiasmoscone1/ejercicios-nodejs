@@ -4,66 +4,8 @@ import { UserContext } from "./UserContext";
 
 const CreateUser = () => {
 
-    const { state, handleInputCreate } = useContext(UserContext);
+    const { state, handleInputCreate, handleSubmitCreate } = useContext(UserContext);
 
-    const [data, setData] = useState({
-        username: "",
-        password: "",
-        email: "",
-        firstname: "",
-        lastname: "",
-        role: "",
-        location: "",
-        birthdate: ""});
-/*
-    const handleInput = (e) => {
-        const {value, name} = e.target;
-        setData({...data, [name]:value});
-    }*/
-
-    const fetchCreate = async () => {
-        console.log(data);
-        try{
-            const response = await fetch("http://localhost:3000/api/createUser",{
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({
-                    username: data.username,
-                    password: data.password,
-                    email: data.email, 
-                    firstname: data.firstname, 
-                    lastname: data.lastname, 
-                    role: data.role, 
-                    location: data.location, 
-                    birthdate: data.birthdate
-                })
-            });
-            if(response.ok){
-                console.log("Usuario creado con exito!");
-            }else{
-                const errData = await response.json();
-                console.log(errData);
-            }
-        }catch(err){
-            console.log("No se pudo crear el usuario.", err);
-        }
-    }
-/*
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetchCreate();
-        setData({username: "",
-        password: "",
-        email: "",
-        firstname: "",
-        lastname: "",
-        role: "",
-        location: "",
-        birthdate: ""});
-    }
-*/
-
-    console.log(data);
     return(<div className="form-container">
         <form className="form-create-user" onSubmit={(e) => handleSubmitCreate(e)}>
             <label>Username</label> 

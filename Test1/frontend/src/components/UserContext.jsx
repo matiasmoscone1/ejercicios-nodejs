@@ -109,6 +109,33 @@ const UserContextProvider = ({ children }) => {
         }
     }
 
+    const fetchCreate = async () => {
+        try{
+            const response = await fetch("http://localhost:3000/api/createUser",{
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({
+                    username: state.newUser.username,
+                    password: state.newUser.password,
+                    email: state.newUser.email, 
+                    firstname: state.newUser.firstname, 
+                    lastname: state.newUser.lastname, 
+                    role: state.newUser.role, 
+                    location: state.newUser.location, 
+                    birthdate: state.newUser.birthdate
+                })
+            });
+            if(response.ok){
+                console.log("Usuario creado con exito!");
+            }else{
+                const errData = await response.json();
+                console.log(errData);
+            }
+        }catch(err){
+            console.log("No se pudo crear el usuario.", err);
+        }
+    }
+
     const handleInput = (e) => {
         const {value, name} = e.target;
         setSelectUser({...selectUser, [name]:value});
@@ -116,7 +143,6 @@ const UserContextProvider = ({ children }) => {
     
     const handleInputCreate = (e) => {
         const {value, name} = e.target;
-        //setData({...data, [name]:value});
         dispatch({type: "HANDLE_INPUT_CREATE", payload: {[name]:value}});
     }
 
@@ -129,16 +155,8 @@ const UserContextProvider = ({ children }) => {
     const handleSubmitCreate = (e) => {
         e.preventDefault();
         fetchCreate();
-        setData({username: "",
-        password: "",
-        email: "",
-        firstname: "",
-        lastname: "",
-        role: "",
-        location: "",
-        birthdate: ""});
+        dispatch({type: "CLEAR_CREATE", payload: ""});
     }
-
 
 
     const selectUser = (user) => {
