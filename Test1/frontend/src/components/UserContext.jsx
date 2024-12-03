@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import { createContext } from "react"
 import reducer from "../reducer/reducer";
 
@@ -27,7 +27,8 @@ const UserContextProvider = ({ children }) => {
                 headers: {"Content-Type":"application/json"}
             });
             const data = await response.json();
-            setUsers(data);
+            //setUsers(data);
+            dispatch({type: "SAVE_USERS", payload: data});
             if(!response.ok){
                 const errData = response.json();
                 console.log(errData.message);               
@@ -118,10 +119,16 @@ const UserContextProvider = ({ children }) => {
 
 
 
-    return(<UserContext.Provider value={{state}}>
+    return(<UserContext.Provider value={{
+        state, 
+        fetchPhoto, 
+        fetchUpdate, 
+        fetchDelete,
+        handleInput,
+        handleFile}}>
         { children }
     </UserContext.Provider>)
 
 }
 
-
+export default UserContextProvider;
