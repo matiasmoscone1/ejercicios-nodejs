@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../components/UserContext";
+import { useContext } from "react";
 
 const ReadUser = () => {
 
     const navigate = useNavigate();
-
+/*
     const [users, setUsers] = useState([]);
     const [selectUser, setSelectUser] = useState({});
     const [flagUpdate, setFlagUpdate] = useState(false);
@@ -13,8 +15,11 @@ const ReadUser = () => {
         flag: false,
         id: ""
     });
-    const [selectFile, setSelectFile] = useState(null);
+    const [selectFile, setSelectFile] = useState(null);*/
 
+    const { state, fetchUpdate, fetchPhoto, fetchDelete, handleInput, handleFile } = useContext(UserContext);
+
+/*
     const fetchUsers = async () => {
         try{
             const response = await fetch("http://localhost:3000/api/readUser", {
@@ -109,14 +114,12 @@ const ReadUser = () => {
 
     useEffect(() => {
         fetchUsers();
-    }, []);
-    console.log(users);
-
-    console.log(selectUser);
+    }, []);*/
+    
     return(
     <>
     <div className="read-user-container">
-        {users.map((user) => {
+        {state.users.map((user) => {
             return(<div className="card" key={user._id}>
                 {/*<img src={`${user.avatar}`}/>*/}
                 <img src={user.avatar ? `data:image/png;base64,${btoa(
@@ -137,25 +140,25 @@ const ReadUser = () => {
             )
         })}
         </div>
-        {flagUpdate && 
+        {state.flagUpdate && 
             <div className="form-update-container">
                 <form className="form-create-user" onSubmit={() => fetchUpdate(selectUser._id)}>
                     <label>Username</label> 
-                    <input type="string" value={selectUser.username} name="username" onChange={(e) => handleInput(e)}/>
+                    <input type="string" value={state.selectUser.username} name="username" onChange={(e) => handleInput(e)}/>
                     <label>Password</label> 
-                    <input type="password" value={selectUser.password} name="password" onChange={(e) => handleInput(e)}/>
+                    <input type="password" value={state.selectUser.password} name="password" onChange={(e) => handleInput(e)}/>
                     <label>Email</label> 
-                    <input type="email" value={selectUser.email} name="email" onChange={(e) => handleInput(e)}/>
+                    <input type="email" value={state.selectUser.email} name="email" onChange={(e) => handleInput(e)}/>
                     <label>Firstname</label> 
-                    <input type="string" value={selectUser.firstName} name="firstName" onChange={(e) => handleInput(e)}/>
+                    <input type="string" value={state.selectUser.firstName} name="firstName" onChange={(e) => handleInput(e)}/>
                     <label>Lastname</label> 
-                    <input type="string" value={selectUser.lastName} name="lastName" onChange={(e) => handleInput(e)}/>
+                    <input type="string" value={state.selectUser.lastName} name="lastName" onChange={(e) => handleInput(e)}/>
                     <label>Role</label> 
-                    <input type="string" value={selectUser.role} name="role" onChange={(e) => handleInput(e)}/>
+                    <input type="string" value={state.selectUser.role} name="role" onChange={(e) => handleInput(e)}/>
                     <label>Location</label> 
-                    <input type="string" value={selectUser.location} name="location" onChange={(e) => handleInput(e)}/>
+                    <input type="string" value={state.selectUser.location} name="location" onChange={(e) => handleInput(e)}/>
                     <label>BirthDate</label> 
-                    <input type="date" value={selectUser.birthdate} name="birthdate" onChange={(e) => handleInput(e)}/>
+                    <input type="date" value={state.selectUser.birthdate} name="birthdate" onChange={(e) => handleInput(e)}/>
                     <button type="submit">Update</button>
                 </form>
             </div>}    
