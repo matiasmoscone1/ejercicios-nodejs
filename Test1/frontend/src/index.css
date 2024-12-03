@@ -42,6 +42,9 @@ body{
   height: 15em;
   border: 1px solid black;
   position: relative;
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
 }
 
 .card img{
@@ -125,6 +128,8 @@ body{
   left: -3px;
   opacity: 0.8;
 }
+
+
 
 
 

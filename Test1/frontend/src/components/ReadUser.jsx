@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ReadUser = () => {
+
+    const navigate = useNavigate();
 
     const [users, setUsers] = useState([]);
     const [selectUser, setSelectUser] = useState({});
@@ -100,7 +103,7 @@ const ReadUser = () => {
     const handleFile = (e) => {
         const file = e.target.files[0];
         setSelectFile(file);
-        console.log(file);        
+        console.log(file);
     }
 
 
@@ -128,7 +131,7 @@ const ReadUser = () => {
                 <p>{user.location}</p>
                 <div className="btn-container">
                     <button onClick={() => {setSelectUser(user); setFlagUpdate(true)}}>Update</button>
-                    <button onClick={() => fetchDelete(user._id)}>Delete</button>                
+                    <button onClick={() => fetchDelete(user._id)}>Delete</button>
                 </div>
             </div> 
             )
