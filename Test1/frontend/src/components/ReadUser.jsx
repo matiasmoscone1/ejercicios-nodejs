@@ -55,7 +55,7 @@ const ReadUser = () => {
                     <button type="submit">Update</button>
                 </form>
             </div>}    
-            {flagPhoto.flag && 
+            {state.flagPhoto.flag && 
                 <div className="form-photo">
                     <form onSubmit={(e) => fetchPhoto(e)}>
                         <input type="file" onChange={(e) => handleFile(e)}/>
