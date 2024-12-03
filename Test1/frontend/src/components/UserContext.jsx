@@ -14,7 +14,16 @@ const UserContextProvider = ({ children }) => {
             flag: false,
             id: ""
         },
-        selectFile: null
+        selectFile: null,
+        newUser: {
+            username: "",
+            password: "",
+            email: "",
+            firstname: "",
+            lastname: "",
+            role: "",
+            location: "",
+            birthdate: ""}
     }
 
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -27,7 +36,6 @@ const UserContextProvider = ({ children }) => {
                 headers: {"Content-Type":"application/json"}
             });
             const data = await response.json();
-            //setUsers(data);
             dispatch({type: "SAVE_USERS", payload: data});
             if(!response.ok){
                 const errData = response.json();
@@ -106,11 +114,32 @@ const UserContextProvider = ({ children }) => {
         setSelectUser({...selectUser, [name]:value});
     }
     
+    const handleInputCreate = (e) => {
+        const {value, name} = e.target;
+        //setData({...data, [name]:value});
+        dispatch({type: "HANDLE_INPUT_CREATE", payload: {[name]:value}});
+    }
+
     const handleFile = (e) => {
         const file = e.target.files[0];
         setSelectFile(file);
         console.log(file);
     }
+
+    const handleSubmitCreate = (e) => {
+        e.preventDefault();
+        fetchCreate();
+        setData({username: "",
+        password: "",
+        email: "",
+        firstname: "",
+        lastname: "",
+        role: "",
+        location: "",
+        birthdate: ""});
+    }
+
+
 
     const selectUser = (user) => {
         dispatch({type: "SELECT_USER", payload: user});
@@ -136,7 +165,9 @@ const UserContextProvider = ({ children }) => {
         fetchUpdate, 
         fetchDelete,
         handleInput,
+        handleInputCreate,
         handleFile,
+        handleSubmitCreate,
         selectUser,
         flagPhoto,
         flagUpdate
