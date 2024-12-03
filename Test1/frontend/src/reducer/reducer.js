@@ -15,6 +15,9 @@ const reducer = (state, action) => {
         case "FLAG_UPDATE":{
             return({...state, flagUpdate: action.payload});
         }
+        case "HANDLE_INPUT_CREATE":{
+            return({...state, newUser: {...state.newUser, ...action.payload}});
+        }
     }
 
 
