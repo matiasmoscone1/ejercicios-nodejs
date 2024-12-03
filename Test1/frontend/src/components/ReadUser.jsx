@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import UserContext from "../components/UserContext";
 import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
 const ReadUser = () => {
 
     const navigate = useNavigate();
 
-    const { state, fetchUpdate, fetchPhoto, fetchDelete, handleInput, handleFile } = useContext(UserContext);
+    const { state, fetchUpdate, fetchPhoto, fetchDelete, handleInput, 
+        handleFile, selectUser, flagPhoto, flagUpdate } = useContext(UserContext);
 
     return(
     <>
@@ -20,12 +21,12 @@ const ReadUser = () => {
             ''
         )
     )}` : 'default-avatar.png'}/>
-                <button className="btn-update-photo" onClick={() => {setSelectUser(user); setFlagPhoto({flag: true, id: user._id})}}></button>
+                <button className="btn-update-photo" onClick={() => {selectUser(user); flagPhoto({flag: true, id: user._id})}}></button>
                 <p>{user.firstName} {user.lastName}</p>
                 <p>{user.role}</p>
                 <p>{user.location}</p>
                 <div className="btn-container">
-                    <button onClick={() => {setSelectUser(user); setFlagUpdate(true)}}>Update</button>
+                    <button onClick={() => {selectUser(user); flagUpdate(true)}}>Update</button>
                     <button onClick={() => fetchDelete(user._id)}>Delete</button>
                 </div>
             </div> 

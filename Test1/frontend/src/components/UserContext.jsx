@@ -2,7 +2,7 @@ import { useReducer, useEffect } from "react";
 import { createContext } from "react"
 import reducer from "../reducer/reducer";
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
 
@@ -112,12 +112,23 @@ const UserContextProvider = ({ children }) => {
         console.log(file);
     }
 
+    const selectUser = (user) => {
+        dispatch({type: "SELECT_USER", payload: user});
+    }
+
+    const flagPhoto = (flag, id) => {
+        dispatch({type: "FLAG_PHOTO", payload: {flag: flag, id: id}});
+    }
+
+    const flagUpdate = (flag) => {
+        dispatch({type: "FLAG_UPDATE", payload: flag});
+    }
 
     useEffect(() => {
         fetchUsers();
     }, []);
 
-
+    console.log(state);
 
     return(<UserContext.Provider value={{
         state, 
@@ -125,7 +136,11 @@ const UserContextProvider = ({ children }) => {
         fetchUpdate, 
         fetchDelete,
         handleInput,
-        handleFile}}>
+        handleFile,
+        selectUser,
+        flagPhoto,
+        flagUpdate
+        }}>
         { children }
     </UserContext.Provider>)
 
