@@ -9,6 +9,9 @@ const reducer = (state, action) => {
         case "SELECT_USER":{
             return({...state, selectUser: action.payload});
         }
+        case "SELECT_FILE":{
+            return({...state, selectFile: action.payload});
+        }
         case "FLAG_PHOTO":{
             return({...state, flagPhoto: action.payload});
         }

@@ -148,8 +148,7 @@ const UserContextProvider = ({ children }) => {
 
     const handleFile = (e) => {
         const file = e.target.files[0];
-        setSelectFile(file);
-        console.log(file);
+        dispatch({type: "SELECT_FILE", payload: file});
     }
 
     const handleSubmitCreate = (e) => {
