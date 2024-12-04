@@ -22,9 +22,10 @@ const ReadUser = () => {
         )
     )}` : 'default-avatar.png'}/>
                 <button className="btn-update-photo" onClick={() => {selectUser(user); flagPhoto({flag: true, id: user._id})}}></button>
-                <p>{user.firstName} {user.lastName}</p>
-                <p>{user.role}</p>
-                <p>{user.location}</p>
+                <div className="info-card">
+                    <p>{user.firstName} {user.lastName}</p>
+                    <p>{user.location}</p>
+                </div>
                 <div className="btn-container">
                     <button onClick={() => {selectUser(user); flagUpdate(true)}}>Update</button>
                     <button onClick={() => fetchDelete(user._id)}>Delete</button>

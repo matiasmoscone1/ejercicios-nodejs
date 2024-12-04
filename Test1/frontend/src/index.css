@@ -30,7 +30,7 @@ body{
   border: 1px solid black;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
   gap: 2em;
   margin-left: auto;
   margin-right: auto;
@@ -60,6 +60,10 @@ body{
   position: relative;
   z-index: 1;
   object-fit: cover;
+}
+
+.info-card{
+  padding: 1em;
 }
 
 .btn-container{

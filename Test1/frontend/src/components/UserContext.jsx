@@ -36,6 +36,7 @@ const UserContextProvider = ({ children }) => {
                 headers: {"Content-Type":"application/json"}
             });
             const data = await response.json();
+            console.log(data);
             dispatch({type: "SAVE_USERS", payload: data});
             if(!response.ok){
                 const errData = response.json();
