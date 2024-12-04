@@ -70,19 +70,18 @@ const UserContextProvider = ({ children }) => {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify({
-                    username: selectUser.username,
-                    password: selectUser.password,
-                    email: selectUser.email, 
-                    firstName: selectUser.firstName, 
-                    lastName: selectUser.lastName, 
-                    avatar: "/images/emiliano-martinez-seleccion-argentina-1902501.jpg",
-                    role: selectUser.role, 
-                    location: selectUser.location, 
-                    birthDate: selectUser.birthDate
+                    username: state.selectUser.username,
+                    password: state.selectUser.password,
+                    email: state.selectUser.email, 
+                    firstName: state.selectUser.firstName, 
+                    lastName: state.selectUser.lastName, 
+                    role: state.selectUser.role, 
+                    location: state.selectUser.location, 
+                    birthDate: state.selectUser.birthDate
                 })
             });
             if(response.ok){
-                setFlagUpdate(false);
+                dispatch({type: "FLAG_UPDATE", payload: false});
             }
         }catch(err){
             console.log("No se pudo relizar la actualizacion del usuario:", err);
@@ -90,15 +89,15 @@ const UserContextProvider = ({ children }) => {
     }
 
     const fetchPhoto = async (e) => {
-        console.log(selectUser._id);
+        console.log(state.selectUser._id);
         e.preventDefault();
 
         try{
             const formData = new FormData();
-            formData.append("photo", selectFile);
-            formData.append("userId", selectUser._id);
+            formData.append("photo", state.selectFile);
+            formData.append("userId", state.selectUser._id);
     
-            const response = await fetch(`http://localhost:3000/api/updatePhoto/${selectUser._id}`, {
+            const response = await fetch(`http://localhost:3000/api/updatePhoto/${state.selectUser._id}`, {
                 method: "POST",
                 body: formData
             });
@@ -139,7 +138,7 @@ const UserContextProvider = ({ children }) => {
 
     const handleInput = (e) => {
         const {value, name} = e.target;
-        setSelectUser({...selectUser, [name]:value});
+        dispatch({type: "HANDLE_INPUT", payload: {[name]:value}});
     }
     
     const handleInputCreate = (e) => {
